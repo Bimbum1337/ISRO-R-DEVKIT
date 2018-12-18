@@ -2,7 +2,7 @@ variables:
   
 before_script:
   - echo "starting build for SRO_DevKit"
-  - "\"%VS100COMNTOOLS%\\vsvars32.bat\""
+  - "call \"%VS100COMNTOOLS%\\vsvars32.bat\""
 
 stages:
   - build
@@ -14,8 +14,8 @@ build:
     - vs2010
     - windows
   script:
-    - call 'echo "Release build..."'
-    - call 'msbuild.exe /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet SRO_DevKit.sln'
+    - 'echo "Release build..."'
+    - 'msbuild.exe /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet SRO_DevKit.sln'
   artifacts:
     untracked: true
 
