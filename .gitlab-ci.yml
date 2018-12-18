@@ -2,7 +2,7 @@ variables:
   PROJECT_NAME: "SRO_DevKit"
 before_script:
   - echo "starting build for %PROJECT_NAME%"
-  - "%VS100COMNTOOLS%\vsvars32.bat"
+  - "\"%VS100COMNTOOLS%\\vsvars32.bat\""
 stages:
   - build
 
