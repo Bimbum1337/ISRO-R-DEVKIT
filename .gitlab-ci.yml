@@ -8,6 +8,10 @@ stages:
 
 build:
   stage: build
+  tags:
+    - vs2005
+    - vs2010
+    - windows
   script:
   - echo "Release build..."
   - '"msbuild.exe" /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet "%PROJECT_NAME%.sln"'
