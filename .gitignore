@@ -1,0 +1,7 @@
+BinOut/
+ipch
+[Rr]elease/
+[Dd]ebug/
+*.sdf
+*.suo
+*.user
