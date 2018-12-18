@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{0639acd8-1f85-4bd4-b113-615deb22ded2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Common Interface Class">
+      <UniqueIdentifier>{cb69df3b-7422-4280-a005-c0edbd8a7dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Inner Interface Class">
+      <UniqueIdentifier>{34b97ec8-d985-49bc-ae4e-c64776f82d4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame">
+      <UniqueIdentifier>{2e7c3ea1-a5d0-4a5d-ba65-dc5ec38c51fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame\Process">
+      <UniqueIdentifier>{3d1433c6-c8b4-4b3c-9298-ddd38c5218b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainFrame\Process\OuterProcess">
+      <UniqueIdentifier>{4dedf97b-4702-4b65-b236-a4d34dc067e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\InterfaceManager">
+      <UniqueIdentifier>{91aaa28d-643b-487d-881a-39f204fd3cd6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\IFStatic.cpp">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFWnd.cpp">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextBoard.cpp">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Client.cpp" />
+    <ClCompile Include="src\PSOuterInterface.cpp">
+      <Filter>MainFrame\Process\OuterProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PSVersionCheck.cpp">
+      <Filter>MainFrame\Process\OuterProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StdAfx.cpp" />
+    <ClCompile Include="src\PSilkroad.cpp">
+      <Filter>MainFrame\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Process.cpp" />
+    <ClCompile Include="src\GWnd.cpp" />
+    <ClCompile Include="src\CameraWorking.cpp" />
+    <ClCompile Include="src\IRMManager.cpp">
+      <Filter>Interface\InterfaceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unsorted.cpp" />
+    <ClCompile Include="src\GWndBase.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GFXMainFrame.cpp" />
+    <ClCompile Include="src\MsgHandler.cpp" />
+    <ClCompile Include="src\IFButton.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFFrame.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFCloseButton.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFDragableArea.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFMainFrame.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IFTileWnd.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RTLoading.cpp" />
+    <ClCompile Include="src\is_this_important.cpp" />
+    <ClCompile Include="src\multibyte.cpp" />
+    <ClCompile Include="src\GInterface.cpp" />
+    <ClCompile Include="src\NavigationDeadreckon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\TextBoard.h">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IFStatic.h">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IFWnd.h">
+      <Filter>Interface\Common Interface Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PSVersionCheck.h">
+      <Filter>MainFrame\Process\OuterProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Client.h" />
+    <ClInclude Include="src\PSOuterInterface.h">
+      <Filter>MainFrame\Process\OuterProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StdAfx.h" />
+    <ClInclude Include="src\PSilkroad.h">
+      <Filter>MainFrame\Process</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Process.h" />
+    <ClInclude Include="src\GWnd.h" />
+    <ClInclude Include="src\CameraWorking.h" />
+    <ClInclude Include="src\IRMManager.h">
+      <Filter>Interface\InterfaceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\unsorted.h" />
+    <ClInclude Include="src\GlobalHelpersThatHaveNoHomeYet.h" />
+    <ClInclude Include="src\GWndBase.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GFXMainFrame.h" />
+    <ClInclude Include="src\MsgHandler.h" />
+    <ClInclude Include="src\ETime.h" />
+    <ClInclude Include="src\IFButton.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IFCloseButton.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IFDragableArea.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ifframe.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ifmainframe.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\iftilewnd.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GEffSoundBody.h" />
+    <ClInclude Include="src\IDxSound.h" />
+    <ClInclude Include="src\DxSound.h" />
+    <ClInclude Include="src\GEffSound.h" />
+    <ClInclude Include="src\RTLoading.h" />
+    <ClInclude Include="src\GObj.h" />
+    <ClInclude Include="src\IFConsole.h" />
+    <ClInclude Include="src\is_this_important.h" />
+    <ClInclude Include="src\multibyte.h" />
+    <ClInclude Include="src\NavigationDeadreckon.h" />
+    <ClInclude Include="src\GInterface.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

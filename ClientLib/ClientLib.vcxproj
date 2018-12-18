@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DDC0F056-A370-48C8-A23C-A3EAD3B88FAC}</ProjectGuid>
+    <RootNamespace>ClientLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v80</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir);$(SolutionDir)\libs\dxsdk\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(IncludePath);$(SolutionDir);$(SolutionDir)\third-party\;$(SolutionDir)\third-party\dxsdk\Include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\DxSound.h" />
+    <ClInclude Include="src\ETime.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GEffSound.h" />
+    <ClInclude Include="src\GEffSoundBody.h" />
+    <ClInclude Include="src\GFXMainFrame.h" />
+    <ClInclude Include="src\GInterface.h" />
+    <ClInclude Include="src\GObj.h" />
+    <ClInclude Include="src\IDxSound.h" />
+    <ClInclude Include="src\IFButton.h" />
+    <ClInclude Include="src\IFCloseButton.h" />
+    <ClInclude Include="src\IFConsole.h" />
+    <ClInclude Include="src\IFDragableArea.h" />
+    <ClInclude Include="src\GlobalHelpersThatHaveNoHomeYet.h" />
+    <ClInclude Include="src\CameraWorking.h" />
+    <ClInclude Include="src\GWndBase.h" />
+    <ClInclude Include="src\IFFrame.h" />
+    <ClInclude Include="src\IFMainFrame.h" />
+    <ClInclude Include="src\IFTileWnd.h" />
+    <ClInclude Include="src\IRMManager.h" />
+    <ClInclude Include="src\Client.h" />
+    <ClInclude Include="src\GWnd.h" />
+    <ClInclude Include="src\is_this_important.h" />
+    <ClInclude Include="src\MsgHandler.h" />
+    <ClInclude Include="src\multibyte.h" />
+    <ClInclude Include="src\NavigationDeadreckon.h" />
+    <ClInclude Include="src\Process.h" />
+    <ClInclude Include="src\PSilkroad.h" />
+    <ClInclude Include="src\PSOuterInterface.h" />
+    <ClInclude Include="src\PSVersionCheck.h" />
+    <ClInclude Include="src\IFStatic.h" />
+    <ClInclude Include="src\IFWnd.h" />
+    <ClInclude Include="src\RTLoading.h" />
+    <ClInclude Include="src\TextBoard.h" />
+    <ClInclude Include="src\StdAfx.h" />
+    <ClInclude Include="src\unsorted.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GFXMainFrame.cpp" />
+    <ClCompile Include="src\GInterface.cpp" />
+    <ClCompile Include="src\IFButton.cpp" />
+    <ClCompile Include="src\IFCloseButton.cpp" />
+    <ClCompile Include="src\IFDragableArea.cpp" />
+    <ClCompile Include="src\CameraWorking.cpp" />
+    <ClCompile Include="src\GWndBase.cpp" />
+    <ClCompile Include="src\IFFrame.cpp" />
+    <ClCompile Include="src\IFMainFrame.cpp" />
+    <ClCompile Include="src\IFTileWnd.cpp" />
+    <ClCompile Include="src\IRMManager.cpp" />
+    <ClCompile Include="src\Client.cpp" />
+    <ClCompile Include="src\GWnd.cpp" />
+    <ClCompile Include="src\is_this_important.cpp" />
+    <ClCompile Include="src\MsgHandler.cpp" />
+    <ClCompile Include="src\multibyte.cpp" />
+    <ClCompile Include="src\NavigationDeadreckon.cpp" />
+    <ClCompile Include="src\Process.cpp" />
+    <ClCompile Include="src\PSilkroad.cpp" />
+    <ClCompile Include="src\PSOuterInterface.cpp" />
+    <ClCompile Include="src\PSVersionCheck.cpp" />
+    <ClCompile Include="src\IFStatic.cpp" />
+    <ClCompile Include="src\IFWnd.cpp" />
+    <ClCompile Include="src\RTLoading.cpp" />
+    <ClCompile Include="src\TextBoard.cpp" />
+    <ClCompile Include="src\StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\unsorted.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
