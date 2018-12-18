@@ -1,10 +1,11 @@
 variables:
   
 before_script:
+  - echo "Preparing environment ..."
   - git submodule sync --recursive
   - git submodule update --init --recursive
-  - echo "starting build for SRO_DevKit"
   - "call \"%VS100COMNTOOLS%\\vsvars32.bat\""
+  - echo "Perparation done."
 
 stages:
   - build
