@@ -2,6 +2,7 @@ variables:
   PROJECT_NAME: "SRO_DevKit"
 before_script:
   - echo "starting build for %PROJECT_NAME%"
+  - "%VS100COMNTOOLS%\vsvars32.bat"
 stages:
   - build
 
@@ -9,6 +10,6 @@ build:
   stage: build
   script:
   - echo "Release build..."
-  - '"C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe" /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet "%PROJECT_NAME%.sln"'
+  - '"msbuild.exe" /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet "%PROJECT_NAME%.sln"'
   artifacts:
     untracked: true
