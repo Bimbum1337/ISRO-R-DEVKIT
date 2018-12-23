@@ -1,0 +1,2 @@
+1	UIIT_PAG_FLORIAN0	0	0	0	0	0	0	0	florian0's Window	0	0	0	0	0	0
+1	UIIT_STT_FLORIAN0_BTN	0	0	0	0	0	0	0	florian0's Button	0	0	0	0	0	0
