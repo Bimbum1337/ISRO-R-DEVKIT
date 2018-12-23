@@ -41,6 +41,30 @@ enum BSSig
 	(static_cast< int (GFX_MSG_CALL CGWndBase::*)(int, int) > ( &ThisClass :: On4001)), \
 		0, 0, 0},
 
+#define ONG_WM_4002() \
+	{ 0x4002, 0, 0, 0, 0xA, 0, \
+	(GFX_PMSG) \
+	(static_cast< int (GFX_MSG_CALL CGWndBase::*)(int, int) > ( &ThisClass :: On4002)), \
+		0, 0, 0},
+
+#define ONG_WM_4003() \
+	{ 0x4003, 0, 0, 0, 0xA, 0, \
+	(GFX_PMSG) \
+	(static_cast< int (GFX_MSG_CALL CGWndBase::*)(int, int) > ( &ThisClass :: On4003)), \
+		0, 0, 0},
+
+#define ONG_VISIBLE_CHANGE() \
+	{ 0x4004, 0, 0, 0, 0xA, 0, \
+	(GFX_PMSG) \
+	(static_cast< int (GFX_MSG_CALL CGWndBase::*)(int, int) > ( &ThisClass :: OnVisibleStateChange)), \
+	0, 0, 0},
+
+#define ONG_WM_4005() \
+	{ 0x4005, 0, 0, 0, 0xA, 0, \
+	(GFX_PMSG) \
+	(static_cast< int (GFX_MSG_CALL CGWndBase::*)(int, int) > ( &ThisClass :: On4005)), \
+		0, 0, 0},
+
 #define ONG_WM_4006() \
 	{ 0x4001, 0, 0, 0, 0xA, 0, \
 	(GFX_PMSG) \
