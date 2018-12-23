@@ -13,6 +13,8 @@ Due to binary compatibilty, the recommended build environment is Visual C++ 8.0 
 * DirectX SDK 9b (included as submodule)
 * Daffodil for VC80-support in newer Visual Studio Editions
 
+I am currently running tests with CMake to eliminate the Visual Studio 2010 dependency.
+
 ## Debug
 
 To debug in Visual Studio, copy a working sro client to the `BinOut/` folder. Create a binary named `sro_client_dev.exe` that loads the `DevClient_DLL.dll` using your method of choice.
