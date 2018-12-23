@@ -6,8 +6,10 @@
 #include "hooks.h"
 
 std::vector<const CGfxRuntimeClass*> register_objects;
-std::vector<const CGfxRuntimeClass*> override_objects;
 
+#if 0
+std::vector<const CGfxRuntimeClass*> override_objects;
+#endif
 
 // Locals
 int APIENTRY _FakeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow);
@@ -32,11 +34,12 @@ void RegisterObject(const CGfxRuntimeClass* obj)
 {
 	register_objects.push_back(obj);
 }
-
+#if 0
 void OverrideObject(const CGfxRuntimeClass& obj)
 {
 	override_objects.push_back(&obj);
 }
+#endif
 
 int APIENTRY _FakeWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -52,10 +55,12 @@ int APIENTRY _FakeWinMain(HINSTANCE hInstance,
 	// Replace Create & Delete for existing classes
 	// Note: We can't just inject existing objects like we would do with new objects.
 	//       Joymax uses == on GFX_RUNTIME_CLASS(), so we would end up breaking this comparison
+#if 0
 	for (std::vector<const CGfxRuntimeClass*>::const_iterator it = override_objects.begin(); it != override_objects.end(); ++it)
 	{
 		
 	}
+#endif
 
 	for (std::vector<const CGfxRuntimeClass*>::const_iterator it = register_objects.begin(); it != register_objects.end(); ++it)
 	{
