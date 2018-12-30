@@ -61,8 +61,49 @@ Create a merge-request through GitLab. This will get you noticed.
 We dream of having clean code. We know, everyone has their own style. Make use of patterns, if it's convenient, 
 feel free to introduce new types and classes.
 
-**Keep in mind**: The bigger your change is, the longer will it take us to review it, the longer it will take to 
-get it accepted and the greater the risk that your changes will be rejected.
+Please make a comment on every function you create that describes where you found it. This allows everyone to quickly navigate between code and binary.
+
+Example:
+
+```cpp
+// CGFontTexture::sub_8B37A0(void) .text 008B37A0 0000007D 00000008 00000000 R . . . . . .
+void CGFontTexture::sub_8B37A0()
+{
+	// ...
+}
+```
+
+Every function should be completely implemented. Partial implementations are only allowed on individual occasions. The minimal implementation should either be an assertion (signaling *not yet implemented*) or a redirection to the original function in the code.
+
+Example:
+
+```cpp
+// CIFTileWnd::SetGWndSize(void) .text 0081A920 00000005 00000004 00000000 R . . . . . .
+void CIFTileWnd::SetGWndSize(int width, int height)
+{
+    // Not yet implemented
+	assert(FALSE); 
+}
+```
+
+```cpp
+// CIFTileWnd__sub_81AE00 .text 0081AE00 0000007D 00000010 00000000 R . . . . . .
+void CIFTileWnd::sub_81AE00()
+{
+	// Redirection to original client code
+	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x0081AE00)(this);
+}
+```
+
+If your new function appears to be empty, place a comment stating this.
+
+```cpp
+// CGWnd::OnUpdate() .text 00B9D7E0 00000001   R . . . . . .
+void CGWnd::OnUpdate()
+{
+	// empty
+}
+```
 
 Use commits wisely. Make multiple smaller commits instead of a few large. Don't commit code that does not work. Don't 
 use commits as quick-save. Commit, when the state of development deserves a snapshot.
