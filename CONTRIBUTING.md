@@ -90,7 +90,7 @@ helping. So we will keep it as simple as possible:
 > But they fit so nicely!
 
 1. Enter a meaningful explanation in the commit log message.
-2. The first line of the commit message should be prefixed by the component name in square brackets, if it affects a single component, e.g. `[SR_GameServer]`
+2. The first line of the commit message should be prefixed by the component name in square brackets, if it affects a single component, e.g. `[ClientLib]`
 3. The first line of the commit message should be a short (ideally <50 columns) message, followed by a blank line. The rest of the commit message could contain a more detailed explanation of the change, wrapped to 80 columns.
 4. When entering a message describing a change, take into account that the goal is to explain why the change was done, rather than what was changed. For example, the message “Added property X” is in general useless since it is obvious looking at the patch.
 5. All changes included in a commit should be related and as atomic as possible. Here are some examples:
