@@ -4,7 +4,7 @@
 
 ## Build
 
-Due to binary compatibilty, the recommended build environment is Visual C++ 8.0 aka Visual Studio 2005. Other environments can work, but are not recommended nor supported. The project itself comes with project files for Visual Studio 2010.
+Due to binary compatibilty, the recommended build environment is Visual C++ 8.0 aka Visual Studio 2005. Other environments can work, but are not recommended nor supported. The project itself comes with project files for Visual Studio 2010. Always make sure to compile on a `Release`-configuration. Other configurations don't work.
 
 ### Requirements
 
