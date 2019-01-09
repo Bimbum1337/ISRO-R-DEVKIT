@@ -23,7 +23,7 @@ enum BSSig
 		0, 0, 0 },
 
 
-#define ONG_WM_258() \
+#define ONG_CHAR() \
 	{ 258, 0, 0, 0, BSSig_u16, 0, \
 		(GFX_PMSG) \
 		(static_cast< int (GFX_MSG_CALL CGWndBase::*)(UINT, UINT, UINT) > ( &ThisClass :: On258)), \
