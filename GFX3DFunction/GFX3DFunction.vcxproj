@@ -73,6 +73,7 @@
     <ClCompile Include="Common\d3dsettings.cpp" />
     <ClCompile Include="Common\d3dutil.cpp" />
     <ClCompile Include="Common\dxutil.cpp" />
+    <ClCompile Include="DrawingHelpers.cpp" />
     <ClCompile Include="GFontTexture.cpp" />
     <ClCompile Include="GFXVideo3d.cpp" />
   </ItemGroup>
@@ -83,6 +84,7 @@
     <ClInclude Include="common\d3dsettings.h" />
     <ClInclude Include="common\d3dutil.h" />
     <ClInclude Include="common\dxutil.h" />
+    <ClInclude Include="DrawingHelpers.h" />
     <ClInclude Include="GFontTexture.h" />
     <ClInclude Include="GFXVideo3d.h" />
   </ItemGroup>

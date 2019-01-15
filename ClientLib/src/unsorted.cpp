@@ -5,6 +5,7 @@
 #include "GWndBase.h"
 #include "Process.h"
 #include <BSLib/BSLib.h>
+#include <GFX3DFunction/DrawingHelpers.h>
 
 GlobalPtr<CGWndBase, 0x0110F60C> g_CurrentIF_UnderCursor;
 
