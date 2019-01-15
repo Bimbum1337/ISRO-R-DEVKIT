@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="NavEdge.h" />
+    <ClInclude Include="ObjectList.h" />
+    <ClInclude Include="RTNavCell.h" />
+    <ClInclude Include="RTNavCellQuad.h" />
+    <ClInclude Include="RTNavCellTri.h" />
+    <ClInclude Include="RTNavEdge.h" />
+    <ClInclude Include="RTNavEdgeGlobal.h" />
+    <ClInclude Include="RTNavEdgeInternal.h" />
+    <ClInclude Include="RTNavMesh.h" />
+    <ClInclude Include="RTNavMeshObj.h" />
+    <ClInclude Include="RTNavMeshTerrain.h" />
+    <ClInclude Include="_ICell.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RTNavMeshTerrain.cpp" />
+  </ItemGroup>
+</Project>
