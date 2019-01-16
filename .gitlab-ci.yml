@@ -3,7 +3,7 @@ variables:
 before_script:
   - git submodule sync --recursive
   - git submodule update --init --recursive
-  - "call \"%VS100COMNTOOLS%\\vsvars32.bat\""
+  - "`cygpath \"$VS100COMNTOOLS\\vsvars32.bat\"`"
 
 stages:
   - build
