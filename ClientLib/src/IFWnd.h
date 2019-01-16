@@ -49,7 +49,7 @@ public:
 	virtual void Func_43();
 	virtual bool IsInside(int x, int y);
 	virtual bool SetText(const wchar_t* src);
-	virtual const wchar_t* Get_N00000600();
+	virtual const wchar_t* GetText();
 	virtual void Func_47(int);
 	virtual void Func_48();
 
