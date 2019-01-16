@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "WndProc.h"
+#include "hooks.h"
 
 extern std::vector<WNDPROC> hooks_wndproc;
 
@@ -9,8 +10,11 @@ LRESULT CALLBACK WndProcHook(HWND hwnd, UINT msg, LPARAM lParam, WPARAM wParam)
 		it != hooks_wndproc.end();
 		++it)
 	{
-		if ((*it)(hwnd, msg, lParam, wParam))
-			return true;
+		if ((*it)(hwnd, msg, lParam, wParam) == RESULT_DISCARD)
+		{
+			// Call default window proc because nothing happens otherwise ...
+			return DefWindowProc(hwnd, msg, lParam, wParam);
+		}
 	}
 
 	return reinterpret_cast<WNDPROC>(0x008311C0)(hwnd, msg, lParam, wParam);
