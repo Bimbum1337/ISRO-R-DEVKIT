@@ -9,10 +9,10 @@ class CGEffSound : public CGObj
 	// 30 virtual methods in total, CGObj has 7, 23 methods left
 
 public:
-
+	virtual void Func_7() = 0;
 	virtual void Func_8() = 0;
 	virtual void Func_9() = 0;
-	virtual void Func_10() = 0;
+	virtual void PlaySound(const wchar_t *sndFile) = 0;
 	virtual void Func_11() = 0;
 	virtual void Func_12() = 0;
 	virtual void Func_13() = 0;
