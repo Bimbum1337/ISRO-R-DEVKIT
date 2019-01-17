@@ -11,6 +11,7 @@
 #include "GlobalHelpersThatHaveNoHomeYet.h"
 
 #include <NavMesh/RTNavMeshTerrain.h>
+#include "hooks.h"
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -413,7 +414,18 @@ void ImGui_OnEndScene()
 LRESULT CALLBACK ImGui_WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	//printf("ImGui_WndProc\n");
-	return ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam);
+
+	// Check if context is already created
+	if (!ImGui::GetCurrentContext())
+		return RESULT_PASS;
+
+	ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam);
+
+	// Only pass events if imgui wants it
+	if (ImGui::GetIO().WantCaptureMouse || ImGui::GetIO().WantCaptureKeyboard)
+		return RESULT_DISCARD;
+
+	return RESULT_PASS;
 }
 
 void ImGui_OnPreSetSize(int width, int height)
