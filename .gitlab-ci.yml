@@ -3,22 +3,18 @@ variables:
 before_script:
   - git submodule sync --recursive
   - git submodule update --init --recursive
-  - "call \"%VS100COMNTOOLS%\\vsvars32.bat\""
+  - chmod +x build.bat
 
 stages:
   - build
   - deploy
 
-
 build:
   stage: build
   tags:
-    - vs2005
-    - vs2010
-    - windows
+    - hcloud
   script:
-    - 'echo "Release build..."'
-    - 'msbuild.exe /consoleloggerparameters:ErrorsOnly /maxcpucount /nologo /property:Configuration=Release /verbosity:quiet SRO_DevKit.sln'
+    - "./build.bat"
   artifacts:
     untracked: false
     paths:
@@ -27,9 +23,7 @@ build:
 deploy:
   stage: deploy
   tags:
-    - vs2005
-    - vs2010
-    - windows
+    - hcloud
   dependencies:
     - build
   script:
