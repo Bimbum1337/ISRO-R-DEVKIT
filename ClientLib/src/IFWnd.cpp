@@ -223,10 +223,10 @@ bool CIFWnd::SetText(const wchar_t* src)
 	return reinterpret_cast<bool(__thiscall*)(CIFWnd*, const wchar_t*)>(0x00653AC0)(this, src);
 }
 
-// CIFWnd::Get_N00000600(void) .text 00653350 00000017   R . . . . . .
-const wchar_t* CIFWnd::Get_N00000600()
+// CIFWnd::GetText(void) .text 00653350 00000017   R . . . . . .
+const wchar_t* CIFWnd::GetText()
 {
-	return N00000600.c_str();
+	return m_innerText.c_str();
 }
 
 // CIFWnd::Func_42(void) .text 00652AF0 00000001   R . . . . . .

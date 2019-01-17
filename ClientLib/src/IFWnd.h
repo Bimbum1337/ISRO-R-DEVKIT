@@ -49,7 +49,7 @@ public:
 	virtual void Func_43();
 	virtual bool IsInside(int x, int y);
 	virtual bool SetText(const wchar_t* src);
-	virtual const wchar_t* Get_N00000600();
+	virtual const wchar_t* GetText();
 	virtual void Func_47(int);
 	virtual void Func_48();
 
@@ -70,7 +70,7 @@ private:
 	int N000005FB; //0x0190
 	int N000005FD; //0x0194
 	int N00009BFC; //0x0198
-	std::n_wstring N00000600; //0x019C
+	std::n_wstring m_innerText; //0x019C
 	char N00009BFD; //0x01B8
 	char N00009C1B; //0x01B9
 	char pad_01BA[2]; //0x01BA
