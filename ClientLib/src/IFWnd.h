@@ -78,7 +78,9 @@ protected:
 	CIRMManager m_IRM; //0x01BC m_IRM at 1BC
 private:
 	int N00000608; //0x01EC
+protected:
 	int N00000609; //0x01F0
+private:
 	int N0000060A; //0x01F4
 	int N0000060B; //0x01F8
 	float N00000615; //0x01FC

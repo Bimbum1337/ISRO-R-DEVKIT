@@ -79,6 +79,7 @@
     <ClInclude Include="src\IFButton.h" />
     <ClInclude Include="src\IFCloseButton.h" />
     <ClInclude Include="src\IFConsole.h" />
+    <ClInclude Include="src\IFDecoratedStatic.h" />
     <ClInclude Include="src\IFDragableArea.h" />
     <ClInclude Include="src\GlobalHelpersThatHaveNoHomeYet.h" />
     <ClInclude Include="src\CameraWorking.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="src\GInterface.cpp" />
     <ClCompile Include="src\IFButton.cpp" />
     <ClCompile Include="src\IFCloseButton.cpp" />
+    <ClCompile Include="src\IFDecoratedStatic.cpp" />
     <ClCompile Include="src\IFDragableArea.cpp" />
     <ClCompile Include="src\CameraWorking.cpp" />
     <ClCompile Include="src\GWndBase.cpp" />

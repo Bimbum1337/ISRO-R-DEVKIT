@@ -14,7 +14,7 @@ public:
 	virtual void F26(int a1);
 	virtual bool F27();
 	virtual bool F28(int a1, int a2, int a3);
-	virtual int F29(int a1, int a2, int a3);
+	virtual int OnClickEvent(int a1, int x, int y);
 	virtual int F30(int a1, int a2, int a3);
 	virtual int F31(int a1, int a2, int a3);
 	virtual int F32(int a1, int a2, int a3);
