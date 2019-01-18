@@ -397,6 +397,16 @@ void ImGui_OnEndScene()
 		g_pCGInterface->m_IRM.GetResObj(1338, 1)->SetVisibility(true);
 	}
 
+	if (ImGui::Button("Hide Event"))
+	{
+		g_pCGInterface->m_IRM.GetResObj(30007, 1)->SetVisibility(false);
+	}
+
+	if (ImGui::Button("Show Event"))
+	{
+		g_pCGInterface->m_IRM.GetResObj(30007, 1)->SetVisibility(true);
+	}
+
 	ImGui::End();
 
 	if (ImGui_Window_InterfaceDebugger_Show) ImGui_Window_InterfaceDebugger(&ImGui_Window_InterfaceDebugger_Show);

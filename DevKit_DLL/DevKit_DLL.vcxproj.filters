@@ -44,6 +44,9 @@
     <ClCompile Include="IFflorian0.cpp">
       <Filter>Interface</Filter>
     </ClCompile>
+    <ClCompile Include="IFflorian0Guide.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -65,6 +68,9 @@
       <Filter>Hooks</Filter>
     </ClInclude>
     <ClInclude Include="IFflorian0.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IFflorian0Guide.h">
       <Filter>Interface</Filter>
     </ClInclude>
   </ItemGroup>
