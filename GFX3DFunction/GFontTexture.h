@@ -17,6 +17,7 @@ public:
 	bool SetSomething(void* a2);
 
 	void SetColor(D3DCOLOR color);
+	void sub_8B2BA0(int a1, D3DCOLOR color);
 
 	// Set some texture
 	void sub_8B3B60(std::n_wstring *str);

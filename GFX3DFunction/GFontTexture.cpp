@@ -43,6 +43,12 @@ void CGFontTexture::SetColor(D3DCOLOR color)
 	reinterpret_cast<void(__thiscall*)(CGFontTexture*,D3DCOLOR)>(0x008B2B70)(this, color);
 }
 
+// CGFontTexture::sub_8B2BA0(int,int) .text 008B2BA0 00000061 00000004 00000008 R . . . . . .
+void CGFontTexture::sub_8B2BA0(int a1, D3DCOLOR color)
+{
+	reinterpret_cast<void(__thiscall*)(CGFontTexture*, int ,D3DCOLOR)>(0x008B2BA0)(this, a1, color);
+}
+
 // CGFontTexture::sub_8B3B60(std::n_wstring const *) .text 008B3B60 00000026 00000000 00000004 R . . . . . .
 void CGFontTexture::sub_8B3B60(std::n_wstring* str)
 {
