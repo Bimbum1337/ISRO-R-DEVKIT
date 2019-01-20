@@ -13,3 +13,5 @@
 
 #include "multibyte.h"
 
+#include <Test/Test.h>
+
