@@ -41,7 +41,7 @@
     <IncludePath>$(SolutionDir);$(SolutionDir)\libs\dxsdk\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(IncludePath);$(SolutionDir);$(SolutionDir)\third-party\;$(SolutionDir)\third-party\dxsdk\Include</IncludePath>
+    <IncludePath>$(IncludePath);$(SolutionDir);$(SolutionDir)\third-party\;$(SolutionDir)\third-party\dxsdk\Include;$(SolutionDir)\Test\src\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
