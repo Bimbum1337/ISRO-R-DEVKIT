@@ -3,6 +3,7 @@
 
 //#include <IFUnderbar.h>
 #include "IFflorian0.h"
+#include "IFflorian0Guide.h"
 //#include <PSQuickStart.h>
 
 //#include <PSVersionCheck.h>
@@ -23,6 +24,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpReserved)
 
 		// Inject all the new objects
 		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
+		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
 		// Override existing objects
 		//OverrideObject(GFX_RUNTIME_CLASS(CIFUnderbar));

@@ -3,13 +3,20 @@
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFStatic, 0x00EE9720)
 
+// CIFStatic::CIFStatic(void) .text 0064D5F0 00000081 0000001C 00000000 R . . . . T .
 CIFStatic::CIFStatic(void)
 {
+	N00000609 = 0;
+	N000096E4 = 0;
+
+	m_FontTexture.SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
+	m_FontTexture.sub_8B2BA0(3, D3DCOLOR_RGBA(0xB4, 0xB4, 0xB4, 255));
 }
 
-
+// CIFStatic::~CIFStatic(void) .text 0064D690 00000015 00000010 00000000 R . . . . . .
 CIFStatic::~CIFStatic(void)
 {
+	// empty
 }
 
 // CIFStatic::OnCreate(int) .text 0064D6B0 00000005 00000000 00000000 R . L . . . .

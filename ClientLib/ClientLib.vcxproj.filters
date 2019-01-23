@@ -78,6 +78,9 @@
     <ClCompile Include="src\multibyte.cpp" />
     <ClCompile Include="src\GInterface.cpp" />
     <ClCompile Include="src\NavigationDeadreckon.cpp" />
+    <ClCompile Include="src\IFDecoratedStatic.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\TextBoard.h">
@@ -142,6 +145,9 @@
     <ClInclude Include="src\multibyte.h" />
     <ClInclude Include="src\NavigationDeadreckon.h" />
     <ClInclude Include="src\GInterface.h" />
+    <ClInclude Include="src\IFDecoratedStatic.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />

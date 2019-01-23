@@ -150,7 +150,7 @@ char CIFWnd::TB_Func_8()
 // CIFWnd::CTextBoard_Func_11 .text 00654C30 000000D9 00000038 00000000 R . . . . . .
 void CIFWnd::TB_Func_11()
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x00654C30)(this);
 }
 
 // CIFWnd::Update(void) .text 006528A0 0000001C 00000004 00000000 R . . . . . .)

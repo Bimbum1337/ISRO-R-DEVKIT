@@ -27,7 +27,7 @@ bool CGWnd::F28(int a1, int a2, int a3)
 	return false;
 }
 
-int CGWnd::F29(int a1, int a2, int a3)
+int CGWnd::OnClickEvent(int a1, int x, int y)
 {
 	return 0;
 }

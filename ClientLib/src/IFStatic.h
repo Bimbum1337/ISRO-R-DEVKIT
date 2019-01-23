@@ -23,5 +23,7 @@ public:
 	virtual bool Func_50(int a1, const wchar_t *format, ...);
 	virtual bool Func_51(const wchar_t *src);
 
+private:
+	int N000096E4; //0x036C
+	char pad_0370[16]; //0x0370
 };
-

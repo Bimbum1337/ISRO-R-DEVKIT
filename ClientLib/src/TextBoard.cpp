@@ -156,13 +156,13 @@ void CTextBoard::TB_Func_12(const char* str, int a3, int a4)
 // CTextBoard::Func_13(std::string const *,int,int) .text 00655680 000000E6 00000014 00000024 R . . . . T .
 void CTextBoard::TB_Func_13(const std::string str, int a3, int a4)
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::string, int, int)>(0x00655680)(this, str, a3, a4);
 }
 
 // CTextBoard::Func_14(void) .text 00655820 000000E0 00000014 00000024 R . . . . T .
 void CTextBoard::TB_Func_14(const std::string str, int a3, int a4)
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::string, int, int)>(0x00655820)(this, str, a3, a4);
 }
 
 // CTextBoard::Func_15(void) .text 00655510 00000058 00000004 00000004 R . . . . . .
@@ -220,17 +220,17 @@ void CTextBoard::sub_655770(std::n_string a2)
 // CTextBoard__sub_655CA0 .text 00655CA0 000000A4 0000002C 00000004 R . . . . . .
 void CTextBoard::sub_655CA0(int a2)
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*,int)>(0x00655CA0)(this, a2);
 }
 
 // CTextBoard__sub_6553A0 .text 006553A0 0000001E 00000004 00000004 R . . . . T .
 void CTextBoard::sub_6553A0(int a2)
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006553A0)(this);
 }
 
 // CTextBoard__sub_6554C0 .text 006554C0 0000004E 00000004 00000000 R . . . . . .
 void CTextBoard::sub_6554C0()
 {
-	assert(FALSE);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006554C0)(this);
 }

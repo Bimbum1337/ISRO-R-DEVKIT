@@ -78,6 +78,7 @@
       <PreprocessKeepComments Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</PreprocessKeepComments>
       <IgnoreStandardIncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</IgnoreStandardIncludePath>
     </ClCompile>
+    <ClCompile Include="IFflorian0Guide.cpp" />
     <ClCompile Include="ImGui_Windows.cpp" />
     <ClCompile Include="StdAfx.cpp" />
     <ClCompile Include="Util.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="GFXVideo3d_Hook.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="IFflorian0.h" />
+    <ClInclude Include="IFflorian0Guide.h" />
     <ClInclude Include="ImGui_Windows.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Util.h" />
