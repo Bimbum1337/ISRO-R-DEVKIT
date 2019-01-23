@@ -2,6 +2,13 @@
 
 #define _CRT_SECURE_NO_DEPRECATE
 
+#ifndef I_KNOW_WHAT_THE_FUCK_I_AM_DOING
+#if _MSC_VER != 1400
+#error("ERROR You can not use any compiler other than VC80")
+#endif
+#endif
+
+
 #include <Windows.h>
 
 #include <cassert>
