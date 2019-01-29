@@ -81,6 +81,7 @@
     <ClCompile Include="src\IFDecoratedStatic.cpp">
       <Filter>Interface</Filter>
     </ClCompile>
+    <ClCompile Include="src\GEffSoundBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\TextBoard.h">

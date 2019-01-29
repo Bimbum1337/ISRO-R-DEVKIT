@@ -106,6 +106,7 @@
     <ClInclude Include="src\unsorted.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GEffSoundBody.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GFXMainFrame.cpp" />
     <ClCompile Include="src\GInterface.cpp" />
