@@ -12,6 +12,9 @@
 
 #include <NavMesh/RTNavMeshTerrain.h>
 #include "hooks.h"
+#include "GEffSoundBody.h"
+#include "multibyte.h"
+#include <StringUtils.h>
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -20,10 +23,12 @@ extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam
 
 static bool ImGui_Window_InterfaceDebugger_Show = false;
 static bool ImGui_Window_NavMeshTool_Show = false;
+static bool ImGui_Window_SoundTool_Show = false;
 
 // Window defs
 
 void ImGui_Window_InterfaceDebugger(bool *p_open);
+void ImGui_Window_SoundTool(bool *p_open);
 
 
 // Decls
@@ -286,6 +291,108 @@ void ImGui_Window_NavMeshTool(bool *p_open)
 	ImGui::End();
 }
 
+bool sound_item_getter(void* data, int idx, const char **outdata)
+{
+	std::vector<std::n_string> *items = (std::vector<std::n_string>*)data;
+
+	if (idx >= items->size())
+		return false;
+
+	std::n_string &str = items->at(idx);
+
+	*outdata = str.c_str();
+
+	return true;
+}
+
+bool ImGui_Window_SoundTool_FilterMatch(const std::n_wstring &input, const std::n_wstring &search)
+{
+	if (search.empty())
+		return true;
+#if 0
+	std::vector<std::n_wstring> input_tokens = split(input, L':');
+	std::vector<std::n_wstring> search_tokens = split(input, L':');
+
+	std::vector<std::n_wstring>::iterator it_input;
+	std::vector<std::n_wstring>::iterator it_search;
+
+	for (
+		it_input = input_tokens.begin(),
+		it_search = search_tokens.begin();
+		it_input != input_tokens.end() && it_search != search_tokens.end();
+		++it_input, ++it_search)
+	{
+		if ((*it_input).empty() || (*it_search).empty()) 
+			continue;
+
+		if ((*it_input).find(*it_search) == std::n_wstring::npos)
+		{
+			return false;
+		}
+
+	}
+#endif
+
+	return !(input.find(search) == std::n_wstring::npos);
+}
+
+int ImGui_Window_SoundTool_Filter(std::vector<std::n_string> *items, const std::n_wstring &search)
+{
+	CGEffSoundBody* snd = CGEffSoundBody::get();
+
+	items->clear();
+
+	for (std::n_hash_map<std::n_wstring, int>::iterator it = snd->m_sounds.begin(); it != snd->m_sounds.end(); ++it)
+	{
+		if (ImGui_Window_SoundTool_FilterMatch((*it).first, search))
+			items->push_back(TO_NSTRING((*it).first));
+	}
+
+	return 0;
+}
+
+void ImGui_Window_SoundTool(bool *p_open)
+{
+	static int current_item = 0;
+	static std::vector<std::n_string> items;
+	static bool inited = false;
+
+	if (!inited)
+	{
+		ImGui_Window_SoundTool_Filter(&items, L"");
+		inited = true;
+	}
+
+	if (!ImGui::Begin("Sound Tool", p_open))
+	{
+		// Early out if the window is collapsed, as an optimization.
+		ImGui::End();
+		return;
+	}
+
+	static char buffer[100];
+	if (ImGui::InputText("Filter", buffer, ARRAY_SIZE(buffer)))
+	{
+		// Value has changed
+		printf("Value has changed: %s\n", buffer);
+		ImGui_Window_SoundTool_Filter(&items, acp_n_decode(buffer, strlen(buffer)));
+	}
+
+
+	if (ImGui::ListBox("Sounds", &current_item, &sound_item_getter, (void*)&items, items.size(), 20))
+	{
+		CGEffSoundBody* snd = CGEffSoundBody::get();
+
+		std::n_string itm = items[current_item];
+		std::n_wstring sndKey = TO_NWSTRING(itm);
+
+		snd->PlaySoundInner(&sndKey, 0, 0.0);
+	}
+
+
+	ImGui::End();
+}
+
 void ImGui_OnCreate(HWND hWindow, void* msghandler, int a3)
 {
 	printf("ImGui_OnCreate\n");
@@ -367,6 +474,7 @@ void ImGui_OnEndScene()
 			ImGui::MenuItem("NavMesh Explorer", 0, &ImGui_Window_NavMeshTool_Show);
 			ImGui::MenuItem("Keyframe Editor", 0, false, false);
 			ImGui::MenuItem("Script Editor", 0, false, false);
+			ImGui::MenuItem("Sound Tool", 0, &ImGui_Window_SoundTool_Show);
 
 			ImGui::EndMenu();
 		}
@@ -412,7 +520,7 @@ void ImGui_OnEndScene()
 	if (ImGui_Window_InterfaceDebugger_Show) ImGui_Window_InterfaceDebugger(&ImGui_Window_InterfaceDebugger_Show);
 	if (ImGui_Window_NavMeshTool_Show) ImGui_Window_NavMeshTool(&ImGui_Window_NavMeshTool_Show);
 	
-	
+	if (ImGui_Window_SoundTool_Show) ImGui_Window_SoundTool(&ImGui_Window_InterfaceDebugger_Show);
 
 
 	ImGui::EndFrame();
