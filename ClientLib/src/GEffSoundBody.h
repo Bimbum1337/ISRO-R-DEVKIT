@@ -2,13 +2,21 @@
 
 #include "GEffSound.h"
 
-class CGEffSoundBody : public CGEffSound { // total size 368, local size 336
-
-	char pad[336];
+class CGEffSoundBody : public CGEffSound // total size 368, local size 336
+{
+	
 public:
-	static CGEffSoundBody* get()
-	{
-		return *reinterpret_cast<CGEffSoundBody**>(0x0110AAD8);
-	}
+	void PlaySound(const wchar_t* sndFile) override;
+
+	void PlaySoundInner(std::n_wstring* str, int a2, float a3);
+
+public:
+	static CGEffSoundBody* get();
+
+private:
+public:
+	std::n_hash_map<std::n_wstring, int> m_sounds;
+private:
+	char pad_0048[296]; //0x0048
 };
 

@@ -104,8 +104,10 @@
     <ClInclude Include="src\TextBoard.h" />
     <ClInclude Include="src\StdAfx.h" />
     <ClInclude Include="src\unsorted.h" />
+    <ClInclude Include="src\StringUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GEffSoundBody.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GFXMainFrame.cpp" />
     <ClCompile Include="src\GInterface.cpp" />

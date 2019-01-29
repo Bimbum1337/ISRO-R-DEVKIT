@@ -6,6 +6,7 @@
 #include <list>
 #include <map>
 #include <cassert>
+#include <hash_map>
 
 namespace std
 {
@@ -75,6 +76,11 @@ namespace std
 			_SIZT _Count = (_SIZT)(-1) / sizeof (T);
 			return (0 < _Count ? _Count : 1);
 		}
+
+		bool operator==(MyAllocator<T>)
+		{
+			return true;
+		}
 	};
 	
 	typedef basic_string<wchar_t, char_traits<wchar_t>, MyAllocator<wchar_t> > n_wstring;
@@ -97,4 +103,8 @@ namespace std
 	{
 		
 	};
+
+	template <typename _Kty, typename _Ty>
+	class n_hash_map : public stdext::hash_map<_Kty ,_Ty, stdext::hash_compare<_Kty, ::std::less<_Kty> >, MyAllocator<::std::pair<const _Kty, _Ty> > >
+	{ };
 }
