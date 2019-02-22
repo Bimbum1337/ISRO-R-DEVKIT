@@ -3,7 +3,6 @@ variables:
 before_script:
   - git submodule sync --recursive
   - git submodule update --init --recursive
-  - chmod +x build.bat
 
 stages:
   - build
@@ -12,18 +11,20 @@ stages:
 build:
   stage: build
   tags:
-    - hcloud
+    - windows
+    - cygwin
   script:
-    - "./build.bat"
+    - cd helpers
+    - chmod +x make_project_nmake.cmd make_project_nmake_build.cmd
+    - ./make_project_nmake.cmd
+    - ./make_project_nmake_build.cmd
   artifacts:
     untracked: false
     paths:
-      - BinOut/
+      - source/BinOut/
 
 deploy:
   stage: deploy
-  tags:
-    - hcloud
   dependencies:
     - build
   script:
