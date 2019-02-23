@@ -1,23 +1,24 @@
 # Silkroad Online Development Kit
 
-
-
 ## Build
 
-Due to binary compatibilty, the recommended build environment is Visual C++ 8.0 aka Visual Studio 2005. Other environments can work, but are not recommended nor supported. The project itself comes with project files for Visual Studio 2010. Always make sure to compile on a `Release`-configuration. Other configurations don't work.
+Due to binary compatibilty, the recommended build environment is Visual C++ 8.0 aka Visual Studio 2005. Other environments can work, but are not recommended nor supported. Always make sure to compile on a `Release`-configuration. Other configurations don't work.
 
 ### Requirements
 
 * Visual Studio 2005
-* Visual Studio 2010
+* CMake
 * DirectX SDK 9b (included as submodule)
-* Daffodil for VC80-support in newer Visual Studio Editions
 
-I am currently running tests with CMake to eliminate the Visual Studio 2010 dependency.
+Optional:
+
+* Daffodil (when using Visual Studio)
+
+For an easy start, go to the helpers folder and run `make_project_vs2010.cmd` to create Visual Studio Project Files.
 
 ## Debug
 
-To debug in Visual Studio, copy a working sro client to the `BinOut/` folder. Create a binary named `sro_client_dev.exe` that loads the `DevClient_DLL.dll` using your method of choice.
+To debug in Visual Studio, copy a working sro client to the `BinOut/` folder. Create a `sro_client.exe` that loads the `DevClient_DLL.dll` using your method of choice. Set the `sro_client.exe` as executable in the project settings and don't forget the arguments (usually `/22 0 0`).
 
 ## Contribute
 
