@@ -1,5 +1,11 @@
+# Generic
 BinOut/
+
+# IntelliJ
 .idea/
+cmake-build-*/
+
+# Visual Studio
 ipch/
 [Rr]elease/
 [Dd]ebug/
