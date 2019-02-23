@@ -1,4 +1,4 @@
-project(CMakeTest)
+project(SRO_DevKit)
 cmake_minimum_required(VERSION 3.12)
 
 link_directories(
