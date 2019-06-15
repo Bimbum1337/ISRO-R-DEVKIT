@@ -21,7 +21,7 @@ build:
   artifacts:
     untracked: false
     paths:
-      - source/BinOut/
+      - BinOut/
 
 deploy:
   stage: deploy
