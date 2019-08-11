@@ -5,6 +5,7 @@
 #include "imgui/examples/imgui_impl_win32.h"
 #include <GFX3DFunction/GFXVideo3d.h>
 #include <GFX3DFunction/DrawingHelpers.h>
+#include <Game.h>
 
 #include <GInterface.h>
 #include "unsorted.h"
@@ -15,6 +16,7 @@
 #include "GEffSoundBody.h"
 #include "multibyte.h"
 #include <StringUtils.h>
+#include <EntityManagerClient.h>
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -24,11 +26,13 @@ extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam
 static bool ImGui_Window_InterfaceDebugger_Show = false;
 static bool ImGui_Window_NavMeshTool_Show = false;
 static bool ImGui_Window_SoundTool_Show = false;
+static bool ImGui_Window_EntityExplorer_Show = false;
 
 // Window defs
 
 void ImGui_Window_InterfaceDebugger(bool *p_open);
 void ImGui_Window_SoundTool(bool *p_open);
+void ImGui_Window_EntityExplorer(bool *p_open);
 
 
 // Decls
@@ -393,6 +397,124 @@ void ImGui_Window_SoundTool(bool *p_open)
 	ImGui::End();
 }
 
+struct EntityListColumnHeader
+{
+    const char* label;
+    float size;
+};
+
+void ImGui_Window_EntityExplorer(bool *p_open) {
+
+    if (!ImGui::Begin("EntityManager", p_open)) {
+        ImGui::End();
+        return;
+    }
+
+    EntityListColumnHeader headers[] =
+        {
+            { "ID", 40 },
+            { "Address", 70 },
+            { "Type", 120 },
+            { "Position", 500 }
+        };
+
+    ImGui::Columns(IM_ARRAYSIZE(headers), "TableTextureColumns", true);
+    ImGui::Separator();
+
+    float offset = 0.0f;
+    for(int i = 0; i < IM_ARRAYSIZE(headers); i++)
+    {
+        EntityListColumnHeader *header = &headers[i];
+        ImGui::Text(header->label);
+        ImGui::SetColumnOffset(-1, offset);
+        offset += header->size;
+        ImGui::NextColumn();
+    }
+
+    ImGui::Separator();
+
+    static int selected = -1;
+
+    for (std::map<int,CIObject*>::iterator it = g_pGfxEttManager->entities.begin(); it != g_pGfxEttManager->entities.end(); ++it)
+    {
+        char label[32];
+        sprintf(label, "%d", it->first);
+
+        if (ImGui::Selectable(label, selected == it->first, ImGuiSelectableFlags_SpanAllColumns))
+            selected = it->first;
+
+        ImGui::NextColumn();
+
+        ImGui::Text("%p", it->second); ImGui::NextColumn();
+        ImGui::Text("%s", it->second->GetRuntimeClass()->m_lpszClassName); ImGui::NextColumn();
+
+        ImGui::Text("(%d,%d) (%.2f, %.2f, %.2f)",
+                    it->second->region.single.x,
+                    it->second->region.single.y,
+                    it->second->location.x,
+                    it->second->location.y,
+                    it->second->location.z
+        ); ImGui::NextColumn();
+
+        ImGui::Separator();
+
+    }
+
+    ImGui::Columns(1);
+
+    ImGui::Text("Number of Entites: %d", g_pGfxEttManager->entities.size());
+
+    char label[32];
+    sprintf(label, "Move to Entity #%d", selected);
+
+    static bool b_checked = false;
+    ImGui::Checkbox("Highlight selected", &b_checked);
+
+    if (b_checked && selected != -1)
+    {
+        // ESP ON
+
+        std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
+        if (elem != g_pGfxEttManager->entities.end())
+        {
+
+            D3DVECTOR d2dpos, d2dpos_up, d2dpos_own;
+            D3DVECTOR d3dpos = elem->second->location;
+            D3DVECTOR d3dpos_up = elem->second->location;
+
+            d3dpos_up.y += 18.0;
+
+            if (CGFXVideo3d::get()->Project(d3dpos, d2dpos) > 0)
+            {
+                DrawRect(d2dpos.x-5, d2dpos.y-5, 10, 10);
+
+                if (CGFXVideo3d::get()->Project(theApp.camera.character, d2dpos_own) > 0)
+                {
+                    DXDrawLine(d2dpos_own.x, d2dpos_own.y, d2dpos.x, d2dpos.y, D3DCOLOR_ARGB(0, 255, 255, 0), 1.0);
+                }
+
+
+            }
+
+            if (CGFXVideo3d::get()->Project(d3dpos_up, d2dpos_up) > 0)
+            {
+                DXDrawLine(d2dpos.x, d2dpos.y, d2dpos_up.x, d2dpos_up.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
+            }
+        }
+    }
+
+    if (ImGui::Button(label))
+    {
+        std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
+        if (elem != g_pGfxEttManager->entities.end())
+        {
+            g_pCGInterface->m_Nav.MoveTo(elem->second->region, elem->second->location);
+        }
+    }
+
+    ImGui::End();
+}
+
 void ImGui_OnCreate(HWND hWindow, void* msghandler, int a3)
 {
 	printf("ImGui_OnCreate\n");
@@ -471,7 +593,8 @@ void ImGui_OnEndScene()
 		if (ImGui::BeginMenu("Tools"))
 		{
 			ImGui::MenuItem("Interface Tool", 0, &ImGui_Window_InterfaceDebugger_Show);
-			ImGui::MenuItem("NavMesh Explorer", 0, &ImGui_Window_NavMeshTool_Show);
+            ImGui::MenuItem("NavMesh Explorer", 0, &ImGui_Window_NavMeshTool_Show);
+            ImGui::MenuItem("Enity Explorer", 0, &ImGui_Window_EntityExplorer_Show);
 			ImGui::MenuItem("Keyframe Editor", 0, false, false);
 			ImGui::MenuItem("Script Editor", 0, false, false);
 			ImGui::MenuItem("Sound Tool", 0, &ImGui_Window_SoundTool_Show);
@@ -521,7 +644,7 @@ void ImGui_OnEndScene()
 	if (ImGui_Window_NavMeshTool_Show) ImGui_Window_NavMeshTool(&ImGui_Window_NavMeshTool_Show);
 	
 	if (ImGui_Window_SoundTool_Show) ImGui_Window_SoundTool(&ImGui_Window_InterfaceDebugger_Show);
-
+    if (ImGui_Window_EntityExplorer_Show) ImGui_Window_EntityExplorer(&ImGui_Window_EntityExplorer_Show);
 
 	ImGui::EndFrame();
 

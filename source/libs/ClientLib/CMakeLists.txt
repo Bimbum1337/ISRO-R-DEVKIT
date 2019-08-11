@@ -3,6 +3,8 @@ set(SOURCE_FILES src/CameraWorking.cpp
     src/Client.cpp
     src/Client.h
     src/DxSound.h
+    src/EntityManager.h
+    src/EntityManagerClient.h
     src/ETime.h
     src/Game.cpp
     src/Game.h
@@ -20,6 +22,7 @@ set(SOURCE_FILES src/CameraWorking.cpp
     src/GWndBase.cpp
     src/GWndBase.h
     src/IDxSound.h
+    src/IEntity.h
     src/IFButton.cpp
     src/IFButton.h
     src/IFCloseButton.cpp
@@ -39,6 +42,7 @@ set(SOURCE_FILES src/CameraWorking.cpp
     src/IFTileWnd.h
     src/IFWnd.cpp
     src/IFWnd.h
+    src/IObject.h
     src/IRMManager.cpp
     src/IRMManager.h
     src/is_this_important.cpp
