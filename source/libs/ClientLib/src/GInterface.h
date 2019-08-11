@@ -27,6 +27,16 @@ public:
 	// void ShowMessage_Quest(std::wstring &msg);
 	// void PrintSystemMessage(eLogType level, wchar_t *str);
 
+	void RenderToggle_GDR_ACTION();
+	void RenderToggle_GDR_APPRENTICESHIP();
+	void RenderToggle_GDR_PLAYERINFO();
+	void RenderToggle_GDR_GAMEGUIDE();
+	void RenderToggle_GDR_INVENTORY();
+	void RenderToggle_GDR_PARTY();
+	void RenderToggle_GDR_SKILL();
+	void RenderToggle_WORLDMAP_GUIDE();
+	void Render_GDR_AUTO_POTION(bool visible);
+
 	
 
 private:
@@ -45,7 +55,7 @@ private:
 	class CIFCameraDataMainWnd* m_pCameraDataMainWnd; //0x0404
 	char pad_0408[676]; //0x0408
 public:
-    CNavigationDeadreckon m_Nav; //0x06AC
+	CNavigationDeadreckon m_Nav; //0x06AC
 private:
 	class CAutoPotion* m_pCAutoPotion; //0x06FC
 	char pad_0700[116]; //0x0700
