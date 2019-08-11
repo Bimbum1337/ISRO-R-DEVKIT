@@ -1,6 +1,7 @@
 #pragma once
 
 #include <d3dx9.h>
+#include "GlobalHelpersThatHaveNoHomeYet.h"
 
 class CNavigationDeadreckon
 {
@@ -8,7 +9,7 @@ public:
 	CNavigationDeadreckon(void);
 	virtual ~CNavigationDeadreckon(void);
 
-	// void MoveTo(uregion *region, D3DVECTOR* coord);
+	void MoveTo(uregion &region, D3DVECTOR &coord);
 
 private:
 	int N0000093D; //0x0004
