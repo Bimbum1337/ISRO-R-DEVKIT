@@ -44,7 +44,9 @@ private:
 	class CIFCameraDataWnd* m_pCameraDataWnd; //0x0400
 	class CIFCameraDataMainWnd* m_pCameraDataMainWnd; //0x0404
 	char pad_0408[676]; //0x0408
-	CNavigationDeadreckon m_Nav; //0x06AC
+public:
+    CNavigationDeadreckon m_Nav; //0x06AC
+private:
 	class CAutoPotion* m_pCAutoPotion; //0x06FC
 	char pad_0700[116]; //0x0700
 	class CMessageTipManager* m_pCMessageTipManager; //0x0774 774

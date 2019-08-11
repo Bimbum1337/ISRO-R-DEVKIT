@@ -50,5 +50,6 @@ private:
 	CETime N0000058F; //0x00D0
 	char working_dir[260]; //0x0134
 	char executable_name[260]; //0x0238
+public:
 	CCamera camera; //0x033C
 };
