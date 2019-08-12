@@ -27,14 +27,31 @@ public:
 	// void ShowMessage_Quest(std::wstring &msg);
 	// void PrintSystemMessage(eLogType level, wchar_t *str);
 
+	//0x0079D5B0
 	void RenderToggle_GDR_ACTION();
+
+	//0x0079B0B0
 	void RenderToggle_GDR_APPRENTICESHIP();
+
+	//0x0079ACE0
 	void RenderToggle_GDR_PLAYERINFO();
+
+	//0x0079F690
 	void RenderToggle_GDR_GAMEGUIDE();
+
+	//0x0079B020
 	void RenderToggle_GDR_INVENTORY();
+
+	//0x0079AE90
 	void RenderToggle_GDR_PARTY();
+
+	//0x0079AE00
 	void RenderToggle_GDR_SKILL();
+
+	//0x0079ABE0
 	void RenderToggle_WORLDMAP_GUIDE();
+
+	//0x0079C750
 	void Render_GDR_AUTO_POTION(bool visible);
 
 	

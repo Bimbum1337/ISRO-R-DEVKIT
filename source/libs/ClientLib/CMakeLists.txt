@@ -35,14 +35,14 @@ set(SOURCE_FILES src/BufRender.h
     src/IFDragableArea.h
     src/IFFrame.cpp
     src/IFFrame.h
-	src/IFGauge.h
+    src/IFGauge.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
-	src/IFPlayerMiniInfo.cpp
-	src/IFPlayerMiniInfo.h
+    src/IFPlayerMiniInfo.cpp
+    src/IFPlayerMiniInfo.h
     src/IFStatic.cpp
     src/IFStatic.h
-	src/IFStaticWithPictureClip.h
+    src/IFStaticWithPictureClip.h
     src/IFTileWnd.cpp
     src/IFTileWnd.h
     src/IFWnd.cpp
