@@ -4,7 +4,7 @@
 #include "IFStatic.h"
 #include "IFSkillBoard.h"
 
-class CIFSkill : public CIFWnd
+class CIFSKill : public CIFWnd
 {
 public:
 	char pad_0x036C[0x24]; //0x036C
