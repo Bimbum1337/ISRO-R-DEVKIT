@@ -3,18 +3,21 @@
 #include "IFMainFrame.h"
 #include "IFInventory.h"
 #include "IFEquipment.h"
-#include "IFSKill.h"
+#include "IFSkill.h"
 #include "IFAction.h"
 #include "IFParty.h"
 #include "IFPlayerInfo.h"
 #include "IFQuest.h"
+#include "IFApprenticeShip.h"
+#include "IFButton.h"
+#include "IFStatic.h"
 
 class CIFMainPopup : public CIFMainFrame
 {
 public:
 	CIFInventory* m_inventoryArea; //0x07BC 
 	CIFEquipment* m_equipmentArea; //0x07C0 
-	CIFSKill* m_skillsWindow; //0x07C4 
+	CIFSkill* m_skillsWindow; //0x07C4 
 	CIFAction* m_actionWindow; //0x07C8 
 	CIFParty* m_partyWindow; //0x07CC 
 	CIFPlayerInfo* m_playerInfoWindow; //0x07D0 

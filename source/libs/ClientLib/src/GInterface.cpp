@@ -96,16 +96,15 @@ CIFMainPopup* CGInterface::Get_GDR_MAINPOPUP()
 
 CIFStorageRoom* CGInterface::Get_GDR_STORAGEROOM()
 {
-	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_STORAGEROOM, 1)
+	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_STORAGEROOM, 1);
 }
 
 CIFStorageRoom* CGInterface::Get_GDR_GUILDSTORAGEROOM()
 {
-	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_GUILDSTORAGEROOM, 1)
+	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_GUILDSTORAGEROOM, 1);
 }
 
 void CGInterface::WriteErrorMessage(byte errorType, unsigned __int16 errorCode, int colorARGB, int a5, int a6)
 {
-	return reinterpret_cast<void(__thiscall*)(void*, bool)>(0x00778190)(this, errorType, errorCode, colorARGB, a5, a6);
+	return reinterpret_cast<void(__thiscall*)(void*, byte, unsigned __int16, int, int, int)>(0x00778190)(this, errorType, errorCode, colorARGB, a5, a6);
 }
-

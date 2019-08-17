@@ -25,6 +25,8 @@ set(SOURCE_FILES src/BufRender.h
     src/IDxSound.h
     src/IEntity.h
     src/IFAction.h
+    src/IFApprenticeShip.h
+    src/IFApprenticeShipSlot.h
     src/IFButton.cpp
     src/IFButton.h
     src/IFCloseButton.cpp
@@ -59,6 +61,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFQuickStateWnd.h
     src/IFScrollBar.h
     src/IFScrollManager.h
+    src/IFSelectableArea.h
     src/IFSkill.h
     src/IFSkillBoard.h
     src/IFSkillPracticeBox.h
