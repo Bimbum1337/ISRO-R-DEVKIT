@@ -3,6 +3,29 @@ set(SOURCE_FILES src/BufRender.h
     src/CameraWorking.h
     src/Client.cpp
     src/Client.h
+    src/Data/ActionWndData.h
+    src/Data/DropGoldData.h
+    src/Data/GachaNpcData.h
+    src/Data/ItemData.h
+    src/Data/LevelData.h
+    src/Data/LevelGoldData.h
+    src/Data/MagicOptionData.h
+    src/Data/MallItemMenuListData.h
+    src/Data/MessageTipData.h
+    src/Data/NPCChatData.h
+    src/Data/NPCPosData.h
+    src/Data/QuestData.h
+    src/Data/RefPackageItemData.h
+    src/Data/RefPricePolicyOfItem.h
+    src/Data/RefScrapOfPackageItemData.h
+    src/Data/RefShopdata.h
+    src/Data/RefShopTabData.h
+    src/Data/RefShopTabGroupData.h
+    src/Data/ShopItemStockPeriod.h
+    src/Data/ShopItemStockQuantity.h
+    src/Data/TeleportBulding.h
+    src/Data/TeleportData.h
+    src/Data/TeleportLink.h
     src/DxSound.h
     src/EntityManager.h
     src/EntityManagerClient.h
@@ -16,6 +39,7 @@ set(SOURCE_FILES src/BufRender.h
     src/GFXMainFrame.h
     src/GInterface.cpp
     src/GInterface.h
+    src/GlobalDataManager.h
     src/GlobalHelpersThatHaveNoHomeYet.h
     src/GObj.h
     src/GWnd.cpp

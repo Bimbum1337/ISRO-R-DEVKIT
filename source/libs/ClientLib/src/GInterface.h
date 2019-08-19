@@ -105,7 +105,7 @@ public:
 
 private:
 public:
-	CIRMManager m_IRM2; //0x036C
+	CIRMManager m_IRM; //0x036C
 	char pad_0x039C[0xC]; //0x039C
 	CIFSupporterChatWnd* m_academyChatWindow; //0x03A8 
 	CIFTimerWnd* m_timerWindow; //0x03AC 
