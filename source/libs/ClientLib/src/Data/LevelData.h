@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma pack(push, 4)
 class CLevelData
 {
 public:
@@ -7,7 +8,7 @@ public:
 
 	char gap[4];
 	unsigned __int8 m_level;
-	char gap2[7];
+	char gap2[4];
 	unsigned __int64 m_expC;
 	unsigned __int32 m_expM;
 	char gap3[8];
@@ -15,3 +16,4 @@ public:
 	unsigned __int32 m_jobExpRobber;
 	unsigned __int32 m_jobExpHunter;
 };
+#pragma pack(pop)

@@ -4,8 +4,10 @@ set(SOURCE_FILES src/BufRender.h
     src/Client.cpp
     src/Client.h
     src/Data/ActionWndData.h
+    src/Data/CharacterData.h
     src/Data/DropGoldData.h
     src/Data/GachaNpcData.h
+    src/Data/GameGuideData.h
     src/Data/ItemData.h
     src/Data/LevelData.h
     src/Data/LevelGoldData.h

@@ -2,6 +2,8 @@
 
 #include <map>
 #include "Data/ItemData.h"
+#include "Data/CharacterData.h"
+#include "Data/GameGuideData.h"
 #include "Data/ActionWndData.h"
 #include "Data/RefScrapOfPackageItemData.h"
 #include "Data/RefPackageItemData.h"
@@ -33,8 +35,9 @@ public:
 	char gap0[0x254];
 
 	std::map<unsigned __int32, CItemData*> m_itemDataMap; //0x258
-
-	char unknown_gap[4 * 14]; // std::vector, std::map, std::??, std:??, std::vector maybe // 0x294
+	std::map<unsigned __int32, CCharacterData*> m_characterDataMap; //0x264
+	std::map<unsigned __int32, CGameGuideData*> m_gameGuideDataMap; //0x270
+	char unknown_gap[4 * 20]; // 0x27C
 	std::map<unsigned __int32, CActionWndData*> m_actionWndDataMap; //0x2CC
 	char empty_maps_times_8[3 * 4 * 8]; //0x2D8
 	std::map<unsigned __int32, CRefScrapOfPackageItemData*> m_refScrapOfPackageItemData; //0x338
