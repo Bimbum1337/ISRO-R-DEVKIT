@@ -6,6 +6,7 @@ set(SOURCE_FILES src/BufRender.h
     src/Data/ActionWndData.h
     src/Data/CharacterData.h
     src/Data/DropGoldData.h
+    src/Data/GacaItemSetData.h
     src/Data/GachaNpcData.h
     src/Data/GameGuideData.h
     src/Data/ItemData.h

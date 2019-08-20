@@ -24,6 +24,7 @@
 #include "Data/NPCPosData.h"
 #include "Data/MallItemMenuListData.h"
 #include "Data/ShopItemStockPeriod.h"
+#include "Data/GachaItemSetData.h"
 #include "Data/GachaNpcData.h"
 #include "Data/LevelGoldData.h"
 
