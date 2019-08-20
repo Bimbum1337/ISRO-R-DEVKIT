@@ -65,10 +65,12 @@ public:
 	std::map<unsigned __int32, CMallItemMenuListData*> m_mallItemMenuListDataMap; //0x494
 	std::map<unsigned __int32, CShopItemStockPeriod*> m_shopItemStockPeriodMap; //0x4A0
 
-	char gap2[26 * 4];
+	char gap2[26 * 4];	//0x4AC
+	std::map<unsigned __int32, CGachaItemSetData*> m_gachaNpcDataMap; //0x4FC
 	std::map<unsigned __int32, CGachaNpcData*> m_gachaNpcDataMap; //0x508
+	char gap3[4 * 4];	//0x514
 	std::map<unsigned __int8, CLevelGoldData*> m_levelGoldDataMap; //0x524
-	char gap2[3 * 4];
+	char gap4[3 * 4];
 };
 
 #define g_CGlobalDataManager ((CGlobalDataManager*)0x00EEDF08)
