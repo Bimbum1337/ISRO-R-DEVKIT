@@ -67,7 +67,7 @@ public:
 	std::map<unsigned __int32, CShopItemStockPeriod*> m_shopItemStockPeriodMap; //0x4A0
 
 	char gap2[26 * 4];	//0x4AC
-	std::map<unsigned __int32, CGachaItemSetData*> m_gachaNpcDataMap; //0x4FC
+	std::map<unsigned __int32, CGachaItemSetData*> m_gachaItemSetDataMap; //0x4FC
 	std::map<unsigned __int32, CGachaNpcData*> m_gachaNpcDataMap; //0x508
 	char gap3[4 * 4];	//0x514
 	std::map<unsigned __int8, CLevelGoldData*> m_levelGoldDataMap; //0x524

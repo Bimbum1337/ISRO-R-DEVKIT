@@ -86,22 +86,22 @@ CIFQuickStateHalfWnd* CGInterface::Get_QuickStateHalfWnd()
 
 CIF_NPCWindow* CGInterface::Get_GDR_NPCWINDOW()
 {
-	return (CIF_NPCWindow*)this->m_IRM2.GetResObj(GDR_NPCWINDOW, 1);
+	return (CIF_NPCWindow*)this->m_IRM.GetResObj(GDR_NPCWINDOW, 1);
 }
 
 CIFMainPopup* CGInterface::Get_GDR_MAINPOPUP()
 {
-	return (CIFMainPopup*)this->m_IRM2.GetResObj(GDR_MAINPOPUP, 1);
+	return (CIFMainPopup*)this->m_IRM.GetResObj(GDR_MAINPOPUP, 1);
 }
 
 CIFStorageRoom* CGInterface::Get_GDR_STORAGEROOM()
 {
-	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_STORAGEROOM, 1);
+	return (CIFStorageRoom*)this->m_IRM.GetResObj(GDR_STORAGEROOM, 1);
 }
 
 CIFStorageRoom* CGInterface::Get_GDR_GUILDSTORAGEROOM()
 {
-	return (CIFStorageRoom*)this->m_IRM2.GetResObj(GDR_GUILDSTORAGEROOM, 1);
+	return (CIFStorageRoom*)this->m_IRM.GetResObj(GDR_GUILDSTORAGEROOM, 1);
 }
 
 void CGInterface::WriteErrorMessage(byte errorType, unsigned __int16 errorCode, int colorARGB, int a5, int a6)

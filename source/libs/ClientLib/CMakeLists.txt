@@ -6,7 +6,7 @@ set(SOURCE_FILES src/BufRender.h
     src/Data/ActionWndData.h
     src/Data/CharacterData.h
     src/Data/DropGoldData.h
-    src/Data/GacaItemSetData.h
+    src/Data/GachaItemSetData.h
     src/Data/GachaNpcData.h
     src/Data/GameGuideData.h
     src/Data/ItemData.h
@@ -26,7 +26,7 @@ set(SOURCE_FILES src/BufRender.h
     src/Data/RefShopTabGroupData.h
     src/Data/ShopItemStockPeriod.h
     src/Data/ShopItemStockQuantity.h
-    src/Data/TeleportBulding.h
+    src/Data/TeleportBuilding.h
     src/Data/TeleportData.h
     src/Data/TeleportLink.h
     src/DxSound.h
