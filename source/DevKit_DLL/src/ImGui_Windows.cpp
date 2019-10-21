@@ -15,7 +15,7 @@
 #include "hooks.h"
 #include "GEffSoundBody.h"
 #include "multibyte.h"
-#include "CIFSystemMessage.h"
+#include "IFSystemMessage.h"
 #include <StringUtils.h>
 #include <EntityManagerClient.h>
 #include <IFflorian0Guide.h>
@@ -641,8 +641,8 @@ void ImGui_OnEndScene()
         // Color (Picker: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool)
         int color = D3DCOLOR_ARGB(255, 0, 255, 0);
 
-        // Get the SystemLog Window - Media//resinfo//ginterface.txt - GDR_SYSTEM_MESSAGE_VIEW:CIFSystemMessage -> ID Should be 68
-        CIFSystemMessage *systemmessage = reinterpret_cast<CIFSystemMessage *>(g_pCGInterface->m_IRM.GetResObj(68, 1));
+        // Get the SystemLog Window - Media//resinfo//ginterface.txt - GDR_SYSTEM_MESSAGE_VIEW:IFSystemMessage -> ID Should be 68
+        IFSystemMessage *systemmessage = reinterpret_cast<IFSystemMessage *>(g_pCGInterface->m_IRM.GetResObj(68, 1));
         systemmessage->write(0xFF, color, message, 0, 1);
     }
 

@@ -4,7 +4,7 @@
 
 #endif //SRO_DEVKIT_CIFSYSTEMMESSAGE_H
 
-class CIFSystemMessage
+class IFSystemMessage
 {
 public:
     void write(int a1, int color, wchar_t* msg, int a2, int a3);
