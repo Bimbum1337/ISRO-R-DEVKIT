@@ -1,7 +1,4 @@
-//
-// Created by Philipp on 20.10.2019.
-//
-
+// Credits: @florian0 https://florian0.wordpress.com/2017/12/14/silkroad-online-reconstructing-ui-access-for-the-sake-of-colors/
 #ifndef SRO_DEVKIT_CIFSYSTEMMESSAGE_H
 #define SRO_DEVKIT_CIFSYSTEMMESSAGE_H
 
