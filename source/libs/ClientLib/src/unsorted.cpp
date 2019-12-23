@@ -2,7 +2,7 @@
 #include "unsorted.h"
 
 #include "GlobalHelpersThatHaveNoHomeYet.h"
-#include "GWndBase.h"
+#include "GFXMainFrame/GWndBase.h"
 #include "Process.h"
 #include <BSLib/BSLib.h>
 #include <GFX3DFunction/DrawingHelpers.h>
@@ -48,21 +48,6 @@ void DrawRect(int x, int y, int height, int width)
 	DrawRect(x, y, height, width, 0x00FF0000);
 }
 
-CProcess* MakeProcess(const CGfxRuntimeClass &cls)
-{
-	if (!cls.IsDerivedFrom(GFX_RUNTIME_CLASS(CProcess)))
-	{
-		return 0;
-	}
-
-	RECT rect;
-	rect.top = 0;
-	rect.left = 0;
-	rect.bottom = 100000;
-	rect.right = 100000;
-
-	return (CProcess*)CGWnd::CreateInstance((CProcess*)-1, cls, rect, 0, 0);
-}
 
 ClientResolutonData* sub_4F9CD0()
 {

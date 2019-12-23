@@ -7,7 +7,7 @@
 #include "GFX3DFunction/Common/d3dsettings.h"
 #include "GFX3DFunction/Common/d3dapp.h"
 
-#include "Camera.h"
+#include "GFXMainFrame/Camera.h"
 #include <cassert>
 
 #pragma comment(lib, "d3dxof.lib")

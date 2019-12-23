@@ -16,7 +16,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
-#include "multibyte.h"
+#include "BSLib/multibyte.h"
 
 #include <Test/Test.h>
 

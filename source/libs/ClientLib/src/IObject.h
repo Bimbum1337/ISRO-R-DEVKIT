@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IEntity.h"
+#include "GFXMainFrame/IEntity.h"
 
 #include <d3d9.h>
 

@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "GWnd.h"
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CGWnd, 0x0110F94C)

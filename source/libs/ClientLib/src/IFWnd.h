@@ -1,5 +1,5 @@
 #pragma once
-#include "GWnd.h"
+#include "GFXMainFrame/GWnd.h"
 #include "TextBoard.h"
 #include "IRMManager.h"
 #include <Test/Test.h>

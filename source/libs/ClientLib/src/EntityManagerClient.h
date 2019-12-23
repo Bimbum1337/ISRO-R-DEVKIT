@@ -1,5 +1,5 @@
 #pragma once
-#include "EntityManager.h"
+#include "GFXMainFrame/EntityManager.h"
 
 class CEntityManagerClient : public CEntityManager
 {

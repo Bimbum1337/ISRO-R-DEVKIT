@@ -30,27 +30,18 @@ set(SOURCE_FILES src/BufRender.h
     src/Data/TeleportData.h
     src/Data/TeleportLink.h
     src/DxSound.h
-    src/EntityManager.h
     src/EntityManagerClient.h
-    src/ETime.h
     src/Game.cpp
     src/Game.h
     src/GEffSound.h
     src/GEffSoundBody.cpp
     src/GEffSoundBody.h
-    src/GFXMainFrame.cpp
-    src/GFXMainFrame.h
     src/GInterface.cpp
     src/GInterface.h
     src/GlobalDataManager.h
     src/GlobalHelpersThatHaveNoHomeYet.h
     src/GObj.h
-    src/GWnd.cpp
-    src/GWnd.h
-    src/GWndBase.cpp
-    src/GWndBase.h
     src/IDxSound.h
-    src/IEntity.h
     src/IFAction.h
     src/IFApprenticeShip.h
     src/IFApprenticeShipSlot.h
@@ -116,14 +107,8 @@ set(SOURCE_FILES src/BufRender.h
     src/is_this_important.cpp
     src/is_this_important.h
     src/MessageBoxManager.h
-    src/MsgHandler.cpp
-    src/MsgHandler.h
-    src/multibyte.cpp
-    src/multibyte.h
     src/NavigationDeadreckon.cpp
     src/NavigationDeadreckon.h
-    src/Process.cpp
-    src/Process.h
     src/PSilkroad.cpp
     src/PSilkroad.h
     src/PSOuterInterface.cpp
@@ -155,5 +140,5 @@ set(SOURCE_FILES src/BufRender.h
     src/IFNotify.cpp src/IFNotify.h)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)
+target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)

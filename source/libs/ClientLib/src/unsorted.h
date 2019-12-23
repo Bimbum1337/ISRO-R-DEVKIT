@@ -4,6 +4,7 @@
 #include "Process.h"
 
 #include <GFX3DFunction/GFXVideo3d.h>
+#include <BSLib/BSLib.h>
 
 #define ARRAY_SIZE(ar) ((int)(sizeof(ar)/sizeof(*ar)))
 
@@ -16,8 +17,6 @@ bool StartNetEngine();
 
 void DrawRect(int x, int y, int height, int width, int color);
 void DrawRect(int x, int y, int height, int width);
-
-CProcess *MakeProcess(const CGfxRuntimeClass &cls);
 
 struct UISize
 {

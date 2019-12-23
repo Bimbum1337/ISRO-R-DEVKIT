@@ -10,13 +10,16 @@ class CProcess : public CGWnd { // total size 176
 	
 	virtual void Func_38();
 	virtual int Func_39();
-	
+
+    static CProcess *MakeProcess(const CGfxRuntimeClass& cls);
+
 public:
 	int N000006AB; //0x0084
 	char pad_0088[20-4]; //0x0088
 	int m_blProcessRunTerminate; //0x0098
 	int m_blRun; //0x009C
-private: CProcess* m_pProcessChild; //0x00A0, was not public
+private:
+    CProcess* m_pProcessChild; //0x00A0, was not public
 	char pad_00A4[12]; //0x00A4
 
 public:
