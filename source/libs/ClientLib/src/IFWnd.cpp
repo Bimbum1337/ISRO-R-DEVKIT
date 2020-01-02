@@ -2,7 +2,6 @@
 #include "IFWnd.h"
 #include "Game.h"
 
-ENSURE_SIZE(CIFWnd, 876)
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFWnd, 0x00EE9808)
 

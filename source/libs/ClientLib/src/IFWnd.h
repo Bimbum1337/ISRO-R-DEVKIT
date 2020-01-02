@@ -2,6 +2,7 @@
 #include "GWnd.h"
 #include "TextBoard.h"
 #include "IRMManager.h"
+#include <Test/Test.h>
 
 
 class CIFWnd : public CGWnd, public CTextBoard
@@ -153,5 +154,10 @@ private:
 	int N000006A1; //0x0360
 	int N00009C01; //0x0364
 	int N00009C02; //0x0368
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(876)
+    END_FIXTURE()
+    RUN_FIXTURE(CIFWnd)
 };
 
