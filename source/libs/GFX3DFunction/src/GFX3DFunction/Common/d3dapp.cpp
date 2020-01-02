@@ -953,15 +953,45 @@ HRESULT CD3DApplication::Reset3DEnvironment()
 {
     HRESULT hr;
 
+    for (int i = 6; i > 0; i--) {
+        m_pd3dDevice->SetTexture(0, 0);
+    }
+
     // Release all vidmem objects
     if( m_bDeviceObjectsRestored )
     {
         m_bDeviceObjectsRestored = false;
-        InvalidateDeviceObjects();
+        InvalidateDeviceObjectsWTF();
     }
+
     // Reset the device
-    if( FAILED( hr = m_pd3dDevice->Reset( &m_d3dpp ) ) )
-        return hr;
+    if( FAILED( hr = m_pd3dDevice->Reset( &m_d3dpp ) ) ) {
+        switch(hr) {
+            case D3DERR_DRIVERINTERNALERROR: // 0x88760827
+                MessageBoxA(0, "Reset Error D3DERR_DRIVERINTERNALERROR", "Error(Reset)", 0);
+                return hr;
+
+            case E_OUTOFMEMORY: // 0x8007000E
+                MessageBoxA(0, "Reset Error E_OUTOFMEMORY", "Error(Reset)", 0);
+                return hr;
+
+            case D3DERR_OUTOFVIDEOMEMORY: // 0x8876017C
+                MessageBoxA(0, "Reset Error D3DERR_OUTOFVIDEOMEMORY", "Error(Reset)", 0);
+                return hr;
+
+            case D3DERR_DEVICELOST: // 0x88760868
+                MessageBoxA(0, "Reset Error D3DERR_DEVICELOST", "Error(Reset)", 0);
+                return hr;
+
+            case D3DERR_INVALIDCALL: // 0x8876086C
+                MessageBoxA(0, "Reset Error D3DERR_INVALIDCALL", "Error(Reset)", 0);
+                return hr;
+
+            default:
+                MessageBoxA(0, "Reset Error Default", "Error(Reset)", 0);
+                return hr;
+        }
+    }
 
     // Store render target surface desc
     LPDIRECT3DSURFACE9 pBackBuffer;
@@ -998,10 +1028,10 @@ HRESULT CD3DApplication::Reset3DEnvironment()
     }
 
     // Initialize the app's device-dependent objects
-    hr = RestoreDeviceObjects();
+    hr = RestoreDeviceObjectsWTF();
     if( FAILED(hr) )
     {
-        InvalidateDeviceObjects();
+        InvalidateDeviceObjectsWTF();
         return hr;
     }
     m_bDeviceObjectsRestored = true;
@@ -1298,6 +1328,7 @@ INT CD3DApplication::Run()
 //-----------------------------------------------------------------------------
 HRESULT CD3DApplication::Render3DEnvironment()
 {
+    //return reinterpret_cast<HRESULT(__thiscall*)(CD3DApplication*)>(0x00BAE9A0)(this);
     HRESULT hr;
 
     if( m_bDeviceLost )
@@ -1325,7 +1356,8 @@ HRESULT CD3DApplication::Render3DEnvironment()
 				if ( FAILED (hr = reinterpret_cast<HRESULT(__thiscall*)(CD3DApplication*)>(0x00BB0150)(this)))
                     return hr;
             }
-            return hr;
+            //return hr;
+            return S_FALSE;
         }
         m_bDeviceLost = false;
     }
@@ -1361,7 +1393,7 @@ HRESULT CD3DApplication::Render3DEnvironment()
     if( D3DERR_DEVICELOST == hr )
         m_bDeviceLost = true;
 #endif
-    return S_OK;
+    return S_FALSE;
 }
 
 
