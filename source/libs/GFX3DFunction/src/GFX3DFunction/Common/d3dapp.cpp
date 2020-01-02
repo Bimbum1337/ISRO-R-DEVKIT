@@ -1639,3 +1639,15 @@ HRESULT CD3DApplication::DisplayErrorMsg( HRESULT hr, DWORD dwType )
 
     return hr;
 }
+
+HRESULT CD3DApplication::InvalidateDeviceObjectsWTF() {
+    m_pgfxMainFrame->Func_0(0x801, 0, 0);
+
+    return S_OK;
+}
+
+HRESULT CD3DApplication::RestoreDeviceObjectsWTF() {
+    m_pgfxMainFrame->sub_BB0110(m_d3dpp.BackBufferWidth, m_d3dpp.BackBufferHeight);
+
+    return S_OK;
+}
