@@ -47,4 +47,9 @@ private:
 	char pad_039E[98]; //0x039E
 	int N00009BFC; //0x0400
 	std::n_string N00009BFD; //0x0404
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(1056)
+    END_FIXTURE()
+    RUN_FIXTURE(CIFDecoratedStatic)
 };

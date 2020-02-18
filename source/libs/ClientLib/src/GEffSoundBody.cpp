@@ -1,8 +1,6 @@
 #include "StdAfx.h"
 #include "GEffSoundBody.h"
 
-ENSURE_SIZE(CGEffSoundBody, 368);
-
 void CGEffSoundBody::PlaySoundA(const wchar_t* sndFile)
 {
 #if 0
