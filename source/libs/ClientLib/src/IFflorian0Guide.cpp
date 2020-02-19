@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "../../../DevKit_DLL/src/StdAfx.h"
 #include "IFflorian0Guide.h"
 #include "GEffSoundBody.h"
 
