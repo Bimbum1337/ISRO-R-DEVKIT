@@ -5,6 +5,7 @@
 #include "GFXVideo3D_Hook.h"
 #include "WndProc.h"
 #include "hooks.h"
+#include "GInterface.h"
 
 std::vector<const CGfxRuntimeClass*> register_objects;
 
@@ -25,6 +26,8 @@ void Setup()
 	vftableHook(0x00E0963C, 17, addr_from_this(&CGFXVideo3D_Hook::CreateThingsHook));
 	vftableHook(0x00E0963C, 26, addr_from_this(&CGFXVideo3D_Hook::EndSceneHook));
 	vftableHook(0x00E0963C, 20, addr_from_this(&CGFXVideo3D_Hook::SetSizeHook));
+
+	vftableHook(0x00db95a4, 10, addr_from_this(&CGInterface::OnCreateIMPL));
 
 	replaceAddr(0x00831337+4, (int)&WndProcHook);
 

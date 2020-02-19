@@ -22,6 +22,10 @@ public:
 
 	// void ToggleHudVisibility();
 
+	bool OnCreateIMPL(long ln);
+
+	void BeforeOnCreate();
+    void AfterOnCreate();
 
 	// void ShowMessage_Warning(std::wstring &msg);
 	// void ShowMessage_Notice(std::wstring &msg);
