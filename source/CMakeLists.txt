@@ -13,6 +13,6 @@ add_subdirectory(third-party/remodel)
 add_subdirectory(third-party/memory)
 add_subdirectory(third-party/imgui)
 add_subdirectory(third-party/abi-testing)
-
+add_subdirectory(third-party/ghidra)
 
 add_subdirectory(DevKit_DLL)
