@@ -10,8 +10,8 @@ bool CIFflorian0Guide::OnCreate(long ln)
 	printf("> " __FUNCTION__ "(%d)\n", ln);
 	CIFDecoratedStatic::OnCreate(ln);
 
-	TB_Func_13("icon\\etc\\wintereventguide_1.ddj", 0, 0);
-	sub_634470("icon\\etc\\wintereventguide_2.ddj");
+	TB_Func_13("icon\\etc\\webgacha2_1.ddj", 0, 0);
+	sub_634470("icon\\etc\\webgacha2_2.ddj");
 
 	set_N00009BD4(2);
 	set_N00009BD3(500);

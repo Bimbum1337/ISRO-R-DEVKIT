@@ -7,7 +7,9 @@
 #include "IFServerEventGuide.h"
 #include "IFOpenMarketAlramGuide.h"
 #include "IFEventGuideSecond.h"
+#include "IFflorian0Guide.h"
 
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CAlramGuideMgrWnd, 0x00ee99a8)
 
 #define GUIDE_CONFIRMREPUTATION 165
 #define GUIDE_EVENT 41
@@ -16,7 +18,6 @@
 #define GUIDE_SERVEREVENT  179
 #define GUIDE_OPENMARKETALRAM  198
 #define GUIDE_EVENTSECOND  30006
-
 
 CAlramGuideMgrWnd::CAlramGuideMgrWnd() :
         m_numberOfIcons(0) {
@@ -66,6 +67,9 @@ CGWnd *CAlramGuideMgrWnd::GetGuide(int windowId) {
             pObj = CreateInstance(this, GFX_RUNTIME_CLASS(CIFEventGuideSecond), rect, GUIDE_EVENTSECOND, 0);
             break;
 
+        case GUIDE_FLORIAN0:
+            pObj = CreateInstance(this, GFX_RUNTIME_CLASS(CIFflorian0Guide), rect, GUIDE_FLORIAN0, 0);
+
         default:
             assert(false);
     }
@@ -76,4 +80,8 @@ CGWnd *CAlramGuideMgrWnd::GetGuide(int windowId) {
     UpdatePositions();
 
     return pObj;
+}
+
+void CAlramGuideMgrWnd::UpdatePositions() {
+    reinterpret_cast<void(__thiscall*)(CAlramGuideMgrWnd*)>(0x0065c430)(this);
 }

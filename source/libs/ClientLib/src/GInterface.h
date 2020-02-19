@@ -2,6 +2,7 @@
 
 #include "IFWnd.h"
 #include "NavigationDeadreckon.h"
+#include "AlramGuideMgrWnd.h"
 
 #define GDR_NOTICE 20
 #define GDR_WARNING_WND 35
@@ -26,6 +27,10 @@ public:
 	// void ShowMessage_Notice(std::wstring &msg);
 	// void ShowMessage_Quest(std::wstring &msg);
 	// void PrintSystemMessage(eLogType level, wchar_t *str);
+
+    void CreateFlorian0Event();
+
+	CAlramGuideMgrWnd *GetAlarmManager();
 
 	//0x0079D5B0
 	void RenderToggle_GDR_ACTION();

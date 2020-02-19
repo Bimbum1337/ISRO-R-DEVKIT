@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "GInterface.h"
+#include "IFflorian0Guide.h"
 
 void CGInterface::RenderToggle_GDR_ACTION()
 {
@@ -39,4 +40,12 @@ void CGInterface::RenderToggle_WORLDMAP_GUIDE()
 void CGInterface::Render_GDR_AUTO_POTION(bool visible)
 {
 	return reinterpret_cast<void(__thiscall*)(void*, bool)>(0x0079C750)(this, visible);
+}
+
+void CGInterface::CreateFlorian0Event() {
+    CGWnd *guide = GetAlarmManager()->GetGuide(GUIDE_FLORIAN0);
+}
+
+CAlramGuideMgrWnd *CGInterface::GetAlarmManager() {
+    return m_IRM.GetResObj<CAlramGuideMgrWnd>(GDR_ALRAM_GUIDE_MGR_WND, 1);
 }

@@ -17,6 +17,7 @@
 #include "multibyte.h"
 #include <StringUtils.h>
 #include <EntityManagerClient.h>
+#include <IFflorian0Guide.h>
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -628,14 +629,8 @@ void ImGui_OnEndScene()
 		g_pCGInterface->m_IRM.GetResObj(1338, 1)->SetVisibility(true);
 	}
 
-	if (ImGui::Button("Hide Event"))
-	{
-		g_pCGInterface->m_IRM.GetResObj(30007, 1)->SetVisibility(false);
-	}
-
-	if (ImGui::Button("Show Event"))
-	{
-		g_pCGInterface->m_IRM.GetResObj(30007, 1)->SetVisibility(true);
+	if (ImGui::Button("Init Event")) {
+	    g_pCGInterface->CreateFlorian0Event();
 	}
 
 	ImGui::End();

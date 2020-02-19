@@ -17,24 +17,3 @@
 		UV_RT=POINT,"1,0"
 		VAlign=INTEGER,"0"
 	}
-
-
-	GDR_FLORIAN0GUIDE:CIFflorian0Guide
-	{
-		ClientRect=RECT,"0,0,0,0"
-		Color=COLOR,"255,250,48,127"
-		DDJ=STRING,"icon\\etc\\eventguide_1.ddj"
-		FontColor=COLOR,"255,239,153,255"
-		FontIndex=INTEGER,"0"
-		HAlign=INTEGER,"0"
-		ID=INTEGER,"30007"
-		Rect=RECT,"300,400,40,40"
-		Style=INTEGER,"0"
-		SubSection=STRING,""
-		Text=STRING,""
-		UV_LB=POINT,"0,1"
-		UV_LT=POINT,"0,0"
-		UV_RB=POINT,"1,1"
-		UV_RT=POINT,"1,0"
-		VAlign=INTEGER,"0"
-	}
