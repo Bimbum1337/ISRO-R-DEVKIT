@@ -6,8 +6,6 @@ set(SOURCE_FILES
         src/Hooks.h
         src/IFflorian0.cpp
         src/IFflorian0.h
-        src/IFflorian0Guide.cpp
-        src/IFflorian0Guide.h
         src/ImGui_Windows.cpp
         src/ImGui_Windows.h
         src/StdAfx.cpp

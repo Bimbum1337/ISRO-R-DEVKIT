@@ -37,8 +37,8 @@ public:
 
 
 
-	static CGWnd* CreateInstance(CProcess* pParent, CGfxRuntimeClass* pType, RECT& Rect, int a4, int a5)
+	static CGWnd* CreateInstance(CGWnd* pParent, const CGfxRuntimeClass& pType, RECT& Rect, int a4, int a5)
 	{
-		return reinterpret_cast<CGWnd*(__cdecl*)(CProcess*,CGfxRuntimeClass*,RECT*,int,int)>(0x00BA20B0)(pParent, pType, &Rect, a4, a5);
+		return reinterpret_cast<CGWnd*(__cdecl*)(CGWnd*,const CGfxRuntimeClass*,RECT*,int,int)>(0x00BA20B0)(pParent, &pType, &Rect, a4, a5);
 	}
 };

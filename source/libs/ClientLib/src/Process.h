@@ -27,7 +27,7 @@ public:
 
 	static GlobalVar<bool, 0x00EED310> m_bProcessNetMsg;
 	
-	CProcess* sub_BA7B90(CGfxRuntimeClass *cls, int bSomething);
+	CProcess* sub_BA7B90(const CGfxRuntimeClass &cls, int bSomething);
 
 	void sub_BA7620(CProcess* pProcess);
 	

@@ -23,7 +23,7 @@ BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpReserved)
 		Setup();
 
 		// Inject all the new objects
-		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
+		//RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
 		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
 		// Override existing objects
