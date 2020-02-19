@@ -74,8 +74,16 @@ set(SOURCE_FILES src/BufRender.h
     src/TextBoard.cpp
     src/TextBoard.h
     src/unsorted.cpp
-    src/unsorted.h)
+    src/unsorted.h
+    src/AlramGuideMgrWnd.cpp src/AlramGuideMgrWnd.h
+    src/IFConfirmReputationGuide.cpp src/IFConfirmReputationGuide.h
+    src/IFEventGuide.cpp src/IFEventGuide.h
+    src/IFQuestInfoGuide.cpp src/IFQuestInfoGuide.h
+    src/IFLetterAlarmGuide.cpp src/IFLetterAlarmGuide.h
+    src/IFServerEventGuide.cpp src/IFServerEventGuide.h
+    src/IFOpenMarketAlramGuide.cpp src/IFOpenMarketAlramGuide.h
+    src/IFEventGuideSecond.cpp src/IFEventGuideSecond.h)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib BSLib GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel)
+target_link_libraries(ClientLib GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)
