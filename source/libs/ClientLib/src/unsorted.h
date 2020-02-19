@@ -17,7 +17,7 @@ bool StartNetEngine();
 void DrawRect(int x, int y, int height, int width, int color);
 void DrawRect(int x, int y, int height, int width);
 
-CProcess *MakeProcess(CGfxRuntimeClass* cls);
+CProcess *MakeProcess(const CGfxRuntimeClass &cls);
 
 struct UISize
 {

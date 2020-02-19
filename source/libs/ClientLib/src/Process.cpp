@@ -29,7 +29,7 @@ CProcess* CProcess::GetChildProcess()
 	return m_pProcessChild;
 }
 
-CProcess* CProcess::sub_BA7B90(CGfxRuntimeClass* cls, int bSomething)
+CProcess* CProcess::sub_BA7B90(const CGfxRuntimeClass& cls, int bSomething)
 {
 	assert(!m_pProcessChild);
 

@@ -48,9 +48,9 @@ void DrawRect(int x, int y, int height, int width)
 	DrawRect(x, y, height, width, 0x00FF0000);
 }
 
-CProcess* MakeProcess(CGfxRuntimeClass* cls)
+CProcess* MakeProcess(const CGfxRuntimeClass &cls)
 {
-	if (!cls->IsDerivedFrom(GFX_RUNTIME_CLASS(CProcess)))
+	if (!cls.IsDerivedFrom(GFX_RUNTIME_CLASS(CProcess)))
 	{
 		return 0;
 	}
