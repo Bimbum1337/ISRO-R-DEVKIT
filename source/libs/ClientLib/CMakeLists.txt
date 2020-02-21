@@ -43,6 +43,8 @@ set(SOURCE_FILES src/BufRender.h
     src/IFStatic.cpp
     src/IFStatic.h
     src/IFStaticWithPictureClip.h
+    src/IFSystemMessage.cpp
+    src/IFSystemMessage.h
     src/IFTileWnd.cpp
     src/IFTileWnd.h
     src/IFWnd.cpp
