@@ -9,7 +9,28 @@ GlobalVar<bool, 0x00EED310> CPSQuickStart::m_ready;
 extern char* charname;
 extern char* ibuv_text;
 
-int CPSQuickStart::OnPacket_MAYBE_IMPL(CMsgStreamBuffer* pMsg)
+char CPSQuickStart::OnCreate(int a1)
+{
+	printf("> " __FUNCTION__ "(%d)\n", a1);
+
+	if (!StartNetEngine())
+	{
+		CGFXMainFrame::SetNextProcessSTAT(reinterpret_cast<CGfxRuntimeClass*>(0x0EED894));
+		return false;
+	}
+
+	g_CGame->LoadTextfiles();
+	m_ready = true;
+
+	ShowWindow(g_CGame->GetHWnd(), SW_SHOWNORMAL);
+	UpdateWindow(g_CGame->GetHWnd());
+
+	g_CGame->ResizeMainWindow();
+
+	return true;
+}
+
+int CPSQuickStart::OnNetMsg(CMsgStreamBuffer* pMsg)
 {
 	printf("> " __FUNCTION__ " ~ Got Msg %04x\n", pMsg->msgid);
 	if (pMsg->msgid == 0x1002)
@@ -46,25 +67,4 @@ int CPSQuickStart::OnPacket_MAYBE_IMPL(CMsgStreamBuffer* pMsg)
 	}
 
 	return reinterpret_cast<int(__thiscall*)(CPSQuickStart*,CMsgStreamBuffer*)>(0x00863AD0)(this, pMsg);
-}
-
-char CPSQuickStart::OnCreate_IMPL(int a1)
-{
-	printf("> " __FUNCTION__ "(%d)\n", a1);
-
-	if (!StartNetEngine())
-	{
-		CGFXMainFrame::SetNextProcessSTAT(reinterpret_cast<CGfxRuntimeClass*>(0x0EED894));
-		return false;
-	}
-
-	g_CGame->LoadTextfiles();
-	m_ready = true;
-
-	ShowWindow(g_CGame->GetHWnd(), SW_SHOWNORMAL);
-	UpdateWindow(g_CGame->GetHWnd());
-
-	g_CGame->ResizeMainWindow();
-
-	return true;
 }
