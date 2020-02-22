@@ -158,10 +158,10 @@ void CIFWnd::OnUpdate()
 	reinterpret_cast<void(__thiscall*)(CIFWnd*)>(0x006528A0)(this);
 }
 
-// CIFWnd::SetVisibility(bool) .text 00652B70 00000048 00000004 00000004 R . . . . . .
-void CIFWnd::SetVisibility(bool a2)
+// CIFWnd::ShowGWnd(bool) .text 00652B70 00000048 00000004 00000004 R . . . . . .
+void CIFWnd::ShowGWnd(bool bVisible)
 {
-	reinterpret_cast<void(__thiscall*)(CIFWnd*,bool)>(0x00652B70)(this, a2);
+	reinterpret_cast<void(__thiscall*)(CIFWnd*,bool)>(0x00652B70)(this, bVisible);
 }
 
 // CIFWnd::OnWndMessage(void) .text 00652FB0 0000008D 00000000 00000004 R . . . . . .

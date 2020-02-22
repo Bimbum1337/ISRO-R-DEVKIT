@@ -100,9 +100,9 @@ void CGWndBase::Func_22(int x, int y)
 	reinterpret_cast<void(__thiscall*)(CGWndBase*, int, int)>(0x00B91A40)(this, x, y);
 }
 
-void CGWndBase::SetVisibility(bool a2)
+void CGWndBase::ShowGWnd(bool bVisible)
 {
-	reinterpret_cast<void(__thiscall*)(CGWndBase*,bool)>(0x00B8F500)(this, a2);
+	reinterpret_cast<void(__thiscall*)(CGWndBase*,bool)>(0x00B8F500)(this, bVisible);
 }
 
 // CGWndBase::CGWndBase(void) .text 00B8FCD0 000000B2 00000030 00000000 R . . . . T .
