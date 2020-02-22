@@ -4,8 +4,7 @@
 
 void placeHook(int trampoline_location, int target_location) 
 {
-
-	char jmp_inst[] = { 0xE9, 0x00, 0x00, 0x00, 0x00 };
+	unsigned char jmp_inst[] = { 0xE9, 0x00, 0x00, 0x00, 0x00 };
 	int distance;
 	DWORD dwProtect = 0;
 
@@ -21,7 +20,10 @@ void placeHook(int trampoline_location, int target_location)
 
 	memcpy((LPVOID)trampoline_location, jmp_inst, sizeof(jmp_inst));
 
-	VirtualProtect((LPVOID)trampoline_location, sizeof(jmp_inst),dwProtect, NULL);
+    DWORD otherProtect;
+    if (!VirtualProtect((LPVOID)trampoline_location, sizeof(jmp_inst),dwProtect, &otherProtect)) {
+        perror("Failed to restore protection on memory");
+    }
 
 }
 
@@ -46,8 +48,10 @@ void replaceOffset(int trampoline_location, int target_location)
 
 	memcpy((LPVOID)offset_location, inst_offset, sizeof(inst_offset));
 
-	VirtualProtect((LPVOID)offset_location, sizeof(inst_offset),dwProtect, NULL);
-
+    DWORD otherProtect;
+    if (!VirtualProtect((LPVOID)offset_location, sizeof(inst_offset),dwProtect, &otherProtect)) {
+        perror("Failed to restore protection on memory");
+    }
 }
 
 void replaceAddr(int addr, int value)
@@ -61,7 +65,10 @@ void replaceAddr(int addr, int value)
 
 	*((int*)addr) = value;
 
-	VirtualProtect((LPVOID)addr, sizeof(int),dwProtect, NULL);
+    DWORD otherProtect;
+    if (!VirtualProtect((LPVOID)addr, sizeof(int),dwProtect, &otherProtect)) {
+        perror("Failed to restore protection on memory");
+    }
 }
 
 void vftableHook(unsigned int vftable_addr, int offset, int target_func)
