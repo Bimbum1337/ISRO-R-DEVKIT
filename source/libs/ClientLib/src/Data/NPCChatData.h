@@ -1,0 +1,6 @@
+#pragma
+
+class CNPCChatData
+{
+
+};

@@ -3,6 +3,32 @@ set(SOURCE_FILES src/BufRender.h
     src/CameraWorking.h
     src/Client.cpp
     src/Client.h
+    src/Data/ActionWndData.h
+    src/Data/CharacterData.h
+    src/Data/DropGoldData.h
+    src/Data/GachaItemSetData.h
+    src/Data/GachaNpcData.h
+    src/Data/GameGuideData.h
+    src/Data/ItemData.h
+    src/Data/LevelData.h
+    src/Data/LevelGoldData.h
+    src/Data/MagicOptionData.h
+    src/Data/MallItemMenuListData.h
+    src/Data/MessageTipData.h
+    src/Data/NPCChatData.h
+    src/Data/NPCPosData.h
+    src/Data/QuestData.h
+    src/Data/RefPackageItemData.h
+    src/Data/RefPricePolicyOfItem.h
+    src/Data/RefScrapOfPackageItemData.h
+    src/Data/RefShopdata.h
+    src/Data/RefShopTabData.h
+    src/Data/RefShopTabGroupData.h
+    src/Data/ShopItemStockPeriod.h
+    src/Data/ShopItemStockQuantity.h
+    src/Data/TeleportBuilding.h
+    src/Data/TeleportData.h
+    src/Data/TeleportLink.h
     src/DxSound.h
     src/EntityManager.h
     src/EntityManagerClient.h
@@ -16,6 +42,7 @@ set(SOURCE_FILES src/BufRender.h
     src/GFXMainFrame.h
     src/GInterface.cpp
     src/GInterface.h
+    src/GlobalDataManager.h
     src/GlobalHelpersThatHaveNoHomeYet.h
     src/GObj.h
     src/GWnd.cpp
@@ -24,6 +51,9 @@ set(SOURCE_FILES src/BufRender.h
     src/GWndBase.h
     src/IDxSound.h
     src/IEntity.h
+    src/IFAction.h
+    src/IFApprenticeShip.h
+    src/IFApprenticeShipSlot.h
     src/IFButton.cpp
     src/IFButton.h
     src/IFCloseButton.cpp
@@ -33,20 +63,51 @@ set(SOURCE_FILES src/BufRender.h
     src/IFDecoratedStatic.h
     src/IFDragableArea.cpp
     src/IFDragableArea.h
+    src/IFEdit.h
+    src/IFEquipment.h
+    src/IFFade.h
     src/IFFrame.cpp
     src/IFFrame.h
     src/IFGauge.h
+    src/IFHelperBubbleWindow.h
+    src/IFInventory.h
+    src/IFListCtrl.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
+    src/IFMainPopup.h
+    src/IFNPCTalk.h
+    src/IFNPCWindow.h
+    src/IFParty.h
+    src/IFPartySlot.h
+    src/IFPlayerInfo.h
     src/IFPlayerMiniInfo.cpp
     src/IFPlayerMiniInfo.h
+    src/IFPractice.h
+    src/IFQuest.h
+    src/IFQuickStateHalfWnd.h
+    src/IFQuickStateWnd.h
+    src/IFScrollBar.h
+    src/IFScrollManager.h
+    src/IFSelectableArea.h
+    src/IFSkill.h
+    src/IFSkillBoard.h
+    src/IFSkillPracticeBox.h
+    src/IFSlotWithHelp.h
+    src/IFSpinButtonCtrl.h
     src/IFStatic.cpp
     src/IFStatic.h
     src/IFStaticWithPictureClip.h
     src/IFSystemMessage.cpp
     src/IFSystemMessage.h
+    src/IFStorageRoom.h
+    src/IFStoreForPackage.h
+    src/IFStretchWnd.h
+    src/IFSupporterChatWnd.h
+    src/IFTextBox.h
     src/IFTileWnd.cpp
     src/IFTileWnd.h
+    src/IFTimerWnd.h
+    src/IFVerticalScroll.h
     src/IFWnd.cpp
     src/IFWnd.h
     src/IObject.h
@@ -54,6 +115,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IRMManager.h
     src/is_this_important.cpp
     src/is_this_important.h
+    src/MessageBoxManager.h
     src/MsgHandler.cpp
     src/MsgHandler.h
     src/multibyte.cpp

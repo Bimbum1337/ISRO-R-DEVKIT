@@ -32,7 +32,7 @@ bool CIFStatic::SetText(const wchar_t* src)
 	{
 		CIFWnd::SetText(src);
 		Func_42();
-		return true;
+        return true;
 	}
 
 	return false;

@@ -75,7 +75,7 @@ private:
 	char pad_0060[1]; //0x0060
 protected:
 	bool m_bVisible; //0x0061 61
-	bool N00000751; //0x0062
+	bool m_bClickable; //0x0062
 	bool N0000074F; //0x0063
 	bool N00000702; //0x0064
 private:

@@ -76,7 +76,7 @@ void CGWnd::Func_37()
 CGWnd::CGWnd()
 {
 	m_bVisible = true;
-	N00000751 = true;
+	m_bClickable = true;
 	N0000074F = true;
 	N00000702 = false;
 
