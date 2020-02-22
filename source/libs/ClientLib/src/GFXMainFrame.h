@@ -24,6 +24,7 @@ public:
 
 
 	HWND GetHWnd() const;
+	static void SetNextProcessSTAT(CGfxRuntimeClass* cls);
 	char _CreateFont(int a2, int size, std::wstring *name, int a5, int a6, int a7); // overload for wstring (non original)
 	char _CreateFont(int a2, int a3, const char *name, int a5, int a6, int a7); // original name without "_" , FUCK Windows.h
 
