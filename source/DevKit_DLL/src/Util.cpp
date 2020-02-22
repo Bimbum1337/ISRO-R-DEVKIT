@@ -27,7 +27,7 @@ HINSTANCE hInst;
 
 void Setup()
 {
-#if 0
+#if 1
 	replaceOffset(0x00B49AE4, (int)&_FakeWinMain);
 #else
 	FakeWinMain_CPSQuickStart::Setup(&register_objects);
