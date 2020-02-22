@@ -35,7 +35,7 @@ public:
 	void OnUpdate() override;
 
 	
-	void SetVisibility(bool) override;
+	void ShowGWnd(bool bVisible) override;
 
 
 	void OnWndMessage(int a1) override;

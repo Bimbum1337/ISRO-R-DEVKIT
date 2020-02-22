@@ -622,12 +622,12 @@ void ImGui_OnEndScene()
 
 	if (ImGui::Button("Hide"))
 	{
-		g_pCGInterface->m_IRM.GetResObj(1338, 1)->SetVisibility(false);
+        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(false);
 	}
 
 	if (ImGui::Button("Show"))
 	{
-		g_pCGInterface->m_IRM.GetResObj(1338, 1)->SetVisibility(true);
+        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(true);
 	}
 
 	if (ImGui::Button("Init Event")) {

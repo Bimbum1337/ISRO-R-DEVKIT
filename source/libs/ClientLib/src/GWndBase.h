@@ -38,7 +38,7 @@ public:
 	virtual void Func_20();
 	virtual void SetGWndSize(int width, int height);
 	virtual void Func_22(int x, int y);
-	virtual void SetVisibility(bool);
+	virtual void ShowGWnd(bool bVisible);
 
 
 public:
