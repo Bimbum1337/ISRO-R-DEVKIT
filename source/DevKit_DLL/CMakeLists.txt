@@ -13,7 +13,9 @@ set(SOURCE_FILES
         src/Util.cpp
         src/Util.h
         src/WndProc.cpp
-        src/WndProc.h)
+        src/WndProc.h
+        src/PSQuickStart.cpp
+        src/PSQuickStart.h)
 
 add_library(DevKit_DLL SHARED ${SOURCE_FILES})
 target_link_libraries(DevKit_DLL BSLib ClientLib memory winmm)

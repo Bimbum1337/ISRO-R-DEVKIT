@@ -30,3 +30,8 @@ void CGFXMainFrame::SetProcess(CProcess* process)
 	this->N00000584 = 0;
 	this->N00009632 = 1;
 }
+
+void CGFXMainFrame::SetNextProcessSTAT(CGfxRuntimeClass* cls)
+{
+	reinterpret_cast<void(*)(CGfxRuntimeClass*)>(0x0BA75F0)(cls);
+}

@@ -76,6 +76,8 @@ public:
 	void LoadAndInitStuffIMPL(int a1);
 
 	void InitGameAssets();
+	void LoadTextfiles();
+	void ResizeMainWindow();
 
 	void ClientReadConfiguration();
 	void LoadPK2s();
