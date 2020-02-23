@@ -131,7 +131,7 @@ void CIFWnd::Func_22(int x, int y)
 // CIFWnd::Func_37(void) .text 00652660 0000000A   R . . . . . .
 void CIFWnd::Func_37()
 {
-	Func_41();
+	OnCIFReady();
 }
 
 // CIFWnd::CTextBoard_Func_7 .text 00652850 00000045 00000008 00000000 R . . . . . .
@@ -183,7 +183,7 @@ void CIFWnd::MoveGWnd(int x, int y)
 	reinterpret_cast<void(__thiscall*)(CIFWnd*,int,int)>(0x006529A0)(this, x, y);
 #if 0
 	CGWnd::SetPosition(x, y);
-	this->Func_41();
+	this->OnCIFReady();
 #endif
 }
 
@@ -203,8 +203,8 @@ void CIFWnd::Func_40()
 	// Empty in original
 }
 
-
-void CIFWnd::Func_41() {
+void CIFWnd::OnCIFReady()
+{
     reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x006529D0)(this);
 }
 

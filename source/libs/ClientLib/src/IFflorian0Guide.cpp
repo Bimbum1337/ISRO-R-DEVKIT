@@ -1,6 +1,7 @@
 #include "../../../DevKit_DLL/src/StdAfx.h"
 #include "IFflorian0Guide.h"
 #include "GEffSoundBody.h"
+#include "GInterface.h"
 
 GFX_IMPLEMENT_DYNCREATE(CIFflorian0Guide, CIFDecoratedStatic)
 
@@ -26,15 +27,16 @@ int CIFflorian0Guide::OnMouseLeftUp(int a1, int x, int y)
 	printf("> " __FUNCTION__ "(%d, %d, %d)\n", a1, x, y);
 
 	CGEffSoundBody::get()->PlaySound(L"snd_quest");
+	g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(true);
 
 	return 0;
 }
 
-void CIFflorian0Guide::Func_41()
+void CIFflorian0Guide::OnCIFReady()
 {
 	printf("> " __FUNCTION__ "\n");
 
-	CIFDecoratedStatic::Func_41();
+	CIFDecoratedStatic::OnCIFReady();
 	sub_633990();
 
 }

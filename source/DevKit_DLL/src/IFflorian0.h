@@ -16,6 +16,7 @@ public:
 
 private:
 	void On_BtnClick();
+	void On_BtnExitClick();
 
 	int On4001(int a1, int a2);
 	int On4002(int a1, int a2);
@@ -26,5 +27,7 @@ private:
 
 private:
 	CIFButton *m_mybutton;
-	//CIFStatic *m_my_label;
+	CIFStatic* m_time_label;
+	CIFStatic* m_custom_label;
+
 };

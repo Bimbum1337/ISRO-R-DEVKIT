@@ -45,11 +45,11 @@ void CIFTileWnd::SetGWndSize(int width, int height)
 // CIFTileWnd::Func_40(void) .text 0081A720 0000000A   R . . . . . .
 void CIFTileWnd::Func_40()
 {
-	Func_41();
+	OnCIFReady();
 }
 
-// CIFTileWnd::Func_41(void) .text 0081A740 000001C8 00000024 00000000 R . . . . . .
-void CIFTileWnd::Func_41()
+// CIFTileWnd::OnCIFReady(void) .text 0081A740 000001C8 00000024 00000000 R . . . . . .
+void CIFTileWnd::OnCIFReady()
 {
 	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x0081A740)(this);
 }

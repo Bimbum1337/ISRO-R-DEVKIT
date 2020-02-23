@@ -47,7 +47,7 @@ public:
 	virtual void Func_40();
 
 	/// \address 006529D0
-	virtual void Func_41();
+	virtual void OnCIFReady();
 
 	virtual void Func_42();
 	virtual void Func_43();

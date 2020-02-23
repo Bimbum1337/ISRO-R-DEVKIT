@@ -13,7 +13,7 @@ public:
 
 	void RenderMyself() override;
 
-	void Func_41() override;
+	void OnCIFReady() override;
 
 	virtual bool Func_52();
 

@@ -1,6 +1,7 @@
 #include "IFflorian0.h"
 #include <ctime>
 
+#define GDR_FLORIAN0_BTNEXIT 2
 #define GDR_FLORIAN0_LABEL 10
 #define GDR_FLORIAN0_BTN 11
 #define GDR_FLORIAN0_LABEL_TIME 13
@@ -9,6 +10,7 @@ GFX_IMPLEMENT_DYNCREATE(CIFflorian0, CIFMainFrame)
 
 GFX_BEGIN_MESSAGE_MAP(CIFflorian0, CIFMainFrame)
 	ONG_COMMAND(GDR_FLORIAN0_BTN, &On_BtnClick)
+	ONG_COMMAND(GDR_FLORIAN0_BTNEXIT, &On_BtnExitClick)
 	ONG_WM_4001()
 	ONG_WM_4002()
 	ONG_WM_4003()
@@ -40,6 +42,10 @@ bool CIFflorian0::OnCreate(long ln)
 	m_IRM.CreateInterfaceSection("Create", this);
 
 	m_mybutton = m_IRM.GetResObj<CIFButton>(GDR_FLORIAN0_BTN, 1);
+	m_time_label = m_IRM.GetResObj<CIFStatic>(GDR_FLORIAN0_LABEL_TIME, 1);
+	m_custom_label = m_IRM.GetResObj<CIFStatic>(GDR_FLORIAN0_LABEL, 1);
+	this->ShowGWnd(false);
+
 
 	return true;
 }
@@ -55,7 +61,7 @@ void CIFflorian0::OnUpdate()
 
 	wcsftime(buffer,sizeof(buffer),L"%d-%m-%Y %H:%M:%S",timeinfo);
 
-	m_IRM.GetResObj<CIFStatic>(GDR_FLORIAN0_LABEL_TIME, 1)->SetText(buffer);
+	m_time_label->SetText(buffer);
 }
 
 void CIFflorian0::On_BtnClick()
@@ -67,8 +73,14 @@ void CIFflorian0::On_BtnClick()
 	wchar_t buffer[80];
 	swprintf(buffer, L"Hello World (%d)", i++);
 
-	m_IRM.GetResObj<CIFStatic>(GDR_FLORIAN0_LABEL, 1)->SetText(buffer);
+	m_custom_label->SetText(buffer);
 }
+
+void CIFflorian0::On_BtnExitClick()
+{
+	this->ShowGWnd(false);
+}
+
 
 int CIFflorian0::On4001(int a1, int a2)
 {
