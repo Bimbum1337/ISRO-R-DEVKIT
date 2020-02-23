@@ -2,20 +2,19 @@
 
 class CRTNavCellQuad;
 
-#include "navmesh/RTNavCell.h"
-#include "navmesh/ObjectList.h"
+#include <vector>
+
+#include "RTNavCell.h"
+#include "ObjectList.h"
+#include "RTNavEdge.h"
 
 class CRTNavCellQuad : public CRTNavCell, public CObjectList
 {
 public:
-	char pad_0000[32-4-8]; //0x0000
-	int id;
-	float Center_X; //0x0020
-	float Center_Z; //0x0024
-	float vMin_X; //0x0028
-	float vMin_Z; //0x002C
-	float vMax_X; //0x0030
-	float vMax_Z; //0x0034
-	char pad_0038[64]; //0x0038
+	int m_dwEdgeCount;
+	D3DXVECTOR2 m_Center;
+	D3DXVECTOR2 m_vMin;
+	D3DXVECTOR2 m_vMax;
+	std::vector<CRTNavEdge*> m_sEdges[4];
 };
 

@@ -5,5 +5,6 @@ class CRTNavEdgeGlobal;
 
 class CRTNavEdgeGlobal : public CRTNavEdge
 {
+public:
+	NavEdgeGlobal m_sData;
 };
-

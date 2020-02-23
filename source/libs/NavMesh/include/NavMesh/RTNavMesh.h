@@ -3,6 +3,15 @@
 class CRTNavMesh;
 
 #include <d3d9.h>
+#include <string>
+
+enum RTNavMeshType : int
+{
+	None = 0,
+	Terrain = 1,
+	Object = 2,
+	Dungeon = 3,
+};
 
 class CRTNavMesh
 {
@@ -11,15 +20,16 @@ public:
 	
 	virtual ~CRTNavMesh();
 	virtual int FindHeight(D3DVECTOR &vPos);
-	virtual void RelatedToMoving();
-	virtual void RelatedToLoading(int);
+	virtual void Move(); // int a2, int a3, SNavMeshPosition* pSrc, SNavMeshPosition* pDst, pRaycastContext* pContext
+	virtual void ResolveCellAndHeight(void* position); //SNavMeshPosition* but the linking is killing me...
 	virtual int F05();
 	virtual int F06(int, int);
 
 public:
-	int N000009F1; // set this to 1 for quick exit Kappa
-	short region;
-	int N000009F3;
+	CRTNavMesh* m_ParentMesh;
+	short m_Region;
+	RTNavMeshType m_Type;
+	std::string *m_File;
 
 };
 
