@@ -10,6 +10,7 @@
 #include "Game.h"
 #include "FakeWinMain_CPSQuickStart.h"
 
+
 std::vector<const CGfxRuntimeClass*>* register_objects;
 
 // Locals
@@ -17,15 +18,24 @@ std::vector<const CGfxRuntimeClass*>* register_objects;
 #define szTitle ((LPSTR)0x00EECCB0)
 #define szWindowClass ((LPSTR)0x00EECC48)
 
-wchar_t* servername = L"srv";
-wchar_t* userid = L"usr";
-wchar_t* passwd = L"pw";
-char* charname = "name";
-char* ibuv_text = "7"; // IBUV = Image Code
+wchar_t servername[32];
+wchar_t userid[32];
+wchar_t passwd[32];
+char charname[32];
+char ibuv_text[32]; // IBUV = Image Code
 
 void FakeWinMain_CPSQuickStart::Setup(std::vector<const CGfxRuntimeClass*>* a)
 {
 	register_objects = a;
+
+	const char* cPath = ".\\setting\\CPSQuickStart.ini";
+	const wchar_t* wPath = L".\\setting\\CPSQuickStart.ini";
+	GetPrivateProfileStringW(L"sro_devkit", L"servername", L"", servername, 32, wPath);
+	GetPrivateProfileStringW(L"sro_devkit", L"userid", L"", userid, 32, wPath);
+	GetPrivateProfileStringW(L"sro_devkit", L"passwd", L"", passwd, 32, wPath);
+	GetPrivateProfileStringA("sro_devkit", "charname", "", charname, 32, cPath);
+	GetPrivateProfileStringA("sro_devkit", "ibuv_text", "", ibuv_text, 32, cPath);
+
 	// Override credentials & info
 	replaceAddr(0x00EC2444, reinterpret_cast<int>(servername));
 	replaceAddr(0x00EC2448, reinterpret_cast<int>(userid));
@@ -47,6 +57,12 @@ int APIENTRY FakeWinMain_CPSQuickStart::_FakeWinMain_CPSQuickStart(HINSTANCE hIn
 
 	printf("florian0's dev-client build on CMake\n");
 	printf("WARNING: CPSQuickStart IS enabled!!!\n");
+	printf("Servername: %ws, len(%d)\n", servername, wcslen(servername));
+	printf("UserID: %ws, len(%d)\n", userid, wcslen(userid));
+	//printf("PW: %ws, len(%d)\n", passwd, wcslen(passwd));
+	printf("Charname: %s, len(%d)\n", charname, strlen(charname));
+	printf("IBUV_TEXT: %s, len(%d)\n", ibuv_text, strlen(ibuv_text));
+
 
 	MSG msg;
 	HACCEL hAccelTable;

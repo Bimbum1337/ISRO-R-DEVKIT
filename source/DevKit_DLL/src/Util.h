@@ -4,6 +4,8 @@
 
 void Setup(void);
 
+bool DoesFileExists(const std::string& name);
+
 void RegisterObject(const CGfxRuntimeClass*);
 
 // Overriding is currently not supported
