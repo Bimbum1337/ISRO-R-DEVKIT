@@ -6,8 +6,11 @@
 #include "Game.h"
 
 GlobalVar<bool, 0x00EED310> CPSQuickStart::m_ready;
-extern char* charname;
-extern char* ibuv_text;
+//extern char* charname;
+//extern char* ibuv_text;
+
+extern char charname[32];
+extern char ibuv_text[32];
 
 char CPSQuickStart::OnCreate(int a1)
 {
@@ -60,6 +63,7 @@ int CPSQuickStart::OnNetMsg(CMsgStreamBuffer* pMsg)
 		CMsgStreamBuffer buf(0x7001);
 
 		buf << std::string(charname); // Character Name
+		printf("Sent charname: \"%s\"\n", charname);
 
 		SendMsg(buf);
 

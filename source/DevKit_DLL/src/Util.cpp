@@ -9,6 +9,7 @@
 #include "PSQuickStart.h"
 #include "Game.h"
 #include "FakeWinMain_CPSQuickStart.h"
+#include <sys/stat.h>
 
 std::vector<const CGfxRuntimeClass*> register_objects;
 
@@ -27,11 +28,18 @@ HINSTANCE hInst;
 
 void Setup()
 {
-#if 1
-	replaceOffset(0x00B49AE4, (int)&_FakeWinMain);
-#else
-	FakeWinMain_CPSQuickStart::Setup(&register_objects);
-#endif
+	const char* cPath = ".\\setting\\CPSQuickStart.ini";
+	if (DoesFileExists(cPath))
+	{
+		char CPSQuickStartEnabled[1];
+		GetPrivateProfileStringA("sro_devkit", "enabled", "", CPSQuickStartEnabled, 2, cPath);
+		if (CPSQuickStartEnabled[0] == '1') 
+			FakeWinMain_CPSQuickStart::Setup(&register_objects);
+		else
+			replaceOffset(0x00B49AE4, (int)&_FakeWinMain);		
+	}
+	else
+		replaceOffset(0x00B49AE4, (int)&_FakeWinMain);
 
 	// vftableHook(0x00E0963C, 25, addr_from_this(&CGFXVideo3d::BeginSceneIMPL));
 
@@ -46,6 +54,11 @@ void Setup()
 	replaceAddr(0x00832927+1, (int)&DebugPrintCallback);
 
     placeHook(0x0065c6f0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
+}
+
+bool DoesFileExists(const std::string& name) {
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
 }
 
 void RegisterObject(const CGfxRuntimeClass* obj)
