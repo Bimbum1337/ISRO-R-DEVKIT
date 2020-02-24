@@ -7,6 +7,5 @@ class CRTNavEdgeInternal;
 class CRTNavEdgeInternal : public CRTNavEdge
 {
 public:
-	
+	NavEdge m_sData;
 };
-

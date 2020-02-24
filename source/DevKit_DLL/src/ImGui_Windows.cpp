@@ -13,6 +13,7 @@
 
 #include <NavMesh/RTNavMeshTerrain.h>
 #include "hooks.h"
+#include "MathUtil.h"
 #include "GEffSoundBody.h"
 #include "multibyte.h"
 #include "IFSystemMessage.h"
@@ -121,9 +122,10 @@ void ImGui_Window_NavMeshTool(bool *p_open)
 	ImGui::Begin("NavMesh Info", p_open);
 
 	ImGui::Text("0x%p", pNavmesh);
-	ImGui::Text("Region: 0x%04x", pNavmesh->region);
+	ImGui::Text("Region: 0x%04x", pNavmesh->m_Region);
 
-	ImGui::Text("Cells: %d", pNavmesh->m_navcells.size());
+	ImGui::Text("Total Cells: %d", pNavmesh->m_Cells.size());
+	ImGui::Text("Open Cells: %d", pNavmesh->m_OpenCellCount);
 
 	ImGui::Checkbox("Freeze Current Mesh", &bFreeze);
 
@@ -142,21 +144,30 @@ void ImGui_Window_NavMeshTool(bool *p_open)
 	static bool bObjectCells = false;
 	ImGui::Checkbox("Render Object Cells", &bObjectCells);
 
+	static bool bObjectInternalEdges = false;
+	ImGui::Checkbox("Render Object Internal Edges", &bObjectInternalEdges);
+
+	static bool bObjectGlobalEdges = false;
+	ImGui::Checkbox("Render Object Global Edges", &bObjectGlobalEdges);
+	
+	static bool bObjectGrid = false;
+	ImGui::Checkbox("Render Object Grid", &bObjectGrid);
+
 	static int step = 20;
 	ImGui::InputInt("Step", &step);
 
 	// Render NavMeshTerrain Cells
 	if (bCells)
 	{
-		for (std::vector<CRTNavCellQuad>::iterator it = pNavmesh->m_navcells.begin(); it != pNavmesh->m_navcells.end(); ++it)
+		for (std::vector<CRTNavCellQuad>::iterator it = pNavmesh->m_Cells.begin(); it != pNavmesh->m_Cells.end(); ++it)
 		{
 			D3DVECTOR v2 = {0.0, 30, 0.0};
-			v2.x = it->vMin_X;
-			v2.z = it->vMin_Z;
+			v2.x = it->m_vMin.x;
+			v2.z = it->m_vMin.y;
 
 			D3DVECTOR v3 = {0.0, 30, 0.0};
-			v3.x = it->vMax_X;
-			v3.z = it->vMax_Z;
+			v3.x = it->m_vMax.x;
+			v3.z = it->m_vMax.y;
 
 			D3DVECTOR pmiss1;
 			pmiss1.x = v3.x;
@@ -176,112 +187,111 @@ void ImGui_Window_NavMeshTool(bool *p_open)
 	// Render NavMeshTerrain Edges (internal)
 	if (bEdgeInternal)
 	{
-		for (std::vector<CRTNavEdgeInternal>::iterator it = pNavmesh->m_edge_internal.begin(); it != pNavmesh->m_edge_internal.end(); ++it )
+		for (std::vector<CRTNavEdgeInternal>::iterator it = pNavmesh->m_InternalEdges.begin(); it != pNavmesh->m_InternalEdges.end(); ++it)
 		{
-			D3DVECTOR min, max;
-			min.x = it->m_edge.EdgeMin.x;
-			min.z = it->m_edge.EdgeMin.y;
+			NavEdge edge = it->m_sData;
+			D3DXVECTOR3 min = ToVector3(edge.sLine.Min);
+			D3DXVECTOR3 max = ToVector3(edge.sLine.Max);
 
-			max.x = it->m_edge.EdgeMax.x;
-			max.z = it->m_edge.EdgeMax.y;
-
-			if (it->m_edge.N4_1 == 4)
-			{
-				PrettyLine3D(min, max, step, D3DCOLOR_ARGB(0, 0, 255, 0), pNavmesh);
-			} 
-			else if (it->m_edge.N4_1 == 2)
-			{
-				PrettyLine3D(min, max, step, D3DCOLOR_ARGB(0, 255, 0, 0), pNavmesh);
-			}
-			else
-			{
-				// Unsure what this means, but ill draw it anyways
-				PrettyLine3D(min, max, step, D3DCOLOR_ARGB(0, 0, 255, 255), pNavmesh);
-			}
+			PrettyLine3D(min, max, step, GetColorFromEdgeFlag(edge.btFlag), pNavmesh);
 		}
 	}
 
-	if (bObjectOrigin || bObjectCells)
+	if (bEdgeGlobal)
 	{
-		for (std::vector<CollisionObject*>::iterator it = pNavmesh->m_objectlist.begin(); it != pNavmesh->m_objectlist.end(); ++it)
+		for (std::vector<CRTNavEdgeGlobal>::iterator it = pNavmesh->m_GlobalEdges.begin(); it != pNavmesh->m_GlobalEdges.end(); ++it)
 		{
-			CollisionObject *collision_object = *it;
+			NavEdgeGlobal edge = it->m_sData;
+			D3DXVECTOR3 min = ToVector3(edge.sLine.Min);
+			D3DXVECTOR3 max = ToVector3(edge.sLine.Max);
 
-			float yaw = -collision_object->yaw;
+			PrettyLine3D(min, max, step, GetColorFromEdgeFlag(edge.btFlag), pNavmesh);
+		}
+	}
 
-			if (bObjectOrigin) 
+	if (bObjectOrigin || bObjectCells || bObjectGlobalEdges || bObjectInternalEdges || bObjectGrid)
+	{
+		for (std::vector<SNavMeshInst*>::iterator it = pNavmesh->m_sObjList.begin(); it != pNavmesh->m_sObjList.end(); ++it)
+		{
+			SNavMeshInst* pInst = *it;
+			CRTNavMeshObj* pObj = pInst->m_pObject;
+			float yaw = -pInst->m_sObj.Yaw;
+			D3DXVECTOR3& offset = pInst->m_sObj.Offset;
+
+			if (bObjectOrigin)
 			{
-				D3DVECTOR &vec = collision_object->origin;
+				D3DVECTOR& vec = offset;
 				D3DVECTOR vec2d;
 				if (gfx->Project(vec, vec2d) > 0)
 				{
 					{
 						// Red X
-						D3DXVECTOR3 pTarget(20,0,0);
+						D3DXVECTOR3 pTarget(20, 0, 0);
 						rotatey(pTarget, yaw);
 
 						pTarget += vec;
 
 						D3DVECTOR pTarget2D;
-						if (gfx->Project(pTarget, pTarget2D) > 0) DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 255, 0, 0), 1.0);
+						if (gfx->Project(pTarget, pTarget2D) > 0)
+							DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 255, 0, 0), 1.0);
 					}
 
 					{
 						// Blue Y
-						D3DXVECTOR3 pTarget(0,20,0);
+						D3DXVECTOR3 pTarget(0, 20, 0);
 						rotatey(pTarget, yaw);
 
 						pTarget += vec;
-						
+
 						D3DVECTOR pTarget2D;
-						if (gfx->Project(pTarget, pTarget2D) > 0) DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 0, 255), 1.0);
+						if (gfx->Project(pTarget, pTarget2D) > 0)
+							DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 0, 255), 1.0);
 					}
 
 					{
 						// Green Z
-						D3DXVECTOR3 pTarget(0,0,20);
+						D3DXVECTOR3 pTarget(0, 0, 20);
 						rotatey(pTarget, yaw);
-						
+
 						pTarget += vec;
 
 						D3DVECTOR pTarget2D;
-						if (gfx->Project(pTarget, pTarget2D) > 0) DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
+						if (gfx->Project(pTarget, pTarget2D) > 0)
+							DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
 					}
 
-					if (it == pNavmesh->m_objectlist.begin())
+					if (it == pNavmesh->m_sObjList.begin())
 					{
-						DrawRect(vec2d.x-5, vec2d.y-5, 10, 10, D3DCOLOR_ARGB(0, 255, 0, 0));
-					} 
+						DrawRect(vec2d.x - 5, vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 0, 0));
+					}
 					else
 					{
-						DrawRect(vec2d.x-5, vec2d.y-5, 10, 10, D3DCOLOR_ARGB(0, 255, 255, 0));
+						DrawRect(vec2d.x - 5, vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 255, 0));
 					}
 				}
 			}
 
 			if (bObjectCells)
 			{
-				CRTNavMeshObj *nvm = collision_object->m_nvm_obj;
-
-				for (std::vector<CRTNavCellTri>::iterator it = nvm->m_cells.begin(); it != nvm->m_cells.end(); ++it)
+				for (std::vector<CRTNavCellTri>::iterator it = pObj->m_Cells.begin(); it != pObj->m_Cells.end(); ++it)
 				{
-					CRTNavCellTri &cell = *it;
+					CRTNavCellTri& cell = *it;
 
 					D3DXVECTOR3 p1, p2, p3, p12d, p22d, p32d;
 
-					p1 = cell.vP1;
+					p1 = cell.AssocVertex[0]->Position;
 					rotatey(p1, yaw);
-					p1 += collision_object->origin;
+					p1 += offset;
 
-					p2 = cell.vP2;
+					p2 = cell.AssocVertex[1]->Position;
 					rotatey(p2, yaw);
-					p2 += collision_object->origin;
+					p2 += offset;
 
-					p3 = cell.vP3;
+					p3 = cell.AssocVertex[2]->Position;
 					rotatey(p3, yaw);
-					p3 += collision_object->origin;
+					p3 += offset;
 
-					
+
 					bool vis1 = gfx->Project(p1, p12d) > 0;
 					bool vis2 = gfx->Project(p2, p22d) > 0;
 					bool vis3 = gfx->Project(p3, p32d) > 0;
@@ -289,6 +299,95 @@ void ImGui_Window_NavMeshTool(bool *p_open)
 					if (vis1 && vis2) DXDrawLine(p12d.x, p12d.y, p22d.x, p22d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
 					if (vis2 && vis3) DXDrawLine(p22d.x, p22d.y, p32d.x, p32d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
 					if (vis1 && vis3) DXDrawLine(p12d.x, p12d.y, p32d.x, p32d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
+				}
+			}
+
+			if (bObjectInternalEdges)
+			{
+				for (std::vector<PrimNavMeshEdge>::iterator it = pObj->m_InternalEdges.begin(); it != pObj->m_InternalEdges.end(); ++it)
+				{
+					PrimNavMeshEdge& edge = *it;
+
+					D3DXVECTOR3 p1, p2, p1_2d, p2_2d;
+					p1 = edge.AssocVertex[0]->Position;
+					rotatey(p1, yaw);
+					p1 += offset;
+
+					p2 = edge.AssocVertex[1]->Position;
+					rotatey(p2, yaw);
+					p2 += offset;
+
+					bool vis1 = gfx->Project(p1, p1_2d) > 0;
+					bool vis2 = gfx->Project(p2, p2_2d) > 0;
+
+					if (vis1 && vis2)
+					{
+						DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, GetColorFromEdgeFlag(edge.btFlag), 1.0);
+					}
+				}
+			}
+
+			if (bObjectGlobalEdges)
+			{
+				for (std::vector<PrimNavMeshEdge>::iterator it = pObj->m_GlobalEdges.begin(); it != pObj->m_GlobalEdges.end(); ++it)
+				{
+					PrimNavMeshEdge& edge = *it;
+
+					D3DXVECTOR3 p1, p2, p1_2d, p2_2d;
+					p1 = edge.AssocVertex[0]->Position;
+					rotatey(p1, yaw);
+					p1 += offset;
+
+					p2 = edge.AssocVertex[1]->Position;
+					rotatey(p2, yaw);
+					p2 += offset;
+
+					bool vis1 = gfx->Project(p1, p1_2d) > 0;
+					bool vis2 = gfx->Project(p2, p2_2d) > 0;
+
+					if (vis1 && vis2)
+					{
+						DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, GetColorFromEdgeFlag(edge.btFlag), 1.0);
+					}
+				}
+			}
+
+			if (bObjectGrid)
+			{
+				for (size_t y = 0; y < pObj->m_Grid.m_Height; y++)
+				{
+					for (size_t x = 0; x < pObj->m_Grid.m_Width; x++)
+					{
+						const float TILE_WIDTH = 100.0f;
+						const float TILE_HEIGHT = 100.0f;
+
+						D3DXVECTOR3 localOrigin = ToVector3(pObj->m_Grid.m_Origin) + D3DXVECTOR3(x * TILE_WIDTH, 0, y * TILE_HEIGHT);
+						D3DXVECTOR3 p1 = localOrigin + D3DXVECTOR3(0, 0, 0);
+						D3DXVECTOR3 p2 = localOrigin + D3DXVECTOR3(TILE_WIDTH, 0, 0);
+						D3DXVECTOR3 p3 = localOrigin + D3DXVECTOR3(0, 0, TILE_HEIGHT);
+						D3DXVECTOR3 p4 = localOrigin + D3DXVECTOR3(TILE_WIDTH, 0, TILE_HEIGHT);
+
+						rotatey(p1, yaw);
+						rotatey(p2, yaw);
+						rotatey(p3, yaw);
+						rotatey(p4, yaw);
+
+						p1 += offset;
+						p2 += offset;
+						p3 += offset;
+						p4 += offset;
+
+						D3DXVECTOR3 p1_2d, p2_2d, p3_2d, p4_2d;
+						bool vis1 = gfx->Project(p1, p1_2d) > 0;
+						bool vis2 = gfx->Project(p2, p2_2d) > 0;
+						bool vis3 = gfx->Project(p3, p3_2d) > 0;
+						bool vis4 = gfx->Project(p4, p4_2d) > 0;
+
+						if (vis1 && vis2) DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, 0x00FF88FF, 1.0);
+						if (vis1 && vis3) DXDrawLine(p1_2d.x, p1_2d.y, p3_2d.x, p3_2d.y, 0x00FF88FF, 1.0);
+						if (vis2 && vis4) DXDrawLine(p2_2d.x, p2_2d.y, p4_2d.x, p4_2d.y, 0x00FF88FF, 1.0);
+						if (vis3 && vis4) DXDrawLine(p3_2d.x, p3_2d.y, p4_2d.x, p4_2d.y, 0x00FF88FF, 1.0);
+					}
 				}
 			}
 		}
@@ -401,120 +500,120 @@ void ImGui_Window_SoundTool(bool *p_open)
 
 struct EntityListColumnHeader
 {
-    const char* label;
-    float size;
+	const char* label;
+	float size;
 };
 
 void ImGui_Window_EntityExplorer(bool *p_open) {
 
-    if (!ImGui::Begin("EntityManager", p_open)) {
-        ImGui::End();
-        return;
-    }
+	if (!ImGui::Begin("EntityManager", p_open)) {
+		ImGui::End();
+		return;
+	}
 
-    EntityListColumnHeader headers[] =
-        {
-            { "ID", 40 },
-            { "Address", 70 },
-            { "Type", 120 },
-            { "Position", 500 }
-        };
+	EntityListColumnHeader headers[] =
+		{
+			{ "ID", 40 },
+			{ "Address", 70 },
+			{ "Type", 120 },
+			{ "Position", 500 }
+		};
 
-    ImGui::Columns(IM_ARRAYSIZE(headers), "TableTextureColumns", true);
-    ImGui::Separator();
+	ImGui::Columns(IM_ARRAYSIZE(headers), "TableTextureColumns", true);
+	ImGui::Separator();
 
-    float offset = 0.0f;
-    for(int i = 0; i < IM_ARRAYSIZE(headers); i++)
-    {
-        EntityListColumnHeader *header = &headers[i];
-        ImGui::Text(header->label);
-        ImGui::SetColumnOffset(-1, offset);
-        offset += header->size;
-        ImGui::NextColumn();
-    }
+	float offset = 0.0f;
+	for(int i = 0; i < IM_ARRAYSIZE(headers); i++)
+	{
+		EntityListColumnHeader *header = &headers[i];
+		ImGui::Text(header->label);
+		ImGui::SetColumnOffset(-1, offset);
+		offset += header->size;
+		ImGui::NextColumn();
+	}
 
-    ImGui::Separator();
+	ImGui::Separator();
 
-    static int selected = -1;
+	static int selected = -1;
 
-    for (std::map<int,CIObject*>::iterator it = g_pGfxEttManager->entities.begin(); it != g_pGfxEttManager->entities.end(); ++it)
-    {
-        char label[32];
-        sprintf(label, "%d", it->first);
+	for (std::map<int,CIObject*>::iterator it = g_pGfxEttManager->entities.begin(); it != g_pGfxEttManager->entities.end(); ++it)
+	{
+		char label[32];
+		sprintf(label, "%d", it->first);
 
-        if (ImGui::Selectable(label, selected == it->first, ImGuiSelectableFlags_SpanAllColumns))
-            selected = it->first;
+		if (ImGui::Selectable(label, selected == it->first, ImGuiSelectableFlags_SpanAllColumns))
+			selected = it->first;
 
-        ImGui::NextColumn();
+		ImGui::NextColumn();
 
-        ImGui::Text("%p", it->second); ImGui::NextColumn();
-        ImGui::Text("%s", it->second->GetRuntimeClass()->m_lpszClassName); ImGui::NextColumn();
+		ImGui::Text("%p", it->second); ImGui::NextColumn();
+		ImGui::Text("%s", it->second->GetRuntimeClass()->m_lpszClassName); ImGui::NextColumn();
 
-        ImGui::Text("(%d,%d) (%.2f, %.2f, %.2f)",
-                    it->second->region.single.x,
-                    it->second->region.single.y,
-                    it->second->location.x,
-                    it->second->location.y,
-                    it->second->location.z
-        ); ImGui::NextColumn();
+		ImGui::Text("(%d,%d) (%.2f, %.2f, %.2f)",
+					it->second->region.single.x,
+					it->second->region.single.y,
+					it->second->location.x,
+					it->second->location.y,
+					it->second->location.z
+		); ImGui::NextColumn();
 
-        ImGui::Separator();
+		ImGui::Separator();
 
-    }
+	}
 
-    ImGui::Columns(1);
+	ImGui::Columns(1);
 
-    ImGui::Text("Number of Entites: %d", g_pGfxEttManager->entities.size());
+	ImGui::Text("Number of Entites: %d", g_pGfxEttManager->entities.size());
 
-    char label[32];
-    sprintf(label, "Move to Entity #%d", selected);
+	char label[32];
+	sprintf(label, "Move to Entity #%d", selected);
 
-    static bool b_checked = false;
-    ImGui::Checkbox("Highlight selected", &b_checked);
+	static bool b_checked = false;
+	ImGui::Checkbox("Highlight selected", &b_checked);
 
-    if (b_checked && selected != -1)
-    {
-        // ESP ON
+	if (b_checked && selected != -1)
+	{
+		// ESP ON
 
-        std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
-        if (elem != g_pGfxEttManager->entities.end())
-        {
+		std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
+		if (elem != g_pGfxEttManager->entities.end())
+		{
 
-            D3DVECTOR d2dpos, d2dpos_up, d2dpos_own;
-            D3DVECTOR d3dpos = elem->second->location;
-            D3DVECTOR d3dpos_up = elem->second->location;
+			D3DVECTOR d2dpos, d2dpos_up, d2dpos_own;
+			D3DVECTOR d3dpos = elem->second->location;
+			D3DVECTOR d3dpos_up = elem->second->location;
 
-            d3dpos_up.y += 18.0;
+			d3dpos_up.y += 18.0;
 
-            if (CGFXVideo3d::get()->Project(d3dpos, d2dpos) > 0)
-            {
-                DrawRect(d2dpos.x-5, d2dpos.y-5, 10, 10);
+			if (CGFXVideo3d::get()->Project(d3dpos, d2dpos) > 0)
+			{
+				DrawRect(d2dpos.x-5, d2dpos.y-5, 10, 10);
 
-                if (CGFXVideo3d::get()->Project(theApp.camera.character, d2dpos_own) > 0)
-                {
-                    DXDrawLine(d2dpos_own.x, d2dpos_own.y, d2dpos.x, d2dpos.y, D3DCOLOR_ARGB(0, 255, 255, 0), 1.0);
-                }
+				if (CGFXVideo3d::get()->Project(theApp.camera.character, d2dpos_own) > 0)
+				{
+					DXDrawLine(d2dpos_own.x, d2dpos_own.y, d2dpos.x, d2dpos.y, D3DCOLOR_ARGB(0, 255, 255, 0), 1.0);
+				}
 
 
-            }
+			}
 
-            if (CGFXVideo3d::get()->Project(d3dpos_up, d2dpos_up) > 0)
-            {
-                DXDrawLine(d2dpos.x, d2dpos.y, d2dpos_up.x, d2dpos_up.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
-            }
-        }
-    }
+			if (CGFXVideo3d::get()->Project(d3dpos_up, d2dpos_up) > 0)
+			{
+				DXDrawLine(d2dpos.x, d2dpos.y, d2dpos_up.x, d2dpos_up.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
+			}
+		}
+	}
 
-    if (ImGui::Button(label))
-    {
-        std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
-        if (elem != g_pGfxEttManager->entities.end())
-        {
-            g_pCGInterface->m_Nav.MoveTo(elem->second->region, elem->second->location);
-        }
-    }
+	if (ImGui::Button(label))
+	{
+		std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
+		if (elem != g_pGfxEttManager->entities.end())
+		{
+			g_pCGInterface->m_Nav.MoveTo(elem->second->region, elem->second->location);
+		}
+	}
 
-    ImGui::End();
+	ImGui::End();
 }
 
 void ImGui_OnCreate(HWND hWindow, void* msghandler, int a3)
@@ -537,11 +636,11 @@ void ImGui_OnEndScene()
 	}
 
 	ImGui_ImplDX9_NewFrame();
-    ImGui_ImplWin32_NewFrame();
+	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	    // Menu
-    if (ImGui::BeginMainMenuBar())
+		// Menu
+	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
@@ -595,8 +694,8 @@ void ImGui_OnEndScene()
 		if (ImGui::BeginMenu("Tools"))
 		{
 			ImGui::MenuItem("Interface Tool", 0, &ImGui_Window_InterfaceDebugger_Show);
-            ImGui::MenuItem("NavMesh Explorer", 0, &ImGui_Window_NavMeshTool_Show);
-            ImGui::MenuItem("Enity Explorer", 0, &ImGui_Window_EntityExplorer_Show);
+			ImGui::MenuItem("NavMesh Explorer", 0, &ImGui_Window_NavMeshTool_Show);
+			ImGui::MenuItem("Enity Explorer", 0, &ImGui_Window_EntityExplorer_Show);
 			ImGui::MenuItem("Keyframe Editor", 0, false, false);
 			ImGui::MenuItem("Script Editor", 0, false, false);
 			ImGui::MenuItem("Sound Tool", 0, &ImGui_Window_SoundTool_Show);
@@ -622,29 +721,29 @@ void ImGui_OnEndScene()
 
 	if (ImGui::Button("Hide"))
 	{
-        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(false);
+		g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(false);
 	}
 
 	if (ImGui::Button("Show"))
 	{
-        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(true);
+		g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(true);
 	}
 
 	if (ImGui::Button("Init Event")) {
-	    g_pCGInterface->CreateFlorian0Event();
+		g_pCGInterface->CreateFlorian0Event();
 	}
 
-    if (ImGui::Button("System Log"))
-    {
-        wchar_t message[] = L"System Log Message";
+	if (ImGui::Button("System Log"))
+	{
+		wchar_t message[] = L"System Log Message";
 
-        // Color (Picker: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool)
-        int color = D3DCOLOR_ARGB(255, 0, 255, 0);
+		// Color (Picker: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool)
+		int color = D3DCOLOR_ARGB(255, 0, 255, 0);
 
-        // Get the SystemLog Window - Media//resinfo//ginterface.txt - GDR_SYSTEM_MESSAGE_VIEW:IFSystemMessage -> ID Should be 68
-        IFSystemMessage *systemmessage = reinterpret_cast<IFSystemMessage *>(g_pCGInterface->m_IRM.GetResObj(68, 1));
-        systemmessage->write(0xFF, color, message, 0, 1);
-    }
+		// Get the SystemLog Window - Media//resinfo//ginterface.txt - GDR_SYSTEM_MESSAGE_VIEW:IFSystemMessage -> ID Should be 68
+		IFSystemMessage *systemmessage = reinterpret_cast<IFSystemMessage *>(g_pCGInterface->m_IRM.GetResObj(68, 1));
+		systemmessage->write(0xFF, color, message, 0, 1);
+	}
 
 	ImGui::End();
 
@@ -652,7 +751,7 @@ void ImGui_OnEndScene()
 	if (ImGui_Window_NavMeshTool_Show) ImGui_Window_NavMeshTool(&ImGui_Window_NavMeshTool_Show);
 	
 	if (ImGui_Window_SoundTool_Show) ImGui_Window_SoundTool(&ImGui_Window_InterfaceDebugger_Show);
-    if (ImGui_Window_EntityExplorer_Show) ImGui_Window_EntityExplorer(&ImGui_Window_EntityExplorer_Show);
+	if (ImGui_Window_EntityExplorer_Show) ImGui_Window_EntityExplorer(&ImGui_Window_EntityExplorer_Show);
 
 	ImGui::EndFrame();
 

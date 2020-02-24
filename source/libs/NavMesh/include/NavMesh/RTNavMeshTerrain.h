@@ -10,22 +10,35 @@ class CRTNavMeshTerrain;
 #include "RTNavCellQuad.h"
 #include "RTNavEdgeGlobal.h"
 #include "RTNavEdgeInternal.h"
-#include "CollisionObject.h"
+#include "SNavMeshInst.h"
 
 class CRTNavMeshTerrain : public CRTNavMesh, public CObjectList
 {
 public:
 
 	int FindHeight(D3DVECTOR& vPos) override;
+	short GetTileFlag(D3DVECTOR& vPos);
 
-public:
-	char gapx[4];
-	std::vector<CollisionObject*> m_objectlist; //0x0014
-	std::vector<CRTNavEdgeInternal> m_edge_internal; //0x0024
-	std::vector<CRTNavEdgeGlobal> N00000024; //0x0034
-	char pad_0044[4]; //0x0044
-	std::vector<CRTNavCellQuad> m_navcells; //0x0048
-	short cellmapper[192*192]; // mapps coordinates to cells ... maybe 192*192+1, dont forget to align bytes afterwards correctly
+public:		
+	std::vector<CRTNavEdgeInternal> m_InternalEdges;
+	std::vector<CRTNavEdgeGlobal> m_GlobalEdges;
+	SNavMeshInst* field_5; // temporary variable when performaing movement ?!
+	std::vector<CRTNavCellQuad> m_Cells;
 
+	struct SNavMeshTile
+	{
+		int m_CellID; // RTNavCellQuad ID
+		short m_Flag; // Tile based navigation flags (Bit0 = BlockedTile)
+		short m_TextureID; // Used with tile2d.ifo to figure which foot-step sound to play.
+	} m_TileMap[96*96]; //0x0058
+
+	int m_OpenCellCount;
+	float m_HeightMap[97*97];
+	char m_SurfaceFlagMap[6*6];
+	float m_SurfaceHeightMap[6*6];
+	int field3;
+	int field4;
+	int field5;
+	int field6;
 };
 
