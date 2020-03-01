@@ -6,6 +6,10 @@
 
 class CPSQuickStart {
 public:
+    static char charname[32];
+    static char ibuv_text[32];
+
+public:
 	int OnNetMsg(CMsgStreamBuffer* pMsg);
 	char OnCreate(int a1);
 

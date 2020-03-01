@@ -6,11 +6,9 @@
 #include "Game.h"
 
 GlobalVar<bool, 0x00EED310> CPSQuickStart::m_ready;
-//extern char* charname;
-//extern char* ibuv_text;
 
-extern char charname[32];
-extern char ibuv_text[32];
+char CPSQuickStart::charname[32];
+char CPSQuickStart::ibuv_text[32];
 
 char CPSQuickStart::OnCreate(int a1)
 {

@@ -2,14 +2,20 @@
 
 #include "BSLib/BSLib.h"
 
-class FakeWinMain_CPSQuickStart
-{
+class QuickStart {
 public:
-	static int APIENTRY _FakeWinMain_CPSQuickStart(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow);
-	static void Setup(std::vector<const CGfxRuntimeClass*>* a);
-	void RegisterObject(const CGfxRuntimeClass*);
+    void Setup();
+    void LoadConfig();
+    void PlaceHooks();
+
+    bool IsEnabled();
+
+    void PreWinMain();
 
 private:
-	
-	//static HINSTANCE hInst;
+    wchar_t servername[32];
+    wchar_t userid[32];
+    wchar_t passwd[32];
+    char CPSQuickStartEnabled[2];
 };
+
