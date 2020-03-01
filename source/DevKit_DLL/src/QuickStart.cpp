@@ -8,7 +8,7 @@
 #include "GInterface.h"
 #include "PSQuickStart.h"
 #include "Game.h"
-#include "FakeWinMain_CPSQuickStart.h"
+#include "QuickStart.h"
 
 
 std::vector<const CGfxRuntimeClass*>* register_objects;
