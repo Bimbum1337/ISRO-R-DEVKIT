@@ -1,7 +1,6 @@
 #include "IFflorian0.h"
 #include <ctime>
 
-#define GDR_FLORIAN0_BTNEXIT 2
 #define GDR_FLORIAN0_LABEL 10
 #define GDR_FLORIAN0_BTN 11
 #define GDR_FLORIAN0_LABEL_TIME 13
@@ -10,7 +9,6 @@ GFX_IMPLEMENT_DYNCREATE(CIFflorian0, CIFMainFrame)
 
 GFX_BEGIN_MESSAGE_MAP(CIFflorian0, CIFMainFrame)
 	ONG_COMMAND(GDR_FLORIAN0_BTN, &On_BtnClick)
-	ONG_COMMAND(GDR_FLORIAN0_BTNEXIT, &On_BtnExitClick)
 	ONG_WM_4001()
 	ONG_WM_4002()
 	ONG_WM_4003()
@@ -76,9 +74,10 @@ void CIFflorian0::On_BtnClick()
 	m_custom_label->SetText(buffer);
 }
 
-void CIFflorian0::On_BtnExitClick()
+//Use this to handle if you have special close case
+void CIFflorian0::OnExit()
 {
-	this->ShowGWnd(false);
+	CIFMainFrame::OnExit();
 }
 
 

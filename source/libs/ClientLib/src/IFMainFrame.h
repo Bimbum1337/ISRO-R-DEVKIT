@@ -17,6 +17,7 @@ public:
 	bool OnCreate(long ln) override;
 	void SetGWndSize(int width, int height) override;
 	bool SetText(const wchar_t* src) override;
+	virtual void OnExit();
 
 private:
 	CIFStatic* m_title; //0x07B0

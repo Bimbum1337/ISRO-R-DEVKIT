@@ -17,6 +17,7 @@ public:
 private:
 	void On_BtnClick();
 	void On_BtnExitClick();
+	void OnExit() override;
 
 	int On4001(int a1, int a2);
 	int On4002(int a1, int a2);
