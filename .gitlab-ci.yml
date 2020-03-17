@@ -1,14 +1,28 @@
 variables:
+  registry: registry.gitlab.com/florian0/sro_devkit
   
-before_script:
-  - git submodule sync --recursive
-  - git submodule update --init --recursive
 
 stages:
   - build
   - deploy
+  - docs
+
+docker_doxygen:
+  stage: build
+  variables:
+    name: doxygen
+  image: dind
+  script:
+    - docker info
+    - docker build -t "${registry}:${name}" docker/${name}/
+    - echo $REGISTRY_PASSWORD | docker login -u "$REGISTRY_USER" --password-stdin
+    - docker push -t "${registry}:${name}"
+  only:
+    - docker
 
 build:
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
   stage: build
   tags:
     - windows
@@ -22,6 +36,19 @@ build:
     untracked: false
     paths:
       - BinOut/
+      
+pages:
+  stage: docs
+  image: ${registry}:doxygen
+  script:
+    - doxygen
+    - mv doxygen/html public/
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 day
+  only:
+    - devel
 
 deploy:
   stage: deploy
