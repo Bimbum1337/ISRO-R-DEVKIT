@@ -17,6 +17,7 @@ class CObj;
 #include "_internal/_BSMsg.h"
 
 
+/// Common base class for runtime-identifiable objects
 class CObj
 {
 public:
@@ -25,8 +26,14 @@ public:
 	virtual CGfxRuntimeClass const* GetRuntimeClass() const;
 	virtual CGfxRuntimeClass const* GetParentRuntimeClass() const;
 
+	/// Create a new object of this type. This needs to be created for every derived class.
+	/// \returns Pointer to the created object
 	static CObj* __stdcall CreateObject();
-	static void __cdecl DeleteObject(CObj*);
+    
+	/// Delete an existing object of this type. This needs to be created for every derived class.
+	/// Usually just calls the (virtual) destructor.
+	/// \param pObj Object to delete
+	static void __cdecl DeleteObject(CObj* pObj);
 	
 public:
 	virtual ~CObj();
@@ -34,24 +41,38 @@ public:
 	// void* operator new(size_t num_bytes);
 };
 
-// Funfact: Joymax stole this class from afx.h and renamed various macros. LOL.
+/// Meta-data-structure for runtime-identifiable objects. Every CObj-derived 
+/// class has a global instance of this structure containing all relevant meta 
+/// data.
+/// Funfact: Joymax stole this class from afx.h and renamed various macros. LOL.
 struct CGfxRuntimeClass
 {
+	/// Name of the class
 	const char * m_lpszClassName;
+
+	/// Size of the class in bytes
 	int m_nObjectSize;
+	
+	/// Absolutely no clue
 	unsigned int m_wSchema; // schema number of the loaded class
 
+	/// Pointer to the meta-base class
 	CGfxRuntimeClass const *m_pBaseClass;
 
 	int field_10;
 	int field_14;
-	
+
+	/// Function pointer to the \ref CObj::CreateObject equivalent function
 	CObj*(__stdcall *m_pfnCreateObject)();
+    
+	/// Function pointer to the \ref CObj::DeleteObject equivalent function
 	void(__cdecl *m_pfnDeleteObject)(CObj*);
 
-	
+	/// Evaluate if the current class is derived from the given class
 	BOOL IsDerivedFrom(const CGfxRuntimeClass* pBaseClass) const;
 
+	/// Initialize a new instance of this class. 
+    /// This was probably the constructor.
 	void BuildThunk(const char* str, CObj*(__stdcall * create_object)(), void(__cdecl * delete_object)(CObj*), CGfxRuntimeClass* baseclass, size_t size, int x) const;
 
 	// dynamic name lookup and creation
@@ -66,11 +87,8 @@ class CWhatever
 	int x[5];
 };
 
-
-// Class: CObjChild
-// Metadata:
-// -  Number of Virtuals in total: 7
-// -  
+/// Some kind of intermediate base class. Contains message handling, networking
+/// and timers ...
 class CObjChild : public CObj
 {
 public:
@@ -80,9 +98,19 @@ public:
 
 	virtual int Func_4(int a2);
 
-	virtual void OnTimer(int); // This is Func_5
-	
-	virtual BOOL OnNetMsg(CMsgStreamBuffer*);
+	/// Callback when a timer elapses
+	/// \param timerId Numeric identifier of the timer
+	virtual void OnTimer(int timerId);
+
+	/// Callback when a network msg arrives
+	/// \param pMsg Pointer to the received message. This is not essentially a
+    ///             a server network message. Some MsgIds appear weird.
+    ///             See \ref CPSQuickStart::OnNetMsg for example MsgIds.
+    /// \returns true, if the message was handled, false, otherwise. A message 
+    ///          must be completely read before returning. Call 
+    ///          \ref CMsgStreamBuffer::FlushRemaining if there are any bytes 
+    ///          left over.
+	virtual BOOL OnNetMsg(CMsgStreamBuffer* pMsg);
 
 	CObjChild();
 
@@ -92,30 +120,44 @@ private:
 };
 
 
+/// Dummy class that serves as castable target class for message handlers
 class CCmdTarget : public CObj
 {
 };
 
 typedef void (CCmdTarget::*GFX_PMSG)(void);
 
+/// Entry of a message map array. Each entry specifies one function.
 struct GFX_MSGMAP_ENTRY
 {
-	UINT nMessage; // windows message
-	UINT nCode; // control code or WM_NOTIFY code
-	UINT nID; // control ID (or 0 for windows messages)
-	UINT nLastID; // used for entries specifying a range of control id's
-	UINT_PTR nSig; // signature type (action) or pointer to message #
+	/// windows message
+	UINT nMessage;
+	/// control code or WM_NOTIFY code
+	UINT nCode; 
+	/// control ID (or 0 for windows messages)
+	UINT nID; 
+	/// used for entries specifying a range of control id's
+	UINT nLastID; 
+	/// signature type (action) or pointer to message #
+	UINT_PTR nSig;
 	UINT nU0;
-	GFX_PMSG pfn; // routine to call (or special value)
+	/// routine to call (or special value)
+	GFX_PMSG pfn; 
 	UINT nU1;
 	UINT nU2;
 	UINT nU3;
 };
 
 
+/// Message map of a class. Likely to be present when deriving from 
+/// \ref CObjChild . Only present when the class implements custom message 
+/// handlers. 
 struct GFX_MSGMAP
 {
+	/// Pointer to the base message map entry.
 	const GFX_MSGMAP* lpBaseMsgMap;
+
+	/// Pointer to the array of message map entires.
 	const GFX_MSGMAP_ENTRY* lpEntries;
 };
 
