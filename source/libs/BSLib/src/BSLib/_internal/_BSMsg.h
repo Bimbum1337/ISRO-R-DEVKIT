@@ -6,11 +6,13 @@
 #define GFX_MSG_CALL
 #endif
 
+/// Supported function signatures for message map handlers
 enum BSSig
 {
+    /// Mark the end of the message map array
 	GfxSig_end = 0,
 	BSSig_u10 = 10, // int (int, int)
-	BSSig_u12 = 12, // 
+	BSSig_u12 = 12, //
 	BSSig_u16 = 16  // int (UINT, UINT, UINT)
 };
 
