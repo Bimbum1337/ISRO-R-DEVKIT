@@ -4,7 +4,8 @@
 #include <list>
 #include "BSLib/BSLib.h"
 
-
+/// Holds data about events, mainly in the 3d-space. It's unknown if this structure is also used for the general
+/// messaging system.
 struct Event3D {
     char pad_0000[4]; //0x0000
     int Msg; //0x0004
@@ -15,22 +16,35 @@ struct Event3D {
 
 /**
  * This class acts as a parent for any control and provides a container for child-controls
- * Note: As of current state of knowledge, OnUpdate() must be overwritten in any derived class to avoid an endless loop
+ * \remark As of current state of knowledge, \ref CGWndBase::OnUpdate must be overwritten in any derived class to
+ *         avoid an endless loop
+ *
  */
 class CGWndBase : public CObjChild { // size 32 + 100 = 132
 GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
 
 public:
+    /// \address 00B90A80
     virtual void Func_7(CGWndBase *a2);
 
+    /// Add the given control as a child.
+    /// \address 00B90AC0
     virtual int AddControlToList(CGWndBase *a2);
 
+    /// Remove the given control from the list of children.
+    /// \address 00B913D0
     virtual void RemoveControlFromList(CGWndBase *a2);
 
+    /// Called when this instance is created.
+    /// \address 00B8F1F0
     virtual bool OnCreate(long ln);
 
+    /// Called before this instance is deleted.
+    /// \address 00B8F200
     virtual bool OnRelease();
 
+    /// Called once per frame (blocking).
+    /// \address 00B92070
     virtual void OnUpdate();
 
     virtual void RenderMyself();
@@ -49,31 +63,45 @@ public:
 
     virtual void Func_20();
 
+    /// Resize this control
+    /// \param width Width in pixels
+    /// \param height Height in pixels
     virtual void SetGWndSize(int width, int height);
 
     virtual void Func_22(int x, int y);
 
+    /// Set the visibility state of this control.
+    /// \param bVisible New visibility state.
     virtual void ShowGWnd(bool bVisible);
 
 
 public:
 
+    /// Constructor, what shall I say about this?
+    /// \address 00B8FCD0
     CGWndBase();
 
+    /// Get visible state of this control
+    /// \retval true Control is visible
+    /// \retval false Control is not visible
     bool IsVisible();
 
     void ApplyGlobalScale(int x);
 
     void GetBounds(RECT &a2);
 
+    /// \address 006526E0
     void sub_6526E0(char n00009771, unsigned char opacity, float time, float a4, char a5);
 
+    /// \address 00B9DA70
     void sub_B9DA70(bool b);
 
-
-    const int UniqueID();
+    /// Returns the numeric identifier of this control.
+    /// \returns ID of this control
+    int UniqueID() const;
 
 protected:
+    /// \address 00B8F440
     void sub_B8F440(const RECT &rect);
 
 private:
