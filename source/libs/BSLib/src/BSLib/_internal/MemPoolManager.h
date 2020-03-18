@@ -1,8 +1,5 @@
 #pragma once
-class CMemPoolManager
-{
-public:
-	CMemPoolManager(void);
-	~CMemPoolManager(void);
-};
 
+/// Some day this will handle all memory access
+class CMemPoolManager {
+};
