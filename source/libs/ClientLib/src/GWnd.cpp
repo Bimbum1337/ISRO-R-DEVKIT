@@ -72,7 +72,6 @@ void CGWnd::Func_37()
 	return;
 }
 
-// CGWnd::CGWnd(void) .text 00B9E270 0000002A 00000004 00000000 R . . . . . .
 CGWnd::CGWnd()
 {
 	m_bVisible = true;
@@ -83,13 +82,11 @@ CGWnd::CGWnd()
 	sub_B9DA70(false);
 }
 
-// CGWnd::OnUpdate() .text 00B9D7E0 00000001   R . . . . . .
 void CGWnd::OnUpdate()
 {
 	// empty
 }
 
-// CGWnd::RenderMyself(void) .text 00B9D850 00000025 00000004 00000000 R . . . . . .
 void CGWnd::RenderMyself()
 {
 	if (!m_bVisible)
@@ -98,13 +95,11 @@ void CGWnd::RenderMyself()
 	CGWnd::Render();
 }
 
-// CGWnd::RenderMyChildren(void) .text 00BA0300 00000096 0000000C 00000000 R . . . . T .
 void CGWnd::RenderMyChildren()
 {
 	reinterpret_cast<void(__thiscall*)(CGWnd*)>(0x00BA0300)(this);
 }
 
-// CGWnd::Render() .text 00B9D7F0 0000001D 00000004 00000000 R . . . . . .
 void CGWnd::Render()
 {
 	RenderMyself();
@@ -112,13 +107,11 @@ void CGWnd::Render()
 	Func_15();
 }
 
-// CGWnd::Func_15(void) .text 00B9D880 00000001   R . . . . . .
 void CGWnd::Func_15()
 {
 	// empty
 }
 
-// CGWnd::On3DEventMAYBE(Event3D *) .text 00B9D890 00000005 00000000 00000000 R . L . . . .
 bool CGWnd::On3DEvent_MAYBE(Event3D* a2)
 {
 	return false;
