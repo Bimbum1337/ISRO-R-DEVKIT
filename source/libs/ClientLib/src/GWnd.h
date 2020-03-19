@@ -11,31 +11,31 @@ class CGWnd : public CGWndBase {
 
 public:
     /// \address 00B9D810
-    virtual void F24(int a1, int a2);
+    virtual void Func_24(int a1, int a2);
 
-    virtual bool F25(int a1);
+    virtual bool Func_25(int a1);
 
-    virtual void F26(int a1);
+    virtual void Func_26(int a1);
 
-    virtual bool F27();
+    virtual bool Func_27();
 
-    virtual bool F28(int a1, int a2, int a3);
+    virtual bool Func_28(int a1, int a2, int a3);
 
     virtual int OnClickEvent(int a1, int x, int y);
 
-    virtual int F30(int a1, int a2, int a3);
+    virtual int Func_30(int a1, int a2, int a3);
 
-    virtual int F31(int a1, int a2, int a3);
+    virtual int Func_31(int a1, int a2, int a3);
 
-    virtual int F32(int a1, int a2, int a3);
+    virtual int Func_32(int a1, int a2, int a3);
 
-    virtual int F33(int a1, int a2, int a3);
+    virtual int Func_33(int a1, int a2, int a3);
 
-    virtual int F34(int a1, int a2, int a3);
+    virtual int Func_34(int a1, int a2, int a3);
 
-    virtual int F35(int a1, int a2, int a3);
+    virtual int Func_35(int a1, int a2, int a3);
 
-    virtual int F36(int a1, int a2, int a3, int a4);
+    virtual int Func_36(int a1, int a2, int a3, int a4);
 
     virtual void Func_37();
 
