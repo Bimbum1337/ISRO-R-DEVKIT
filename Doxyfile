@@ -914,8 +914,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = /home/florian0/workspaces/silkroad/projects/sro_devkit/sro_devkit/source/third-party/dxsdk \
-                         /home/florian0/workspaces/silkroad/projects/sro_devkit/sro_devkit/source/third-party/imgui
+EXCLUDE                = ./source/third-party/dxsdk \
+                         ./source/third-party/imgui
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
