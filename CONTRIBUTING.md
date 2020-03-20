@@ -67,8 +67,7 @@ Example:
 
 ```cpp
 // CGFontTexture::sub_8B37A0(void) .text 008B37A0 0000007D 00000008 00000000 R . . . . . .
-void CGFontTexture::sub_8B37A0()
-{
+void CGFontTexture::sub_8B37A0() {
 	// ...
 }
 ```
@@ -79,8 +78,7 @@ Example:
 
 ```cpp
 // CIFTileWnd::SetGWndSize(void) .text 0081A920 00000005 00000004 00000000 R . . . . . .
-void CIFTileWnd::SetGWndSize(int width, int height)
-{
+void CIFTileWnd::SetGWndSize(int width, int height) {
     // Not yet implemented
 	assert(FALSE); 
 }
@@ -88,8 +86,7 @@ void CIFTileWnd::SetGWndSize(int width, int height)
 
 ```cpp
 // CIFTileWnd__sub_81AE00 .text 0081AE00 0000007D 00000010 00000000 R . . . . . .
-void CIFTileWnd::sub_81AE00()
-{
+void CIFTileWnd::sub_81AE00() {
 	// Redirection to original client code
 	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x0081AE00)(this);
 }
@@ -99,8 +96,7 @@ If your new function appears to be empty, place a comment stating this.
 
 ```cpp
 // CGWnd::OnUpdate() .text 00B9D7E0 00000001   R . . . . . .
-void CGWnd::OnUpdate()
-{
+void CGWnd::OnUpdate() {
 	// empty
 }
 ```
@@ -119,9 +115,10 @@ While guidelines are really necessary for a community project, complex guideline
 helping. So we will keep it as simple as possible:
 
 * Language is english. Code is english, Comments are english. No other languages permitted.
+  * Only exception: Original korean messages from the game.
 * Don't put multiple classes/structures in one file (except simple nested types that stay completely internal)
 * Don't split classes across multiple files.
-* Adapt the current formatting. We are not very strict. If it's readable, it's good.
+* Adapt the current formatting. See https://gitlab.com/florian0/sro_devkit/-/wikis/Coding-Guidelines for more information on formatting.
 * Write comments. Quality > Quantity. Keep them informative.
 * No dirty code. No hacks. Keep it clean. Avoid memory leaks.
 
