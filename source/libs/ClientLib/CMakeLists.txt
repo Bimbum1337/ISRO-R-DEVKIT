@@ -149,7 +149,8 @@ set(SOURCE_FILES src/BufRender.h
     src/IFEventGuideSecond.cpp src/IFEventGuideSecond.h
     src/IFflorian0Guide.cpp src/IFflorian0Guide.h
     src/PSQuickStart.cpp
-    src/PSQuickStart.h)
+    src/PSQuickStart.h
+    src/NIFUnderMenuBar.cpp src/NIFUnderMenuBar.h)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)
