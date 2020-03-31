@@ -1,3 +1,9 @@
+option(CONFIG_OLD_UNDERBAR "Turn the old EXP Bar ON/OFF" OFF)
+
+if (CONFIG_OLD_UNDERBAR)
+    add_definitions(-DCONFIG_OLD_UNDERBAR)
+endif()
+
 set(SOURCE_FILES
         src/DllMain.cpp
         src/GFXVideo3d_Hook.cpp
