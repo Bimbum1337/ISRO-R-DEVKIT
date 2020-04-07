@@ -36,6 +36,7 @@ build:
     untracked: false
     paths:
       - BinOut/
+    expire_in: 1 day
       
 pages:
   stage: docs
