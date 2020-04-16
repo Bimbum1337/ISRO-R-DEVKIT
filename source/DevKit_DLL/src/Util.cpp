@@ -2,6 +2,7 @@
 #include "Util.h"
 #include <memory/hook.h>
 #include <AlramGuideMgrWnd.h>
+#include <TextStringManager.h>
 #include "GFXVideo3D_Hook.h"
 #include "WndProc.h"
 #include "hooks.h"
@@ -36,6 +37,10 @@ void Setup()
 	replaceAddr(0x00831337+4, (int)&WndProcHook);
 
 	replaceAddr(0x00832927+1, (int)&DebugPrintCallback);
+
+#ifdef CONFIG_TRANSLATIONS_DEBUG
+    placeHook(0x008C9C30, addr_from_this(&CTextStringManager::GetString));
+#endif
 
     placeHook(0x0065c6f0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
 

@@ -43,5 +43,11 @@ add_compile_definitions(_CRT_SECURE_NO_DEPRECATE)
 add_definitions(-DWINVER=0x0500)
 add_definitions(-D_WIN32_WINNT=0x0500)
 
+option(CONFIG_TRANSLATIONS_DEBUG "Print Tokens instead of translated strings" OFF)
+if (CONFIG_TRANSLATIONS_DEBUG)
+    add_definitions(-DCONFIG_TRANSLATIONS_DEBUG)
+endif()
+
+
 
 add_subdirectory(source)
