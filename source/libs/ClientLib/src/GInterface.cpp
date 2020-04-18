@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "GInterface.h"
 #include "IFflorian0Guide.h"
+#include "IFNotify.h"
 
 void CGInterface::RenderToggle_GDR_ACTION()
 {
@@ -68,6 +69,22 @@ void CGInterface::BeforeOnCreate() {
 void CGInterface::AfterOnCreate() {
     CreateFlorian0Event();
 }
+
+void CGInterface::ShowMessage_Quest(const std::n_wstring &msg) {
+    CIFNotify* notify = m_IRM.GetResObj<CIFNotify>(GDR_UPDATE_QUEST_INFO, 1);
+    notify->ShowMessage(msg);
+}
+
+void CGInterface::ShowMessage_Notice(const std::n_wstring &msg) {
+    CIFNotify* notify = m_IRM.GetResObj<CIFNotify>(GDR_NOTICE, 1);
+    notify->ShowMessage(msg);
+}
+
+void CGInterface::ShowMessage_Warning(const std::n_wstring &msg) {
+    CIFNotify* notify = m_IRM.GetResObj<CIFNotify>(GDR_WARNING_WND, 1);
+    notify->ShowMessage(msg);
+}
+
 
 int CGInterface::Get_SelectedObjectId()
 {
