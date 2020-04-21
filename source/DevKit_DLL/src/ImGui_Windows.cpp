@@ -30,13 +30,14 @@ static bool ImGui_Window_InterfaceDebugger_Show = false;
 static bool ImGui_Window_NavMeshTool_Show = false;
 static bool ImGui_Window_SoundTool_Show = false;
 static bool ImGui_Window_EntityExplorer_Show = false;
+static bool ImGui_Window_NotificationTool_Show = false;
 
 // Window defs
 
 void ImGui_Window_InterfaceDebugger(bool *p_open);
 void ImGui_Window_SoundTool(bool *p_open);
 void ImGui_Window_EntityExplorer(bool *p_open);
-
+void ImGui_Window_NotificationTool(bool *p_open);
 
 // Decls
 
@@ -616,6 +617,73 @@ void ImGui_Window_EntityExplorer(bool *p_open) {
 	ImGui::End();
 }
 
+
+void ImGui_Window_NotificationTool(bool *p_open) {
+    if (!ImGui::Begin("Notification Tool")) {
+        ImGui::End();
+        return;
+    }
+
+    // Make a combo box for the three notice types
+    // Based on this example: https://github.com/ocornut/imgui/issues/1658
+    const char* items[] = { "Quest", "Warning", "Notice" };
+    static const char* current_item = NULL;
+
+    if (ImGui::BeginCombo("##combo", current_item)) // The second parameter is the label previewed before opening the combo.
+    {
+        for (int n = 0; n < IM_ARRAYSIZE(items); n++)
+        {
+            bool is_selected = (current_item == items[n]); // You can store your selection however you want, outside or inside your objects
+            if (ImGui::Selectable(items[n], is_selected))
+                current_item = items[n];
+            if (is_selected)
+                ImGui::SetItemDefaultFocus();   // You may set the initial focus when opening the combo (scrolling + for keyboard navigation support)
+        }
+        ImGui::EndCombo();
+    }
+
+    // Create the input box for the message
+    // The message input can be 255 characters for now
+    static char messageBuffer[256] = {0};
+    ImGui::InputText("Message", messageBuffer, IM_ARRAYSIZE(messageBuffer));
+
+    // Create the send button and send the message, if pressed
+    if (ImGui::Button("Send")) {
+        // We don't want to send empty messages
+        if (messageBuffer[0] == '\0') {
+            ImGui::End();
+            return;
+        }
+
+        // We can't send if there is no item selected
+        if (current_item == NULL) {
+            ImGui::End();
+            return;
+        }
+
+        // We need the message to be an n_wstring
+        std::n_wstring wstr = acp_n_decode(messageBuffer, strlen(messageBuffer));
+
+        // Dispatch the message to the correct function
+        if (strcmp(current_item, items[0]) == 0) {
+            g_pCGInterface->ShowMessage_Quest(wstr);
+        } else if (strcmp(current_item, items[1]) == 0) {
+            g_pCGInterface->ShowMessage_Warning(wstr);
+        } else if (strcmp(current_item, items[2]) == 0) {
+            g_pCGInterface->ShowMessage_Notice(wstr);
+        } else {
+            // Somehow we don't know what the selection is
+            printf("Unknown selection when sending notification\n");
+        }
+
+
+        g_pCGInterface->ShowMessage_Quest(L"Hello World");
+
+    }
+
+    ImGui::End();
+}
+
 void ImGui_OnCreate(HWND hWindow, void* msghandler, int a3)
 {
 	printf("ImGui_OnCreate\n");
@@ -699,6 +767,7 @@ void ImGui_OnEndScene()
 			ImGui::MenuItem("Keyframe Editor", 0, false, false);
 			ImGui::MenuItem("Script Editor", 0, false, false);
 			ImGui::MenuItem("Sound Tool", 0, &ImGui_Window_SoundTool_Show);
+			ImGui::MenuItem("Notification Tool", 0, &ImGui_Window_NotificationTool_Show);
 
 			ImGui::EndMenu();
 		}
@@ -752,6 +821,8 @@ void ImGui_OnEndScene()
 	
 	if (ImGui_Window_SoundTool_Show) ImGui_Window_SoundTool(&ImGui_Window_InterfaceDebugger_Show);
 	if (ImGui_Window_EntityExplorer_Show) ImGui_Window_EntityExplorer(&ImGui_Window_EntityExplorer_Show);
+
+	if (ImGui_Window_NotificationTool_Show) ImGui_Window_NotificationTool(&ImGui_Window_NotificationTool_Show);
 
 	ImGui::EndFrame();
 

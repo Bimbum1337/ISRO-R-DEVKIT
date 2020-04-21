@@ -151,7 +151,8 @@ set(SOURCE_FILES src/BufRender.h
     src/PSQuickStart.cpp
     src/PSQuickStart.h
     src/NIFUnderMenuBar.cpp src/NIFUnderMenuBar.h
-    src/TextStringManager.cpp src/TextStringManager.h)
+    src/TextStringManager.cpp src/TextStringManager.h
+    src/IFNotify.cpp src/IFNotify.h)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)

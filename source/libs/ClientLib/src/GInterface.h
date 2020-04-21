@@ -43,10 +43,53 @@ public:
 	void BeforeOnCreate();
     void AfterOnCreate();
 
-	// void ShowMessage_Warning(std::wstring &msg);
-	// void ShowMessage_Notice(std::wstring &msg);
-	// void ShowMessage_Quest(std::wstring &msg);
-	// void PrintSystemMessage(eLogType level, wchar_t *str);
+
+    /// \brief Show a message in the warning area (green)
+    ///
+    /// \details Show a message in the green area in the center of the client.
+    /// The message fades out after a certain amount of time.
+    ///
+    /// \address 0077b580
+    ///
+    /// \param msg The message to be displayed
+    ///
+    /// Example:
+    /// \code
+    /// g_pCGInterface->ShowMessage_Warning(L"Hello World");
+    /// \endcode
+    void ShowMessage_Warning(const std::n_wstring &msg);
+
+    /// \brief Show a message in the notice area (red)
+    ///
+    /// \details Show a message in the red area in the center of the client.
+    /// The message fades out after a certain amount of time.
+    ///
+    /// \address 00777bf0
+    ///
+    /// \param msg The message to be displayed
+    ///
+    /// Example:
+    /// \code
+    /// g_pCGInterface->ShowMessage_Notice(L"Hello World");
+    /// \endcode
+    void ShowMessage_Notice(const std::n_wstring &msg);
+
+    /// \brief Show a message in the quest area (blue)
+    ///
+    /// \details Show a message in the blue area in the center of the client.
+    /// The message fades out after a certain amount of time.
+    ///
+    /// \address 0077b5b0
+    ///
+    /// \param msg The message to be displayed
+    ///
+    /// Example:
+    /// \code
+    /// g_pCGInterface->ShowMessage_Quest(L"Hello World");
+    /// \endcode
+    void ShowMessage_Quest(const std::n_wstring &msg);
+
+    // void PrintSystemMessage(eLogType level, wchar_t *str);
 
     void CreateFlorian0Event();
 
