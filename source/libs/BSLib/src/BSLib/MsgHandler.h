@@ -2,9 +2,8 @@
 class CMsgHandler
 {
 public:
-	CMsgHandler(void);
-	~CMsgHandler(void);
+	virtual void Func_0(int cmd, int lparam, int wparam) = 0;
 
-	virtual void Func_0() = 0;
+    void sub_BB0110(int width, int height);
 };
 

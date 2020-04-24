@@ -8,6 +8,8 @@
 #ifndef D3DAPP_H
 #define D3DAPP_H
 
+#include "GFXMainFrame/GFXMainFrame.h"
+
 //-----------------------------------------------------------------------------
 // Error codes
 //-----------------------------------------------------------------------------
@@ -117,7 +119,10 @@ public: // protected:
     bool              m_bClipCursorWhenFullscreen; // Whether to limit cursor pos when fullscreen
     bool              m_bStartFullscreen;  // Whether to start up the app in fullscreen mode
 
-	int field_340;
+    HRESULT RestoreDeviceObjectsWTF();
+    HRESULT InvalidateDeviceObjectsWTF();
+
+	CMsgHandler* m_pgfxMainFrame; // 0x340
 	int field_344;
 	int field_348;
 

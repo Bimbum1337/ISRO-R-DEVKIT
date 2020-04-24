@@ -107,7 +107,6 @@ bool CGFXVideo3d::BeginSceneIMPL()
 		Sleep(100);
 
 	if (Render3DEnvironment())
-	//if (reinterpret_cast<bool(__thiscall*)(CGFXVideo3d*)>(0x00BAE9A0)(this))
 	{
 		if (!b_ClearMode)
 		{

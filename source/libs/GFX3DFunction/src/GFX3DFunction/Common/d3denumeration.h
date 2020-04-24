@@ -32,7 +32,7 @@ struct D3DAdapterInfo
     D3DADAPTER_IDENTIFIER9 AdapterIdentifier;
     CArrayList* pDisplayModeList; // List of D3DDISPLAYMODEs
     CArrayList* pDeviceInfoList; // List of D3DDeviceInfo pointers
-    ~D3DAdapterInfo( void );
+    virtual ~D3DAdapterInfo( void );
 };
 
 
