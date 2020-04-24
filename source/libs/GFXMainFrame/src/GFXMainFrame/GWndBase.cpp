@@ -84,7 +84,7 @@ CGWndBase::CGWndBase() {
     this->m_lnListLockRead = 0;
     this->N000006F5 = 0;
     this->N000006F9 = 1;
-    this->N000006F7 = 0;
+    this->m_parentControl = 0;
     this->m_UniqueID = 0;
     this->m_hgWnd = 0;
     this->N000006FB = 0;
@@ -92,10 +92,10 @@ CGWndBase::CGWndBase() {
     this->N00000703 = 0;
     this->N00000705 = 0;
 
-    this->bounds.left = 0;
-    this->bounds.top = 0;
-    this->bounds.right = 0;
-    this->bounds.bottom = 0;
+	this->bounds.pos.x = 0;
+	this->bounds.pos.y = 0;
+	this->bounds.size.height = 0;
+	this->bounds.size.width = 0;
 
     RECT rect = {0, 0, 0, 0};
 
@@ -110,8 +110,8 @@ void CGWndBase::ApplyGlobalScale(int x) {
     reinterpret_cast<void (__cdecl *)(CGWndBase *, int)>(0x00849C70)(this, x);
 }
 
-void CGWndBase::GetBounds(RECT &a2) {
-    a2 = this->bounds;
+CGWndBase::wnd_rect CGWndBase::GetBounds() const {
+	return this->bounds;
 }
 
 void CGWndBase::sub_6526E0(char a0, unsigned char opacity, float time, float a4, char a5) {
@@ -130,4 +130,22 @@ int CGWndBase::UniqueID() const {
 
 void CGWndBase::sub_B8F440(const RECT &rect) {
     N000006FD = rect;
+}
+
+// CGWndBase::GetParentControl() .text 00B8F4F0 00000004   R . . . . T .
+CGWndBase *CGWndBase::GetParentControl() const {
+    return m_parentControl;
+}
+
+// CGWndBase::SetFocus_MAYBE(void) .text 00B9D9F0 00000049 00000004 00000000 R . . . . . .
+void CGWndBase::SetFocus_MAYBE() {
+    reinterpret_cast<void(__thiscall*)(CGWndBase*)>(0x00B9D9F0)(this);
+}
+
+CGWndBase::wnd_pos CGWndBase::GetPos() const {
+    return this->bounds.pos;
+}
+
+CGWndBase::wnd_size CGWndBase::GetSize() const {
+    return this->bounds.size;
 }

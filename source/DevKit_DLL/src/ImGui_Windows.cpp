@@ -57,18 +57,18 @@ void ImGui_Window_InterfaceDebugger(bool *p_open)
 
 	// ImGui::Text("Cursor: %5d|%-5d", g_Controler->mouse_x, g_Controler->mouse_y);
 
-	RECT bounds;
-	g_CurrentIfUnderCursor->GetBounds(bounds);
+	CGWndBase::wnd_rect bounds = g_CurrentIfUnderCursor->GetBounds();
+
 
 	ImGui::Text("@%p", g_CurrentIfUnderCursor);
 	ImGui::Text("Class: %s", g_CurrentIfUnderCursor->GetRuntimeClass()->m_lpszClassName);
 	ImGui::Text("Id: %d", g_CurrentIfUnderCursor->UniqueID());
 
 	ImGui::Text("%4d|%4d|%4d|%4d", 
-		bounds.left,
-		bounds.top,
-		bounds.bottom,
-		bounds.right
+		bounds.pos.x,
+		bounds.pos.y,
+		bounds.size.width,
+		bounds.size.height
 		);
 
 	ImGui::Checkbox("Draw Outline", &interface_draw_outline);
@@ -85,10 +85,10 @@ void ImGui_Window_InterfaceDebugger(bool *p_open)
 		//   |           |
 		// X1|Y2 ----- X2|Y2
 
-		int x1 = bounds.left;
-		int y1 = bounds.top;
-		int x2 = bounds.left + bounds.right;
-		int y2 = bounds.top + bounds.bottom;
+		int x1 = bounds.pos.x;
+		int y1 = bounds.pos.y;
+		int x2 = bounds.pos.x + bounds.size.width;
+		int y2 = bounds.pos.y + bounds.size.height;
 
 		// Draw Top
 		DXDrawLine(x1, y1, x2, y1, 0x00FF0000, 1.0);

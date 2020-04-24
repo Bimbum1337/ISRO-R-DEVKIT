@@ -23,7 +23,31 @@ struct Event3D {
 class CGWndBase : public CObjChild { // size 32 + 100 = 132
 GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
 
+
 public:
+    struct wnd_size {
+        int width;
+        int height;
+    };
+
+    struct wnd_pos {
+        int x;
+        int y;
+    };
+
+    struct wnd_rect {
+
+        inline int bottom() {
+            return pos.y + size.height;
+        }
+
+        wnd_pos pos;
+        wnd_size size;
+    };
+
+
+public:
+
     /// \address 00B90A80
     virtual void Func_7(CGWndBase *a2);
 
@@ -88,8 +112,6 @@ public:
 
     void ApplyGlobalScale(int x);
 
-    void GetBounds(RECT &a2);
-
     /// \address 006526E0
     void sub_6526E0(char n00009771, unsigned char opacity, float time, float a4, char a5);
 
@@ -100,24 +122,42 @@ public:
     /// \returns ID of this control
     int UniqueID() const;
 
+    void SetFocus_MAYBE();
+
+    /// \brief Get the bounds of this object (position and size)
+    /// \return The bounds of this object
+    wnd_rect GetBounds() const;
+
+    /// \brief Get the position of this object
+    /// \return The position of this object
+    /// \address 00B8F460
+    wnd_pos GetPos() const;
+
+    /// \brief Get the size of this object
+    /// \return The size of this object
+    /// \address 00B8F480
+    wnd_size GetSize() const;
+
 protected:
     /// \address 00B8F440
     void sub_B8F440(const RECT &rect);
 
+    CGWndBase* GetParentControl() const;
+
 private:
-    int m_lnListLockRead; //0x0020
-    int m_lnListLockWrite; //0x0024
-    bool N000006F5; //0x0028
-    char pad_0029[3]; //0x0029
-    int m_hgWnd; //0x002C
-    int N000006F7; //0x0030
-    int m_UniqueID; //0x0034
-    int N000006F9; //0x0038
-    bool N000006FB; //0x003C
-    char pad_003D[3]; //0x003D
-    RECT bounds; //0x0040 was private, 40
-    RECT N000006FD; //0x0050
-    char pad_0060[1]; //0x0060
+	int m_lnListLockRead; //0x0020
+	int m_lnListLockWrite; //0x0024
+	bool N000006F5; //0x0028
+	char pad_0029[3]; //0x0029
+	int m_hgWnd; //0x002C
+    CGWndBase* m_parentControl; //0x0030
+	int m_UniqueID; //0x0034
+	int N000006F9; //0x0038
+	bool N000006FB; //0x003C
+	char pad_003D[3]; //0x003D
+    wnd_rect bounds; //0x0040 was private, 40
+	RECT N000006FD; //0x0050
+	char pad_0060[1]; //0x0060
 protected:
     bool m_bVisible; //0x0061 61
     bool m_bClickable; //0x0062

@@ -188,9 +188,13 @@ void CIFWnd::MoveGWnd(int x, int y)
 }
 
 // CIFWnd::MoveGWnd2(int,int) .text 00653040 00000012 00000000 00000008 R . . . . . .
-void CIFWnd::MoveGWnd2(int x, int y)
+// This is actually an overload of MoveGWnd, but we will keep the name for now
+// to avoid distress with the vft order.
+// Proof for param being wnd_pos can be found here: 0x007AACB5
+// Call to MoveGWnd2 will reuse the copy returned from GetPos for x and y.
+void CIFWnd::MoveGWnd2(wnd_pos pos)
 {
-	CIFWnd::MoveGWnd(x, y);
+	CIFWnd::MoveGWnd(pos.x, pos.y);
 }
 
 // CIFWnd::Func_40(void) .text 004F4D40 00000001   R . . . . . .
