@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "GFXMainFrame.h"
+#include "GFXMainFrame/GFXMainFrame.h"
 #include <GFX3DFunction/GFontTexture.h>
 #include <GFXFileManagerLIB/IFileManager.h>
 

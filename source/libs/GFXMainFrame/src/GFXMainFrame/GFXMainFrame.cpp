@@ -1,6 +1,5 @@
-#include "StdAfx.h"
+#include <BSLib/multibyte.h>
 #include "GFXMainFrame.h"
-
 
 HWND CGFXMainFrame::GetHWnd() const
 {

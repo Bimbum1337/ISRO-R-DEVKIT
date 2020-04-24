@@ -1,7 +1,5 @@
-#include "StdAfx.h"
 #include "Process.h"
 
-#include "unsorted.h"
 
 
 GlobalVar<bool, 0x00EED310> CProcess::m_bProcessNetMsg;
@@ -61,5 +59,19 @@ void CProcess::sub_BA7620(CProcess* pProcess)
 void CProcess::SetProcessNetMsg(bool state)
 {
 	m_bProcessNetMsg = state;
+}
+
+CProcess *CProcess::MakeProcess(const CGfxRuntimeClass &cls) {
+    if (!cls.IsDerivedFrom(GFX_RUNTIME_CLASS(CProcess))) {
+        return 0;
+    }
+
+    RECT rect;
+    rect.top = 0;
+    rect.left = 0;
+    rect.bottom = 100000;
+    rect.right = 100000;
+
+    return (CProcess *) CGWnd::CreateInstance((CProcess *) -1, cls, rect, 0, 0);
 }
 

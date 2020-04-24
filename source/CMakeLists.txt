@@ -4,6 +4,7 @@ add_subdirectory(libs/ClientNet)
 add_subdirectory(libs/ClientLib)
 add_subdirectory(libs/GFX3DFunction)
 add_subdirectory(libs/GFXFileManagerLIB)
+add_subdirectory(libs/GFXMainFrame)
 add_subdirectory(libs/NavMesh)
 
 add_subdirectory(tests)

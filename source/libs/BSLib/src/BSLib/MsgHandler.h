@@ -3,6 +3,8 @@ class CMsgHandler
 {
 public:
 	CMsgHandler(void);
-	virtual ~CMsgHandler(void);
+	~CMsgHandler(void);
+
+	virtual void Func_0() = 0;
 };
 

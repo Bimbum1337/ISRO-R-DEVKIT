@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IRMManager.h"
-#include "Process.h"
+#include <GFXMainFrame/Process.h>
 
 
 class CPSilkroad :

@@ -1,5 +1,4 @@
 set(SOURCE_FILES
-        src/GFX3DFunction/Camera.cpp src/GFX3DFunction/Camera.h
         src/GFX3DFunction/DrawingHelpers.cpp src/GFX3DFunction/DrawingHelpers.h
         src/GFX3DFunction/GFontTexture.cpp src/GFX3DFunction/GFontTexture.h
         src/GFX3DFunction/GFXVideo3d.cpp src/GFX3DFunction/GFXVideo3d.h
@@ -11,5 +10,5 @@ set(SOURCE_FILES
         )
 
 add_library(GFX3DFunction STATIC ${SOURCE_FILES})
-target_link_libraries(GFX3DFunction BSLib d3d9)
+target_link_libraries(GFX3DFunction GFXMainFrame d3d9)
 target_include_directories(GFX3DFunction PUBLIC src/)

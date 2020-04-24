@@ -1,11 +1,10 @@
 #pragma once
 
 #include <Windows.h>
-#include "MsgHandler.h"
-
+#include <BSLib/MsgHandler.h>
 #include "Process.h"
 #include <BSLib/BSLib.h>
-#include <GFX3DFunction/Camera.h>
+#include "Camera.h"
 #include "ETime.h"
 
 class CGFXMainFrame : public CObjChild, public CMsgHandler {
@@ -31,6 +30,9 @@ public:
 	char RenderFrameIMPL();
 
 	void SetProcess(CProcess* process);
+
+	// This seems to set the width and height (parameters supplied from Dx-Backbuffer size)
+
 	
 private:
 	CProcess* process_current; //0x0024

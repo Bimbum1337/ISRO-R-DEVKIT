@@ -15,8 +15,8 @@
 #include "hooks.h"
 #include "MathUtil.h"
 #include "GEffSoundBody.h"
-#include "multibyte.h"
 #include "IFSystemMessage.h"
+#include <BSLib/multibyte.h>
 #include <StringUtils.h>
 #include <EntityManagerClient.h>
 #include <IFflorian0Guide.h>
