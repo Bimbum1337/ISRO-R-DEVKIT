@@ -43,7 +43,7 @@ public:
 	void RenderMyself() override;
 
 	virtual void MoveGWnd(int x, int y);
-	virtual void MoveGWnd2(int x, int y);
+	virtual void MoveGWnd2(wnd_pos pos);
 	virtual void Func_40();
 	virtual void Func_41();
 	virtual void Func_42();
