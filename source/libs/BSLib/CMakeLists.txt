@@ -7,6 +7,8 @@ set(SOURCE_FILES src/BSLib/_internal/_BSDynamic.h
     src/BSLib/BSLib.cpp src/BSLib/BSLib.h
     src/BSLib/MsgHandler.cpp src/BSLib/MsgHandler.h
     src/BSLib/multibyte.cpp src/BSLib/multibyte.h
+    src/BSLib/memory/MemPool.h
+    src/BSLib/StringCheck.cpp src/BSLib/StringCheck.h
     )
 
 add_library(BSLib STATIC ${SOURCE_FILES})

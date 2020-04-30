@@ -4,6 +4,9 @@
 
 class CGObj : public CObjChild { // size 32
 
-	// class is empty, no members no virtual methods
+    GFX_DECLARE_DYNAMIC_EXISTING(CGObj, 0x0110FA90)
+
+
+    // class is empty, no members no virtual methods
 
 };

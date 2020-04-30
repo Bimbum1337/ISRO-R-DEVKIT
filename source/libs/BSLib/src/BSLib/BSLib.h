@@ -3,7 +3,8 @@
 #include <Windows.h>
 
 #include <remodel/GlobalVar.h>
-#include <ClientNet/MsgStreamBuffer.h>
+
+class CMsgStreamBuffer;
 
 class CWhatever;
 
@@ -119,6 +120,20 @@ public:
     virtual BOOL OnNetMsg(CMsgStreamBuffer *pMsg);
 
     CObjChild();
+
+    /// \brief Start a timer in the current object
+    /// \address 00b93320
+    /// \param timerId Id of the timer
+    /// \param timeoutMs Timer interval in milliseconds
+    /// \details Starts a timer with the given interval. The \ref CObjChild::OnTimer callback is asserted when the
+    ///          timeout occurs.
+    int StartTimer(int timerId, int timeoutMs);
+
+protected:
+    /// \brief Stop a timer in the current object
+    /// \address 00B93170
+    /// \param timerId Id of the timer
+    int KillTimer(int timerId);
 
 private:
     char pad_0004[16];

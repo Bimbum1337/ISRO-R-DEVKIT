@@ -5,6 +5,8 @@
 //#include <IFUnderbar.h>
 #include "IFflorian0.h"
 #include "IFflorian0Guide.h"
+#include <IFChatViewer.h>
+
 //#include <PSQuickStart.h>
 
 //#include <PSVersionCheck.h>
@@ -28,10 +30,9 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
 		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
 		// Override existing objects
-		//OverrideObject(GFX_RUNTIME_CLASS(CIFUnderbar));
-		//OverrideObject(GFX_RUNTIME_CLASS(CPSQuickStart));
-
-		// OverrideObject(GFX_RUNTIME_CLASS(CPSVersionCheck));
+#ifdef CONFIG_CHATVIEWER
+        OverrideObject<CIFChatViewer, 0x00EEC168>();
+#endif // CONFIG_CHATVIEWER
 
 		OnCreate(ImGui_OnCreate);
 		OnEndScene(ImGui_OnEndScene);

@@ -3,6 +3,7 @@
 #include "GFXMainFrame/GFXMainFrame.h"
 #include <GFX3DFunction/GFontTexture.h>
 #include <GFXFileManagerLIB/IFileManager.h>
+#include <BSLib/StringCheck.h>
 
 #include "unsorted.h"
 #include "GEffSoundBody.h"
@@ -11,15 +12,40 @@
 #include "IFConsole.h"
 #include "is_this_important.h"
 
-
-class N000093FD
+struct ClientResolutonData
 {
-public:
-	char pad_0000[44]; //0x0000
+    char pad_0000[36]; //0x0000
+    int width; //0x0024
+    int height; //0x0028
 }; //Size: 0x002C
 
+struct ClientRes
+{
+    char index;
+    ClientResolutonData res[1]; //0x0004
+}; //Size: 0x0030
+
+struct WhatIsThis {
+    undefined4 field_0;
+    char field_4;
+};
 
 class CGame : public CGFXMainFrame {
+
+public:
+    /// \address 004F9CD0
+    static const ClientResolutonData &GetClientDimensionStuff();
+
+    static CStringCheck *GetBadwordFilter();
+
+    /// \address 004f9d00
+    static WhatIsThis& STA_FUN_004f9d00();
+
+private:
+    /// \address 00835240
+    const ClientRes& sub_835240() const;
+
+
 public:
 	int N0000051E; //0x0490
 	CGFontTexture* font; //0x0494
@@ -69,7 +95,8 @@ public:
 	std::string str_emblem_folder; //0x0894
 	std::string str_intro_scriptname; //0x08B0
 	std::string str_intro_soundtrack; //0x08CC
-	char pad_08E8[120]; //0x08E8
+	CStringCheck * m_badWordFilter;
+	char pad_08E8[120-4]; //0x08E8
 
 	void SetWindowPos();
 	int sub_83580(int arg);

@@ -49,7 +49,7 @@ int CGWnd::Func_35(int a1, int a2, int a3) {
     return 0;
 }
 
-int CGWnd::Func_36(int a1, int a2, int a3, int a4) {
+int CGWnd::Func_36(int a1, short action, int a3, int a4) {
     return 0;
 }
 

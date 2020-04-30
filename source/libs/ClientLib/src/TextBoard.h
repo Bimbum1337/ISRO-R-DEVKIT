@@ -26,6 +26,8 @@ public:
 	virtual void TB_Func_16();
 
 
+	/// \address 00655270
+	void SetFont(void* a2);
 	
 
 protected:
@@ -42,13 +44,15 @@ private:
 	char N000096C1; //0x0004
 	char pad_0005[3]; //0x0005
 	int N000096C2; //0x0008
-protected:
+public: /* see usage of 8B4400, public seems correct */
 	CGFontTexture m_FontTexture; //0x000C
 private:
 	std::n_wstring m_texturestr_font; //0x0074
 	int N00009C2D; //0x0090
 	int N00009C2E; //0x0094
-	void* N00009C2F; //0x0098
+protected:
+	void* N00009C2F; //0x0098, set to protected as seen at SetFont in 007ABA44
+private:
 	int N00009C30; //0x009C
 	char pad_00A0[9]; //0x00A0
 	char N00009BB9; //0x00A9

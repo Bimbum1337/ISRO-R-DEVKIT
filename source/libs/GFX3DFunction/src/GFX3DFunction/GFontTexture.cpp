@@ -61,3 +61,16 @@ void CGFontTexture::sub_8B37A0()
 {
 	// assert(FALSE);
 }
+
+void CGFontTexture::sub_8B4400(int a1, int a2) {
+    reinterpret_cast<void (__thiscall *)(CGFontTexture *, int, int)>(0x008B4400)(this, a1, a2);
+}
+
+void CGFontTexture::sub_8B4750(int a2) {
+    reinterpret_cast<void (__thiscall *)(CGFontTexture *, int)>(0x008B4750)(this, a2);
+}
+
+std::n_wstring *CGFontTexture::GetText(std::n_wstring *str) const {
+    return reinterpret_cast<std::n_wstring *(__thiscall *)(const CGFontTexture *, std::n_wstring *str)>(0x008B3C10)(
+            this, str);
+}

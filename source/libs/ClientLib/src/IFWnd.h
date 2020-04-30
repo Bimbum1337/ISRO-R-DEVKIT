@@ -45,7 +45,10 @@ public:
 	virtual void MoveGWnd(int x, int y);
 	virtual void MoveGWnd2(wnd_pos pos);
 	virtual void Func_40();
+
+	/// \address 006529D0
 	virtual void Func_41();
+
 	virtual void Func_42();
 	virtual void Func_43();
 	virtual bool IsInside(int x, int y);
@@ -54,6 +57,8 @@ public:
 	virtual void Func_47(int);
 	virtual void Func_48();
 
+	/// \address 006527D0
+    void SetSomeRect(const RECT &rect);
 
 private:
 	int On4001(int, int);
@@ -77,8 +82,8 @@ private:
 	char pad_01BA[2]; //0x01BA
 protected:
 	CIRMManager m_IRM; //0x01BC m_IRM at 1BC
-private:
-	int N00000608; //0x01EC
+public: /* public as of 007ABE89 */
+	void *N00000608; //0x01EC
 protected:
 	int N00000609; //0x01F0
 private:

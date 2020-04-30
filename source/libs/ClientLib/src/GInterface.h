@@ -14,7 +14,10 @@
 #include "IFSkillPracticeBox.h"
 #include "IFHelperBubbleWindow.h"
 #include "MessageBoxManager.h"
+#include "NIFCommunityWnd.h"
+#include "unsorted.h"
 
+#define GDR_CHAT_BOARD 1
 #define GDR_STORAGEROOM 19
 #define GDR_NOTICE 20
 #define GDR_MAINPOPUP 25
@@ -27,8 +30,26 @@
 
 enum eLogType : int
 {
-	NONE = 0,
-	GUIDE = 6
+	SYSLOG_NONE = 0,
+	SYSLOG_ERR = 4,
+	SYSLOG_GUIDE = 6
+};
+
+struct SChatMetaData {
+
+    SChatMetaData() {
+        chatIndex = -1;
+        chatType = 0;
+        strRecipient = L"";
+        strMessage = L"";
+    }
+
+    char chatIndex;
+    char chatType;
+    // Name of the receiving character, in case of PM, string is empty otherwise.
+    std::n_wstring strRecipient;
+    // Always the message
+    std::n_wstring strMessage;
 };
 
 class CGInterface : public CIFWnd {
@@ -89,7 +110,8 @@ public:
     /// \endcode
     void ShowMessage_Quest(const std::n_wstring &msg);
 
-    // void PrintSystemMessage(eLogType level, wchar_t *str);
+    /// \address 007781B0
+	void WriteSystemMessage(eLogType level, const wchar_t *str);
 
     void CreateFlorian0Event();
 
@@ -143,8 +165,27 @@ public:
 	//0x00799640
 	CIFStorageRoom* Get_GDR_GUILDSTORAGEROOM();
 
+	/// \address 007994f0
+	CNIFCommunityWnd* GetCommunityWnd();
+
+	/// \address 00777c30
+    void FUN_00777c30(ChatType type, const wchar_t* message, D3DCOLOR color, int a5);
+
+    /// \address 00778a10
+    void FUN_00778a10(int a2, const wchar_t* message, D3DCOLOR color);
+
+    /// \address 00777cf0
+    void FUN_00777cf0(const std::n_wstring &recipient);
+
 	//0x00778190
 	void WriteErrorMessage(byte errorType, unsigned __int16 errorCode, int colorARGB, int a5, int a6);
+
+	/// \address 0078BEA0
+    int TryParseChatCommands(const wchar_t* text, RECT &r, std::vector<void*>& v);
+
+    /// \address 00787C10
+    void sub_787C10(SChatMetaData &meta);
+
 
 private:
 public:

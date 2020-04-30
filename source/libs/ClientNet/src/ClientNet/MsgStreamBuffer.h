@@ -1,135 +1,112 @@
 #pragma once
 
+#include <Windows.h>
+
+#include <BSLib/memory/MemPool.h>
+#include <BSLib/BSLib.h>
+#include <cstddef>
+#include <string>
+#include <Test/Test.h>
+
+#define NEWMSG(msgid) \
+if (IsOpcodeSupported(msgid, 0)) { \
+    CMsgStreamBuffer pReq(msgid); \
+    pReq.ToggleBefore();
+
+#define SENDMSG() \
+    pReq.ToggleAfter(); \
+    SendMsg(pReq); \
+}
+
+bool IsOpcodeSupported(WORD msgid, int);
+
 #include <new>
 #include <string>
 
-class CMsgStreamBuffer
-{
-protected:
-	struct SMsgStreamNode
-	{
-		SMsgStreamNode* next_node; //0x0000
-		char N00012EE8[4096]; //0x0004
-		char* N00012EE9; //0x1004
-		char pad_1008[4]; //0x1008
+class CMsgStreamBuffer {
+public: /* todo: this public is only temporary. Remove it as soon as the allocator is working properly */
+    class SMsgStreamNode {
+    public:
+        SMsgStreamNode();
 
-		SMsgStreamNode()
-		{
-			next_node = 0;
-			N00012EE9 = &N00012EE8[0];
-		}
+        static void *operator new(std::size_t sz);
 
-		void* operator new(std::size_t sz)
-		{
-			return reinterpret_cast<void* (__thiscall*)(int)>(0x425400)(0x00EECD98);
-		}
-	}; //Size: 0x100C
+    private:
+        static GlobalVar<CMemPool<(_TAG('MSG', 1)), SMsgStreamNode, 20, 1>, 0x00EECD98> m_mempool;
+        //static CMemPool<(_TAG('MSG' ,1)), SMsgStreamNode, 20, 1> m_mempool;
 
+    private:
+        int data[1024];
+        char _pad[4];
+        int *currentPos;
+    };
 
 public:
-	CMsgStreamBuffer(short msgid)
-		: msgid(msgid), field3(0), _begin(0), _end(0)
-	{
-		buffer = node_current = new SMsgStreamNode;
-	}
+    explicit CMsgStreamBuffer(WORD msgid);
 
-	virtual ~CMsgStreamBuffer()
-	{
-		/*
-		CheckMsgNotCompletelyUsed();
-
-		while (node_current) {
-			SMsgStreamNode *node = node_current;
-			node_current = node_current->next_node;
-
-			delete node;
-			node->next_node = 0xFEEEFEEE;
-		}
-		*/
-
-		reinterpret_cast<void(__thiscall*)(CMsgStreamBuffer*)>(0x005097A0)(this);
-	}
+    virtual ~CMsgStreamBuffer();
 
 
-	void FlushRemaining()
-	{
-		_begin = _end;
-	}
+    void ToggleBefore();
 
-	template <typename T>
-	CMsgStreamBuffer& operator>>(T& value)
-	{
-		Read(value);
-		return *this;
-	}
+    void ToggleAfter();
 
+    WORD msgid() const;
 
-	template <typename T>
-	void Read(T& value)
-	{
-		Read(&value, sizeof(T));
-	}
+    void FlushRemaining();
 
+    //
+    // Read
+    //
 
-	void Read(void* value, size_t numBytes)
-	{
-		reinterpret_cast<void(__thiscall*)(CMsgStreamBuffer*, void*, size_t)>(0x004F7220)(this, value, numBytes);
+    template<typename T>
+    CMsgStreamBuffer &operator>>(T &value) {
+        Read(value);
+        return *this;
+    }
 
-#if 0
-		if ((buffer_end - current_buffer_ptr) < numBytes)
-		{
-			requireBytes(numBytes);
-		}
-
-		// Copy bytes
-		memcpy(value, current_buffer_ptr, numBytes);
-
-		// Move buffer forward
-		current_buffer_ptr += numBytes;
-#endif
-	}
+    template<typename T>
+    void Read(T &value) {
+        Read(&value, sizeof(T));
+    }
 
 
+    //
+    // Write
+    //
 
-	/*
-	 *++++++ WRITE +++++++++++++
-	 */
+    CMsgStreamBuffer &operator<<(const std::n_string &str);
 
-	template <typename T>
-	void Write(const T* const data, size_t size)
-	{
-		reinterpret_cast<void(__thiscall*)(CMsgStreamBuffer*, const void* const, size_t)>(0x00508FE0)(this, reinterpret_cast<const void* const>(data), size);
-	}
+    CMsgStreamBuffer &operator<<(const std::string &str);
 
-	template <typename T>
-	void Write(const T& value)
-	{
-		Write(&value, sizeof(T));
-	}
+    CMsgStreamBuffer &operator<<(WORD value);
 
-	template <typename T>
-	CMsgStreamBuffer& operator<<(const T& value)
-	{
-		Write(value);
-		return *this;
-	}
+    template<typename T>
+    CMsgStreamBuffer &operator<<(T value) {
+        Write(&value, sizeof(value));
+        return *this;
+    }
 
-	CMsgStreamBuffer& operator<<(const std::string& str)
-	{
-		*this << static_cast<short>(str.length());
-		Write(str.c_str(), str.length());
+private:
+    void Write(const void *data, size_t size);
 
-		return *this;
-	}
+    void Read(void* value, size_t numBytes);
 
+private:
+    unsigned int m_currentReadBytes;
+    unsigned int m_availableBytesForReading;
+    unsigned char field_0xc;
+    unsigned char field_0xd;
+    unsigned char field_0xe;
+    unsigned char field_0xf;
+    SMsgStreamNode *m_node1;
+    SMsgStreamNode *m_node2;
+    WORD m_msgid;
 
-public:
-	int _begin;
-	int _end;
-	int field3;
-	SMsgStreamNode* buffer;
-	SMsgStreamNode* node_current;
-	unsigned short msgid;
-	char _gap[4];
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(28) // size taken from 0x00871887
+        ENSURE_OFFSET(m_msgid, 24)
+    END_FIXTURE()
 
+    RUN_FIXTURE(CMsgStreamBuffer)
 };

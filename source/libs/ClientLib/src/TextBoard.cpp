@@ -234,3 +234,7 @@ void CTextBoard::sub_6554C0()
 {
 	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006554C0)(this);
 }
+
+void CTextBoard::SetFont(void *a2) {
+    reinterpret_cast<void (__thiscall *)(CTextBoard *, void *)>(0x00655270)(this, a2);
+}

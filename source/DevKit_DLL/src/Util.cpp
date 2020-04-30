@@ -10,18 +10,16 @@
 #include "PSQuickStart.h"
 #include "Game.h"
 #include <sys/stat.h>
+#include <IFChatViewer.h>
 #include "QuickStart.h"
 #include "CGame_Hook.h"
 
 std::vector<const CGfxRuntimeClass*> register_objects;
+std::vector<overrideFnPtr> override_objects;
+
 QuickStart quickstart;
 
 int APIENTRY _FakeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow);
-
-
-#if 0
-std::vector<const CGfxRuntimeClass*> override_objects;
-#endif
 
 
 void Setup()
@@ -45,6 +43,13 @@ void Setup()
     placeHook(0x0065c6f0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
 
     replaceOffset(0x008491d1, addr_from_this(&CGame_Hook::LoadGameOption));
+#ifdef CONFIG_CHATVIEWER
+    replaceOffset(0x008774f4, (int)&WriteToChatWindow);
+    replaceOffset(0x00877b5c, (int)&WriteToChatWindow);
+
+    placeHook(0x007a9bd0, addr_from_this(&CIFChatViewer::ShowHideControls));
+
+#endif // CONFIG_CHATVIEWER
 
     replaceOffset(0x00B49AE4, (int)&_FakeWinMain);
 
@@ -60,13 +65,11 @@ void RegisterObject(const CGfxRuntimeClass* obj)
 {
 	register_objects.push_back(obj);
 }
-#if 0
-void OverrideObject(const CGfxRuntimeClass& obj)
-{
-	override_objects.push_back(&obj);
-}
-#endif
 
+void OverrideObject(overrideFnPtr fn)
+{
+	override_objects.push_back(fn);
+}
 
 int APIENTRY _FakeWinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -95,6 +98,12 @@ int APIENTRY _FakeWinMain(HINSTANCE hInstance,
 	{
 		reinterpret_cast<void(__thiscall*)(const CGfxRuntimeClass*, const char*, void*, void*, const CGfxRuntimeClass*, size_t, int)>(0x00B9C9C0)(*it, (*it)->m_lpszClassName, (*it)->m_pfnCreateObject, (*it)->m_pfnDeleteObject, (*it)->m_pBaseClass, (*it)->m_nObjectSize, 0);
 	}
+
+
+    for (std::vector<overrideFnPtr>::const_iterator it = override_objects.begin(); it != override_objects.end(); ++it)
+    {
+        (*it)();
+    }
 
 	if (quickstart.IsEnabled())
         quickstart.PreWinMain();

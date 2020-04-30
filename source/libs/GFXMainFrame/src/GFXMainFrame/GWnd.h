@@ -35,7 +35,7 @@ public:
 
     virtual int Func_35(int a1, int a2, int a3);
 
-    virtual int Func_36(int a1, int a2, int a3, int a4);
+    virtual int Func_36(int a1, short action, int a3, int a4);
 
     virtual void Func_37();
 

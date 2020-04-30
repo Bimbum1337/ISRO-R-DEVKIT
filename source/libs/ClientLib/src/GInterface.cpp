@@ -2,6 +2,8 @@
 #include "GInterface.h"
 #include "IFflorian0Guide.h"
 #include "IFNotify.h"
+#include "IFChatViewer.h"
+#include "IFNotify.h"
 
 void CGInterface::RenderToggle_GDR_ACTION()
 {
@@ -124,4 +126,33 @@ CIFStorageRoom* CGInterface::Get_GDR_GUILDSTORAGEROOM()
 void CGInterface::WriteErrorMessage(byte errorType, unsigned __int16 errorCode, int colorARGB, int a5, int a6)
 {
 	return reinterpret_cast<void(__thiscall*)(void*, byte, unsigned __int16, int, int, int)>(0x00778190)(this, errorType, errorCode, colorARGB, a5, a6);
+}
+
+void CGInterface::WriteSystemMessage(eLogType level, const wchar_t *str) {
+    reinterpret_cast<void(__thiscall*)(CGInterface*,eLogType,const wchar_t*)>(0x007781B0)(this, level, str);
+}
+
+void CGInterface::sub_787C10(SChatMetaData &meta) {
+    reinterpret_cast<void(__thiscall*)(CGInterface*, SChatMetaData*)>(0x787C10)(this, &meta);
+}
+
+int CGInterface::TryParseChatCommands(const wchar_t *text, RECT &r, std::vector<void *> &v) {
+    return reinterpret_cast<int(__thiscall*)(CGInterface*, const wchar_t *, RECT*, std::vector<void*> *)>(0x0078BEA0)(this, text, &r, &v);
+}
+
+CNIFCommunityWnd *CGInterface::GetCommunityWnd() {
+    return reinterpret_cast<CNIFCommunityWnd*(__thiscall*)(CGInterface*)>(0x007994f0)(this);
+}
+
+void CGInterface::FUN_00777c30(ChatType type, const wchar_t *message, D3DCOLOR color, int a5) {
+    CIFChatViewer* chatViewer = m_IRM.GetResObj<CIFChatViewer>(GDR_CHATVIEWER, 1);
+    chatViewer->FUN_007aca30(type, color, message, 0, a5);
+}
+
+void CGInterface::FUN_00778a10(int a2, const wchar_t* message, D3DCOLOR color) {
+    reinterpret_cast<void(__thiscall*)(CGInterface*, int, const wchar_t*, D3DCOLOR)>(0x00778a10)(this, a2, message, color);
+}
+
+void CGInterface::FUN_00777cf0(const std::n_wstring &recipient) {
+    reinterpret_cast<void(__thiscall*)(CGInterface*, const std::n_wstring*)>(0x00777cf0)(this, &recipient);
 }

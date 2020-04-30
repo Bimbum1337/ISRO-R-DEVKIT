@@ -2,9 +2,13 @@
 
 #include "IFStatic.h"
 
-class CIFEdit : public CIFStatic
-{
-public:
-	char pad_0x0380[0xB100]; //0x0380 ????
+class CIFEdit : public CIFStatic {
+GFX_DECLARE_DYNAMIC_EXISTING(CIFEdit, 0x00ee9540)
 
-}; //Size=0xB480
+public:
+    /// \address 00634EA0
+    bool HasFocus() const;
+
+private:
+    char pad_0x0380[0xB100]; //0x0380 ????
+};

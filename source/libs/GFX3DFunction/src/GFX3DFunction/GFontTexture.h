@@ -24,6 +24,15 @@ public:
 	// Clear some texture
 	void sub_8B37A0();
 
+	/// \address 008B4400
+	void sub_8B4400(int a1, int a2);
+
+	/// \address 008B4750
+	void sub_8B4750(int a2);
+
+	/// \address 008B3C10
+    std::n_wstring *GetText(std::n_wstring *) const;
+
 private:
 	char pad_0004[12-4]; //0x0004
 	D3DCOLOR m_color_bg; //0x000C
