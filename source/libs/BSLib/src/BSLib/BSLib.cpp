@@ -79,6 +79,15 @@ CObjChild::CObjChild() {
     // empty
 }
 
+int CObjChild::StartTimer(int timerId, int timeoutMs) {
+    return reinterpret_cast<int (__thiscall*)(CObjChild*, int, int)>(0x00b93320)(this, timerId, timeoutMs);
+}
+
+
+int CObjChild::KillTimer(int timerId) {
+    return reinterpret_cast<int (__thiscall *)(CObjChild *, int)>(0x00B93170)(this, timerId);
+}
+
 # if 0
 void* CObj::operator new(size_t num_bytes) {
 	return CMemPoolManager_Allocate(num_bytes);

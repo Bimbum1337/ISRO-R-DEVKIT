@@ -1,3 +1,4 @@
+
 set(SOURCE_FILES src/BufRender.h
     src/CameraWorking.cpp
     src/CameraWorking.h
@@ -47,6 +48,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFApprenticeShipSlot.h
     src/IFButton.cpp
     src/IFButton.h
+    src/IFChatViewer.cpp src/IFChatViewer.h
     src/IFCloseButton.cpp
     src/IFCloseButton.h
     src/IFConsole.h
@@ -62,7 +64,6 @@ set(SOURCE_FILES src/BufRender.h
     src/IFGauge.h
     src/IFHelperBubbleWindow.h
     src/IFInventory.h
-    src/IFListCtrl.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
     src/IFMainPopup.h
@@ -77,7 +78,6 @@ set(SOURCE_FILES src/BufRender.h
     src/IFQuest.h
     src/IFQuickStateHalfWnd.h
     src/IFQuickStateWnd.h
-    src/IFScrollBar.h
     src/IFScrollManager.h
     src/IFSelectableArea.h
     src/IFSkill.h
@@ -98,7 +98,6 @@ set(SOURCE_FILES src/BufRender.h
     src/IFTileWnd.cpp
     src/IFTileWnd.h
     src/IFTimerWnd.h
-    src/IFVerticalScroll.h
     src/IFWnd.cpp
     src/IFWnd.h
     src/IObject.h
@@ -137,7 +136,27 @@ set(SOURCE_FILES src/BufRender.h
     src/PSQuickStart.h
     src/NIFUnderMenuBar.cpp src/NIFUnderMenuBar.h
     src/TextStringManager.cpp src/TextStringManager.h
-    src/IFNotify.cpp src/IFNotify.h)
+    src/IFNotify.cpp src/IFNotify.h
+    src/IFListCtrl.cpp src/IFListCtrl.h
+    src/LinkedScroll.cpp src/LinkedScroll.h
+    src/IFVerticalScroll.cpp src/IFVerticalScroll.h
+    src/IFScrollBar.cpp src/IFScrollBar.h
+    src/IFTextBox.cpp src/IFTextBox.h
+    src/IFSelectableArea.cpp src/IFSelectableArea.h
+    src/IFChatModeViewer.cpp src/IFChatModeViewer.h
+    src/ICPlayer.h src/ICPlayer.cpp
+    src/SOItem.h
+    src/ICUser.cpp src/ICUser.h
+    src/IFEdit.cpp src/IFEdit.h
+    src/SRO_MSG_DEF.h
+    src/CharacterDependentData.cpp src/CharacterDependentData.h
+    src/NIFCommunityWnd.cpp src/NIFCommunityWnd.h
+    src/NIFBlockWnd.cpp src/NIFBlockWnd.h
+    src/ICharactor.cpp src/ICharactor.h
+    src/ClassLink.h
+    src/IGIDObject.cpp src/IGIDObject.h
+    src/IFNotify.cpp src/IFNotify.h
+    )
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)

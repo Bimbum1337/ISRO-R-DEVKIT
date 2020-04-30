@@ -23,4 +23,10 @@ public:
 	char* N0000631A; //0x0464 
 	char pad_0x0468[0x35C]; //0x0468
 
-}; //Size=0x07C4
+private:
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0x07C4)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CIFStretchWnd)
+};

@@ -3,11 +3,13 @@
 #define _GFX_RUNTIME_CLASS(class_name) (class_name::class##class_name)
 #define GFX_RUNTIME_CLASS(class_name) _GFX_RUNTIME_CLASS(class_name)
 
+#define GFX_DECLARE_DYNCREATE_FN(class_name) \
+    static CObj* PASCAL CreateObject(); \
+    static void __cdecl DeleteObject(CObj*);
 
 #define GFX_DECLARE_DYNCREATE(class_name) \
     GFX_DECLARE_DYNAMIC(class_name) \
-    static CObj* PASCAL CreateObject(); \
-    static void __cdecl DeleteObject(CObj*);
+    GFX_DECLARE_DYNCREATE_FN(class_name)
 
 #define GFX_DECLARE_DYNAMIC(class_name) \
 public: \
@@ -19,12 +21,14 @@ public: \
 #define GFX_IMPLEMENT_DYNAMIC(class_name, base_class_name) \
     GFX_IMPLEMENT_RUNTIMECLASS(class_name, base_class_name, 0xFFFF, NULL, NULL)
 
-
-#define GFX_IMPLEMENT_DYNCREATE(class_name, base_class_name) \
-    CObj* PASCAL class_name::CreateObject() \
+#define GFX_IMPLEMENT_DYNCREATE_FN(class_name, base_class_name) \
+        CObj* PASCAL class_name::CreateObject() \
         { return new class_name; } \
         void __cdecl class_name::DeleteObject(CObj* pObj) \
-        { delete pObj; } \
+        { delete pObj; }
+
+#define GFX_IMPLEMENT_DYNCREATE(class_name, base_class_name) \
+        GFX_IMPLEMENT_DYNCREATE_FN(class_name, base_class_name) \
         GFX_IMPLEMENT_RUNTIMECLASS(class_name, base_class_name, 0xFFFF, \
         class_name::CreateObject, class_name::DeleteObject)
 

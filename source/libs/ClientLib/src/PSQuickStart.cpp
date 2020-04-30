@@ -33,8 +33,8 @@ char CPSQuickStart::OnCreate(int a1)
 
 int CPSQuickStart::OnNetMsg(CMsgStreamBuffer* pMsg)
 {
-	printf("> " __FUNCTION__ " ~ Got Msg %04x\n", pMsg->msgid);
-	if (pMsg->msgid == 0x1002)
+	printf("> " __FUNCTION__ " ~ Got Msg %04x\n", pMsg->msgid());
+	if (pMsg->msgid() == 0x1002)
 	{
 		int unk1, unk2;
 		*pMsg >> unk1 >> unk2;
@@ -45,7 +45,7 @@ int CPSQuickStart::OnNetMsg(CMsgStreamBuffer* pMsg)
 		return 0;
 	}
 
-	if (pMsg->msgid == 0x1003) 
+	if (pMsg->msgid() == 0x1003)
 	{
 		int unk1, unk2;
 		*pMsg >> unk1 >> unk2;
@@ -54,7 +54,7 @@ int CPSQuickStart::OnNetMsg(CMsgStreamBuffer* pMsg)
 		return 0;
 	}
 
-	if (pMsg->msgid == 0xB007)
+	if (pMsg->msgid() == 0xB007)
 	{
 		pMsg->FlushRemaining();
 

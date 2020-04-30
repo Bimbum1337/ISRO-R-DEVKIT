@@ -10,15 +10,23 @@ public:
 
     std::n_wstring* sub_9D6580(std::n_wstring *str);
 
+
+private:
     char pad_082C[32]; //0x082C
     std::wstring m_charname; //0x084C
+public:
     unsigned char m_level; //0x0868 level of your character, crashes when set too high
+private:
     char pad_0869[7]; //0x0869
+public:
     long long int m_exp_current; //0x0870
     int m_skillpoint_progress; //0x0878
+private:
     short m_str_stat; //0x087C
     short m_int_stat; //0x087E
+public:
     int m_skillpoint; //0x0880
+private:
     short m_statpoint_available; //0x0884
     char pad_0886[26]; //0x0886
     CSOItem N0000947A; //0x08A0

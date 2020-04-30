@@ -204,15 +204,8 @@ void CIFWnd::Func_40()
 }
 
 
-// CIFWnd::Func_41(void) .text 006529D0 0000011D 00000024 00000000 R . . . . . .
-void CIFWnd::Func_41()
-{
-#if 0
-	printf(__FUNCTION__ " ()\n");
-	reinterpret_cast<void(__thiscall*)(CIFWnd*)>(0x006529D0)(this);
-#else
-	assert(FALSE);
-#endif
+void CIFWnd::Func_41() {
+    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x006529D0)(this);
 }
 
 // CIFWnd::IsInside(int,int) .text 00652740 00000046 00000010 00000008 R . . . . T .
@@ -313,4 +306,8 @@ void CIFWnd::sub_653060()
 void CIFWnd::Set_N00000687(char a2)
 {
 	N00000687 = a2;
+}
+
+void CIFWnd::SetSomeRect(const RECT &rect) {
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, const RECT *)>(0x006527D0)(this, &rect);
 }
