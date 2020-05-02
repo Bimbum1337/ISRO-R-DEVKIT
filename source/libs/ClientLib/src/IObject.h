@@ -15,4 +15,13 @@ public:
     D3DVECTOR location; //0x0080
     float rotation; //0x008C
     char pad_0090[76]; //0x0090
-}; //Size: 0x00DC
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0xdc)
+        ENSURE_OFFSET(region, 0x7c)
+        ENSURE_OFFSET(location, 0x80)
+        ENSURE_OFFSET(rotation, 0x8C)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CIObject)
+};
