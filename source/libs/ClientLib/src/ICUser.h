@@ -10,6 +10,13 @@ public:
     void Render(void);
 
 private:
-	// 2092 - 1932 = 160
-	char _gap_cicuser[160];
+    // 2092 - 1932 = 160
+    char _gap_cicuser[160 - 8]; // <- why -8 ??
+
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(2092)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CICUser)
 };
