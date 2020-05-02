@@ -8,7 +8,7 @@ public:
 
     bool IsGameMaster();
 
-    std::n_wstring* sub_9D6580(std::n_wstring *str);
+    std::n_wstring *sub_9D6580(std::n_wstring *str);
 
 
 private:
