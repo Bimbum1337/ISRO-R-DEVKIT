@@ -16,4 +16,15 @@ private:
     char pad_0194[28]; //0x0194
     CGFontTexture fonttexture_title; //0x01B0
     char pad_0218[60]; //0x0218
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0x254)
+
+        ENSURE_OFFSET(m_name, 0x110)
+        ENSURE_OFFSET(fonttexture_playername, 0x12c)
+        ENSURE_OFFSET(fonttexture_title, 0x1b0)
+
+    END_FIXTURE()
+
+    RUN_FIXTURE(CIGIDObject)
 };
