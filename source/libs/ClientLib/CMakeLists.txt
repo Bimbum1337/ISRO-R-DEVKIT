@@ -63,7 +63,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFFrame.h
     src/IFGauge.h
     src/IFHelperBubbleWindow.h
-    src/IFInventory.h
+    src/IFInventory.cpp src/IFInventory.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
     src/IFMainPopup.cpp src/IFMainPopup.h

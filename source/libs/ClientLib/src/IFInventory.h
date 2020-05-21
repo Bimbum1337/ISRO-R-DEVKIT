@@ -3,10 +3,15 @@
 #include "IFWnd.h"
 #include "IFStoreForPackage.h"
 #include "IFStorageRoom.h"
-
+#include "SOItem.h"
 
 class CIFInventory : public CIFWnd
 {
+
+public:
+    /// \address 0006b3e50
+    CSOItem* GetItemBySlot(int slotId);
+
 public:
 	CIFStoreForPackage* m_storeWindow; //0x036C 
 	CIFStorageRoom* m_storageWindow; //0x0370 
@@ -18,4 +23,4 @@ public:
 	CIFButton* m_moneyDropButton; //0x0398 
 	char pad_0x039C[0x54]; //0x039C
 
-}; //Size=0x03F0
+};//Size=0x03F0

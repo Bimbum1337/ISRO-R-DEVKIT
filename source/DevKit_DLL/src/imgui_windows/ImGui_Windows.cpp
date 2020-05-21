@@ -23,8 +23,11 @@
 #include "PartyInfo.h"
 #include "ProcessViewer.h"
 #include "SoundTool.h"
+#include "NotificationTool.h"
+#include "About.h"
 #include "SystemMessage.h"
 #include "CharacterData.h"
+#include "Inventory.h"
 #include <BSLib/Debug.h>
 #include <BSLib/multibyte.h>
 
@@ -41,6 +44,7 @@ SystemMessage systemMessage;
 ErrorMessageTool errorMessageTool;
 InterfaceTree interfaceTree;
 ProcessViewer processViewer;
+Inventory inventory;
 PartyInfo partyInfo;
 CharacterData characterData;
 
@@ -123,6 +127,8 @@ void ImGui_OnEndScene() {
             errorMessageTool.MenuItem();
             processViewer.MenuItem();
 
+            inventory.MenuItem();
+
             ImGui::EndMenu();
         }
 
@@ -160,6 +166,7 @@ void ImGui_OnEndScene() {
     errorMessageTool.Render();
     interfaceTree.Render();
     processViewer.Render();
+    inventory.Render();
     partyInfo.Render();
     characterData.Render();
 
