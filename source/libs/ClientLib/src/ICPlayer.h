@@ -8,7 +8,7 @@ public:
 
     bool IsGameMaster();
 
-    std::n_wstring* sub_9D6580(std::n_wstring *str);
+    std::n_wstring *sub_9D6580(std::n_wstring *str);
 
 
 private:
@@ -45,6 +45,23 @@ private:
     char pad_2030[96]; //0x2030
     char N000094A7; //0x2090 bit 0 = isGameMaster
     char pad_2091[135]; //0x2091
+
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0x2118)
+
+        ENSURE_OFFSET(m_charname, 0x084C)
+        ENSURE_OFFSET(m_level, 0x0868)
+        ENSURE_OFFSET(m_exp_current, 0x0870)
+        ENSURE_OFFSET(m_skillpoint_progress, 0x0878)
+        ENSURE_OFFSET(m_str_stat, 0x087C)
+        ENSURE_OFFSET(m_int_stat, 0x087E)
+        ENSURE_OFFSET(m_skillpoint, 0x0880)
+        ENSURE_OFFSET(m_statpoint_available, 0x0884)
+
+    END_FIXTURE()
+
+    RUN_FIXTURE(CICPlayer)
 };
 
 #define g_pCICPlayer (*((CICPlayer**)0x00EEF5EC))
