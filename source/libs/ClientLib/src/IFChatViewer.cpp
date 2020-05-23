@@ -1147,7 +1147,7 @@ void CIFChatViewer::FUN_007aca30(ChatType chatType, D3DCOLOR color, const wchar_
             lineNumber = this->m_numberOfLinesPerTab[index];
         }
 
-        m_ChatLists[0]->sub_64F8A0(strmsg, lineNumber, color, color, -1, 0, param5);
+        m_ChatLists[index]->sub_64F8A0(strmsg, lineNumber, color, color, -1, 0, param5);
     }
 
     theend:
