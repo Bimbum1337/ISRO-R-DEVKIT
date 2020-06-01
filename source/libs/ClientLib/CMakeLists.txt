@@ -172,8 +172,9 @@ set(SOURCE_FILES src/BufRender.h
     src/Keyframe.h src/Keyframe.cpp
     src/UserGuildInfo.cpp src/UserGuildInfo.h
     src/PartyData.h
-    src/PartyMemberData.h)
-
+    src/PartyMemberData.h
+    src/IFWholeChat.cpp src/IFWholeChat.h
+    )
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet TypeId abi-testing imgui remodel ghidra)
