@@ -6,6 +6,7 @@ stages:
   - build
   - deploy
   - docs
+  - publish
 
 docker_doxygen:
   stage: build
@@ -45,16 +46,31 @@ build:
       - BinOut/
     expire_in: 1 day
 
-pages:
+mkdocs:
   stage: docs
-  image: ${registry}:doxygen
+  image: 
+    name: squidfunk/mkdocs-material:5.5.2
+    entrypoint: [""]
   script:
-    - doxygen
-    - mv doxygen/html public/
+    - mkdocs build -v
+  artifacts:
+    untracked: false
+    paths:
+      - site/
+    expire_in: 1 hour
+
+
+pages:
+  stage: publish
+  dependencies:
+    - mkdocs
+  script:
+    - mv site/ public/
   artifacts:
     paths:
       - public/
     expire_in: 1 day
   rules:
-    - if: $CI_COMMIT_REF_NAME == "devel"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: always
+    - when: never
