@@ -17,8 +17,10 @@ docker_doxygen:
     - docker build -t "${registry}:${name}" docker/${name}/
     - echo $REGISTRY_PASSWORD | docker login -u "$REGISTRY_USER" --password-stdin
     - docker push -t "${registry}:${name}"
-  only:
-    - docker
+  rules:
+    - changes:
+      - docker/doxygen/Dockerfile
+      when: always
 
 build:
   variables:
@@ -32,8 +34,27 @@ build:
     - chmod +x make_project_nmake.cmd make_project_nmake_build.cmd
     - ./make_project_nmake.cmd
     - ./make_project_nmake_build.cmd
+  rules:
+    - changes:
+      - source/
+      - CMakeLists.txt
+      when: always
   artifacts:
     untracked: false
     paths:
       - BinOut/
     expire_in: 1 day
+
+pages:
+  stage: docs
+  image: ${registry}:doxygen
+  script:
+    - doxygen
+    - mv doxygen/html public/
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 day
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "devel"
+      when: always
