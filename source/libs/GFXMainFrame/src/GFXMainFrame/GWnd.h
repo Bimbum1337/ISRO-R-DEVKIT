@@ -7,7 +7,7 @@ class CProcess; /* forward decl to avoid include recursion */
 /// Adds just a bunch of virtuals to \ref CGWndBase which are pretty much all unknown ...
 class CGWnd : public CGWndBase {
     // 132 - 132 = 0 <- no additional bytes :)
-    GFX_DECLARE_DYNAMIC_EXISTING(CGWnd, 0x0110F94C)
+GFX_DECLARE_DYNAMIC_EXISTING(CGWnd, 0x0110F94C)
 
 public:
     /// \address 00B9D810
@@ -21,19 +21,39 @@ public:
 
     virtual bool Func_28(int a1, int a2, int a3);
 
-    virtual int OnClickEvent(int a1, int x, int y);
+    /// \brief Called when the left mouse button is released
+    /// \param x Position X of the mouse
+    /// \param y Position Y of the mouse
+    /// \address 0046fd70
+    virtual int OnMouseLeftUp(int a1, int x, int y);
 
-    virtual int Func_30(int a1, int a2, int a3);
+    /// \brief Called when the left mouse button is pressed
+    /// \param x Position X of the mouse
+    /// \param y Position Y of the mouse
+    /// \address 0046fd60
+    virtual int OnMouseLeftDown(int a1, int x, int y);
 
     virtual int Func_31(int a1, int a2, int a3);
 
-    virtual int Func_32(int a1, int a2, int a3);
+    /// \brief Called when the right mouse button is pressed
+    /// \param x Position X of the mouse
+    /// \param y Position Y of the mouse
+    /// \address 0046fd40
+    virtual int OnMouseRightDown(int a1, int x, int y);
 
-    virtual int Func_33(int a1, int a2, int a3);
+    /// \brief Called when the right mouse button is released
+    /// \param x Position X of the mouse
+    /// \param y Position Y of the mouse
+    /// \address 0046fd30
+    virtual int OnMouseRightUp(int a1, int x, int y);
 
     virtual int Func_34(int a1, int a2, int a3);
 
-    virtual int Func_35(int a1, int a2, int a3);
+    /// \brief Called when the mouse is moved over the control
+    /// \param x Position X of the mouse
+    /// \param y Position Y of the mouse
+    /// \address 0046fd10
+    virtual int OnMouseMove(int a1, int x, int y);
 
     virtual int Func_36(int a1, short action, int a3, int a4);
 

@@ -21,11 +21,11 @@ bool CGWnd::Func_28(int a1, int a2, int a3) {
     return false;
 }
 
-int CGWnd::OnClickEvent(int a1, int x, int y) {
+int CGWnd::OnMouseLeftUp(int a1, int x, int y) {
     return 0;
 }
 
-int CGWnd::Func_30(int a1, int a2, int a3) {
+int CGWnd::OnMouseLeftDown(int a1, int x, int y) {
     return 0;
 }
 
@@ -33,11 +33,11 @@ int CGWnd::Func_31(int a1, int a2, int a3) {
     return 0;
 }
 
-int CGWnd::Func_32(int a1, int a2, int a3) {
+int CGWnd::OnMouseRightDown(int a1, int x, int y) {
     return 0;
 }
 
-int CGWnd::Func_33(int a1, int a2, int a3) {
+int CGWnd::OnMouseRightUp(int a1, int x, int y) {
     return 0;
 }
 
@@ -45,7 +45,7 @@ int CGWnd::Func_34(int a1, int a2, int a3) {
     return 0;
 }
 
-int CGWnd::Func_35(int a1, int a2, int a3) {
+int CGWnd::OnMouseMove(int a1, int x, int y) {
     return 0;
 }
 

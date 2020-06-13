@@ -21,7 +21,7 @@ bool CIFflorian0Guide::OnCreate(long ln)
 	return true;
 }
 
-int CIFflorian0Guide::OnClickEvent(int a1, int x, int y)
+int CIFflorian0Guide::OnMouseLeftUp(int a1, int x, int y)
 {
 	printf("> " __FUNCTION__ "(%d, %d, %d)\n", a1, x, y);
 
