@@ -9,6 +9,6 @@ class CIFflorian0Guide : public CIFDecoratedStatic
 
 public:
 	bool OnCreate(long ln) override;
-	int OnClickEvent(int a1, int x, int y) override;
+	int OnMouseLeftUp(int a1, int x, int y) override;
 	void Func_41() override;
 };
