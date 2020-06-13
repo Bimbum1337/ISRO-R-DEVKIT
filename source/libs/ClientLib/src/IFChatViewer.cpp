@@ -984,7 +984,7 @@ void CIFChatViewer::sub_7A9A80(int a2) {
     m_Lamp_Ally->ShowGWnd(false);
     m_Lamp_Apprentice->ShowGWnd(false);
 
-    if (a2) {
+    if (a2 == false) {
         switch (m_currentTabPage) {
             case 0:
                 m_Lamp_All->ShowGWnd(true);
