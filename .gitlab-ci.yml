@@ -37,25 +37,3 @@ build:
     paths:
       - BinOut/
     expire_in: 1 day
-      
-pages:
-  stage: docs
-  image: ${registry}:doxygen
-  script:
-    - doxygen
-    - mv doxygen/html public/
-  artifacts:
-    paths:
-      - public/
-    expire_in: 1 day
-  only:
-    - devel
-
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  script:
-    - echo "Deploying is not implemented yet"
-  only:
-    - stable
