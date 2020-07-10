@@ -1,12 +1,3 @@
-#include "StdAfx.h"
 #include "IFCloseButton.h"
 
-
-CIFCloseButton::CIFCloseButton(void)
-{
-}
-
-
-CIFCloseButton::~CIFCloseButton(void)
-{
-}
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFCloseButton, 0x00ee9868)

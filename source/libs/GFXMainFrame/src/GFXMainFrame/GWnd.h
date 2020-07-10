@@ -82,6 +82,7 @@ public:
 
 
     /// Create a new CGWnd-instance based on the given runtime class
+    /// \deprecated This function is deprecated. Please use the one that uses wnd_rect instead of RECT!
     /// \param pParent Parent control this control should live in
     /// \param pType Runtime class type identifying the class to be created
     /// \param Rect Initial dimension and position
@@ -89,6 +90,17 @@ public:
     /// \param a5 Unknown
     static CGWnd *CreateInstance(CGWnd *pParent, const CGfxRuntimeClass &pType, RECT &Rect, int a4, int a5) {
         return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, RECT *, int, int)>(0x00BA20B0)(
+                pParent, &pType, &Rect, a4, a5);
+    }
+
+    /// Create a new CGWnd-instance based on the given runtime class
+    /// \param pParent Parent control this control should live in
+    /// \param pType Runtime class type identifying the class to be created
+    /// \param Rect Initial dimension and position
+    /// \param a4 Presumably the Id
+    /// \param a5 Unknown
+    static CGWnd *CreateInstance(CGWnd *pParent, const CGfxRuntimeClass &pType, wnd_rect &Rect, int a4, int a5) {
+        return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, wnd_rect *, int, int)>(0x00BA20B0)(
                 pParent, &pType, &Rect, a4, a5);
     }
 };

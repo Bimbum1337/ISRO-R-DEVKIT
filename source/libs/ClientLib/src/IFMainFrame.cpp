@@ -1,54 +1,80 @@
-#include "StdAfx.h"
 #include "IFMainFrame.h"
+#include "Game.h"
 
-// CIFMainFrame_Create                       .text 00817270 00000067 00000014 00000000 R . . . . . .
-// CIFMainFrame_Delete                       .text 00816EF0 00000012 00000000 00000004 R . . . . . .
-// CIFMainFrame::GetRuntimeClass(void)       .text 00816F50 00000006                   R . . . . . .
-// CIFMainFrame::GetParentRuntimeClass(void) .text 00817260 00000006                   R . . . . . .
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFMainFrame, 0x00EECB54)
 
 GFX_BEGIN_MESSAGE_MAP(CIFMainFrame, CIFWnd)
-
-ONG_COMMAND(2, &OnClick_Exit)
-
+    ONG_COMMAND(2, &OnClick_Exit)
 GFX_END_MESSAGE_MAP()
 
+#define GDR_STA_TITLE 0
+#define GDR_STA_DRAG 1
+#define GDR_BTN_CLOSE 2
 
-// CIFMainFrame::CIFMainFrame(void) .text 00816F20 00000030 00000004 00000000 R . . . . . .
-CIFMainFrame::CIFMainFrame(void)
-{
-	printf("> %s\n", __FUNCTION__);
-
-	m_title = NULL;
-	m_handleBar = NULL;
-	m_close = NULL;
+CIFMainFrame::CIFMainFrame()
+        : m_title(NULL), m_handleBar(NULL), m_close(NULL) {
 }
 
-// CIFMainFrame::~CIFMainFrame(void) .text 00816F60 00000015   R . . . . . .
-CIFMainFrame::~CIFMainFrame(void)
-{
-	// empty
+bool CIFMainFrame::OnCreate(long ln) {
+    printf("%s\n", __FUNCTION__);
+
+    CIFFrame::OnCreate(ln);
+
+    wnd_rect local_10 = GetBounds();
+
+    wnd_rect sz;
+    sz.pos.x = 10;
+    sz.pos.y = 12;
+    sz.size.height = 12;
+    sz.size.width = local_10.size.width - 21;
+
+    m_title = (CIFStatic*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFStatic), sz, GDR_STA_TITLE, 0);
+    printf("Created title at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+
+    sz.pos.y = 0;
+    sz.size.height = 34;
+
+    m_handleBar = (CIFDragableArea*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFDragableArea), sz, GDR_STA_DRAG, 0);
+    printf("Created handlebar at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+
+    sz.size.height = 16;
+    sz.size.width = 16;
+    sz.pos.x = local_10.size.width - 26;
+    sz.pos.y = 10;
+
+    m_close = (CIFCloseButton*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFCloseButton), sz, GDR_BTN_CLOSE, 0);
+    printf("Created close btn at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+
+    RECT rect;
+    m_title->SetSomeRect(rect);
+    m_title->SetFont(theApp.GetFont(0));
+    m_title->TB_Func_5(1);
+    m_title->TB_Func_6(0);
+
+
+    m_handleBar->SetSomeRect(rect);
+    m_handleBar->SetFont(theApp.GetFont(0));
+    m_handleBar->TB_Func_5(1);
+    m_handleBar->TB_Func_6(0);
+
+
+    m_close->SetSomeRect(rect);
+    m_close->SetFont(theApp.GetFont(0));
+    m_close->TB_Func_5(1);
+    m_close->TB_Func_6(0);
+
+
+    return true;
 }
 
-// CIFMainFrame::OnCreate(void) .text 00816F80 000001EF 00000038 00000004 R . . . . . .
-bool CIFMainFrame::OnCreate(long ln)
-{
-	return reinterpret_cast<bool(__thiscall*)(CIFMainFrame*,long)>(0x00816F80)(this, ln);
+void CIFMainFrame::SetGWndSize(int width, int height) {
+    assert(FALSE);
 }
 
-// CIFMainFrame::SetGWndSize(int,int) .text 00817210 0000001F 00000004 00000008 R . . . . . .
-void CIFMainFrame::SetGWndSize(int width, int height)
-{
-	assert(FALSE);
+bool CIFMainFrame::SetText(const wchar_t *Src) {
+    return reinterpret_cast<bool (__thiscall *)(CIFMainFrame *, const wchar_t *)>(0x00817230)(this, Src);
 }
 
-// CIFMainFrame::SetText(void) .text 00817230 00000010   R . . . . . .
-bool CIFMainFrame::SetText(const wchar_t* Src)
-{
-	return reinterpret_cast<bool(__thiscall*)(CIFMainFrame*,const wchar_t*)>(0x00817230)(this, Src);
-}
-
-void CIFMainFrame::OnClick_Exit()
-{
-	this->OnCloseWnd();
+void CIFMainFrame::OnClick_Exit() {
+    this->OnCloseWnd();
 }
