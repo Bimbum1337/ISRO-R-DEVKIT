@@ -50,7 +50,10 @@ public:
 	virtual void OnCIFReady();
 
 	virtual void Func_42();
-	virtual void Func_43();
+
+	/// \address 00652c00
+	virtual void OnCloseWnd();
+
 	virtual bool IsInside(int x, int y);
 	virtual bool SetText(const wchar_t* src);
 	virtual const wchar_t* GetText();

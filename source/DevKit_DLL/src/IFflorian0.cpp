@@ -74,13 +74,6 @@ void CIFflorian0::On_BtnClick()
 	m_custom_label->SetText(buffer);
 }
 
-//Use this to handle if you have special close case
-void CIFflorian0::OnExit()
-{
-	CIFMainFrame::OnExit();
-}
-
-
 int CIFflorian0::On4001(int a1, int a2)
 {
 	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
