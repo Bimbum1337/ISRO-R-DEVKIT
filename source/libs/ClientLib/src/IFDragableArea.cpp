@@ -1,12 +1,4 @@
 #include "StdAfx.h"
 #include "IFDragableArea.h"
 
-
-CIFDragableArea::CIFDragableArea(void)
-{
-}
-
-
-CIFDragableArea::~CIFDragableArea(void)
-{
-}
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFDragableArea, 0x00eea6bc)
