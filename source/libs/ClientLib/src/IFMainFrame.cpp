@@ -9,7 +9,7 @@ GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFMainFrame, 0x00EECB54)
 
 GFX_BEGIN_MESSAGE_MAP(CIFMainFrame, CIFWnd)
 
-// ONG_COMMAND(2, On2)
+ONG_COMMAND(2, &OnClick_Exit)
 
 GFX_END_MESSAGE_MAP()
 
@@ -46,4 +46,9 @@ void CIFMainFrame::SetGWndSize(int width, int height)
 bool CIFMainFrame::SetText(const wchar_t* Src)
 {
 	return reinterpret_cast<bool(__thiscall*)(CIFMainFrame*,const wchar_t*)>(0x00817230)(this, Src);
+}
+
+void CIFMainFrame::OnClick_Exit()
+{
+	this->OnCloseWnd();
 }

@@ -32,8 +32,8 @@ void CIFDecoratedStatic::RenderMyself()
 	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00634640)(this);
 }
 
-// CIFDecoratedStatic::Func_41(void) .text 00633BD0 0000009F 00000004 00000000 R . . . . . .
-void CIFDecoratedStatic::Func_41()
+// CIFDecoratedStatic::OnCIFReady(void) .text 00633BD0 0000009F 00000004 00000000 R . . . . . .
+void CIFDecoratedStatic::OnCIFReady()
 {
 	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00633BD0)(this);
 }

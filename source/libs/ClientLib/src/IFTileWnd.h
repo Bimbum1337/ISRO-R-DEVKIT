@@ -15,7 +15,7 @@ public:
 	void RenderMyself() override;
 	void SetGWndSize(int width, int height) override;
 	void Func_40() override;
-	void Func_41() override;
+	void OnCIFReady() override;
 
 	virtual void Func_49(std::n_string str);
 

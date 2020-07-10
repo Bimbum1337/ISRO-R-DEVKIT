@@ -19,6 +19,9 @@ public:
 	bool SetText(const wchar_t* src) override;
 
 private:
+    void OnClick_Exit();
+
+private:
 	CIFStatic* m_title; //0x07B0
 	CIFDragableArea* m_handleBar; //0x07B4
 	CIFCloseButton* m_close; //0x07B8

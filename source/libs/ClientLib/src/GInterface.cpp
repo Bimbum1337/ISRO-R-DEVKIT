@@ -46,7 +46,7 @@ void CGInterface::Render_GDR_AUTO_POTION(bool visible)
 }
 
 void CGInterface::CreateFlorian0Event() {
-    CGWnd *guide = GetAlarmManager()->GetGuide(GUIDE_FLORIAN0);
+	CGWnd *guide = GetAlarmManager()->GetGuide(GUIDE_FLORIAN0);
 }
 
 CAlramGuideMgrWnd *CGInterface::GetAlarmManager() {

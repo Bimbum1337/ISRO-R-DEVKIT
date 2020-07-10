@@ -26,5 +26,7 @@ private:
 
 private:
 	CIFButton *m_mybutton;
-	//CIFStatic *m_my_label;
+	CIFStatic* m_time_label;
+	CIFStatic* m_custom_label;
+
 };
