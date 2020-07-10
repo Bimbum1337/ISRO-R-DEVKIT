@@ -208,7 +208,7 @@ void CTextBoard::sub_655770(std::n_string a2)
 
 	if (a2.length())
 	{
-		m_texture_un2 = Fun_CacheTexture_Create(&a2);
+		m_texture_un2 = Fun_CacheTexture_Create(a2);
 		m_str_un2 = a2;
 	}
 	else
