@@ -1010,7 +1010,7 @@ void CIFChatViewer::sub_7A9A80(int a2) {
 void CIFChatViewer::SetChatBlocked(int timeoutSeconds) {
     this->m_bChattingAllowed = false;
     this->m_ChatBlock_SecondsLeft = timeoutSeconds;
-    g_pCGInterface->StartTimer(TIMER_CHATBLOCK, 1000);
+    StartTimer(TIMER_CHATBLOCK, 1000);
 }
 
 char CIFChatViewer::sub_7ADF70(const wchar_t *text) {
