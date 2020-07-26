@@ -34,12 +34,14 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         OverrideObject<CIFChatViewer, 0x00EEC168>();
 #endif // CONFIG_CHATVIEWER
 
+#ifdef CONFIG_IMGUI
 		OnCreate(ImGui_OnCreate);
 		OnEndScene(ImGui_OnEndScene);
 		OnWndProc(ImGui_WndProc);
 
 		OnPreSetSize(ImGui_OnPreSetSize);
 		OnPostSetSize(ImGui_OnPostSetSize);
+#endif
 
 #ifdef CONFIG_OLD_UNDERBAR
         // https://www.elitepvpers.com/forum/sro-pserver-guides-releases/4256375-source-fix-old-exp-bar-writing-code.html
