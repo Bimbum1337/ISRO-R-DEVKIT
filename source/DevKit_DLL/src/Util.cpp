@@ -34,7 +34,9 @@ void Setup()
 
 	replaceAddr(0x00831337+4, (int)&WndProcHook);
 
+#ifdef CONFIG_DEBUG_REDIRECT_PUTDUMP
 	replaceAddr(0x00832927+1, (int)&DebugPrintCallback);
+#endif
 
 #ifdef CONFIG_TRANSLATIONS_DEBUG
     placeHook(0x008C9C30, addr_from_this(&CTextStringManager::GetString));
@@ -76,10 +78,11 @@ int APIENTRY _FakeWinMain(HINSTANCE hInstance,
 	LPTSTR    lpCmdLine,
 	int       nCmdShow)
 {
+#ifdef CONFIG_DEBUG_CONSOLE
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONIN$", "r", stdin);
-
+#endif
 	printf("florian0's dev-client build on CMake\n");
 
 

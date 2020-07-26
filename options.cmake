@@ -17,3 +17,18 @@ option(CONFIG_CHATVIEWER_BADWORDFILTER "Enable the Bad Word Filter" ON)
 if(CONFIG_CHATVIEWER_BADWORDFILTER)
     add_definitions(-DCONFIG_CHATVIEWER_BADWORDFILTER)
 endif()
+
+option(CONFIG_IMGUI "Enable ImGui" ON)
+if (CONFIG_IMGUI)
+    add_definitions(-DCONFIG_IMGUI)
+endif()
+
+option(CONFIG_DEBUG_REDIRECT_PUTDUMP "Redirect the PutDump output to the console" ON)
+if (CONFIG_DEBUG_REDIRECT_PUTDUMP)
+    add_definitions(-DCONFIG_DEBUG_REDIRECT_PUTDUMP)
+endif()
+
+option(CONFIG_DEBUG_CONSOLE "Show the debug console" ON)
+if (CONFIG_DEBUG_CONSOLE)
+    add_definitions(-DCONFIG_DEBUG_CONSOLE)
+endif()
