@@ -675,10 +675,6 @@ void ImGui_Window_NotificationTool(bool *p_open) {
             // Somehow we don't know what the selection is
             printf("Unknown selection when sending notification\n");
         }
-
-
-        g_pCGInterface->ShowMessage_Quest(L"Hello World");
-
     }
 
     ImGui::End();
