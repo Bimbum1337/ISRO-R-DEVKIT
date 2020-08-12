@@ -232,9 +232,24 @@ private:
 	class CSkillCoolTimeManager* m_pCSkillCoolTimeManager; //0x0778
 	class CItemReuseDelayManager* m_pCItemReuseDelayManager; //0x077C
 	class CSkillRunTimeManager* m_pCSkillRunTimeManager; //0x0780
-	char pad_0784[112]; //0x0784
+	char pad_0784[0x48]; //0x0784
+	char pad_07cc[1]; // 0x7cc
+public:
+	undefined1 field_0x7cd;
+private:
+	char pad_07d0[0x24];
 	class CPreUseItem* m_pCPreUseItem; //0x07F4
 	char pad_07F8[92]; //0x07F8
+
+
+	BEGIN_FIXTURE()
+        ENSURE_SIZE(0x854)
+        ENSURE_OFFSET(m_pCSkillRunTimeManager, 0x780)
+        ENSURE_OFFSET(field_0x7cd, 0x7cd)
+        ENSURE_OFFSET(m_pCPreUseItem, 0x7f4)
+    END_FIXTURE()
+
+	RUN_FIXTURE(CGInterface)
 };
 
 #define g_pCGInterface (*(CGInterface**)0x0110F80C)

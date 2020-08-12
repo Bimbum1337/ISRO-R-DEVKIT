@@ -37,6 +37,14 @@ CObj::~CObj() {
 
 }
 
+bool CObj::IsSame(const CGfxRuntimeClass &rtclass) const {
+    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00b94b70)(this, rtclass);
+}
+
+bool CObj::IsKindOf(const CGfxRuntimeClass &rtclass) const {
+    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00b94b90)(this, rtclass);
+}
+
 const GFX_MSGMAP CObjChild::messageMapCObjChild = {
         0,
         GetThisMessageEntries()

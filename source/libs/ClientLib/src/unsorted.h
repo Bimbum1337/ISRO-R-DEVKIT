@@ -3,6 +3,7 @@
 #define g_hdc (*((HDC*)0x0110FAB0))
 #include "Process.h"
 #include "ICharactor.h"
+#include "GameCfg.h"
 
 #include <GFX3DFunction/GFXVideo3d.h>
 #include <BSLib/BSLib.h>
@@ -64,3 +65,6 @@ CICharactor *GetCharacterObjectByID_MAYBE(int uniqueid);
 /// \address 0x00876810
 void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipient, int uniqueid,
                         const std::n_wstring &strMessage, char direction);
+
+GameCfg* Fun_GetCfgGame();
+

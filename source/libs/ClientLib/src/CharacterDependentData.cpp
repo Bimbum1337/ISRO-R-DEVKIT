@@ -15,3 +15,11 @@ bool CCharacterDependentData::IsInGuild() const {
 bool CCharacterDependentData::IsInTrainingCamp() const {
     return reinterpret_cast<bool (__thiscall *)(const CCharacterDependentData *)>(0x00987140)(this);
 }
+
+CCharacterDependentData::SubData *CCharacterDependentData::FUN_00986f50() {
+    return &data;
+}
+
+undefined1 CCharacterDependentData::SubData::FUN_00986f40() const {
+    return field_c;
+}

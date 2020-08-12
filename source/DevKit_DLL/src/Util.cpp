@@ -11,6 +11,9 @@
 #include "Game.h"
 #include <sys/stat.h>
 #include <IFChatViewer.h>
+#include <NetProcessIn.h>
+#include <NetProcessSecond.h>
+#include <NetProcessThird.h>
 #include "QuickStart.h"
 #include "CGame_Hook.h"
 
@@ -52,6 +55,10 @@ void Setup() {
     replaceOffset(0x008491d1, addr_from_this(&CGame_Hook::LoadGameOption));
 
     replaceOffset(0x00832a11, addr_from_this(&A::InitGameAssets));
+
+    replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
+    replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
+    replaceOffset(0x008a4876, addr_from_this(&CNetProcessThird::RegisterPacketHandlers));
 
     quickstart.Setup();
 

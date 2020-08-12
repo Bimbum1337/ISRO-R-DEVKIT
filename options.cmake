@@ -32,3 +32,8 @@ option(CONFIG_DEBUG_CONSOLE "Show the debug console" ON)
 if (CONFIG_DEBUG_CONSOLE)
     add_definitions(-DCONFIG_DEBUG_CONSOLE)
 endif()
+
+option(CONFIG_DEBUG_NET_RECEIVE "Print NetProcess debug messages on receive" OFF)
+if (CONFIG_DEBUG_NET_RECEIVE)
+    add_definitions(-DCONFIG_DEBUG_NET_RECEIVE)
+endif ()

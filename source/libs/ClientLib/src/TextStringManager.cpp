@@ -16,3 +16,7 @@ const std::n_wstring *CTextStringManager::GetString(const wchar_t *identifier) {
     return reinterpret_cast<const std::n_wstring*(__thiscall*)(CTextStringManager*, const wchar_t*identifier)>(0x008C9C30)(this, identifier);
 #endif
 }
+
+const std::n_wstring &CTextStringManager::FUN_008c9bb0(const std::n_wstring &identifier) {
+    return reinterpret_cast<const std::n_wstring &(__thiscall *)(CTextStringManager *, const std::n_wstring &)>(0x008c9bb0)(this, identifier);
+}

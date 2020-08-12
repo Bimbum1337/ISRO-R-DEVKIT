@@ -4,16 +4,20 @@
 #include "SOItem.h"
 
 class CICPlayer : public CICUser {
+    GFX_DECLARE_DYNAMIC_EXISTING(CICPlayer, 0x00ef1b44)
 public:
 
     bool IsGameMaster();
 
     std::n_wstring *sub_9D6580(std::n_wstring *str);
 
+    /// \address 009d6580
+    std::n_wstring GetCharName() const;
+
 
 private:
     char pad_082C[32]; //0x082C
-    std::wstring m_charname; //0x084C
+    std::n_wstring m_charname; //0x084C
 public:
     unsigned char m_level; //0x0868 level of your character, crashes when set too high
 private:
