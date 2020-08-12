@@ -550,12 +550,15 @@ void ImGui_Window_EntityExplorer(bool *p_open) {
 		ImGui::Text("%p", it->second); ImGui::NextColumn();
 		ImGui::Text("%s", it->second->GetRuntimeClass()->m_lpszClassName); ImGui::NextColumn();
 
+		uregion region = it->second->GetRegion();
+		D3DVECTOR location = it->second->GetLocation();
+
 		ImGui::Text("(%d,%d) (%.2f, %.2f, %.2f)",
-					it->second->region.single.x,
-					it->second->region.single.y,
-					it->second->location.x,
-					it->second->location.y,
-					it->second->location.z
+					region.single.x,
+					region.single.y,
+					location.x,
+					location.y,
+					location.z
 		); ImGui::NextColumn();
 
 		ImGui::Separator();
@@ -581,8 +584,8 @@ void ImGui_Window_EntityExplorer(bool *p_open) {
 		{
 
 			D3DVECTOR d2dpos, d2dpos_up, d2dpos_own;
-			D3DVECTOR d3dpos = elem->second->location;
-			D3DVECTOR d3dpos_up = elem->second->location;
+			D3DVECTOR d3dpos = elem->second->GetLocation();
+			D3DVECTOR d3dpos_up = d3dpos;
 
 			d3dpos_up.y += 18.0;
 
@@ -610,7 +613,7 @@ void ImGui_Window_EntityExplorer(bool *p_open) {
 		std::map<int,CIObject*>::iterator elem = g_pGfxEttManager->entities.find(selected);
 		if (elem != g_pGfxEttManager->entities.end())
 		{
-			g_pCGInterface->m_Nav.MoveTo(elem->second->region, elem->second->location);
+			g_pCGInterface->m_Nav.MoveTo(elem->second->GetRegion(), elem->second->GetLocation());
 		}
 	}
 

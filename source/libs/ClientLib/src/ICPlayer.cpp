@@ -1,5 +1,8 @@
 #include "ICPlayer.h"
 
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CICPlayer, 0x00ef1b44)
+
+
 // CICPlayer::IsGameMasterMAYBE(void) .text 009D4C40 00000009   R . . . . T .
 bool CICPlayer::IsGameMaster() {
     return N000094A7 & 1;
@@ -9,4 +12,8 @@ bool CICPlayer::IsGameMaster() {
 // I am pretty sure this func simply returned a copy of the players name ... ridiculous!
 std::n_wstring *CICPlayer::sub_9D6580(std::n_wstring *str) {
     return reinterpret_cast<std::n_wstring*(__thiscall*)(CICPlayer*, std::n_wstring*)>(0x9D6580)(this, str);
+}
+
+std::n_wstring CICPlayer::GetCharName() const {
+    return m_charname;
 }

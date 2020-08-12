@@ -13,6 +13,10 @@ public:
     /// \param identifier Identifier for the string to translate. Example: "UIIT_STT_CANT_CHATTING"
     /// \returns The translated string
     const std::n_wstring *GetString(const wchar_t *identifier);
+
+
+    /// \address 008c9bb0
+    const std::n_wstring &FUN_008c9bb0(const std::n_wstring &identifier);
 };
 
 #define g_CTextStringManager ((CTextStringManager*)0x00EEDE90)

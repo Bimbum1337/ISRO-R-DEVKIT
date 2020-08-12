@@ -3,8 +3,10 @@
 #include <Windows.h>
 
 #include <remodel/GlobalVar.h>
+#include <ClientNet/MsgStreamBuffer.h>
 
-class CMsgStreamBuffer;
+// class CMsgStreamBuffer;
+
 
 class CWhatever;
 
@@ -39,6 +41,13 @@ public:
     /// Usually just calls the (virtual) destructor.
     /// \param pObj Object to delete
     static void __cdecl DeleteObject(CObj *pObj);
+
+
+    /// \address 00b94b70
+    bool IsSame(const CGfxRuntimeClass &rtclass) const;
+
+    /// \address 00b94b90
+    bool IsKindOf(const CGfxRuntimeClass &rtclass) const;
 
 public:
     virtual ~CObj();

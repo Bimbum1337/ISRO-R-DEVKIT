@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <list>
 #include "BSLib/BSLib.h"
+#include <Test/Test.h>
 
 /// Holds data about events, mainly in the 3d-space. It's unknown if this structure is also used for the general
 /// messaging system.
@@ -170,4 +171,13 @@ private:
     short N00000705; //0x0070
     char pad_0072[6]; //0x0072
     std::n_list<CGWndBase *> N00000707; //0x0078
+
+
+
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(132)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CGWndBase)
 };

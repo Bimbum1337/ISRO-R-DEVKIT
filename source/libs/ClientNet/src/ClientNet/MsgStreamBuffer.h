@@ -2,11 +2,16 @@
 
 #include <Windows.h>
 
-#include <BSLib/memory/MemPool.h>
-#include <BSLib/BSLib.h>
 #include <cstddef>
 #include <string>
+#include <new>
+#include <string>
+
 #include <Test/Test.h>
+#include <remodel/GlobalVar.h>
+#include <BSLib/memory/MemPool.h>
+#include <BSLib/_internal/custom_stl.h>
+
 
 #define NEWMSG(msgid) \
 if (IsOpcodeSupported(msgid, 0)) { \
@@ -20,8 +25,6 @@ if (IsOpcodeSupported(msgid, 0)) { \
 
 bool IsOpcodeSupported(WORD msgid, int);
 
-#include <new>
-#include <string>
 
 class CMsgStreamBuffer {
 public: /* todo: this public is only temporary. Remove it as soon as the allocator is working properly */
@@ -65,11 +68,13 @@ public:
         return *this;
     }
 
+    /// \address 0x004f7a70
+    CMsgStreamBuffer &operator>>(std::n_string &str);
+
     template<typename T>
     void Read(T &value) {
         Read(&value, sizeof(T));
     }
-
 
     //
     // Write
@@ -78,8 +83,6 @@ public:
     CMsgStreamBuffer &operator<<(const std::n_string &str);
 
     CMsgStreamBuffer &operator<<(const std::string &str);
-
-    CMsgStreamBuffer &operator<<(WORD value);
 
     template<typename T>
     CMsgStreamBuffer &operator<<(T value) {

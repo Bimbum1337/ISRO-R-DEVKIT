@@ -4,16 +4,24 @@
 #include <GFXMainFrame/Process.h>
 
 
-class CPSilkroad :
-	public CProcess
-{ // size 224 bytes | 0xE0
-protected:
-	CIRMManager m_IRM; //0x00B0
-	char pad_00B4[44]; //0x00B4
+class CPSilkroad : public CProcess {
 public:
 
-	virtual void Func_40();
+    virtual void Func_40();
 
-	void ErrorMessage(const wchar_t* message);
-	void ErrorMessagePar(const wchar_t* message, char codeletter, int codenumber);
+    void ErrorMessage(const wchar_t *message);
+
+    void ErrorMessagePar(const wchar_t *message, char codeletter, int codenumber);
+
+
+private: /* members */
+
+protected:
+    CIRMManager m_IRM; //0x00B0
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0xe0)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CPSilkroad)
 };

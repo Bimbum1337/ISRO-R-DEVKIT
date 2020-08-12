@@ -9,6 +9,22 @@
 
 class CIObject : public CIEntity {
 public:
+
+    virtual void Func_14();
+
+    virtual void Func_15();
+
+    virtual void Func_16();
+
+    virtual void Func_17();
+
+
+
+    uregion GetRegion() const;
+
+    D3DVECTOR GetLocation() const;
+
+private:
     char pad_0054[40]; //0x0054
     uregion region; //0x007C
     char pad_007E[2]; //0x007E

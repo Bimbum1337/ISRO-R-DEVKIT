@@ -89,7 +89,7 @@ int sub_4F9C50() {
 
 // 009c3220
 CICharactor *GetCharacterObjectByID_MAYBE(int uniqueid) {
-    return reinterpret_cast<CICharactor *(__stdcall *)(int)>(0x009c3220)(uniqueid);
+    return reinterpret_cast<CICharactor *(__cdecl *)(int)>(0x009c3220)(uniqueid);
 }
 
 void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipient, int uniqueid,
@@ -301,4 +301,8 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
             }
         }
     }
+}
+
+GameCfg *Fun_GetCfgGame() {
+    return reinterpret_cast<GameCfg *>(0x00eed578);
 }

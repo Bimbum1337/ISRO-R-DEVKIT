@@ -47,12 +47,6 @@ CMsgStreamBuffer &CMsgStreamBuffer::operator<<(const std::string &str) {
     return *this;
 }
 
-CMsgStreamBuffer &CMsgStreamBuffer::operator<<(WORD value) {
-    Write(&value, sizeof(value));
-
-    return *this;
-}
-
 void CMsgStreamBuffer::ToggleBefore() {
     if (field_0xc != 1) {
         field_0xc = 1;
@@ -78,8 +72,12 @@ WORD CMsgStreamBuffer::msgid() const {
     return m_msgid;
 }
 
+CMsgStreamBuffer &CMsgStreamBuffer::operator>>(std::n_string &str) {
+    return reinterpret_cast<CMsgStreamBuffer &(__thiscall *)(CMsgStreamBuffer *, std::n_string &)>(0x004f7a70)(this, str);
+}
+
 void CMsgStreamBuffer::Read(void *value, size_t numBytes) {
-    reinterpret_cast<void(__thiscall*)(CMsgStreamBuffer*, void*, size_t)>(0x004F7220)(this, value, numBytes);
+    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, void *, size_t)>(0x004F7220)(this, value, numBytes);
 }
 
 void CMsgStreamBuffer::FlushRemaining() {

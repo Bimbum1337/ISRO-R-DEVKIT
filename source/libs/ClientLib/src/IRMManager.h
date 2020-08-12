@@ -2,6 +2,7 @@
 
 #include <string>
 #include <BSLib/BSLib.h>
+#include <Test/Test.h>
 
 // Resolve a circular dependency
 class CIFWnd;
@@ -41,4 +42,11 @@ private:
     char _gap0[4];
     std::n_string m_str;
     int N00009CBC;
+
+    BEGIN_FIXTURE()
+        ENSURE_OFFSET(m_interfacemap, 0x00);
+        ENSURE_OFFSET(m_str, 0x10);
+    END_FIXTURE()
+
+    RUN_FIXTURE(CIRMManager)
 };

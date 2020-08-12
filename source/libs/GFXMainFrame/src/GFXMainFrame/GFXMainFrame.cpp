@@ -34,3 +34,7 @@ void CGFXMainFrame::SetNextProcessSTAT(CGfxRuntimeClass* cls)
 {
 	reinterpret_cast<void(*)(CGfxRuntimeClass*)>(0x0BA75F0)(cls);
 }
+
+CProcess *CGFXMainFrame::GetCurrentProcess() const {
+    return process_current;
+}

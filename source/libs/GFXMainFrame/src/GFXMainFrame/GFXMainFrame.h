@@ -33,6 +33,7 @@ public:
 
 	// This seems to set the width and height (parameters supplied from Dx-Backbuffer size)
 
+	CProcess* GetCurrentProcess() const;
 	
 private:
 	CProcess* process_current; //0x0024

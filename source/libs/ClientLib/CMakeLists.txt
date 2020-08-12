@@ -100,7 +100,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFTimerWnd.h
     src/IFWnd.cpp
     src/IFWnd.h
-    src/IObject.h
+    src/IObject.h src/IObject.cpp
     src/IRMManager.cpp
     src/IRMManager.h
     src/is_this_important.cpp
@@ -156,8 +156,14 @@ set(SOURCE_FILES src/BufRender.h
     src/ClassLink.h
     src/IGIDObject.cpp src/IGIDObject.h
     src/IFNotify.cpp src/IFNotify.h
-    )
+    src/NetProcessIn.cpp src/NetProcessIn.h
+    src/NetProcessSecond.cpp src/NetProcessSecond.h
+    src/NetProcessThird.cpp src/NetProcessThird.h
+    src/PSMission.cpp src/PSMission.h
+    src/GameCfg.cpp src/GameCfg.h
+    src/LocalTime.cpp src/LocalTime.h)
+
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh abi-testing imgui remodel ghidra)
+target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)
