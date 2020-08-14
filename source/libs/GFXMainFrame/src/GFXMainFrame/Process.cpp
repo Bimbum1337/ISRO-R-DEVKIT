@@ -1,12 +1,11 @@
 #include "Process.h"
 
-
 GlobalVar<bool, 0x00EED310> CProcess::m_bProcessNetMsg;
 
 GFX_IMPLEMENT_RUNTIMECLASS_EXISTING(CProcess, 0x0110FA70);
 
 void CProcess::Func_38() {
-
+    // empty
 }
 
 int CProcess::Func_39() {
@@ -45,7 +44,6 @@ void CProcess::sub_BA7620(CProcess *pProcess) {
     pProcess->Func_38();
     m_blRun = FALSE;
     pProcess->m_blProcessRunTerminate = TRUE;
-
 }
 
 void CProcess::SetProcessNetMsg(bool state) {
