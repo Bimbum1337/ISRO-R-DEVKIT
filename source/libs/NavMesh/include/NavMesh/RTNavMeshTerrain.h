@@ -16,7 +16,7 @@ class CRTNavMeshTerrain : public CRTNavMesh, public CObjectList
 {
 public:
 
-	int FindHeight(D3DVECTOR& vPos) override;
+	int FindHeight(const D3DVECTOR& vPos) const override;
 	short GetTileFlag(D3DVECTOR& vPos);
 
 public:		

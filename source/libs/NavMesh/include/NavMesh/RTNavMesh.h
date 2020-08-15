@@ -19,7 +19,7 @@ public:
 	CRTNavMesh();
 	
 	virtual ~CRTNavMesh();
-	virtual int FindHeight(D3DVECTOR &vPos);
+	virtual int FindHeight(const D3DVECTOR &vPos) const;
 	virtual void Move(); // int a2, int a3, SNavMeshPosition* pSrc, SNavMeshPosition* pDst, pRaycastContext* pContext
 	virtual void ResolveCellAndHeight(void* position); //SNavMeshPosition* but the linking is killing me...
 	virtual int F05();
