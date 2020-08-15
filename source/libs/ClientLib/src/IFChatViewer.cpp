@@ -1058,15 +1058,27 @@ void CIFChatViewer::SeparateWhisperName(CIFChatViewer::SChatMessage &whisperThin
     // Space can not be second character in the string
     assert(pos == 1);
 
-    // Split off the name
-    // We start at 1 to skip the $
-    whisperThing.strTargetName = copyOfMessage.substr(1, pos);
-    whisperThing.lengthOfTargetName = whisperThing.strTargetName.length();
+    if(pos != -1)
+    { 
+        // Split off the name
+        // We start at 1 to skip the $
+        whisperThing.strTargetName = copyOfMessage.substr(1, pos - 1);
+        whisperThing.lengthOfTargetName = whisperThing.strTargetName.length();
 
-    // Split off the message
-    // We start with pos+1 to skip the space
-    whisperThing.strMessage = copyOfMessage.substr(pos + 1);
-    whisperThing.lengthOfMessage = whisperThing.strMessage.length();
+        // Split off the message
+        // We start with pos+1 to skip the space
+        whisperThing.strMessage = copyOfMessage.substr(pos + 1);
+        whisperThing.lengthOfMessage = whisperThing.strMessage.length();
+    }
+    else
+    {
+        //There is no space, so there is no message to send
+        whisperThing.strTargetName = copyOfMessage.substr(1, copyOfMessage.length());
+        whisperThing.lengthOfTargetName = whisperThing.strTargetName.length();
+
+        whisperThing.strMessage = L"";
+        whisperThing.lengthOfMessage = 0;
+    }
 }
 
 void CIFChatViewer::Unfocus() {
