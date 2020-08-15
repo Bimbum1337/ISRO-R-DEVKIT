@@ -1,8 +1,8 @@
-#include "../StdAfx.h"
 #include "ImGui_Windows.h"
 #include "imgui/imgui.h"
 #include "imgui/examples/imgui_impl_dx9.h"
 #include "imgui/examples/imgui_impl_win32.h"
+
 #include <GFX3DFunction/GFXVideo3d.h>
 #include <GFX3DFunction/DrawingHelpers.h>
 #include <Game.h>

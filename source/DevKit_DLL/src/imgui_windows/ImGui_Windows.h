@@ -1,5 +1,5 @@
 #pragma once
-
+#include <Windows.h>
 
 void ImGui_OnCreate(HWND hWindow, void* msghandler, int a3);
 void ImGui_OnPreSetSize(int width, int height);

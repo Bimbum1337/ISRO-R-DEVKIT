@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "WndProc.h"
 #include "hooks/Hooks.h"
 

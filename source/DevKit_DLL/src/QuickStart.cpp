@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "QuickStart.h"
 #include "Game.h"
 #include "Util.h"

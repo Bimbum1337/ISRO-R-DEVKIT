@@ -10,8 +10,6 @@ set(SOURCE_FILES
         src/IFflorian0.h
         src/imgui_windows/ImGui_Windows.cpp
         src/imgui_windows/ImGui_Windows.h
-        src/StdAfx.cpp
-        src/StdAfx.h
         src/Util.cpp
         src/Util.h
         src/WndProc.cpp

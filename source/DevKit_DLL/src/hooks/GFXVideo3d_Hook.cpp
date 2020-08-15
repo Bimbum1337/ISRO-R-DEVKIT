@@ -1,4 +1,3 @@
-#include "../StdAfx.h"
 #include "Hooks.h"
 #include "GFXVideo3d_Hook.h"
 
