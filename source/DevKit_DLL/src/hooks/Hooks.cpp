@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "hooks.h"
+#include "../StdAfx.h"
+#include "Hooks.h"
 
 std::vector<endscene_handler_t> hooks_endscene;
 std::vector<create_handler_t> hooks_create;

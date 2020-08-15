@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "../StdAfx.h"
 #include "ImGui_Windows.h"
 #include "imgui/imgui.h"
 #include "imgui/examples/imgui_impl_dx9.h"
@@ -12,8 +12,8 @@
 #include "GlobalHelpersThatHaveNoHomeYet.h"
 
 #include <NavMesh/RTNavMeshTerrain.h>
-#include "hooks.h"
-#include "MathUtil.h"
+#include "../hooks/Hooks.h"
+#include "../MathUtil.h"
 #include "GEffSoundBody.h"
 #include "IFSystemMessage.h"
 #include <BSLib/multibyte.h>

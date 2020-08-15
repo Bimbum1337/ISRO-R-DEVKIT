@@ -3,9 +3,9 @@
 #include <memory/hook.h>
 #include <AlramGuideMgrWnd.h>
 #include <TextStringManager.h>
-#include "GFXVideo3D_Hook.h"
+#include "hooks/GFXVideo3d_Hook.h"
 #include "WndProc.h"
-#include "hooks.h"
+#include "hooks/Hooks.h"
 #include "GInterface.h"
 #include "PSQuickStart.h"
 #include "Game.h"
@@ -15,7 +15,7 @@
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
 #include "QuickStart.h"
-#include "CGame_Hook.h"
+#include "hooks/CGame_Hook.h"
 
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;

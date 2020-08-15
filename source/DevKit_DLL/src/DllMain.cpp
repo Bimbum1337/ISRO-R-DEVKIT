@@ -13,17 +13,17 @@
 
 #include "Util.h"
 
-#include "ImGui_Windows.h"
-#include "Hooks.h"
+#include "imgui_windows/ImGui_Windows.h"
+#include "hooks/Hooks.h"
 #include "NIFUnderMenuBar.h"
 
 
-extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpReserved)
-{
-	if (fdwReason == DLL_PROCESS_ATTACH)
-	{
-		// Setup all the required hooks
-		Setup();
+extern "C" _declspec(dllexport)
+
+BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpReserved) {
+    if (fdwReason == DLL_PROCESS_ATTACH) {
+        // Setup all the required hooks
+        Setup();
 
 		// Inject all the new objects
 		RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));

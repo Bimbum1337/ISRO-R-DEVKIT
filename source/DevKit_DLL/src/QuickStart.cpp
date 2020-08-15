@@ -4,7 +4,7 @@
 #include "Util.h"
 #include <memory/hook.h>
 #include "PSQuickStart.h"
-#include "Hooks.h"
+#include "hooks/Hooks.h"
 
 void setQuickStartProcess(CGame *game);
 
