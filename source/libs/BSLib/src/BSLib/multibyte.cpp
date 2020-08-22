@@ -66,18 +66,18 @@ std::n_string acp_n_encode(const std::n_wstring& wstr)
 std::wstring acp_decode(const char* str, size_t length)
 {
 	if (length == 0) return std::wstring();
-    int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], length, NULL, 0);
+    int size_needed = MultiByteToWideChar(CP_ACP, 0, &str[0], length, NULL, 0);
     std::wstring wstrTo( size_needed, 0 );
-    MultiByteToWideChar(CP_UTF8, 0, &str[0], length, &wstrTo[0], size_needed);
+    MultiByteToWideChar(CP_ACP, 0, &str[0], length, &wstrTo[0], size_needed);
     return wstrTo;
 }
 
 std::n_wstring acp_n_decode(const char* str, size_t length)
 {
 	if (length == 0) return std::n_wstring();
-    int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], length, NULL, 0);
+    int size_needed = MultiByteToWideChar(CP_ACP, 0, &str[0], length, NULL, 0);
     std::n_wstring wstrTo( size_needed, 0 );
-    MultiByteToWideChar(CP_UTF8, 0, &str[0], length, &wstrTo[0], size_needed);
+    MultiByteToWideChar(CP_ACP, 0, &str[0], length, &wstrTo[0], size_needed);
     return wstrTo;
 }
 
