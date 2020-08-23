@@ -1,4 +1,5 @@
 #include "ImGui_Windows.h"
+#include <Windows.h>
 #include "imgui/imgui.h"
 #include "imgui/examples/imgui_impl_dx9.h"
 #include "imgui/examples/imgui_impl_win32.h"
@@ -17,6 +18,7 @@
 #include "EntityExplorer.h"
 #include "SoundTool.h"
 #include "NotificationTool.h"
+#include "About.h"
 #include <BSLib/multibyte.h>
 
 
@@ -27,7 +29,7 @@ NavMeshTool navmeshExplorer;
 EntityExplorer entityExplorer;
 SoundTool soundTool;
 NotificationTool notificationTool;
-
+About aboutWnd;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     printf("ImGui_OnCreate\n");
@@ -112,6 +114,13 @@ void ImGui_OnEndScene() {
         }
 
         if (ImGui::BeginMenu("Help")) {
+            aboutWnd.MenuItem();
+            if (ImGui::MenuItem("Online Help")) {
+                ShellExecute(NULL,
+                             TEXT("open"),
+                             TEXT("https://florian0.gitlab.io/sro_devkit/"),
+                             NULL, NULL, SW_SHOWNORMAL);
+            }
             ImGui::EndMenu();
         }
 
@@ -126,7 +135,7 @@ void ImGui_OnEndScene() {
     }
 
     if (ImGui::Button("Show")) {
-        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(true);
+
     }
 
     if (ImGui::Button("Init Event")) {
@@ -151,6 +160,7 @@ void ImGui_OnEndScene() {
     soundTool.Render();
     notificationTool.Render();
     navmeshExplorer.Render();
+    aboutWnd.Render();
 
     ImGui::EndFrame();
 

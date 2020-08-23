@@ -19,7 +19,8 @@ set(SOURCE_FILES
         src/WndProc.cpp
         src/WndProc.h
         src/hooks/CGame_Hook.cpp src/hooks/CGame_Hook.h
-        src/QuickStart.cpp src/QuickStart.h)
+        src/QuickStart.cpp src/QuickStart.h
+        src/imgui_windows/About.cpp src/imgui_windows/About.h)
 
 add_library(DevKit_DLL SHARED ${SOURCE_FILES})
 target_link_libraries(DevKit_DLL BSLib ClientLib memory winmm)
