@@ -19,6 +19,7 @@
 #include "SoundTool.h"
 #include "NotificationTool.h"
 #include "About.h"
+#include "SystemMessage.h"
 #include <BSLib/multibyte.h>
 
 
@@ -30,6 +31,7 @@ EntityExplorer entityExplorer;
 SoundTool soundTool;
 NotificationTool notificationTool;
 About aboutWnd;
+SystemMessage systemMessage;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     printf("ImGui_OnCreate\n");
@@ -105,6 +107,7 @@ void ImGui_OnEndScene() {
             ImGui::MenuItem("Script Editor", 0, false, false);
             soundTool.MenuItem();
             notificationTool.MenuItem();
+            systemMessage.MenuItem();
 
             ImGui::EndMenu();
         }
@@ -127,40 +130,13 @@ void ImGui_OnEndScene() {
         ImGui::EndMainMenuBar();
     }
 
-
-    ImGui::Begin("Hello World");
-
-    if (ImGui::Button("Hide")) {
-        g_pCGInterface->m_IRM.GetResObj(1338, 1)->ShowGWnd(false);
-    }
-
-    if (ImGui::Button("Show")) {
-
-    }
-
-    if (ImGui::Button("Init Event")) {
-        g_pCGInterface->CreateFlorian0Event();
-    }
-
-    if (ImGui::Button("System Log")) {
-        wchar_t message[] = L"System Log Message";
-
-        // Color (Picker: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool)
-        int color = D3DCOLOR_ARGB(255, 0, 255, 0);
-
-        // Get the SystemLog Window - Media//resinfo//ginterface.txt - GDR_SYSTEM_MESSAGE_VIEW:IFSystemMessage -> ID Should be 68
-        IFSystemMessage *systemmessage = reinterpret_cast<IFSystemMessage *>(g_pCGInterface->m_IRM.GetResObj(68, 1));
-        systemmessage->write(0xFF, color, message, 0, 1);
-    }
-
-    ImGui::End();
-
     interfaceDebugger.Render();
     entityExplorer.Render();
     soundTool.Render();
     notificationTool.Render();
     navmeshExplorer.Render();
     aboutWnd.Render();
+    systemMessage.Render();
 
     ImGui::EndFrame();
 
