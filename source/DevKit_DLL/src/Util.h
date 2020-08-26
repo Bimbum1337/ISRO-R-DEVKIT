@@ -2,18 +2,19 @@
 
 #include "BSLib/BSLib.h"
 
-void Setup(void);
+void Setup();
 
-bool DoesFileExists(const std::string& name);
+bool DoesFileExists(const std::string &name);
 
-void RegisterObject(const CGfxRuntimeClass*);
+void RegisterObject(const CGfxRuntimeClass *);
 
 typedef void(*overrideFnPtr)();
+
 extern std::vector<overrideFnPtr> override_objects;
 
 template<typename T, int address>
 void OverrideRtClassAt() {
-    CGfxRuntimeClass* rt = (CGfxRuntimeClass*)address;
+    CGfxRuntimeClass *rt = (CGfxRuntimeClass *) address;
 
     rt->m_pfnCreateObject = T::CreateObject;
     rt->m_pfnDeleteObject = T::DeleteObject;

@@ -38,9 +38,6 @@ void Setup() {
     freopen("CONIN$", "r", stdin);
 #endif
 
-    // vftableHook(0x00E0963C, 25, addr_from_this(&CGFXVideo3d::BeginSceneIMPL));
-
-
     vftableHook(0x00E0963C, 17, addr_from_this(&CGFXVideo3D_Hook::CreateThingsHook));
     vftableHook(0x00E0963C, 26, addr_from_this(&CGFXVideo3D_Hook::EndSceneHook));
     vftableHook(0x00E0963C, 20, addr_from_this(&CGFXVideo3D_Hook::SetSizeHook));
@@ -63,11 +60,11 @@ void Setup() {
 
 #ifdef CONFIG_DEBUG_REDIRECT_PUTDUMP
     replaceAddr(0x00832927 + 1, (int) &DebugPrintCallback);
-#endif
+#endif // CONFIG_DEBUG_REDIRECT_PUTDUMP
 
 #ifdef CONFIG_TRANSLATIONS_DEBUG
     placeHook(0x008C9C30, addr_from_this(&CTextStringManager::GetString));
-#endif
+#endif // CONFIG_TRANSLATIONS_DEBUG
 
 #ifdef CONFIG_CHATVIEWER
     replaceOffset(0x008774f4, (int)&WriteToChatWindow);
@@ -97,19 +94,10 @@ void InstallRuntimeClasses() {
 
     for (std::vector<const CGfxRuntimeClass *>::const_iterator it = register_objects.begin();
          it != register_objects.end(); ++it) {
-        reinterpret_cast<void (__thiscall *)(const CGfxRuntimeClass *, const char *, void *, void *,
-                                             const CGfxRuntimeClass *, size_t, int)>(0x00B9C9C0)(*it,
-                                                                                                 (*it)->m_lpszClassName,
-                                                                                                 (*it)->m_pfnCreateObject,
-                                                                                                 (*it)->m_pfnDeleteObject,
-                                                                                                 (*it)->m_pBaseClass,
-                                                                                                 (*it)->m_nObjectSize,
-                                                                                                 0);
+        reinterpret_cast<void (__thiscall *)(const CGfxRuntimeClass *, const char *, void *, void *,const CGfxRuntimeClass *, size_t, int)>(0x00B9C9C0)(*it,(*it)->m_lpszClassName, (*it)->m_pfnCreateObject, (*it)->m_pfnDeleteObject, (*it)->m_pBaseClass, (*it)->m_nObjectSize, 0);
     }
-
 
     for (std::vector<overrideFnPtr>::const_iterator it = override_objects.begin(); it != override_objects.end(); ++it) {
         (*it)();
     }
-
 }
