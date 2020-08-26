@@ -14,7 +14,8 @@ set(SOURCE_FILES
         src/hooks/CGame_Hook.cpp src/hooks/CGame_Hook.h
         src/QuickStart.cpp src/QuickStart.h
         src/imgui_windows/About.cpp src/imgui_windows/About.h
-        src/imgui_windows/SystemMessage.cpp src/imgui_windows/SystemMessage.h)
+        src/imgui_windows/SystemMessage.cpp src/imgui_windows/SystemMessage.h
+        src/MathUtil.cpp src/MathUtil.h)
 
 add_library(DevKit_DLL SHARED ${SOURCE_FILES})
 target_link_libraries(DevKit_DLL BSLib ClientLib memory winmm)
