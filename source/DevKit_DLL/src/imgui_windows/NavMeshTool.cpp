@@ -80,7 +80,8 @@ void NavMeshTool::Render() {
     ImGui::End();
 }
 
-NavMeshTool::NavMeshTool() : m_pNavmesh(0), bShow(false), bFreeze(false), bCells(false), bEdgeInternal(false), bEdgeGlobal(false),
+NavMeshTool::NavMeshTool() : m_pNavmesh(0), bShow(false), bFreeze(false), bCells(false), bEdgeInternal(false),
+                             bEdgeGlobal(false),
                              bObjectOrigin(false), bObjectCells(false), bObjectInternalEdges(false),
                              bObjectGlobalEdges(false), bObjectGrid(false), step(20) {
 
@@ -149,7 +150,8 @@ void NavMeshTool::RenderObjectOrigin(const SNavMeshInst *pInst, bool bIsFirst) c
 
             D3DVECTOR pTarget2D;
             if (gfx->Project(pTarget, pTarget2D) > 0)
-                DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 255, 0, 0), 1.0);
+                DXDrawLine((int) vec2d.x, (int) vec2d.y, (int) pTarget2D.x, (int) pTarget2D.y,
+                           D3DCOLOR_ARGB(0, 255, 0, 0), 1.0);
         }
 
         {
@@ -161,7 +163,8 @@ void NavMeshTool::RenderObjectOrigin(const SNavMeshInst *pInst, bool bIsFirst) c
 
             D3DVECTOR pTarget2D;
             if (gfx->Project(pTarget, pTarget2D) > 0)
-                DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 0, 255), 1.0);
+                DXDrawLine((int) vec2d.x, (int) vec2d.y, (int) pTarget2D.x, (int) pTarget2D.y,
+                           D3DCOLOR_ARGB(0, 0, 0, 255), 1.0);
         }
 
         {
@@ -173,13 +176,14 @@ void NavMeshTool::RenderObjectOrigin(const SNavMeshInst *pInst, bool bIsFirst) c
 
             D3DVECTOR pTarget2D;
             if (gfx->Project(pTarget, pTarget2D) > 0)
-                DXDrawLine(vec2d.x, vec2d.y, pTarget2D.x, pTarget2D.y, D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
+                DXDrawLine((int) vec2d.x, (int) vec2d.y, (int) pTarget2D.x, (int) pTarget2D.y,
+                           D3DCOLOR_ARGB(0, 0, 255, 0), 1.0);
         }
 
         if (bIsFirst) {
-            DrawRect(vec2d.x - 5, vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 0, 0));
+            DrawRect((int) vec2d.x - 5, (int) vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 0, 0));
         } else {
-            DrawRect(vec2d.x - 5, vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 255, 0));
+            DrawRect((int) vec2d.x - 5, (int) vec2d.y - 5, 10, 10, D3DCOLOR_ARGB(0, 255, 255, 0));
         }
     }
 }
@@ -212,9 +216,18 @@ void NavMeshTool::RenderObjectCells(const SNavMeshInst *pInst) const {
         bool vis2 = gfx->Project(p2, p22d) > 0;
         bool vis3 = gfx->Project(p3, p32d) > 0;
 
-        if (vis1 && vis2) DXDrawLine(p12d.x, p12d.y, p22d.x, p22d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
-        if (vis2 && vis3) DXDrawLine(p22d.x, p22d.y, p32d.x, p32d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
-        if (vis1 && vis3) DXDrawLine(p12d.x, p12d.y, p32d.x, p32d.y, D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
+        if (vis1 && vis2)
+            DXDrawLine((int) p12d.x, (int) p12d.y, (int) p22d.x, (int) p22d.y,
+                       D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
+
+        if (vis2 && vis3)
+            DXDrawLine((int) p22d.x, (int) p22d.y, (int) p32d.x, (int) p32d.y,
+                       D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
+
+        if (vis1 && vis3)
+            DXDrawLine((int) p12d.x, (int) p12d.y, (int) p32d.x, (int) p32d.y,
+                       D3DCOLOR_ARGB(0, 255, 128, 0), 1.0);
+
     }
 }
 
@@ -225,8 +238,8 @@ void NavMeshTool::RenderObjectGrid(const SNavMeshInst *pInst) const {
     float yaw = -pInst->m_sObj.Yaw;
 
 
-    for (size_t y = 0; y < pObj->m_Grid.m_Height; y++) {
-        for (size_t x = 0; x < pObj->m_Grid.m_Width; x++) {
+    for (int y = 0; y < pObj->m_Grid.m_Height; y++) {
+        for (int x = 0; x < pObj->m_Grid.m_Width; x++) {
             const float TILE_WIDTH = 100.0f;
             const float TILE_HEIGHT = 100.0f;
 
@@ -253,10 +266,10 @@ void NavMeshTool::RenderObjectGrid(const SNavMeshInst *pInst) const {
             bool vis3 = gfx->Project(p3, p3_2d) > 0;
             bool vis4 = gfx->Project(p4, p4_2d) > 0;
 
-            if (vis1 && vis2) DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, 0x00FF88FF, 1.0);
-            if (vis1 && vis3) DXDrawLine(p1_2d.x, p1_2d.y, p3_2d.x, p3_2d.y, 0x00FF88FF, 1.0);
-            if (vis2 && vis4) DXDrawLine(p2_2d.x, p2_2d.y, p4_2d.x, p4_2d.y, 0x00FF88FF, 1.0);
-            if (vis3 && vis4) DXDrawLine(p3_2d.x, p3_2d.y, p4_2d.x, p4_2d.y, 0x00FF88FF, 1.0);
+            if (vis1 && vis2) DXDrawLine((int) p1_2d.x, (int) p1_2d.y, (int) p2_2d.x, (int) p2_2d.y, 0x00FF88FF, 1.0);
+            if (vis1 && vis3) DXDrawLine((int) p1_2d.x, (int) p1_2d.y, (int) p3_2d.x, (int) p3_2d.y, 0x00FF88FF, 1.0);
+            if (vis2 && vis4) DXDrawLine((int) p2_2d.x, (int) p2_2d.y, (int) p4_2d.x, (int) p4_2d.y, 0x00FF88FF, 1.0);
+            if (vis3 && vis4) DXDrawLine((int) p3_2d.x, (int) p3_2d.y, (int) p4_2d.x, (int) p4_2d.y, 0x00FF88FF, 1.0);
         }
     }
 }
@@ -285,7 +298,8 @@ void NavMeshTool::RenderObjectGlobalEdges(const SNavMeshInst *pInst) const {
         bool vis2 = gfx->Project(p2, p2_2d) > 0;
 
         if (vis1 && vis2) {
-            DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, GetColorFromEdgeFlag(edge.btFlag), 1.0);
+            DXDrawLine((int) p1_2d.x, (int) p1_2d.y, (int) p2_2d.x, (int) p2_2d.y,
+                       GetColorFromEdgeFlag(edge.btFlag), 1.0);
         }
     }
 }
@@ -313,7 +327,8 @@ void NavMeshTool::RenderObjectInternalEdges(const SNavMeshInst *pInst) const {
         bool vis2 = gfx->Project(p2, p2_2d) > 0;
 
         if (vis1 && vis2) {
-            DXDrawLine(p1_2d.x, p1_2d.y, p2_2d.x, p2_2d.y, GetColorFromEdgeFlag(edge.btFlag), 1.0);
+            DXDrawLine((int) p1_2d.x, (int) p1_2d.y, (int) p2_2d.x, (int) p2_2d.y,
+                       GetColorFromEdgeFlag(edge.btFlag), 1.0);
         }
     }
 }
