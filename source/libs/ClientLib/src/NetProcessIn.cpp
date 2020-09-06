@@ -590,9 +590,7 @@ void CNetProcessIn::OnChatReceive(CMsgStreamBuffer &msg) {
             if (g_pCICPlayer->GetName() == senderW)
                 return;
 
-            CCharacterDependentData::SubData *data = g_CCharacterDependentData.FUN_00986f50();
-
-            if (data->FUN_00986f40() != 0) {
+            if(g_pCICPlayer->GetJobType() != TRIJOB_NOJOB) {
                 senderW.insert(0, L"*");
             }
             break;
