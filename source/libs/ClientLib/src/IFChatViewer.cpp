@@ -581,22 +581,27 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                         m_InputBox->SetText(newTbText.c_str());
                         break;
                     }
+                }
 
-
-                    case CHAT_Party:
+                switch (m_currentTabPage)
+                {
+                    case TAB_PARTY:
                         m_InputBox->SetText(L"#");
                         break;
 
-                    case CHAT_Guild:
+                    case TAB_GUILD:
                         m_InputBox->SetText(L"@");
                         break;
 
-                    case CHAT_Union:
+                    case TAB_ALLY:
                         m_InputBox->SetText(L"%");
                         break;
 
-                    case CHAT_Academy:
+                    case TAB_TRAININGCAMP:
                         m_InputBox->SetText(L"&");
+                        break;
+
+                    default:
                         break;
                 }
             }
