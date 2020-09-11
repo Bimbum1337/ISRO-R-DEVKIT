@@ -558,58 +558,51 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                 }
 #endif
 
-                switch (N00009C5E) {
-                    case CHAT_AllGM:
-                        if (input_text[0] == ';') {
-                            m_InputBox->SetText(L";");
-                        } else {
-                            m_InputBox->SetText(L"");
-                        }
-                        break;
-
-                    case CHAT_All:
-                    case CHAT_Global:
+                if (N00009C5E == CHAT_AllGM)
+                {
+                    if (input_text[0] == ';') {
+                        m_InputBox->SetText(L";");
+                    }
+                    else {
                         m_InputBox->SetText(L"");
-                        break;
-
-                    case CHAT_PM: {
-                        // Insert name of dude
-                        std::n_wstring newTbText = L"$";
-                        newTbText += chatMessage.strTargetName;
-                        newTbText += L" ";
-
-                        m_InputBox->SetText(newTbText.c_str());
-                        break;
                     }
                 }
-
-                switch (m_currentTabPage)
+                else if (m_currentTabPage == TAB_ALL && (N00009C5E == CHAT_All || N00009C5E == CHAT_Global))
                 {
-                    case TAB_PARTY:
-                        m_InputBox->SetText(L"#");
-                        break;
-
-                    case TAB_GUILD:
-                        m_InputBox->SetText(L"@");
-                        break;
-
-                    case TAB_ALLY:
-                        m_InputBox->SetText(L"%");
-                        break;
-
-                    case TAB_TRAININGCAMP:
-                        m_InputBox->SetText(L"&");
-                        break;
-
-                    default:
-                        break;
+                    m_InputBox->SetText(L""); //Probably should leave this use case for the Else statement...
                 }
+                else if (m_currentTabPage == TAB_ALL && N00009C5E == CHAT_PM)
+                {
+                    // Insert name of dude
+                    std::n_wstring newTbText = L"$";
+                    newTbText += chatMessage.strTargetName;
+                    newTbText += L" ";
+
+                    m_InputBox->SetText(newTbText.c_str());
+                }
+                else if (m_currentTabPage == TAB_PARTY || (N00009C5E == CHAT_Party && m_currentTabPage == TAB_ALL))
+                {
+                    m_InputBox->SetText(L"#");
+                }
+                else if (m_currentTabPage == TAB_GUILD || (N00009C5E == CHAT_Guild && m_currentTabPage == TAB_ALL))
+                {
+                    m_InputBox->SetText(L"@");
+                }
+                else if (m_currentTabPage == TAB_ALLY || (N00009C5E == CHAT_Union && m_currentTabPage == TAB_ALL))
+                {
+                    m_InputBox->SetText(L"%");
+                }
+                else if (m_currentTabPage == TAB_TRAININGCAMP || (N00009C5E == CHAT_Academy && m_currentTabPage == TAB_ALL))
+                {
+                    m_InputBox->SetText(L"&");
+                }
+                else
+                {
+                    m_InputBox->SetText(L"");
+                }
+                
             }
         }
-            break;
-
-        default:
-            return 0;
     }
 
     Unfocus();
