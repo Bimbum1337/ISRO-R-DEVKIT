@@ -33,6 +33,8 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         // https://www.elitepvpers.com/forum/sro-pserver-guides-releases/4256375-source-fix-old-exp-bar-writing-code.html
         replaceAddr(0x00D9841C, addr_from_this(&NIFUnderMenuBar::Update));
 #endif // CONFIG_OLD_UNDERBAR
+
+        OnPreInitGameAssets(InstallRuntimeClasses);
     }
 
     return TRUE;

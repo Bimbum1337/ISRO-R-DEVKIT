@@ -7,30 +7,27 @@ std::vector<setsize_handler_t> hooks_setsize_pre;
 std::vector<setsize_handler_t> hooks_setsize_post;
 std::vector<void_cgame_handler_t> hooks_lgo_pre;
 std::vector<void_cgame_handler_t> hooks_lgo_post;
+std::vector<void_cgame_handler_t> hooks_iga_pre;
+std::vector<void_cgame_handler_t> hooks_iga_post;
 
-void OnEndScene(endscene_handler_t handler)
-{
-	hooks_endscene.push_back(handler);
+void OnEndScene(endscene_handler_t handler) {
+    hooks_endscene.push_back(handler);
 }
 
-void OnCreate(create_handler_t handler)
-{
-	hooks_create.push_back(handler);
+void OnCreate(create_handler_t handler) {
+    hooks_create.push_back(handler);
 }
 
-void OnWndProc(WNDPROC handler)
-{
-	hooks_wndproc.push_back(handler);
+void OnWndProc(WNDPROC handler) {
+    hooks_wndproc.push_back(handler);
 }
 
-void OnPreSetSize(setsize_handler_t handler)
-{
-	hooks_setsize_pre.push_back(handler);
+void OnPreSetSize(setsize_handler_t handler) {
+    hooks_setsize_pre.push_back(handler);
 }
 
-void OnPostSetSize(setsize_handler_t handler)
-{
-	hooks_setsize_post.push_back(handler);
+void OnPostSetSize(setsize_handler_t handler) {
+    hooks_setsize_post.push_back(handler);
 }
 
 void OnPreLoadGameOption(void_cgame_handler_t handler) {
@@ -41,7 +38,14 @@ void OnPostLoadGameOption(void_cgame_handler_t handler) {
     hooks_lgo_post.push_back(handler);
 }
 
-void DebugPrintCallback(const char* buffer)
-{
-	printf(buffer);
+void OnPreInitGameAssets(void_cgame_handler_t handler) {
+    hooks_iga_pre.push_back(handler);
+}
+
+void OnPostInitGameAssets(void_cgame_handler_t handler) {
+    hooks_iga_post.push_back(handler);
+}
+
+void DebugPrintCallback(const char *buffer) {
+    printf(buffer);
 }

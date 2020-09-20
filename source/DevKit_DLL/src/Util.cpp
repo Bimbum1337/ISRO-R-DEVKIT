@@ -1,34 +1,28 @@
 #include "Util.h"
-#include <memory/hook.h>
-#include <AlramGuideMgrWnd.h>
-#include <TextStringManager.h>
-#include "hooks/GFXVideo3d_Hook.h"
-#include "WndProc.h"
-#include "hooks/Hooks.h"
-#include "GInterface.h"
-#include "PSQuickStart.h"
-#include "Game.h"
+
 #include <sys/stat.h>
+
+#include <memory/hook.h>
+
+#include "hooks/Hooks.h"
+#include "hooks/GFXVideo3d_Hook.h"
+#include "hooks/CGame_Hook.h"
+
+#include "hooks/WndProc_Hook.h"
+
+#include <GInterface.h>
 #include <IFChatViewer.h>
 #include <NetProcessIn.h>
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
 #include "QuickStart.h"
-#include "hooks/CGame_Hook.h"
+
+
 
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;
 
 QuickStart quickstart;
-
-void InstallRuntimeClasses();
-
-struct A {
-    void InitGameAssets() {
-        InstallRuntimeClasses();
-        reinterpret_cast<void (__thiscall *)(A *)>(0x00849110)(this);
-    }
-};
 
 void Setup() {
 
@@ -50,7 +44,7 @@ void Setup() {
 
     replaceOffset(0x008491d1, addr_from_this(&CGame_Hook::LoadGameOption));
 
-    replaceOffset(0x00832a11, addr_from_this(&A::InitGameAssets));
+    replaceOffset(0x00832a11, addr_from_this(&CGame_Hook::InitGameAssets_Impl));
 
     replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
     replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
@@ -87,7 +81,7 @@ void OverrideObject(overrideFnPtr fn) {
     override_objects.push_back(fn);
 }
 
-void InstallRuntimeClasses() {
+void InstallRuntimeClasses(CGame *) {
     // Replace Create & Delete for existing classes
     // Note: We can't just inject existing objects like we would do with new objects.
     //       Joymax uses == on GFX_RUNTIME_CLASS(), so we would end up breaking this comparison

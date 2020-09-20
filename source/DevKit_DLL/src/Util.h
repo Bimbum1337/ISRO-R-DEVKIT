@@ -1,10 +1,13 @@
 #pragma once
 
 #include "BSLib/BSLib.h"
+#include <Game.h>
 
 void Setup();
 
 bool DoesFileExists(const std::string &name);
+
+void InstallRuntimeClasses(CGame *);
 
 void RegisterObject(const CGfxRuntimeClass *);
 

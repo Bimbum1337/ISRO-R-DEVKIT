@@ -1,7 +1,9 @@
 set(SOURCE_FILES
         src/DllMain.cpp
-        src/hooks/GFXVideo3d_Hook.cpp src/hooks/GFXVideo3d_Hook.h
         src/hooks/Hooks.cpp src/hooks/Hooks.h
+        src/hooks/GFXVideo3d_Hook.cpp src/hooks/GFXVideo3d_Hook.h
+        src/hooks/WndProc_Hook.cpp src/hooks/WndProc_Hook.h
+        src/hooks/CGame_Hook.cpp src/hooks/CGame_Hook.h
         src/IFflorian0.cpp src/IFflorian0.h
         src/imgui_windows/ImGui_Windows.cpp src/imgui_windows/ImGui_Windows.h
         src/imgui_windows/InterfaceDebugger.cpp src/imgui_windows/InterfaceDebugger.h
@@ -9,12 +11,10 @@ set(SOURCE_FILES
         src/imgui_windows/NavMeshTool.cpp src/imgui_windows/NavMeshTool.h
         src/imgui_windows/EntityExplorer.cpp src/imgui_windows/EntityExplorer.h
         src/imgui_windows/NotificationTool.cpp src/imgui_windows/NotificationTool.h
-        src/Util.cpp src/Util.h
-        src/WndProc.cpp src/WndProc.h
-        src/hooks/CGame_Hook.cpp src/hooks/CGame_Hook.h
-        src/QuickStart.cpp src/QuickStart.h
         src/imgui_windows/About.cpp src/imgui_windows/About.h
         src/imgui_windows/SystemMessage.cpp src/imgui_windows/SystemMessage.h
+        src/Util.cpp src/Util.h
+        src/QuickStart.cpp src/QuickStart.h
         src/MathUtil.cpp src/MathUtil.h)
 
 add_library(DevKit_DLL SHARED ${SOURCE_FILES})
