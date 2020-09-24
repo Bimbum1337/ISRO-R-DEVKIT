@@ -1,6 +1,5 @@
-#include "StdAfx.h"
-#include "WndProc.h"
-#include "hooks.h"
+#include "WndProc_Hook.h"
+#include "Hooks.h"
 
 extern std::vector<WNDPROC> hooks_wndproc;
 

@@ -1,6 +1,5 @@
-#include "StdAfx.h"
 #include "Hooks.h"
-#include "GFXVideo3D_Hook.h"
+#include "GFXVideo3d_Hook.h"
 
 extern std::vector<endscene_handler_t> hooks_endscene;
 extern std::vector<create_handler_t> hooks_create;

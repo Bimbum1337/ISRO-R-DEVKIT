@@ -156,3 +156,7 @@ void CGInterface::FUN_00778a10(int a2, const wchar_t* message, D3DCOLOR color) {
 void CGInterface::FUN_00777cf0(const std::n_wstring &recipient) {
     reinterpret_cast<void(__thiscall*)(CGInterface*, const std::n_wstring*)>(0x00777cf0)(this, &recipient);
 }
+
+CIFSystemMessage *CGInterface::GetSystemMessageView() {
+    return m_IRM.GetResObj<CIFSystemMessage>(GDR_SYSTEM_MESSAGE_VIEW, 1);
+}

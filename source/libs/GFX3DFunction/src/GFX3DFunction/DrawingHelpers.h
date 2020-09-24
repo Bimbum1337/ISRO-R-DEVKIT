@@ -20,8 +20,8 @@ void PrettyLine3D(D3DVECTOR &p1, D3DVECTOR& p2, int step, int color, T* pNavmesh
 	for (int a = 0; a <= distance; a+=step)
 	{
 		D3DVECTOR p;
-		p.x = p1.x + distance_x / distance * a;
-		p.z = p1.z + distance_z / distance * a;
+		p.x = p1.x + distance_x / distance * (float)a;
+		p.z = p1.z + distance_z / distance * (float)a;
 
 		pNavmesh->FindHeight(p);
 		D3DVECTOR p2d;
@@ -29,7 +29,7 @@ void PrettyLine3D(D3DVECTOR &p1, D3DVECTOR& p2, int step, int color, T* pNavmesh
 		if (vis)
 		{
 			if (a>0 && prevVis) {
-				DXDrawLine(prev2d.x, prev2d.y, p2d.x, p2d.y, color, 1.0);
+				DXDrawLine((int) prev2d.x, (int) prev2d.y, (int) p2d.x, (int) p2d.y, color, 1.0);
 			}
 		}
 

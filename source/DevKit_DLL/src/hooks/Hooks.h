@@ -16,9 +16,10 @@ void OnWndProc(WNDPROC handler);
 void OnPreSetSize(setsize_handler_t handler);
 void OnPostSetSize(setsize_handler_t handler);
 
-
 void OnPreLoadGameOption(void_cgame_handler_t handler);
 void OnPostLoadGameOption(void_cgame_handler_t handler);
 
+void OnPreInitGameAssets(void_cgame_handler_t handler);
+void OnPostInitGameAssets(void_cgame_handler_t handler);
 
 void DebugPrintCallback(const char *buffer);

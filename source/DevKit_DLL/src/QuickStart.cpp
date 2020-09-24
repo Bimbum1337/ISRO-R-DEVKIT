@@ -1,10 +1,9 @@
-#include "StdAfx.h"
 #include "QuickStart.h"
 #include "Game.h"
 #include "Util.h"
 #include <memory/hook.h>
 #include "PSQuickStart.h"
-#include "Hooks.h"
+#include "hooks/Hooks.h"
 
 void setQuickStartProcess(CGame *game);
 
@@ -12,41 +11,33 @@ void setQuickStartProcess(CGame *game);
 void setQuickStartProcess(CGame *game) {
     // Enable Quickstart
     printf("Enabling quickstart\n");
-    game->m_runtimeClass = reinterpret_cast<CGfxRuntimeClass*>(0x00EED974);
+    game->m_runtimeClass = reinterpret_cast<CGfxRuntimeClass *>(0x00EED974);
 }
 
 void QuickStart::Setup() {
-    const char* cPath = ".\\setting\\CPSQuickStart.ini";
+
     if (!DoesFileExists(cPath))
         return;
 
-    GetPrivateProfileStringA("sro_devkit", "enabled", "", CPSQuickStartEnabled, 2, cPath);
+    LoadConfig();
 
     if (!IsEnabled())
         return;
 
-    LoadConfig();
     PlaceHooks();
-    OnPostLoadGameOption(setQuickStartProcess);
 }
 
 void QuickStart::LoadConfig() {
+    char enabled[2] = {0};
 
-    char charname[32];
-    char ibuv_text[32]; // IBUV = Image Code
+    ConfigReadA("enabled", enabled, 2);
+    m_enabled = enabled[0] == '1';
 
-
-    const char* cPath = ".\\setting\\CPSQuickStart.ini";
-    const wchar_t* wPath = L".\\setting\\CPSQuickStart.ini";
-    GetPrivateProfileStringW(L"sro_devkit", L"servername", L"", servername, 32, wPath);
-    GetPrivateProfileStringW(L"sro_devkit", L"userid", L"", userid, 32, wPath);
-    GetPrivateProfileStringW(L"sro_devkit", L"passwd", L"", passwd, 32, wPath);
-    GetPrivateProfileStringA("sro_devkit", "charname", "", charname, 32, cPath);
-    GetPrivateProfileStringA("sro_devkit", "ibuv_text", "", ibuv_text, 32, cPath);
-
-    strncpy(CPSQuickStart::charname, charname, sizeof(CPSQuickStart::charname));
-    strncpy(CPSQuickStart::ibuv_text, ibuv_text, sizeof(CPSQuickStart::ibuv_text));
-
+    ConfigReadW(L"servername", servername, 32);
+    ConfigReadW(L"userid", userid, 32);
+    ConfigReadW(L"passwd", passwd, 32);
+    ConfigReadA("charname", CPSQuickStart::charname, sizeof(CPSQuickStart::charname));
+    ConfigReadA("ibuv_text", CPSQuickStart::ibuv_text, sizeof(CPSQuickStart::ibuv_text));
 }
 
 void QuickStart::PlaceHooks() {
@@ -57,19 +48,24 @@ void QuickStart::PlaceHooks() {
 
     replaceAddr(0x00DD868C, addr_from_this(&CPSQuickStart::OnCreate));
     replaceAddr(0x00DD867C, addr_from_this(&CPSQuickStart::OnNetMsg));
+
+    OnPostLoadGameOption(setQuickStartProcess);
 }
 
-bool QuickStart::IsEnabled() {
-    return CPSQuickStartEnabled[0] == '1';
+bool QuickStart::IsEnabled() const {
+    return m_enabled;
 }
 
-void QuickStart::PreWinMain()
-{
-	printf("florian0's dev-client build on CMake\n");
-	printf("WARNING: CPSQuickStart IS enabled!!!\n");
-	printf("Servername: %ws, len(%d)\n", servername, wcslen(servername));
-	printf("UserID: %ws, len(%d)\n", userid, wcslen(userid));
-	//printf("PW: %ws, len(%d)\n", passwd, wcslen(passwd));
-	printf("Charname: %s, len(%d)\n", CPSQuickStart::charname, strlen(CPSQuickStart::charname));
-	printf("IBUV_TEXT: %s, len(%d)\n", CPSQuickStart::ibuv_text, strlen(CPSQuickStart::ibuv_text));
+void QuickStart::ConfigReadA(const char *key, char *value, size_t nSize) const {
+    GetPrivateProfileStringA("sro_devkit", key, "", value, nSize, cPath);
+}
+
+void QuickStart::ConfigReadW(const wchar_t *key, wchar_t *value, size_t nSize) const {
+    GetPrivateProfileStringW(L"sro_devkit", key, L"", value, nSize, wPath);
+}
+
+QuickStart::QuickStart() :
+        cPath(".\\setting\\CPSQuickStart.ini"),
+        wPath(L".\\setting\\CPSQuickStart.ini") {
+
 }

@@ -9,7 +9,9 @@ public:
 	CNavigationDeadreckon(void);
 	virtual ~CNavigationDeadreckon(void);
 
-	void MoveTo(uregion &region, D3DVECTOR &coord);
+    void MoveTo(uregion &region, D3DVECTOR &coord);
+
+    void MoveTo(uregion region, D3DVECTOR coord);
 
 private:
 	int N0000093D; //0x0004

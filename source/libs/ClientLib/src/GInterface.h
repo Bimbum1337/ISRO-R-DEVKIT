@@ -16,6 +16,7 @@
 #include "MessageBoxManager.h"
 #include "NIFCommunityWnd.h"
 #include "unsorted.h"
+#include "IFSystemMessage.h"
 
 #define GDR_CHAT_BOARD 1
 #define GDR_STORAGEROOM 19
@@ -167,6 +168,8 @@ public:
 
 	/// \address 007994f0
 	CNIFCommunityWnd* GetCommunityWnd();
+
+	CIFSystemMessage *GetSystemMessageView();
 
 	/// \address 00777c30
     void FUN_00777c30(ChatType type, const wchar_t* message, D3DCOLOR color, int a5);
