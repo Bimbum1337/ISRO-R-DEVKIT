@@ -54,8 +54,14 @@ nav:
   - Networking:
     - "networking/basic-concept.md"
   - Advanced:
+    - "advanced/doxygen.md"
     - "advanced/creating-tests.md"
   - contributing.md
   - code-style.md
   - ci.md
   - license.md
+  
+  
+  
+  
+  

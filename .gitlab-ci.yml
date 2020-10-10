@@ -59,13 +59,26 @@ mkdocs:
       - site/
     expire_in: 1 hour
 
+doxygen:
+  stage: docs
+  image: ${registry}:doxygen
+  script:
+    - doxygen
+  artifacts:
+    untracked: false
+    paths:
+      - doxygen/html
+    expire_in: 1 hour
 
 pages:
   stage: publish
   dependencies:
     - mkdocs
+    - doxygen
   script:
     - mv site/ public/
+    - mkdir public/doxygen/
+    - mv doxygen/html/* public/doxygen
   artifacts:
     paths:
       - public/
