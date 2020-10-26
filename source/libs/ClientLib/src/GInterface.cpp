@@ -129,6 +129,10 @@ int CGInterface::TryParseChatCommands(const wchar_t *text, RECT &r, std::vector<
                                                std::vector<void *> *)>(0x0078BEA0)(this, text, &r, &v);
 }
 
+void CGInterface::ToggleQuestNew() {
+    reinterpret_cast<void (__thiscall*)(CGInterface*)>(0x007990e0)(this);
+}
+
 CNIFCommunityWnd *CGInterface::GetCommunityWnd() {
     return reinterpret_cast<CNIFCommunityWnd *(__thiscall *)(CGInterface *)>(0x007994f0)(this);
 }
