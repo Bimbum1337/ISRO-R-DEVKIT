@@ -258,16 +258,16 @@ bool CIFChatViewer::OnCreate(long ln) {
     m_ChatLists[3]->Func_01(0);
 
     std::n_wstring str = TSM_GETTEXTPTR("UIIT_STT_CHATING_VIEW_AUTO_OFF");
-    m_Button_ChatTabHide->sub_653DC0(&str);
-    m_Button_ChatTabHide->sub_652D20(128);
+    m_Button_ChatTabHide->SetTooltipText(&str);
+    m_Button_ChatTabHide->FUN_00652d20(128);
 
     str = TSM_GETTEXTPTR("UIIT_CTL_WHISPER_LIST");
-    m_Button_WhisperList->sub_653DC0(&str);
-    m_Button_WhisperList->sub_652D20(128);
+    m_Button_WhisperList->SetTooltipText(&str);
+    m_Button_WhisperList->FUN_00652d20(128);
 
     str = TSM_GETTEXTPTR("UIIT_STT_TOGGLE_CHATING_WINDOW_SETING");
-    m_Button_ChatSize->sub_653DC0(&str);
-    m_Button_ChatSize->sub_652D20(128);
+    m_Button_ChatSize->SetTooltipText(&str);
+    m_Button_ChatSize->FUN_00652d20(128);
 
     ActivateTabPage(TAB_ALL);
 

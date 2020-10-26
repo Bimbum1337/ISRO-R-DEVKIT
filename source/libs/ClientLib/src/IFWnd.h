@@ -3,6 +3,7 @@
 #include "TextBoard.h"
 #include "IRMManager.h"
 #include <Test/Test.h>
+#include <ghidra/undefined.h>
 
 
 class CIFWnd : public CGWnd, public CTextBoard
@@ -62,6 +63,18 @@ public:
 
 	/// \address 006527D0
     void SetSomeRect(const RECT &rect);
+
+
+    /// \brief Set the tooltip text (mouse hover)
+    /// \address 00653DC0
+    void SetTooltipText(const std::n_wstring *str);
+
+    /// \brief Related to tooltip text
+    ///        Passing 0x80 enables the tooltip
+    /// \param a1 Unknown, seems to be a bitmask
+    ///           0x80 shows the tooltip
+    /// \address 00652d20
+    void FUN_00652d20(undefined4 a1);
 
 private:
 	int On4001(int, int);
