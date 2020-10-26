@@ -2,6 +2,12 @@
 
 typedef void (*SetLogHandlerFn)(const char *);
 
+#define BS_ASSERT(cond)
+
+/// \brief Assertion with a message
+/// \details Validates cond and throws an error with given message msg if cond is false
+#define BS_ASSERT_MSG(cond, msg)
+
 /// \summary Write a message to the console output
 /// \address 0049d620
 void Put(const char *fmt, ...);
