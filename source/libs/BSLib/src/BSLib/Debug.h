@@ -1,6 +1,8 @@
 #pragma once
 
-typedef void (*SetLogHandlerFn)(const char *);
+typedef void (*LogHandlerFn)(const char *);
+
+typedef void (*AssertHandlerFn)(int, const char *, const char *);
 
 #define BS_ASSERT(cond)
 
@@ -18,5 +20,8 @@ void PutDump(const char *fmt, ...);
 
 /// \summary Set callback for storing messages set with PutDump
 /// \address 0049d630
-void SetPutDumpHandler(SetLogHandlerFn fn);
+void SetPutDumpHandler(LogHandlerFn fn);
 
+/// \summary Set callback for handling assertions
+/// \address 0049e470
+void SetAssertHandler(AssertHandlerFn fn);

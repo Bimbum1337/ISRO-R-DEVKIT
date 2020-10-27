@@ -4,10 +4,17 @@
 #include <cstdarg>
 
 #if 0
-static SetLogHandlerFn callbackFn;
+static LogHandlerFn logCallbackFn;
 #else
-#define callbackFn (*(SetLogHandlerFn*)0x0111a048)
+#define logCallbackFn (*(LogHandlerFn*)0x0111a048)
 #endif
+
+#if 0
+static AssertHandlerFn assertCallbackFn
+#else
+#define assertCallbackFn (*(AssertHandlerFn*)0x0111a080)
+#endif
+
 
 void Put(const char *fmt, ...) {
 }
@@ -15,7 +22,7 @@ void Put(const char *fmt, ...) {
 void PutDump(const char *fmt, ...) {
     char buffer[1024] = {0};
 
-    if (!callbackFn)
+    if (!logCallbackFn)
         return;
 
     va_list args;
@@ -27,9 +34,14 @@ void PutDump(const char *fmt, ...) {
         buffer[1023] = '\0';
     }
 
-    callbackFn(buffer);
+    logCallbackFn(buffer);
 }
 
-void SetPutDumpHandler(SetLogHandlerFn fn) {
-    callbackFn = fn;
+void SetPutDumpHandler(LogHandlerFn fn) {
+    logCallbackFn = fn;
 }
+
+void SetAssertHandler(AssertHandlerFn fn) {
+    assertCallbackFn = fn;
+}
+
