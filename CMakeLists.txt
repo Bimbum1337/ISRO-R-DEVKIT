@@ -45,4 +45,9 @@ add_definitions(-D_WIN32_WINNT=0x0500)
 
 include(options.cmake)
 
+# Set loglevel if supplied as parameter
+if (${PUT_LOGLEVEL})
+    add_definitions(-DPUT_LOGLEVEL=${PUT_LOGLEVEL})
+endif ()
+
 add_subdirectory(source)

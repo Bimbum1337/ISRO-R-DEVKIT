@@ -29,7 +29,7 @@ typedef void (*AssertHandlerFn)(int, const char *, const char *);
 #define PUT_DEBUG_LOW 0
 
 #ifndef PUT_LOGLEVEL_DEFAULT
-#define PUT_LOGLEVEL_DEFAULT PUT_DEBUG_LOW
+#define PUT_LOGLEVEL_DEFAULT PUT_WARNING
 #endif
 
 #ifndef PUT_LOGLEVEL

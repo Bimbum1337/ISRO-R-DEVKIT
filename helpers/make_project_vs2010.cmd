@@ -69,4 +69,4 @@ if not errorlevel 0 (
     del winsdk.exe >NUL
 )
 
-cmake.exe -G "Visual Studio 10 2010" -T v80 -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+cmake.exe -G "Visual Studio 10 2010" -T v80 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPUT_LOGLEVEL=PUT_WARNING ..
