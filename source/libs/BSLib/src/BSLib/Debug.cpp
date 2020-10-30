@@ -17,6 +17,11 @@ static AssertHandlerFn assertCallbackFn
 
 
 void Put(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+
+    vprintf(fmt, args);
+    putchar('\n');
 }
 
 void PutDump(const char *fmt, ...) {

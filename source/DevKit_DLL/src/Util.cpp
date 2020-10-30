@@ -15,8 +15,8 @@
 #include <NetProcessIn.h>
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
+#include <BSLib/Debug.h>
 #include "QuickStart.h"
-
 
 
 std::vector<const CGfxRuntimeClass *> register_objects;
@@ -49,6 +49,8 @@ void Setup() {
     replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
     replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
     replaceOffset(0x008a4876, addr_from_this(&CNetProcessThird::RegisterPacketHandlers));
+
+    placeHook(0x0049d620, Put);
 
     quickstart.Setup();
 
