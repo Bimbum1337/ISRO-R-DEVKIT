@@ -1,12 +1,13 @@
 #include "StdAfx.h"
 #include "IFTileWnd.h"
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFTileWnd, 0x00EECBD4)
 
 // CIFTileWnd::CIFTileWnd(void) .text 0081AB10 0000009A 00000018 00000000 R . . . . . .
 CIFTileWnd::CIFTileWnd(void)
 {
-	printf(">" __FUNCTION__ "\n");
+	BS_DEBUG_LOW(">" __FUNCTION__);
 	this->set_N00009B9D(1);
 }
 
@@ -19,7 +20,7 @@ CIFTileWnd::~CIFTileWnd(void)
 // CIFTileWnd::CTextBoard_Func_13 .text 0081AC50 0000008E 00000034 00000001 R . . . . . .
 void CIFTileWnd::TB_Func_13(std::string str, int a3, int a4)
 {
-	printf(__FUNCTION__ " (\"%s\", %d, %d)\n", str.c_str(), a3, a4);
+	BS_DEBUG_LOW(__FUNCTION__ " (\"%s\", %d, %d)", str.c_str(), a3, a4);
 	reinterpret_cast<void(__thiscall*)(CTextBoard*,std::string,int,int)>(0x0081AC50)(this, str, a3, a4);
 }
 

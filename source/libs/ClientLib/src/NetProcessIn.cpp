@@ -2,6 +2,7 @@
 #include "unsorted.h"
 #include "ICPlayer.h"
 #include <BSLib/multibyte.h>
+#include <BSLib/Debug.h>
 #include "CharacterDependentData.h"
 #include "TextStringManager.h"
 #include "Game.h"
@@ -16,7 +17,7 @@
 #endif
 
 void CNetProcessIn::RegisterPacketHandlers() {
-    printf("Registering Handlers\n");
+    BS_DEBUG("Registering Handlers");
     m_handlers.insert(std::make_pair(0x3027, &CNetProcessIn::OnUpdateGameTime));
     m_handlers.insert(std::make_pair(0x3809, &CNetProcessIn::On3809));
     m_handlers.insert(std::make_pair(0x3055, &CNetProcessIn::OnResetClient));
@@ -559,7 +560,7 @@ void CNetProcessIn::OnChatReceive(CMsgStreamBuffer &msg) {
                 senderW = pObject->GetName();
 
                 if (pObject->IsKindOf(GFX_RUNTIME_CLASS(CICUser))) {
-                    printf("Job type is %d\n", reinterpret_cast<CICUser *>(pObject)->GetJobType());
+                    BS_DEBUG("Job type is %d", reinterpret_cast<CICUser *>(pObject)->GetJobType());
 
                     if (reinterpret_cast<CICUser *>(pObject)->GetJobType() != TRIJOB_NOJOB) {
                         senderW.insert(0, L"*");

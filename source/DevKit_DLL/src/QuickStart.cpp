@@ -4,13 +4,14 @@
 #include <memory/hook.h>
 #include "PSQuickStart.h"
 #include "hooks/Hooks.h"
+#include <BSLib/Debug.h>
 
 void setQuickStartProcess(CGame *game);
 
 
 void setQuickStartProcess(CGame *game) {
     // Enable Quickstart
-    printf("Enabling quickstart\n");
+    BS_INFO("Enabling quickstart");
     game->m_runtimeClass = reinterpret_cast<CGfxRuntimeClass *>(0x00EED974);
 }
 

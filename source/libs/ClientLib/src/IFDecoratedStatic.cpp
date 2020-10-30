@@ -1,12 +1,13 @@
 #include "StdAfx.h"
 #include "IFDecoratedStatic.h"
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFDecoratedStatic, 0x00EE94F8)
 
 // CIFDecoratedStatic::OnCreate(int) .text 00633C80 00000017 00000004 00000000 R . . . . . .
 bool CIFDecoratedStatic::OnCreate(long ln)
 {
-	printf("> " __FUNCTION__ "(%d)\n", ln);
+	BS_DEBUG_LOW("> " __FUNCTION__ "(%d)", ln);
 
 	sub_633990();
 	set_N00009BD4(0);

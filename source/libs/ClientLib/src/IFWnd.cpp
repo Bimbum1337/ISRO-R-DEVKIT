@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "IFWnd.h"
 #include "Game.h"
-
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFWnd, 0x00EE9808)
 
@@ -18,7 +18,7 @@ GFX_END_MESSAGE_MAP()
 // CIFWnd::CIFWnd(void) .text 00654520 00000205 00000024 00000000 R . . . . T .
 CIFWnd::CIFWnd(void)
 {
-	printf(">" __FUNCTION__ "\n");
+	BS_DEBUG_LOW(">" __FUNCTION__);
 	
 	this->N00000688 = 0;
 	this->N00000689 = 0;
@@ -102,8 +102,8 @@ bool CIFWnd::Func_18(int a1)
 // CIFWnd::On3DEventMAYBE(void) .text 00652540 000000FE 0000000C 00000004 R . . . . . .
 bool CIFWnd::On3DEvent_MAYBE(Event3D* a2)
 {
-	//printf(__FUNCTION__ " (%p)\n", a2);
-	//printf("> %d %8x %8x\n", a2->Msg, a2->lParam, a2->wParam);
+	BS_DEBUG_LOW(__FUNCTION__ " (%p)", a2);
+	BS_DEBUG_LOW("> %d %8x %8x", a2->Msg, a2->lParam, a2->wParam);
 
 	return reinterpret_cast<bool(__thiscall*)(CIFWnd*,Event3D*)>(0x00652540)(this, a2);
 }
@@ -117,14 +117,14 @@ void CIFWnd::Func_20()
 // CIFWnd::SetGWndSize(int,int) .text 00652970 00000024 00000004 00000008 R . . . . . .
 void CIFWnd::SetGWndSize(int width, int height)
 {
-	printf(__FUNCTION__ " (%d, %d)\n", width, height);
+	BS_DEBUG_LOW(__FUNCTION__ " (%d, %d)", width, height);
 	reinterpret_cast<void(__thiscall*)(CIFWnd*,int,int)>(0x00652970)(this, width, height);
 }
 
 // CIFWnd::Func_22(void) .text 00652950 00000014 00000000 00000008 R . . . . . .
 void CIFWnd::Func_22(int x, int y)
 {
-	printf(__FUNCTION__ " (%d, %d)\n", x, y);
+	BS_DEBUG_LOW(__FUNCTION__ " (%d, %d)", x, y);
 	SetGWndSize(x, y);
 }
 
@@ -179,7 +179,7 @@ void CIFWnd::RenderMyself()
 // CIFWnd::MoveGWnd(int,int) .text 006529A0 00000024 00000004 00000008 R . . . . T .
 void CIFWnd::MoveGWnd(int x, int y)
 {
-	//printf(__FUNCTION__ " (%d, %d)\n", x, y);
+	BS_DEBUG_LOW(__FUNCTION__ " (%d, %d)", x, y);
 	reinterpret_cast<void(__thiscall*)(CIFWnd*,int,int)>(0x006529A0)(this, x, y);
 #if 0
 	CGWnd::SetPosition(x, y);

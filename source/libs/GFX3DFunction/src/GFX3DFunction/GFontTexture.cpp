@@ -1,26 +1,26 @@
 #include "GFontTexture.h"
-
+#include <BSLib/Debug.h>
 #include <cassert>
 
 // CGFontTexture::CGFontTexture(void) .text 008B4F30 00000061 0000001C 00000000 R . . . . . .
 CGFontTexture::CGFontTexture(void)
 {
 	//assert(FALSE);
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG_LOW("> " __FUNCTION__);
 	reinterpret_cast<void (__thiscall*)(CGFontTexture*)>(0x008B4F30)(this);
 }
 
 // CGFontTexture::CGFontTexture(int) .text 008B4FA0 00000067 0000001C 00000004 R . . . . . .
 CGFontTexture::CGFontTexture(int a2)
 {
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG_LOW("> " __FUNCTION__);
 	assert(FALSE);
 }
 
 // CGFontTexture::~CGFontTexture(void) .text 008B3CD0 0000006B 00000018 00000000 R . . . . . .
 CGFontTexture::~CGFontTexture(void)
 {
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG_LOW("> " __FUNCTION__);
 	// reinterpret_cast<void(__thiscall*)(CGFontTexture*)>(0x008B4FA0)(this);
 }
 
