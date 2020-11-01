@@ -1,5 +1,6 @@
 #include "IFflorian0.h"
 #include <ctime>
+#include <BSLib/Debug.h>
 
 #define GDR_FLORIAN0_LABEL 10
 #define GDR_FLORIAN0_BTN 11
@@ -20,18 +21,17 @@ GFX_END_MESSAGE_MAP()
 
 CIFflorian0::CIFflorian0(void)
 {
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG("> " __FUNCTION__);
 }
-
 
 CIFflorian0::~CIFflorian0(void)
 {
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG("> " __FUNCTION__);
 }
 
 bool CIFflorian0::OnCreate(long ln)
 {
-	printf("> " __FUNCTION__ "(%d)\n", ln);
+	BS_DEBUG("> " __FUNCTION__ "(%d)", ln);
 
 	// Populate inherited members
 	CIFMainFrame::OnCreate(ln);
@@ -64,7 +64,7 @@ void CIFflorian0::OnUpdate()
 
 void CIFflorian0::On_BtnClick()
 {
-	printf("> " __FUNCTION__ "\n");
+	BS_DEBUG("> " __FUNCTION__);
 
 	static int i = 0;
 
@@ -76,36 +76,36 @@ void CIFflorian0::On_BtnClick()
 
 int CIFflorian0::On4001(int a1, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", a1, a2);
 	return 0;
 }
 
 int CIFflorian0::On4002(int a1, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", a1, a2);
 	return 0;
 }
 
 int CIFflorian0::On4003(int a1, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", a1, a2);
 	return 0;
 }
 
 int CIFflorian0::OnVisibleStateChange(int newstate, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", newstate, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", newstate, a2);
 	return 0;
 }
 
 int CIFflorian0::On4005(int a1, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", a1, a2);
 	return 0;
 }
 
 int CIFflorian0::On4006(int a1, int a2)
 {
-	printf("> " __FUNCTION__ " ( %p, %p )\n", a1, a2);
+	BS_DEBUG("> " __FUNCTION__ " ( %p, %p )", a1, a2);
 	return 0;
 }

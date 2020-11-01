@@ -3,6 +3,7 @@
 #include <imgui/imgui.h>
 #include <GEffSoundBody.h>
 #include <BSLib/multibyte.h>
+#include <BSLib/Debug.h>
 
 bool sound_item_getter(void* data, int idx, const char **outdata);
 
@@ -29,7 +30,7 @@ void SoundTool::Render() {
     if (ImGui::InputText("Filter", buffer, IM_ARRAYSIZE(buffer)))
     {
         // Value has changed
-        printf("Value has changed: %s\n", buffer);
+        BS_DEBUG("Value has changed: %s", buffer);
         ImGui_Window_SoundTool_Filter(&items, acp_n_decode(buffer, strlen(buffer)));
     }
 

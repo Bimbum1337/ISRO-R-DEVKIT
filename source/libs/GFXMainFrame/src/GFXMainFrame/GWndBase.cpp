@@ -1,20 +1,21 @@
 #include "GWndBase.h"
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
 
 void CGWndBase::Func_7(CGWndBase *a2) {
-    printf(__FUNCTION__ " (%p : %s)\n", a2, a2->GetRuntimeClass()->m_lpszClassName);
+    BS_DEBUG_LOW(__FUNCTION__ " (%p : %s)", a2, a2->GetRuntimeClass()->m_lpszClassName);
     //N00000707.push_back(a2);
     reinterpret_cast<void (__thiscall *)(CGWndBase *, CGWndBase *)>(0x00B90A80)(this, a2);
 }
 
 int CGWndBase::AddControlToList(CGWndBase *a2) {
-    printf(__FUNCTION__ " (%p : %s)\n", a2, a2->GetRuntimeClass()->m_lpszClassName);
+    BS_DEBUG_LOW(__FUNCTION__ " (%p : %s)", a2, a2->GetRuntimeClass()->m_lpszClassName);
     return reinterpret_cast<int (__thiscall *)(CGWndBase *, CGWndBase *)>(0x00B90AC0)(this, a2);
 }
 
 void CGWndBase::RemoveControlFromList(CGWndBase *a2) {
-    printf(__FUNCTION__ " (%p : %s)\n", a2, a2->GetRuntimeClass()->m_lpszClassName);
+    BS_DEBUG_LOW(__FUNCTION__ " (%p : %s)", a2, a2->GetRuntimeClass()->m_lpszClassName);
     reinterpret_cast<void (__thiscall *)(CGWndBase *, CGWndBase *)>(0x00B913D0)(this, a2);
 }
 

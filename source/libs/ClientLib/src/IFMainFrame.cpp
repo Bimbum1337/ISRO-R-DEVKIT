@@ -1,5 +1,6 @@
 #include "IFMainFrame.h"
 #include "Game.h"
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFMainFrame, 0x00EECB54)
 
@@ -16,7 +17,7 @@ CIFMainFrame::CIFMainFrame()
 }
 
 bool CIFMainFrame::OnCreate(long ln) {
-    printf("%s\n", __FUNCTION__);
+    BS_DEBUG_LOW("%s", __FUNCTION__);
 
     CIFFrame::OnCreate(ln);
 
@@ -29,13 +30,13 @@ bool CIFMainFrame::OnCreate(long ln) {
     sz.size.width = local_10.size.width - 21;
 
     m_title = (CIFStatic*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFStatic), sz, GDR_STA_TITLE, 0);
-    printf("Created title at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+    BS_DEBUG("Created title at %d|%d [%d|%d]", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
 
     sz.pos.y = 0;
     sz.size.height = 34;
 
     m_handleBar = (CIFDragableArea*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFDragableArea), sz, GDR_STA_DRAG, 0);
-    printf("Created handlebar at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+    BS_DEBUG("Created handlebar at %d|%d [%d|%d]", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
 
     sz.size.height = 16;
     sz.size.width = 16;
@@ -43,7 +44,7 @@ bool CIFMainFrame::OnCreate(long ln) {
     sz.pos.y = 10;
 
     m_close = (CIFCloseButton*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFCloseButton), sz, GDR_BTN_CLOSE, 0);
-    printf("Created close btn at %d|%d [%d|%d]\n", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
+    BS_DEBUG("Created close btn at %d|%d [%d|%d]", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
 
     RECT rect;
     m_title->SetSomeRect(rect);

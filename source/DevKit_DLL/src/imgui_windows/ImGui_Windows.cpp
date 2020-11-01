@@ -21,6 +21,7 @@
 #include "About.h"
 #include "SystemMessage.h"
 #include <BSLib/multibyte.h>
+#include <BSLib/Debug.h>
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -34,7 +35,7 @@ About aboutWnd;
 SystemMessage systemMessage;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
-    printf("ImGui_OnCreate\n");
+    BS_DEBUG("ImGui_OnCreate");
     ImGui::CreateContext();
 
     ImGui_ImplWin32_Init(hWindow);
@@ -43,7 +44,7 @@ void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
 }
 
 void ImGui_OnEndScene() {
-    // printf("ImGui_OnEndScene %d\n", g_CD3DApplication->IsLost());
+    BS_DEBUG_LOW("ImGui_OnEndScene %d", g_CD3DApplication->IsLost());
 
     if (g_CD3DApplication->IsLost()) {
         return;
@@ -145,7 +146,7 @@ void ImGui_OnEndScene() {
 }
 
 LRESULT CALLBACK ImGui_WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-    //printf("ImGui_WndProc\n");
+    BS_DEBUG_LOW("ImGui_WndProc");
 
     // Check if context is already created
     if (!ImGui::GetCurrentContext())
@@ -161,12 +162,12 @@ LRESULT CALLBACK ImGui_WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
 }
 
 void ImGui_OnPreSetSize(int width, int height) {
-    printf("ImGui_OnPreSetSize\n");
+    BS_DEBUG_LOW("ImGui_OnPreSetSize");
     ImGui_ImplDX9_InvalidateDeviceObjects();
 }
 
 void ImGui_OnPostSetSize(int width, int height) {
-    printf("ImGui_OnPostSetSize\n");
+    BS_DEBUG_LOW("ImGui_OnPostSetSize");
     //ImGui_ImplDX9_CreateDeviceObjects();
     ImGui_ImplDX9_Init(g_CD3DApplication->m_pd3dDevice);
 }

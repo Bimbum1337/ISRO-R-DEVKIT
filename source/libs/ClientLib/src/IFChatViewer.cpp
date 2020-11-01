@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "IFChatViewer.h"
+#include <BSLib/Debug.h>
 
 #include "TextStringManager.h"
 #include "Game.h"
@@ -285,7 +286,7 @@ void CIFChatViewer::RenderMyself() {
 }
 
 void CIFChatViewer::ShowGWnd(bool a2) {
-    printf(">" __FUNCTION__ " (%d)\n", a2);
+    BS_DEBUG_LOW(">" __FUNCTION__ " (%d)", a2);
     m_Button_ChatTabHide->ShowGWnd(a2);
     CIFWnd::ShowGWnd(a2);
 }
@@ -303,7 +304,7 @@ int CIFChatViewer::Func_36(int a1, short action, int a3, int a4) {
 }
 
 void CIFChatViewer::WriteToChatW(const wchar_t *src, int a3, int a4) {
-    printf(">" __FUNCTION__ "(%S, %x, %x)\n", src, a3, a4);
+    BS_DEBUG_LOW(">" __FUNCTION__ "(%S, %x, %x)", src, a3, a4);
 
     std::n_wstring str = src;
     if (m_numberOfLinesPerTab[0]++ > 250) {
@@ -315,7 +316,7 @@ void CIFChatViewer::WriteToChatW(const wchar_t *src, int a3, int a4) {
 }
 
 void CIFChatViewer::WriteToChatA(const char *src, int a3, int a4) {
-    printf(">" __FUNCTION__ "(%s, %x, %x)\n", src, a3, a4);
+    BS_DEBUG_LOW(">" __FUNCTION__ "(%s, %x, %x)", src, a3, a4);
 
     std::n_string str = src;
     if (m_numberOfLinesPerTab[0]++ > 250) {
@@ -649,7 +650,7 @@ void CIFChatViewer::OnChatMode() {
 }
 
 void CIFChatViewer::OnListChatThing(int a1, int a2) {
-    printf("%s(%d, %d)\n", __FUNCTION__, a1, a2 );
+    BS_DEBUG_LOW("%s(%d, %d)", __FUNCTION__, a1, a2 );
 
     int id = GetIDOfInterfaceUnderCursor();
     CIFListCtrl *pList;
@@ -742,7 +743,7 @@ void CIFChatViewer::OnListChatThing(int a1, int a2) {
 }
 
 void CIFChatViewer::UpdateChatSize() {
-    printf(">" __FUNCTION__ "\n");
+    BS_DEBUG_LOW(">" __FUNCTION__);
 
     int v5; // edi@1
 
@@ -814,7 +815,7 @@ void CIFChatViewer::UpdateChatSize() {
 }
 
 void CIFChatViewer::sub_7A9D60() {
-    printf(">" __FUNCTION__ "\n");
+    BS_DEBUG_LOW(">" __FUNCTION__);
     wnd_pos pos = m_IRM.GetResObj(7, 1)->GetPos();
     pos.x += 4;
     wnd_size size = m_ChatModeView_Wnd->GetSize();
@@ -822,7 +823,7 @@ void CIFChatViewer::sub_7A9D60() {
 }
 
 CIFChatViewer::CIFChatViewer() {
-    printf(">" __FUNCTION__ "\n");
+    BS_DEBUG_LOW(">" __FUNCTION__);
     m_pTabs = 0;
     m_Button_ChatSize = 0;
     N00009C71 = 0;
@@ -849,7 +850,7 @@ CIFChatViewer::~CIFChatViewer() {
 }
 
 void CIFChatViewer::sub_7A9A40() {
-    printf(">" __FUNCTION__ "\n");
+    BS_DEBUG_LOW(">" __FUNCTION__);
 
     SetFocus(g_CGame->GetHWnd());
     GetParentControl()->SetFocus_MAYBE();

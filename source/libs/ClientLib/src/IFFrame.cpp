@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "IFFrame.h"
+#include <BSLib/Debug.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFFrame, 0x00EECB14)
 
@@ -12,6 +13,6 @@ void CIFFrame::RenderMyself() {
 }
 
 void CIFFrame::Func_49(std::n_string str) {
-    printf("%s (\"%s\")\n", __FUNCTION__, str.c_str());
+    BS_DEBUG_LOW("%s (\"%s\")", __FUNCTION__, str.c_str());
     reinterpret_cast<void (__thiscall *)(CIFFrame *, std::n_string)>(0x00815300)(this, str);
 }

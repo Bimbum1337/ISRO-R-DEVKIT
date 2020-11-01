@@ -3,6 +3,7 @@
 #include <imgui/imgui.h>
 #include <cstdio>
 #include <BSLib/BSLib.h>
+#include <BSLib/Debug.h>
 #include <BSLib/multibyte.h>
 #include <GInterface.h>
 
@@ -70,7 +71,7 @@ void NotificationTool::Render() {
             g_pCGInterface->ShowMessage_Notice(wstr);
         } else {
             // Somehow we don't know what the selection is
-            printf("Unknown selection when sending notification\n");
+            BS_INFO("Unknown selection when sending notification");
         }
     }
 
