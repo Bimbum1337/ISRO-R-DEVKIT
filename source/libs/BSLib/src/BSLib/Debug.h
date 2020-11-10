@@ -4,11 +4,25 @@ typedef void (*LogHandlerFn)(const char *);
 
 typedef void (*AssertHandlerFn)(int, const char *, const char *);
 
-#define BS_ASSERT(cond)
-
 /// \brief Assertion with a message
 /// \details Validates cond and throws an error with given message msg if cond is false
-#define BS_ASSERT_MSG(cond, msg)
+#define BS_ASSERT_MSG(cond, msg, ...)                                                             \
+    do {                                                                                          \
+        if (!(cond)) {                                                                            \
+            if (!reinterpret_cast<bool(*)(int, const char *, const char *, ...)>(0x0049e490)(     \
+        __LINE__, __FILE__, msg, __VA_ARGS__)) {                                                  \
+            __debugbreak();                                                                       \
+        }}} while (0)
+
+
+#define _BS_STRINGIFY_HELPER(text) #text
+
+/// \brief Converts an expression to a string
+#define BS_STRINGIFY(expr) _BS_STRINGIFY_HELPER(expr)
+
+/// \brief Assertion
+/// \details Validates cond and throws an error if cond is false
+#define BS_ASSERT(cond) BS_ASSERT_MSG(cond, BS_STRINGIFY(cond))
 
 /// Critical error that could lead to a crash
 #define PUT_CRITICAL 5
