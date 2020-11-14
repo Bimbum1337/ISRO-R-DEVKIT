@@ -4,14 +4,7 @@
 #include "GInterface.h"
 #include "Game.h"
 
-#define GDR_APPRENTICESHIP 77
 #define GDR_QUEST 76
-#define GDR_PLAYERINFO 75
-#define GDR_ACTION 74
-#define GDR_SKILL 73
-#define GDR_PARTY 72
-#define GDR_EQUIPMENT 71
-#define GDR_INVENTORY 70
 #define GDR_BTN_APPRENTICE 16
 #define GDR_BTN_QUEST 15
 #define GDR_BTN_PARTY 14

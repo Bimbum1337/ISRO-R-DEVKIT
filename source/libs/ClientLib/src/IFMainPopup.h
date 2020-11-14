@@ -12,6 +12,14 @@
 #include "IFButton.h"
 #include "IFStatic.h"
 
+#define GDR_APPRENTICESHIP 77
+#define GDR_PLAYERINFO 75
+#define GDR_ACTION 74
+#define GDR_SKILL 73
+#define GDR_PARTY 72
+#define GDR_EQUIPMENT 71
+#define GDR_INVENTORY 70
+
 class CIFMainPopup : public CIFMainFrame {
     GFX_DECLARE_DYNAMIC_EXISTING(CIFMainPopup, 0x00eea6dc)
     GFX_DECLARE_MESSAGE_MAP(CIFMainPopup)
