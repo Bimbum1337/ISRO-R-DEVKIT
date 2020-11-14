@@ -60,9 +60,10 @@ public:
     /// \address 006a1c70
     void HideAll();
 
-private:
     /// \address 006a1f70
     void ShowSubPage(int page);
+
+private:
 
     /// \address 006a24f0
     void OnClick_BtnChar();
