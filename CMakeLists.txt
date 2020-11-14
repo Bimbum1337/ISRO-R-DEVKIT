@@ -46,7 +46,8 @@ add_definitions(-D_WIN32_WINNT=0x0500)
 include(options.cmake)
 
 # Set loglevel if supplied as parameter
-if (${PUT_LOGLEVEL})
+if (DEFINED PUT_LOGLEVEL)
+    message(STATUS "Loglevel: ${PUT_LOGLEVEL}")
     add_definitions(-DPUT_LOGLEVEL=${PUT_LOGLEVEL})
 endif ()
 
