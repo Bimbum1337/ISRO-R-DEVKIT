@@ -39,7 +39,7 @@ set(SOURCE_FILES src/BufRender.h
     src/GEffSoundBody.h
     src/GInterface.cpp
     src/GInterface.h
-    src/GlobalDataManager.h
+    src/GlobalDataManager.cpp src/GlobalDataManager.h
     src/GlobalHelpersThatHaveNoHomeYet.h
     src/GObj.h
     src/IDxSound.h

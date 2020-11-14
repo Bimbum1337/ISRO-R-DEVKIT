@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <ghidra/undefined.h>
 #include "Data/ItemData.h"
 #include "Data/CharacterData.h"
 #include "Data/GameGuideData.h"
@@ -33,7 +34,10 @@
 
 class CGlobalDataManager {
 public:
-	virtual void Unknown();
+    virtual void Unknown();
+
+    undefined4 FUN_008cbac0(int a1);
+
 
     char gap0[0x254];
 
