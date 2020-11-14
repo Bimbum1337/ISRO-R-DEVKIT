@@ -4,33 +4,132 @@
 #include "IFNotify.h"
 #include "IFChatViewer.h"
 #include "IFNotify.h"
+#include "GlobalDataManager.h"
 
-void CGInterface::RenderToggle_GDR_ACTION() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079D5B0)(this);
+void CGInterface::ToggleActionWnd() {
+    // If MainPopup is visible and page 'action' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_ACTION)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        m_mainPopup->ShowSubPage(GDR_ACTION);
+        FUN_0079a7e0(m_mainPopup);
+    }
 }
 
-void CGInterface::RenderToggle_GDR_APPRENTICESHIP() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079B0B0)(this);
+void CGInterface::ToggleApprenticeshipWnd() {
+    // If MainPopup is visible and page 'apprenticeship' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_APPRENTICESHIP)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+        g_CGlobalDataManager->FUN_008cbac0(GDR_APPRENTICESHIP);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetApprenticeShip()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_APPRENTICESHIP);
+        }
+        FUN_0079a7e0(m_mainPopup);
+        g_CGlobalDataManager->FUN_008cbac0(GDR_APPRENTICESHIP);
+    }
 }
 
-void CGInterface::RenderToggle_GDR_PLAYERINFO() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079ACE0)(this);
+void CGInterface::TogglePlayerInfoWnd() {
+    // If MainPopup is visible and page 'playerinfo' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PLAYERINFO)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetPlayerInfo()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_PLAYERINFO);
+        }
+        FUN_0079a7e0(m_mainPopup);
+    }
 }
 
 void CGInterface::RenderToggle_GDR_GAMEGUIDE() {
     return reinterpret_cast<void (__thiscall *)(void *)>(0x0079F690)(this);
 }
 
-void CGInterface::RenderToggle_GDR_INVENTORY() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079B020)(this);
+void CGInterface::ToggleInventoryWnd() {
+    // If MainPopup is visible and page 'inventory' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetInventory()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_INVENTORY);
+        }
+        FUN_0079a7e0(m_mainPopup);
+    }
 }
 
-void CGInterface::RenderToggle_GDR_PARTY() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079AE90)(this);
+void CGInterface::ToggleEquipmentWnd() {
+    // If MainPopup is visible and page 'equipment' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetEquipment()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_INVENTORY);
+        }
+        FUN_0079a7e0(m_mainPopup);
+    }
 }
 
-void CGInterface::RenderToggle_GDR_SKILL() {
-    return reinterpret_cast<void (__thiscall *)(void *)>(0x0079AE00)(this);
+void CGInterface::TogglePartyWnd() {
+    // If MainPopup is visible and page 'party' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PARTY)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+        g_CGlobalDataManager->FUN_008cbac0(GDR_PARTY);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetParty()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_PARTY);
+        }
+        FUN_0079a7e0(m_mainPopup);
+        g_CGlobalDataManager->FUN_008cbac0(GDR_PARTY);
+    }
+}
+
+void CGInterface::ToggleSkillWnd() {
+    // If MainPopup is visible and page 'skill' is active
+    if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_SKILL)) {
+        m_mainPopup->ShowGWnd(false);
+        FUN_0079a7e0(m_mainPopup);
+    } else {
+        m_mainPopup->ShowGWnd(true);
+        if (!m_mainPopup->GetSkill()->IsVisible()) {
+            m_mainPopup->ShowSubPage(GDR_SKILL);
+        }
+        FUN_0079a7e0(m_mainPopup);
+    }
+}
+
+void CGInterface::ShowInventoryWnd() {
+    m_mainPopup->ShowGWnd(true);
+    if (!m_mainPopup->GetInventory()->IsVisible()) {
+        m_mainPopup->ShowSubPage(GDR_INVENTORY);
+    }
+    FUN_0079a7e0(m_mainPopup);
+}
+
+
+void CGInterface::ShowApprenticeshipWnd() {
+    m_mainPopup->ShowGWnd(true);
+    if (!m_mainPopup->GetApprenticeShip()->IsVisible()) {
+        m_mainPopup->ShowSubPage(GDR_APPRENTICESHIP);
+    }
+    FUN_0079a7e0(m_mainPopup);
+}
+
+void CGInterface::ToggleMainPopup() {
+    m_mainPopup->ShowGWnd(!m_mainPopup->IsVisible());
+    FUN_0079a7e0(m_mainPopup);
 }
 
 void CGInterface::RenderToggle_WORLDMAP_GUIDE() {
@@ -153,3 +252,8 @@ void CGInterface::FUN_00777cf0(const std::n_wstring &recipient) {
 CIFSystemMessage *CGInterface::GetSystemMessageView() {
     return m_IRM.GetResObj<CIFSystemMessage>(GDR_SYSTEM_MESSAGE_VIEW, 1);
 }
+
+void CGInterface::FUN_0079a7e0(CGWndBase *pGWnd) const {
+    reinterpret_cast<void(__thiscall*)(const CGInterface*, CGWndBase *)>(0x0079a7e0)(this, pGWnd);
+}
+

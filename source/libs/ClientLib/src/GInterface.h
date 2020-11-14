@@ -121,25 +121,37 @@ public:
     CAlramGuideMgrWnd *GetAlarmManager();
 
     /// \address 0079D5B0
-    void RenderToggle_GDR_ACTION();
+    void ToggleActionWnd();
 
     /// \address 0079B0B0
-    void RenderToggle_GDR_APPRENTICESHIP();
+    void ToggleApprenticeshipWnd();
 
     /// \address 0079ACE0
-    void RenderToggle_GDR_PLAYERINFO();
+    void TogglePlayerInfoWnd();
 
     /// \address 0079F690
     void RenderToggle_GDR_GAMEGUIDE();
 
     /// \address 0079B020
-    void RenderToggle_GDR_INVENTORY();
+    void ToggleInventoryWnd();
+
+    /// \address 0079ad70
+    void ToggleEquipmentWnd();
 
     /// \address 0079AE90
-    void RenderToggle_GDR_PARTY();
+    void TogglePartyWnd();
 
     /// \address 0079AE00
-    void RenderToggle_GDR_SKILL();
+    void ToggleSkillWnd();
+
+    /// \address 0079af20
+    void ShowInventoryWnd();
+
+    /// \address 0079af70
+    void ShowApprenticeshipWnd();
+
+    /// \address 0079afd0
+    void ToggleMainPopup();
 
     /// \address 0079ABE0
     void RenderToggle_WORLDMAP_GUIDE();
@@ -194,6 +206,10 @@ public:
     /// \address 00787C10
     void sub_787C10(SChatMetaData &meta);
 
+
+private:
+    /// \address 0079a7e0
+    void FUN_0079a7e0(CGWndBase *pGWnd) const;
 
 private:
 public:
