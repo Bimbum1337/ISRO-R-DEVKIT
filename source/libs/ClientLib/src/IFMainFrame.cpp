@@ -46,7 +46,8 @@ bool CIFMainFrame::OnCreate(long ln) {
     m_close = (CIFCloseButton*)CreateInstance(this, GFX_RUNTIME_CLASS(CIFCloseButton), sz, GDR_BTN_CLOSE, 0);
     BS_DEBUG("Created close btn at %d|%d [%d|%d]", sz.pos.x, sz.pos.y, sz.size.width, sz.size.height);
 
-    RECT rect;
+    RECT rect = { 0 };
+
     m_title->SetSomeRect(rect);
     m_title->SetFont(theApp.GetFont(0));
     m_title->TB_Func_5(1);
