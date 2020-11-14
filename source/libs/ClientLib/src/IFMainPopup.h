@@ -65,6 +65,9 @@ public:
     /// \address 006a1d50
     CIFEquipment *GetEquipment() const;
 
+    /// \address 006a1cf0
+    bool IsSubPageActive(int page);
+
     /// \address 006a1c70
     void HideAll();
 

@@ -344,3 +344,7 @@ CIFEquipment *CIFMainPopup::GetEquipment() const {
     BS_ASSERT_MSG(m_equipmentWindow, "Mainpop에 세팅된 Equipment가 이상하다");
     return m_equipmentWindow;
 }
+
+bool CIFMainPopup::IsSubPageActive(int page) {
+    return m_IRM.GetResObj<CIFWnd>(page, 1)->IsVisible();
+}
