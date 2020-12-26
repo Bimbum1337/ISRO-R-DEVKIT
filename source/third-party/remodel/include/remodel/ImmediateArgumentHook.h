@@ -1,7 +1,7 @@
 #pragma once
 
 #define HOOK_IMMEDIATE_ARG(address, newValue) \
-    static ImmediateArgumentHook<address> hook_ ## address ((newValue));
+    ImmediateArgumentHook<address> hook_ ## address ((newValue));
 
 template<unsigned int Address>
 class ImmediateArgumentHook {
