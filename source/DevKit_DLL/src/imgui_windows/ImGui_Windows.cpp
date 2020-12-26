@@ -20,6 +20,7 @@
 #include "NotificationTool.h"
 #include "About.h"
 #include "SystemMessage.h"
+#include "ErrorMessageTool.h"
 #include <BSLib/multibyte.h>
 #include <BSLib/Debug.h>
 
@@ -33,6 +34,7 @@ SoundTool soundTool;
 NotificationTool notificationTool;
 About aboutWnd;
 SystemMessage systemMessage;
+ErrorMessageTool errorMessageTool;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
@@ -109,6 +111,7 @@ void ImGui_OnEndScene() {
             soundTool.MenuItem();
             notificationTool.MenuItem();
             systemMessage.MenuItem();
+            errorMessageTool.MenuItem();
 
             ImGui::EndMenu();
         }
@@ -138,6 +141,7 @@ void ImGui_OnEndScene() {
     navmeshExplorer.Render();
     aboutWnd.Render();
     systemMessage.Render();
+    errorMessageTool.Render();
 
     ImGui::EndFrame();
 
