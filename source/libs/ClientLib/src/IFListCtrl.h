@@ -32,6 +32,10 @@ public:
     /// \remark This func seems to return the currently selected line of text in the list control.
     CIFListCtrl::SLineOfText* sub_63A940();
 
+    /// \copybrief CLinkedScroll::GetNumberOfItems
+    /// \address 00638cd0
+    int GetNumberOfItems() const override;
+
 private:
     char pad_0384[2]; //0x0384
     char m_bHighlighLine; //0x0386
@@ -53,7 +57,10 @@ private:
     char N00009DA8; //0x03A8
     char pad_03A9[1]; //0x03A9
     char N00009F32; //0x03AA
-    char pad_03AB[29]; //0x03AB
+    char pad_03AB[29-8]; //0x03AB
+    /// Number of items in the list
+    int m_numberOfItems; // 0x3C0
+    D3DCOLOR m_OtherColor; // 0x3C4
     D3DCOLOR m_BackgroundColor; //0x03C8
 
 };
