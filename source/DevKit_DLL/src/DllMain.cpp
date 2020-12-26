@@ -1,4 +1,5 @@
 #include <IFChatViewer.h>
+#include <IFMainPopup.h>
 #include "hooks/Hooks.h"
 #include "Util.h"
 #include "imgui_windows/ImGui_Windows.h"
@@ -14,6 +15,8 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         // Inject all the new objects
         RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
         RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
+
+        OverrideObject<CIFMainPopup, 0x00eea6dc>();
 
         // Override existing objects
 #ifdef CONFIG_CHATVIEWER

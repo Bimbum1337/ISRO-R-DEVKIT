@@ -311,3 +311,11 @@ void CIFWnd::Set_N00000687(char a2)
 void CIFWnd::SetSomeRect(const RECT &rect) {
     reinterpret_cast<void (__thiscall *)(CIFWnd *, const RECT *)>(0x006527D0)(this, &rect);
 }
+
+void CIFWnd::SetTooltipText(const std::n_wstring *str) {
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, const std::n_wstring *)>(0x653DC0)(this, str);
+}
+
+void CIFWnd::FUN_00652d20(undefined4 a1) {
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, undefined4)>(0x00652d20)(this, a1);
+}

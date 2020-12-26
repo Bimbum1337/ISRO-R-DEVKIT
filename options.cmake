@@ -37,3 +37,8 @@ option(CONFIG_DEBUG_NET_RECEIVE "Print NetProcess debug messages on receive" OFF
 if (CONFIG_DEBUG_NET_RECEIVE)
     add_definitions(-DCONFIG_DEBUG_NET_RECEIVE)
 endif ()
+
+option(CONFIG_OLD_MAINPOPUP "Classic MainPopup with icons on the side" OFF)
+if (CONFIG_OLD_MAINPOPUP)
+    add_definitions(-DCONFIG_OLD_MAINPOPUP)
+endif ()

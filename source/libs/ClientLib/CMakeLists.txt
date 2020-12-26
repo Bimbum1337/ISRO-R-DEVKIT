@@ -39,7 +39,7 @@ set(SOURCE_FILES src/BufRender.h
     src/GEffSoundBody.h
     src/GInterface.cpp
     src/GInterface.h
-    src/GlobalDataManager.h
+    src/GlobalDataManager.cpp src/GlobalDataManager.h
     src/GlobalHelpersThatHaveNoHomeYet.h
     src/GObj.h
     src/IDxSound.h
@@ -66,7 +66,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFInventory.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
-    src/IFMainPopup.h
+    src/IFMainPopup.cpp src/IFMainPopup.h
     src/IFNPCTalk.h
     src/IFNPCWindow.h
     src/IFParty.h
@@ -80,7 +80,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFQuickStateWnd.h
     src/IFScrollManager.h
     src/IFSelectableArea.h
-    src/IFSkill.h
+    src/IFSkill.h src/IFSkill.cpp
     src/IFSkillBoard.h
     src/IFSkillPracticeBox.h
     src/IFSlotWithHelp.h
