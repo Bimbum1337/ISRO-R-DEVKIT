@@ -199,7 +199,7 @@ CIF_NPCWindow *CGInterface::Get_GDR_NPCWINDOW() {
     return (CIF_NPCWindow *) this->m_IRM.GetResObj(GDR_NPCWINDOW, 1);
 }
 
-CIFMainPopup *CGInterface::Get_GDR_MAINPOPUP() {
+CIFMainPopup *CGInterface::GetMainPopup() {
     return (CIFMainPopup *) this->m_IRM.GetResObj(GDR_MAINPOPUP, 1);
 }
 

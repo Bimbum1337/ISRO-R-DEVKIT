@@ -172,7 +172,7 @@ public:
     CIF_NPCWindow *Get_GDR_NPCWINDOW();
 
     /// \address 00798D00
-    CIFMainPopup *Get_GDR_MAINPOPUP();
+    CIFMainPopup *GetMainPopup();
 
     /// \address 007994C0
     CIFStorageRoom *Get_GDR_STORAGEROOM();
