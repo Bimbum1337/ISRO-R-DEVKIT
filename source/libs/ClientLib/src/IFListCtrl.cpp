@@ -16,6 +16,10 @@ CIFListCtrl::SLineOfText* CIFListCtrl::sub_63A940() {
     return reinterpret_cast<CIFListCtrl::SLineOfText*(__thiscall*)(CIFListCtrl*)>(0x63A940)(this);
 }
 
+int CIFListCtrl::GetNumberOfItems() const {
+    return m_numberOfItems;
+}
+
 void CIFListCtrl::SetLineHeight(int height) {
     m_LineHeight = height;
 }

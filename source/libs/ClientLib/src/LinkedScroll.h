@@ -13,7 +13,9 @@ public:
 
     virtual void Func_01(int a2) = 0;
 
-    virtual void Func_02() = 0;
+    /// \brief Get number of items currently stored in this control
+    /// \returns Number of items in this control
+    virtual int GetNumberOfItems() const = 0;
 
     virtual void Func_03() = 0;
 
