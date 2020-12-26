@@ -13,6 +13,7 @@ set(SOURCE_FILES
         src/imgui_windows/NotificationTool.cpp src/imgui_windows/NotificationTool.h
         src/imgui_windows/About.cpp src/imgui_windows/About.h
         src/imgui_windows/SystemMessage.cpp src/imgui_windows/SystemMessage.h
+        src/imgui_windows/ErrorMessageTool.h src/imgui_windows/ErrorMessageTool.cpp
         src/Util.cpp src/Util.h
         src/QuickStart.cpp src/QuickStart.h
         src/MathUtil.cpp src/MathUtil.h)
