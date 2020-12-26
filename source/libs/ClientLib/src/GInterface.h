@@ -183,8 +183,8 @@ public:
     /// \address 007990e0
     void ToggleQuestNew();
 
-	/// \address 007994f0
-	CNIFCommunityWnd* GetCommunityWnd();
+    /// \address 007994f0
+    CNIFCommunityWnd *GetCommunityWnd();
 
     CIFSystemMessage *GetSystemMessageView();
 

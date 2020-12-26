@@ -212,7 +212,9 @@ CIFStorageRoom *CGInterface::Get_GDR_GUILDSTORAGEROOM() {
 }
 
 void CGInterface::WriteErrorMessage(byte errorType, unsigned __int16 errorCode, int colorARGB, int a5, int a6) {
-    return reinterpret_cast<void (__thiscall *)(void *, byte, unsigned __int16, int, int, int)>(0x00778190)(this, errorType, errorCode, colorARGB, a5, a6);
+    return reinterpret_cast<
+            void (__thiscall *)(void *, byte, unsigned __int16, int, int, int)
+            >(0x00778190)(this, errorType, errorCode, colorARGB, a5, a6);
 }
 
 void CGInterface::WriteSystemMessage(eLogType level, const wchar_t *str) {
@@ -224,12 +226,13 @@ void CGInterface::sub_787C10(SChatMetaData &meta) {
 }
 
 int CGInterface::TryParseChatCommands(const wchar_t *text, RECT &r, std::vector<void *> &v) {
-    return reinterpret_cast<int (__thiscall *)(CGInterface *, const wchar_t *, RECT *,
-                                               std::vector<void *> *)>(0x0078BEA0)(this, text, &r, &v);
+    return reinterpret_cast<
+            int (__thiscall *)(CGInterface *, const wchar_t *, RECT *, std::vector<void *> *)
+            >(0x0078BEA0)(this, text, &r, &v);
 }
 
 void CGInterface::ToggleQuestNew() {
-    reinterpret_cast<void (__thiscall*)(CGInterface*)>(0x007990e0)(this);
+    reinterpret_cast<void (__thiscall *)(CGInterface *)>(0x007990e0)(this);
 }
 
 CNIFCommunityWnd *CGInterface::GetCommunityWnd() {
@@ -242,7 +245,9 @@ void CGInterface::FUN_00777c30(ChatType type, const wchar_t *message, D3DCOLOR c
 }
 
 void CGInterface::FUN_00778a10(int a2, const wchar_t *message, D3DCOLOR color) {
-    reinterpret_cast<void (__thiscall *)(CGInterface *, int, const wchar_t *, D3DCOLOR)>(0x00778a10)(this, a2, message, color);
+    reinterpret_cast<
+            void (__thiscall *)(CGInterface *, int, const wchar_t *, D3DCOLOR)
+            >(0x00778a10)(this, a2, message, color);
 }
 
 void CGInterface::FUN_00777cf0(const std::n_wstring &recipient) {
@@ -254,6 +259,6 @@ CIFSystemMessage *CGInterface::GetSystemMessageView() {
 }
 
 void CGInterface::FUN_0079a7e0(CGWndBase *pGWnd) const {
-    reinterpret_cast<void(__thiscall*)(const CGInterface*, CGWndBase *)>(0x0079a7e0)(this, pGWnd);
+    reinterpret_cast<void (__thiscall *)(const CGInterface *, CGWndBase *)>(0x0079a7e0)(this, pGWnd);
 }
 
