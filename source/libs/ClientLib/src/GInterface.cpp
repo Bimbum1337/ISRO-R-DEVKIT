@@ -6,6 +6,9 @@
 #include "IFNotify.h"
 #include "GlobalDataManager.h"
 
+#include <remodel/MemberFunctionHook.h>
+
+HOOK_ORIGINAL_MEMBER(0x0079D5B0, &CGInterface::ToggleActionWnd);
 void CGInterface::ToggleActionWnd() {
     // If MainPopup is visible and page 'action' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_ACTION)) {
@@ -18,6 +21,7 @@ void CGInterface::ToggleActionWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079B0B0, &CGInterface::ToggleApprenticeshipWnd);
 void CGInterface::ToggleApprenticeshipWnd() {
     // If MainPopup is visible and page 'apprenticeship' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_APPRENTICESHIP)) {
@@ -34,6 +38,7 @@ void CGInterface::ToggleApprenticeshipWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079ACE0, &CGInterface::TogglePlayerInfoWnd);
 void CGInterface::TogglePlayerInfoWnd() {
     // If MainPopup is visible and page 'playerinfo' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PLAYERINFO)) {
@@ -52,6 +57,7 @@ void CGInterface::RenderToggle_GDR_GAMEGUIDE() {
     return reinterpret_cast<void (__thiscall *)(void *)>(0x0079F690)(this);
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079B020, &CGInterface::ToggleInventoryWnd);
 void CGInterface::ToggleInventoryWnd() {
     // If MainPopup is visible and page 'inventory' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
@@ -66,6 +72,7 @@ void CGInterface::ToggleInventoryWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079ad70, &CGInterface::ToggleEquipmentWnd);
 void CGInterface::ToggleEquipmentWnd() {
     // If MainPopup is visible and page 'equipment' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
@@ -80,6 +87,7 @@ void CGInterface::ToggleEquipmentWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079AE90, &CGInterface::TogglePartyWnd);
 void CGInterface::TogglePartyWnd() {
     // If MainPopup is visible and page 'party' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PARTY)) {
@@ -96,6 +104,7 @@ void CGInterface::TogglePartyWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079AE00, &CGInterface::ToggleSkillWnd);
 void CGInterface::ToggleSkillWnd() {
     // If MainPopup is visible and page 'skill' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_SKILL)) {
@@ -110,6 +119,7 @@ void CGInterface::ToggleSkillWnd() {
     }
 }
 
+HOOK_ORIGINAL_MEMBER(0x0079af20, &CGInterface::ShowInventoryWnd);
 void CGInterface::ShowInventoryWnd() {
     m_mainPopup->ShowGWnd(true);
     if (!m_mainPopup->GetInventory()->IsVisible()) {
@@ -118,7 +128,7 @@ void CGInterface::ShowInventoryWnd() {
     FUN_0079a7e0(m_mainPopup);
 }
 
-
+HOOK_ORIGINAL_MEMBER(0x0079af70, &CGInterface::ShowApprenticeshipWnd);
 void CGInterface::ShowApprenticeshipWnd() {
     m_mainPopup->ShowGWnd(true);
     if (!m_mainPopup->GetApprenticeShip()->IsVisible()) {
@@ -199,6 +209,7 @@ CIF_NPCWindow *CGInterface::Get_GDR_NPCWINDOW() {
     return (CIF_NPCWindow *) this->m_IRM.GetResObj(GDR_NPCWINDOW, 1);
 }
 
+HOOK_ORIGINAL_MEMBER(0x00798D00, &CGInterface::GetMainPopup);
 CIFMainPopup *CGInterface::GetMainPopup() {
     return (CIFMainPopup *) this->m_IRM.GetResObj(GDR_MAINPOPUP, 1);
 }
