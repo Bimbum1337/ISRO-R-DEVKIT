@@ -110,7 +110,7 @@ bool CIFMainPopup::OnCreate(long ln) {
     m_IRM.GetResObj(GDR_MAINPOPUP_LEFT_DECO_STATIC, 1)->ShowGWnd(false);
 #endif
 
-    m_inventoryWindow->Func_20();
+    m_inventoryWindow->BringToFront();
 
     return true;
 }
@@ -150,7 +150,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->SetGWndSize(9, 292);
 
             MoveGWnd(((res.width - GetSize().width) - 80), GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -162,7 +162,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->ShowGWnd(false);
 
             MoveGWnd(((res.width - GetSize().width) - 80), GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -174,7 +174,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->ShowGWnd(false);
 
             MoveGWnd(((res.width - GetSize().width) - 80), GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -187,7 +187,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->SetGWndSize(308, 124);
 
             MoveGWnd(((res.width - GetSize().width) - 80), GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -199,7 +199,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->ShowGWnd(false);
 
             MoveGWnd(80, GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -211,7 +211,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->ShowGWnd(false);
 
             MoveGWnd(80, GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
 
@@ -224,7 +224,7 @@ void CIFMainPopup::ShowSubPage(int page) {
             m_background->ShowGWnd(false);
 
             MoveGWnd(80, GetPos().y);
-            Func_20();
+            BringToFront();
             break;
         }
     }

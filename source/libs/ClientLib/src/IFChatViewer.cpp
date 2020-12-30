@@ -170,7 +170,7 @@ bool CIFChatViewer::OnCreate(long ln) {
     m_Button_ChatMode = m_IRM.GetResObj(GDR_CHAT_MODE_BTN, 1);
     m_ChatModeView_Wnd = m_IRM.GetResObj<CIFChatModeViewer>(GDR_CHAT_MODE_VIEW_WND, 1);
 
-    m_ChatModeView_Wnd->Func_20();
+    m_ChatModeView_Wnd->BringToFront();
 
     m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_FRIEND_INVITE"));
     m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_GUILD_INVITE"));
@@ -231,14 +231,14 @@ bool CIFChatViewer::OnCreate(long ln) {
     m_Lamp_Guild->ShowGWnd(false);
     m_Lamp_Ally->ShowGWnd(false);
 
-    m_Lamp_All->Func_20();
-    m_Lamp_Party->Func_20();
-    m_Lamp_Guild->Func_20();
-    m_Lamp_Ally->Func_20();
+    m_Lamp_All->BringToFront();
+    m_Lamp_Party->BringToFront();
+    m_Lamp_Guild->BringToFront();
+    m_Lamp_Ally->BringToFront();
 
     m_Lamp_Apprentice = m_IRM.GetResObj(GDR_STATIC_APPRENTICE, 1);
     m_Lamp_Apprentice->ShowGWnd(false);
-    m_Lamp_Apprentice->Func_20();
+    m_Lamp_Apprentice->BringToFront();
 
     m_ChatLists[4]->Func_01(0);
 
