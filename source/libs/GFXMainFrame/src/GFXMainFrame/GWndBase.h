@@ -86,7 +86,7 @@ public:
 
     virtual void OnWndMessage(int a1);
 
-    virtual void Func_20();
+    virtual void BringToFront();
 
     /// Resize this control
     /// \param width Width in pixels

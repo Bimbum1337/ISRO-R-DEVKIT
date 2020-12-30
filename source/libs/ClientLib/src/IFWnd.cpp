@@ -109,7 +109,7 @@ bool CIFWnd::On3DEvent_MAYBE(Event3D* a2)
 }
 
 // CIFWnd::Func_20(void) .text 00652BC0 00000011   R . . . . . .
-void CIFWnd::Func_20()
+void CIFWnd::BringToFront()
 {
 	reinterpret_cast<void(__thiscall*)(CIFWnd*)>(0x00652BC0)(this);
 }

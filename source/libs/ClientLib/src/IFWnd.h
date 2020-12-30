@@ -23,7 +23,7 @@ public:
 	bool Func_18(int a1) override;
 	bool On3DEvent_MAYBE(Event3D* a2) override;
 	
-	void Func_20() override;
+	void BringToFront() override;
 	void SetGWndSize(int width, int height) override;
 	void Func_22(int x, int y) override;
 

@@ -64,7 +64,7 @@ void CGWndBase::OnWndMessage(int a1) {
     return;
 }
 
-void CGWndBase::Func_20() {
+void CGWndBase::BringToFront() {
     reinterpret_cast<void (__thiscall *)(CGWndBase *)>(0x00B90C00)(this);
 }
 
