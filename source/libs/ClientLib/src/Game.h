@@ -54,8 +54,8 @@ public:
 	IFileManager* pFM_Media; //0x04C4
 	IFileManager* pFM_Map; //0x04C8
 	IFileManager* pFM_Data; //0x04CC
-	IFileManager* pFM_Music; //0x04D0
-	IFileManager* pFM_AdditionalData; //0x04D4
+	IFileManager* pFM_AdditionalData; //0x04D0
+	IFileManager* pFM_Music; //0x04D4
 	IFileManager* pFM_Particles; //0x04D8
 	IFileManager* m_RTLoading_FMs[5]; //0x04DC
 	CGEffSoundBody* m_CGEffSoundBody; //0x04F0 4F0
