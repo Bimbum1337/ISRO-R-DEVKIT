@@ -16,7 +16,9 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
         RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
+#ifdef CONFIG_OLD_MAINPOPUP
         OverrideObject<CIFMainPopup, 0x00eea6dc>();
+#endif
 
         // Override existing objects
 #ifdef CONFIG_CHATVIEWER
