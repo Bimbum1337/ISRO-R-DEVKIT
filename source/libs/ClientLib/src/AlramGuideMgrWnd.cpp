@@ -69,6 +69,7 @@ CGWnd *CAlramGuideMgrWnd::GetGuide(int windowId) {
 
         case GUIDE_FLORIAN0:
             pObj = CreateInstance(this, GFX_RUNTIME_CLASS(CIFflorian0Guide), rect, GUIDE_FLORIAN0, 0);
+            break;
 
         default:
             assert(false);
