@@ -1,6 +1,7 @@
 #include <BSLib/Debug.h>
 #include "IFChatOptionBoard.h"
 #include "Game.h"
+#include <remodel/MemberFunctionHook.h>
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFChatOptionBoard, 0x00eec128)
 
@@ -20,21 +21,31 @@ GFX_BEGIN_MESSAGE_MAP(CIFChatOptionBoard, CIFWnd)
             ONG_COMMAND(GDR_COB_CB_GAIN, &CIFChatOptionBoard::OnOptionChanged)
 GFX_END_MESSAGE_MAP()
 
+HOOK_ORIGINAL_MEMBER(0x007a9400, &CIFChatOptionBoard::IsGainChecked)
+
 bool CIFChatOptionBoard::IsGainChecked() const {
     return m_pGDR_COB_CB_GAIN->GetCheckedState_MAYBE();
 }
+
+HOOK_ORIGINAL_MEMBER(0x007a9410, &CIFChatOptionBoard::IsFightChecked);
 
 bool CIFChatOptionBoard::IsFightChecked() const {
     return m_pGDR_COB_CB_FIGHT->GetCheckedState_MAYBE();
 }
 
+HOOK_ORIGINAL_MEMBER(0x007a9420, &CIFChatOptionBoard::IsStatusChecked);
+
 bool CIFChatOptionBoard::IsStatusChecked() const {
     return m_pGDR_COB_CB_STATUS->GetCheckedState_MAYBE();
 }
 
+HOOK_ORIGINAL_MEMBER(0x007a9430, &CIFChatOptionBoard::IsPartyChecked);
+
 bool CIFChatOptionBoard::IsPartyChecked() const {
     return m_pGDR_COB_CB_PARTY->GetCheckedState_MAYBE();
 }
+
+HOOK_ORIGINAL_MEMBER(0x007a9440, &CIFChatOptionBoard::IsGameChecked);
 
 bool CIFChatOptionBoard::IsGameChecked() const {
     return m_pGDR_COB_CB_GAME->GetCheckedState_MAYBE();
