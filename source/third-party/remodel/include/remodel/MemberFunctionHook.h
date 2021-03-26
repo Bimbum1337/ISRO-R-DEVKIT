@@ -1,7 +1,7 @@
 #pragma once
 
 #define HOOK_ORIGINAL_MEMBER(address, func) \
-    static MemberFunctionHook<address> hook_ ## address ((func));
+    MemberFunctionHook<address> hook_ ## address ((func));
 
 template<unsigned int Address>
 class MemberFunctionHook {

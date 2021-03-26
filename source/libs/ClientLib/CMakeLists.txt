@@ -161,7 +161,9 @@ set(SOURCE_FILES src/BufRender.h
     src/NetProcessThird.cpp src/NetProcessThird.h
     src/PSMission.cpp src/PSMission.h
     src/GameCfg.cpp src/GameCfg.h
-    src/LocalTime.cpp src/LocalTime.h)
+    src/LocalTime.cpp src/LocalTime.h
+    src/IFCheckBox.cpp src/IFCheckBox.h
+    src/IFChatOptionBoard.cpp src/IFChatOptionBoard.h)
 
 
 add_library(ClientLib STATIC ${SOURCE_FILES})

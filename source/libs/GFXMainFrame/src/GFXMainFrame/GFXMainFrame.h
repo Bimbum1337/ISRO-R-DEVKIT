@@ -34,6 +34,9 @@ public:
 	// This seems to set the width and height (parameters supplied from Dx-Backbuffer size)
 
 	CProcess* GetCurrentProcess() const;
+
+    /// \brief Get the working directory of the client
+    const char *GetWorkingDir() const;
 	
 private:
 	CProcess* process_current; //0x0024

@@ -1,7 +1,7 @@
 #pragma once
 
 #define HOOK_ORIGINAL_STATIC(address, newValue) \
-    static StaticAddressHook<address> hook_ ## address ((newValue));
+    StaticAddressHook<address> hook_ ## address ((newValue));
 
 template<unsigned int Address>
 class StaticAddressHook {
