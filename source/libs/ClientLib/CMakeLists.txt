@@ -92,7 +92,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFSystemMessage.h
     src/IFStorageRoom.h
     src/IFStoreForPackage.h
-    src/IFStretchWnd.h
+    src/IFStretchWnd.cpp src/IFStretchWnd.h
     src/IFSupporterChatWnd.h
     src/IFTextBox.h
     src/IFTileWnd.cpp
