@@ -3,7 +3,9 @@
 #include "IFWnd.h"
 
 class CIFStretchWnd : public CIFWnd {
-public:
+public: /* interface functions */
+
+private: /* members */
     char pad_0x036C[0x34]; //0x036C
     char *N000062E6; //0x03A0
     char pad_0x03A4[0x18]; //0x03A4
