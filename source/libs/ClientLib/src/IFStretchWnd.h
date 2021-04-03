@@ -1,7 +1,9 @@
 #pragma once
 
 #include "IFWnd.h"
-
+/// \brief Container, automatically stretching to screen width (or parent width, unsure)
+/// \details Container resizes and draws borders accordingly. Allows specifing textures
+///          for top, left, bottom and right edges, as well as corners.
 class CIFStretchWnd : public CIFWnd {
 public: /* interface functions */
 
