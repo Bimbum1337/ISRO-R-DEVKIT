@@ -5,6 +5,19 @@
 class CIFStretchWnd : public CIFWnd {
 public: /* interface functions */
 
+    /// \brief Set the textures for all four edges
+    /// \remarks The interface was improved. The original code was passing
+    ///          all the strings by value, which was completely unnecessary.
+    /// \address 00819690
+    void SetEdgeTextures(const std::n_string &left,
+                         const std::n_string &top,
+                         const std::n_string &right,
+                         const std::n_string &bottom);
+
+    /// \brief Set the textures for all four corners
+    /// \address 008199e0
+    void SetCornerTextures(const std::n_string &cornerTexturePath);
+
 private: /* members */
     char pad_0x036C[0x34]; //0x036C
     char *N000062E6; //0x03A0
