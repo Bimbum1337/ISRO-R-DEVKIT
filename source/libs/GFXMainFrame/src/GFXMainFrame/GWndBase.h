@@ -170,6 +170,7 @@ private:
     int m_iflist; //0x006C
     short N00000705; //0x0070
     char pad_0072[6]; //0x0072
+public:
     std::n_list<CGWndBase *> N00000707; //0x0078
 
 
