@@ -22,7 +22,7 @@ struct Event3D {
  *
  */
 class CGWndBase : public CObjChild { // size 32 + 100 = 132
-GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
+    GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
 
 
 public:
@@ -143,22 +143,22 @@ protected:
     /// \address 00B8F440
     void sub_B8F440(const RECT &rect);
 
-    CGWndBase* GetParentControl() const;
+    CGWndBase *GetParentControl() const;
 
 private:
-	int m_lnListLockRead; //0x0020
-	int m_lnListLockWrite; //0x0024
-	bool N000006F5; //0x0028
-	char pad_0029[3]; //0x0029
-	int m_hgWnd; //0x002C
-    CGWndBase* m_parentControl; //0x0030
-	int m_UniqueID; //0x0034
-	int N000006F9; //0x0038
-	bool N000006FB; //0x003C
-	char pad_003D[3]; //0x003D
+    int m_lnListLockRead; //0x0020
+    int m_lnListLockWrite; //0x0024
+    bool N000006F5; //0x0028
+    char pad_0029[3]; //0x0029
+    int m_hgWnd; //0x002C
+    CGWndBase *m_parentControl; //0x0030
+    int m_UniqueID; //0x0034
+    int N000006F9; //0x0038
+    bool N000006FB; //0x003C
+    char pad_003D[3]; //0x003D
     wnd_rect bounds; //0x0040 was private, 40
-	RECT N000006FD; //0x0050
-	char pad_0060[1]; //0x0060
+    RECT N000006FD; //0x0050
+    char pad_0060[1]; //0x0060
 protected:
     bool m_bVisible; //0x0061 61
     bool m_bClickable; //0x0062
@@ -170,6 +170,7 @@ private:
     int m_iflist; //0x006C
     short N00000705; //0x0070
     char pad_0072[6]; //0x0072
+public:
     std::n_list<CGWndBase *> N00000707; //0x0078
 
 

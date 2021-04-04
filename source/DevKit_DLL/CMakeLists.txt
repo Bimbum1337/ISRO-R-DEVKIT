@@ -14,12 +14,13 @@ set(SOURCE_FILES
         src/imgui_windows/About.cpp src/imgui_windows/About.h
         src/imgui_windows/SystemMessage.cpp src/imgui_windows/SystemMessage.h
         src/imgui_windows/ErrorMessageTool.h src/imgui_windows/ErrorMessageTool.cpp
+        src/imgui_windows/InterfaceTree.cpp src/imgui_windows/InterfaceTree.h
         src/Util.cpp src/Util.h
         src/QuickStart.cpp src/QuickStart.h
         src/MathUtil.cpp src/MathUtil.h)
 
 add_library(DevKit_DLL SHARED ${SOURCE_FILES})
-target_link_libraries(DevKit_DLL BSLib ClientLib memory winmm)
+target_link_libraries(DevKit_DLL BSLib ClientLib MathHelpers memory winmm)
 
 set_target_properties(DevKit_DLL
         PROPERTIES

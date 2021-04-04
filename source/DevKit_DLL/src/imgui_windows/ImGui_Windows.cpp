@@ -21,6 +21,7 @@
 #include "About.h"
 #include "SystemMessage.h"
 #include "ErrorMessageTool.h"
+#include "InterfaceTree.h"
 #include <BSLib/multibyte.h>
 #include <BSLib/Debug.h>
 
@@ -35,6 +36,7 @@ NotificationTool notificationTool;
 About aboutWnd;
 SystemMessage systemMessage;
 ErrorMessageTool errorMessageTool;
+InterfaceTree interfaceTree;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
@@ -104,6 +106,7 @@ void ImGui_OnEndScene() {
 
         if (ImGui::BeginMenu("Tools")) {
             interfaceDebugger.MenuItem();
+            interfaceTree.MenuItem();
             navmeshExplorer.MenuItem();
             entityExplorer.MenuItem();
             ImGui::MenuItem("Keyframe Editor", 0, false, false);
@@ -142,6 +145,7 @@ void ImGui_OnEndScene() {
     aboutWnd.Render();
     systemMessage.Render();
     errorMessageTool.Render();
+    interfaceTree.Render();
 
     ImGui::EndFrame();
 
