@@ -38,8 +38,20 @@ public:
 
     struct wnd_rect {
 
-        inline int bottom() {
+        int bottom() const {
             return pos.y + size.height;
+        }
+
+        int left() const {
+            return pos.x;
+        }
+
+        int right() const {
+            return pos.x + size.width;
+        }
+
+        int top() const {
+            return pos.y;
         }
 
         wnd_pos pos;
