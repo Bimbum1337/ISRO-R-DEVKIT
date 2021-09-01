@@ -25,12 +25,12 @@ void CGame::ResizeMainWindow()
 	reinterpret_cast<void(__thiscall*)(CGame*)>(0x00840E90)(this);
 }
 
-const ClientRes &CGame::sub_835240() const {
+const ClientRes &CGame::GetRes() const {
     return N00000888;
 }
 
 const ClientResolutonData &CGame::GetClientDimensionStuff() {
-    const ClientRes &res = theApp.sub_835240();
+    const ClientRes &res = theApp.GetRes();
     return res.res[res.index];
 }
 
@@ -41,4 +41,8 @@ CStringCheck *CGame::GetBadwordFilter() {
 WhatIsThis &CGame::STA_FUN_004f9d00() {
     WhatIsThis* ptr = reinterpret_cast<WhatIsThis*(*)()>(0x004f9d00)();
     return *ptr;
+}
+
+void CGame::sub_8371D0() {
+    reinterpret_cast<void(__thiscall*)(CGame*)>(0x008371D0)(this);
 }

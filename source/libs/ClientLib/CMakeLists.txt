@@ -58,7 +58,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFDragableArea.h
     src/IFEdit.h
     src/IFEquipment.h
-    src/IFFade.h
+    src/IFFade.h src/IFFade.cpp
     src/IFFrame.cpp
     src/IFFrame.h
     src/IFGauge.h
@@ -163,7 +163,12 @@ set(SOURCE_FILES src/BufRender.h
     src/GameCfg.cpp src/GameCfg.h
     src/LocalTime.cpp src/LocalTime.h
     src/IFCheckBox.cpp src/IFCheckBox.h
-    src/IFChatOptionBoard.cpp src/IFChatOptionBoard.h)
+    src/IFChatOptionBoard.cpp src/IFChatOptionBoard.h
+    src/PSCharacterSelect.cpp src/PSCharacterSelect.h
+    src/CObjAnimation.h src/CObjAnimation.cpp
+    src/AnimationCallback.h
+    src/World.h src/World.cpp
+    src/CompSimple.cpp src/CompSimple.h)
 
 
 add_library(ClientLib STATIC ${SOURCE_FILES})

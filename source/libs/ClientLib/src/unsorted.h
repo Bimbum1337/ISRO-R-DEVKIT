@@ -68,3 +68,4 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
 
 GameCfg* Fun_GetCfgGame();
 
+void __stdcall FUN_00bbda70(undefined4 a1);

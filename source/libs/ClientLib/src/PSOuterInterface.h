@@ -25,10 +25,15 @@ public:
     /// \address 008629A0
     CPSOuterInterface();
 
+    /// \address 00862410
+    void WaitGWnd(bool a1);
+
 private:
     CCameraWorking *m_cameraworking; //0x00E0
     int current_state; //0x00E4
+protected:
     int N0000098B; //0x00E8
+private:
     char pad_00EC[32]; //0x00EC
 
 

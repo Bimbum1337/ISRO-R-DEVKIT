@@ -306,3 +306,7 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
 GameCfg *Fun_GetCfgGame() {
     return reinterpret_cast<GameCfg *>(0x00eed578);
 }
+
+void __stdcall FUN_00bbda70(undefined4 a1) {
+    reinterpret_cast<void(__stdcall *)(undefined4)>(0x00bbda70)(a1);
+}

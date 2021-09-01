@@ -41,9 +41,8 @@ public:
     /// \address 004f9d00
     static WhatIsThis& STA_FUN_004f9d00();
 
-private:
     /// \address 00835240
-    const ClientRes& sub_835240() const;
+    const ClientRes&GetRes() const;
 
 
 public:
@@ -116,7 +115,6 @@ public:
 	void InitializeAfterTitle();
 	void sub_8371D0();
 
-	ClientRes &GetRes();
 	void sub_BA3FC0(int i, int i1);
 
 	void *GetFont(int a2);

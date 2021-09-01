@@ -59,3 +59,7 @@ void CPSOuterInterface::OnUpdate() {
 void CPSOuterInterface::RenderMyself() {
     reinterpret_cast<void (__thiscall *)(CPSOuterInterface *)>(0x00860ED0)(this);
 }
+
+void CPSOuterInterface::WaitGWnd(bool a1) {
+    reinterpret_cast<void (__thiscall *)(CPSOuterInterface *, bool)>(0x00862410)(this, a1);
+}
