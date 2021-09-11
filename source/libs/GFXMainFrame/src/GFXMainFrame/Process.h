@@ -17,7 +17,7 @@ public:
     /// \address 0084a180
     bool On3DEvent_MAYBE(Event3D *a2) override;
 
-    CProcess *GetChildProcess();
+    CProcess *GetChildProcess() const;
 
     /// \address 00BA7B90
     CProcess *sub_BA7B90(const CGfxRuntimeClass &cls, int bSomething);

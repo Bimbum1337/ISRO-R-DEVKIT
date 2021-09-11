@@ -17,7 +17,7 @@ bool CProcess::On3DEvent_MAYBE(Event3D *a2) {
 }
 
 
-CProcess *CProcess::GetChildProcess() {
+CProcess *CProcess::GetChildProcess() const {
     return m_pProcessChild;
 }
 
