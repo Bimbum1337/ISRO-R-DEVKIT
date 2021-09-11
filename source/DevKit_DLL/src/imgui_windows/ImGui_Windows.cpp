@@ -22,6 +22,7 @@
 #include "SystemMessage.h"
 #include "ErrorMessageTool.h"
 #include "InterfaceTree.h"
+#include "ProcessViewer.h"
 #include <BSLib/multibyte.h>
 #include <BSLib/Debug.h>
 
@@ -37,6 +38,7 @@ About aboutWnd;
 SystemMessage systemMessage;
 ErrorMessageTool errorMessageTool;
 InterfaceTree interfaceTree;
+ProcessViewer processViewer;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
@@ -115,6 +117,7 @@ void ImGui_OnEndScene() {
             notificationTool.MenuItem();
             systemMessage.MenuItem();
             errorMessageTool.MenuItem();
+            processViewer.MenuItem();
 
             ImGui::EndMenu();
         }
@@ -146,6 +149,7 @@ void ImGui_OnEndScene() {
     systemMessage.Render();
     errorMessageTool.Render();
     interfaceTree.Render();
+    processViewer.Render();
 
     ImGui::EndFrame();
 

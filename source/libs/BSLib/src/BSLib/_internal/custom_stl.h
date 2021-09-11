@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <set>
 #include <cassert>
 #include <hash_map>
 
@@ -91,6 +92,11 @@ namespace std {
 
     };
 
+    /// std::map using custom allocator. Choose this one over std::map
+    template<typename T, typename Compare = less<T> >
+    class n_set : public set<T, Compare, MyAllocator<T> > {
+    };
+
     /// std::vector using custom allocator. Choose this one over std::vector
     template<typename T>
     class n_vector : public vector<T, MyAllocator<T> > {
@@ -106,6 +112,6 @@ namespace std {
     /// std::hash_map using custom allocator. Choose this one over std::hash_map
     template<typename _Kty, typename _Ty>
     class n_hash_map : public stdext::hash_map<_Kty, _Ty, stdext::hash_compare<_Kty, ::std::less<_Kty> >,
-            MyAllocator<::std::pair<const _Kty, _Ty> > > {
+            MyAllocator< ::std::pair<const _Kty, _Ty> > > {
     };
 }

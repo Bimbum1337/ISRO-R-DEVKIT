@@ -8,4 +8,4 @@ set(SOURCE_FILES src/GFXMainFrame/EntityManager.h
 
 add_library(GFXMainFrame STATIC ${SOURCE_FILES})
 target_include_directories(GFXMainFrame PUBLIC src/)
-target_link_libraries(GFXMainFrame BSLib)
+target_link_libraries(GFXMainFrame BSLib ghidra)
