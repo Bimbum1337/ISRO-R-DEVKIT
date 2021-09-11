@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GWnd.h"
+#include <ghidra/undefined.h>
 #include <remodel/GlobalVar.h>
 
 class CProcess : public CGWnd {
@@ -33,19 +34,25 @@ private: /* members */
     static GlobalVar<bool, 0x00EED310> m_bProcessNetMsg;
 
 public:
-    int N000006AB; //0x0084
-    char pad_0088[20 - 4]; //0x0088
+    int m_iNumberOfUpdates; //0x0084
+    std::n_map<undefined4, undefined4> m_sThreadList; // 0x0088
+    float m_fElapsedSeconds;
     int m_blProcessRunTerminate; //0x0098
     int m_blRun; //0x009C
 private:
     CProcess *m_pProcessChild; //0x00A0, was not public
-    char pad_00A4[12]; //0x00A4
+public:
+    std::n_set<CObj*> m_someMap;
 
     BEGIN_FIXTURE()
         ENSURE_SIZE(176)
+        ENSURE_OFFSET(m_iNumberOfUpdates, 0x84)
+        ENSURE_OFFSET(m_sThreadList, 0x88)
+        ENSURE_OFFSET(m_fElapsedSeconds, 0x94)
         ENSURE_OFFSET(m_blProcessRunTerminate, 0x98)
         ENSURE_OFFSET(m_blRun, 0x9c)
         ENSURE_OFFSET(m_pProcessChild, 0xa0)
+        ENSURE_OFFSET(m_someMap, 0xa4)
     END_FIXTURE()
 
     RUN_FIXTURE(CProcess)
