@@ -27,3 +27,9 @@ helpers/CMakeFiles/
 helpers/source/
 helpers/Win32/
 out/
+
+
+# Python
+venv/
+*.pyc
+
