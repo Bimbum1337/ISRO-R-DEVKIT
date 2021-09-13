@@ -9,12 +9,12 @@ The framework was initially created to assist analyzing the game, but it can als
 ## Getting started
 
 There is a complete guide on how to set up all the tools needed for developing. The guide has been tested numerous of 
-times and is guaranteed to work if do all the steps from start to finish.
+times and is guaranteed to work if you follow all the steps from start to finish.
 Read the guide here: https://florian0.gitlab.io/sro_devkit/
 
 ## Contribute
 
-There is a lot you can do to make this project better. Have a look at the (Contribution Guide)[CONTRIBUTING.md] for more
+There is a lot you can do to make this project better. Have a look at the [Contribution Guide](CONTRIBUTING.md) for more
 information.
 
 ## License
