@@ -28,16 +28,15 @@ public:
     /// \address 00862410
     void WaitGWnd(bool a1);
 
-private:
+protected:
     CCameraWorking *m_cameraworking; //0x00E0
     int current_state; //0x00E4
-protected:
     int N0000098B; //0x00E8
 private:
     char pad_00EC[32]; //0x00EC
 
 
-BEGIN_FIXTURE()
+    BEGIN_FIXTURE()
         ENSURE_SIZE(0x10c)
         ENSURE_OFFSET(m_cameraworking, 0xe0)
         ENSURE_OFFSET(current_state, 0xe4)
