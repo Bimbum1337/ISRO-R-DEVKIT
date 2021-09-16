@@ -1,13 +1,21 @@
 #include "PSCharacterSelect.h"
 #include "Game.h"
+#include "IFButton.h"
 #include "IFFade.h"
 #include "IFStatic.h"
 #include "IFTextBox.h"
 #include "IFWnd.h"
+#include "Keyframe.h"
 #include "World.h"
 #include <BSLib/Debug.h>
+#include <remodel/MemberFunctionHook.h>
 
 GlobalVar<bool, 0x00EED9B8> g_bIsUnityServer;
+
+const Keyframe frames_intro[] = {
+        Keyframe(60.0f, -15.0f, 700.0f, 0.1f, 3.0f, 0.0f, 30.0f),
+        Keyframe(60.0f, -15.0f, 660.0f, 0.1f, 3.0f, 0.0f, 30.0f),
+};
 
 
 bool CPSCharacterSelect::OnCreateIMPL(long ln) {
@@ -213,8 +221,38 @@ void CPSCharacterSelect::FUN_0085b400() {
     reinterpret_cast<void(__thiscall *)(CPSCharacterSelect *)>(0x0085b400)(this);
 }
 
+
+HOOK_ORIGINAL_MEMBER(0x0085b1f0, &CPSCharacterSelect::TriggerAnimation_Intro);
 void CPSCharacterSelect::TriggerAnimation_Intro() {
-    reinterpret_cast<void(__thiscall *)(CPSCharacterSelect *)>(0x0085b1f0)(this);
+    FUN_00854860(m_IRM.GetResObj<CIFStatic>(GDR_STA_TITLE, 1), 255, 0.5f, 0.0f, 0);
+    m_IRM.GetResObj<CIFStatic>(GDR_STA_REGIONTITLE, 1)->ShowGWnd(false);
+
+    idol_label[0]->ShowGWnd(false);
+    idol_label[1]->ShowGWnd(false);
+
+    CIFButton *createBtn = m_IRM.GetResObj<CIFButton>(GDR_BTN_CREATE, 1);
+    FUN_00854860(createBtn, 255, 0.5f, 0.0f, 0);
+    wnd_pos createBtnPos = createBtn->GetPos();
+    createBtn->MoveGWnd2(createBtnPos);
+
+    CIFButton *backBtn = m_IRM.GetResObj<CIFButton>(GDR_BTN_CREATE, 1);
+    FUN_00854860(backBtn, 255, 0.5f, 0.0f, 0);
+    wnd_pos backBtnPos = backBtn->GetPos();
+    createBtn->MoveGWnd2(backBtnPos);
+
+    m_IRM.GetResObj<CIFButton>(GDR_BTN_CANCEL, 1)->ShowGWnd(false);
+
+    m_cameraworking->sub_4E6630();
+
+    for (int i = 0; i < size(frames_intro); i++) {
+        m_cameraworking->AddKeyframe(i * i, frames_intro[i].position, frames_intro[i].rotation);
+    }
+
+    theApp.camera.origin = m_cameraworking->location;
+    theApp.camera.rotation_to_world = m_cameraworking->rotation;
+
+    m_cameraworking->float_F0 = 2.0;
+    current_state = 0;
 }
 
 void CPSCharacterSelect::FUN_008560e0() {
@@ -223,4 +261,7 @@ void CPSCharacterSelect::FUN_008560e0() {
 
 void CPSCharacterSelect::FUN_008548d0(bool a1) {
     reinterpret_cast<void(__thiscall *)(CPSCharacterSelect *, bool)>(0x008548d0)(this, a1);
+}
+void CPSCharacterSelect::FUN_00854860(CIFStatic *obj, unsigned char opacity, float time, float a4, char a5) {
+    obj->sub_6526E0(obj->GetN00009BB9(), opacity, time, a4, a5);
 }

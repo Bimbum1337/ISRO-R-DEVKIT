@@ -29,7 +29,7 @@ public:
 	/// \address 00655270
 	void SetFont(void* a2);
 
-    char GetN00009BB9() const;
+	char GetN00009BB9() const;
 
 protected:
 	void sub_655B00(const wchar_t *str);

@@ -89,17 +89,25 @@ class CPSCharacterSelect : public CPSOuterInterface, public CAnimationCallback {
 
 public:
 
+    /// \address 0085eb10
     bool OnCreateIMPL(long ln);
 
 private:
+    /// \address 0085b400
     void FUN_0085b400();
 
+    /// \address 008560e0
     void FUN_008560e0();
 
+    /// \address 008548d0
     void FUN_008548d0(bool a1);
 
+public: /* only public for hook */
     /// \address 0085b1f0
     void TriggerAnimation_Intro();
+private:
+    /// \address 00854860
+    void FUN_00854860(CIFStatic* obj, unsigned char opacity, float time, float a4, char a5);
 
 private:
     undefined field_0x110;
