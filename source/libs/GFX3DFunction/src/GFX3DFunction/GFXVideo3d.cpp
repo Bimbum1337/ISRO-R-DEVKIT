@@ -10,7 +10,7 @@ CGFXVideo3d::CGFXVideo3d()
 	//: CD3DApplication(), camera()
 {
 	camera.camera = D3DXVECTOR3(0, 0, -100);
-	camera.character = D3DXVECTOR3(0, 0, 0);
+	camera.origin = D3DXVECTOR3(0, 0, 0);
 	camera.rotation_unknown1 = D3DXVECTOR3(0, 1, 0);
 	camera.rotation_to_world = D3DXVECTOR4(0, 0, 0, 100);
 

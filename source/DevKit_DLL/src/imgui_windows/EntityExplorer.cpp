@@ -95,7 +95,7 @@ void EntityExplorer::Render() {
             if (CGFXVideo3d::get()->Project(d3dpos, d2dpos) > 0) {
                 DrawRect((int)d2dpos.x - 5, (int)d2dpos.y - 5, 10, 10);
 
-                if (CGFXVideo3d::get()->Project(theApp.camera.character, d2dpos_own) > 0) {
+                if (CGFXVideo3d::get()->Project(theApp.camera.origin, d2dpos_own) > 0) {
                     DXDrawLine((int)d2dpos_own.x, (int)d2dpos_own.y, (int)d2dpos.x, (int)d2dpos.y, D3DCOLOR_ARGB(0, 255, 255, 0), 1.0);
                 }
             }

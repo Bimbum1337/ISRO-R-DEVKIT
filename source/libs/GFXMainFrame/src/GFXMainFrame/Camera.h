@@ -9,7 +9,7 @@ public:
 	
 	int N00000768; //0x0000
 	D3DXVECTOR3 camera; //0x0004
-	D3DXVECTOR3 character; //0x0010
+	D3DXVECTOR3 origin; //0x0010
 	D3DXVECTOR3 rotation_unknown1; //0x001C
 	D3DXVECTOR3 rotation_unknown; //0x0028
 	D3DXVECTOR4 rotation_to_world; //0x0034
