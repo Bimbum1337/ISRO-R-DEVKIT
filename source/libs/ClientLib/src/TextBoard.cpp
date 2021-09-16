@@ -238,3 +238,7 @@ void CTextBoard::sub_6554C0()
 void CTextBoard::SetFont(void *a2) {
     reinterpret_cast<void (__thiscall *)(CTextBoard *, void *)>(0x00655270)(this, a2);
 }
+
+char CTextBoard::GetN00009BB9() const {
+    return N00009BB9;
+}
