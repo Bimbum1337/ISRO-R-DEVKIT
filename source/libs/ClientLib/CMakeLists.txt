@@ -168,7 +168,8 @@ set(SOURCE_FILES src/BufRender.h
     src/CObjAnimation.h src/CObjAnimation.cpp
     src/AnimationCallback.h
     src/World.h src/World.cpp
-    src/CompSimple.cpp src/CompSimple.h)
+    src/CompSimple.cpp src/CompSimple.h
+    src/Keyframe.h src/Keyframe.cpp)
 
 
 add_library(ClientLib STATIC ${SOURCE_FILES})

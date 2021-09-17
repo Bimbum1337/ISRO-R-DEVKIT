@@ -23,6 +23,8 @@ class CObjChild;
 #include "_internal/_BSDynamic.h"
 #include "_internal/_BSMsg.h"
 
+template<class T, size_t N>
+size_t size(T (&)[N]) { return N; }
 
 /// Common base class for runtime-identifiable objects
 class CObj {
