@@ -1,6 +1,6 @@
 #pragma once
 
-class SNavMeshInst;
+struct SNavMeshInst;
 
 #include <d3dx9.h>
 #include "RTNavMeshObj.h"
