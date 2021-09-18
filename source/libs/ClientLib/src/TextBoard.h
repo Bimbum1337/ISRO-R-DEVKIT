@@ -38,7 +38,7 @@ protected:
 	void sub_655770(std::n_string);
 
 	void sub_655CA0(int a2);
-	void sub_6553A0(int a2);
+	void sub_6553A0(float a2);
 	void sub_6554C0();
 
 private:

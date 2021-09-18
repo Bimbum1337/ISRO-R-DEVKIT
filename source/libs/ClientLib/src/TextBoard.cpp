@@ -224,7 +224,7 @@ void CTextBoard::sub_655CA0(int a2)
 }
 
 // CTextBoard__sub_6553A0 .text 006553A0 0000001E 00000004 00000004 R . . . . T .
-void CTextBoard::sub_6553A0(int a2)
+void CTextBoard::sub_6553A0(float a2)
 {
 	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006553A0)(this);
 }
