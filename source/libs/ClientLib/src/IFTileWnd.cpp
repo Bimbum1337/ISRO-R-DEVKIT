@@ -62,7 +62,7 @@ void CIFTileWnd::Func_49(std::n_string str)
 }
 
 // CIFTileWnd::set_N00009B9D(int) .text 0081A910 0000000D 00000000 00000001 R . . . . . .
-void CIFTileWnd::set_N00009B9D(int a2)
+void CIFTileWnd::set_N00009B9D(bool a2)
 {
 	N00009B9D = a2;
 }

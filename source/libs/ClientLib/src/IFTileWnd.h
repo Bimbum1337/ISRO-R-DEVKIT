@@ -20,7 +20,7 @@ public:
 	virtual void Func_49(std::n_string str);
 
 protected:
-	void set_N00009B9D(int a2);
+	void set_N00009B9D(bool a2);
 
 	void sub_81AE00();
 
