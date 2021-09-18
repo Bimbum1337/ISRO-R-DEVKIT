@@ -75,8 +75,13 @@ float CGFXVideo3d::Project(const D3DVECTOR& origin, D3DVECTOR& pos2d)
 
 		//printf("screendim %d %d\n", screendim[0], screendim[1]);
 
-		int pos_x = ((x / w) * (viewport.Width / 2.0)) + viewport.X + (viewport.Width / 2.0);
-		int pos_y = viewport.Y + (viewport.Height / 2.0) - ((y / w) * (viewport.Height / 2.0));
+        float viewport_width = static_cast<float>(viewport.Width);
+        float viewport_height = static_cast<float>(viewport.Height);
+        float viewport_x = static_cast<float>(viewport.X);
+        float viewport_y = static_cast<float>(viewport.Y);
+
+		float pos_x = ((x / w) * (viewport_width / 2.0f)) + viewport_x + (viewport_width / 2.0f);
+		float pos_y = -((y / w) * (viewport_height / 2.0f)) + viewport_y + (viewport_height / 2.0f);
 
 
 		pos2d.x = pos_x;
@@ -175,8 +180,8 @@ char CGFXVideo3d::Func_32(float x, float y, D3DVECTOR& vec)
 	if (camera.N00000757)
 		return 0;
 
-	vec.x = (x - vp.x / 2.0) / vp.x * camera.rotation_to_world.z;
-	vec.y = (y - vp.y / 2.0) / vp.y * camera.rotation_to_world.z;
+	vec.x = (x - vp.x / 2.0f) / vp.x * camera.rotation_to_world.z;
+	vec.y = (y - vp.y / 2.0f) / vp.y * camera.rotation_to_world.z;
 	vec.z = 1.0;
 
 	return 1;
@@ -206,21 +211,21 @@ void CGFXVideo3d::GetSizeInRect(RECT& rect)
 
 void CGFXVideo3d::GetSizeInVec2(D3DXVECTOR2& vec)
 {
-	vec.x = this->res_width;
-	vec.y = this->res_height;
+	vec.x = static_cast<float>(res_width);
+	vec.y = static_cast<float>(res_height);
 }
 
 void CGFXVideo3d::GetViewportDimensions(D3DXVECTOR2& vec)
 {
-	vec.x = this->res_width;
-	vec.y = this->res_height;
+	vec.x = static_cast<float>(res_width);
+	vec.y = static_cast<float>(res_height);
 
 	D3DVIEWPORT9 viewport;
 
 	if (this->m_pd3dDevice->GetViewport(&viewport) == 0)
 	{
-		vec.x = viewport.Width;
-		vec.y = viewport.Height;
+		vec.x = static_cast<float>(viewport.Width);
+		vec.y = static_cast<float>(viewport.Height);
 	}
 }
 
