@@ -168,15 +168,15 @@ bool CPSCharacterSelect::OnCreateIMPL(long ln) {
     m_box.SetRotation(3.0);
 
     const D3DVECTOR box_loc[] = {
-            {157.0, -20.0, 654.40002},
-            {156.2, -20.0, 651.6},
-            {155.6, -20.0, 651.6},
+            {157.0f, -20.0f, 654.4f},
+            {156.2f, -20.0f, 651.6f},
+            {155.6f, -20.0f, 651.6f},
     };
 
     const float box_rot[] = {
-            3.31,
-            3.03,
-            3.0};
+            3.31f,
+            3.03f,
+            3.00f};
 
     const char *box_resources[] = {
             "res\\interface\\interface_idol_europe.bsr",
@@ -245,7 +245,9 @@ void CPSCharacterSelect::TriggerAnimation_Intro() {
     m_cameraworking->sub_4E6630();
 
     for (int i = 0; i < size(frames_intro); i++) {
-        m_cameraworking->AddKeyframe(i * i, frames_intro[i].position, frames_intro[i].rotation);
+        m_cameraworking->AddKeyframe(static_cast<float>(i * i),
+                                     frames_intro[i].position,
+                                     frames_intro[i].rotation);
     }
 
     theApp.camera.origin = m_cameraworking->location;

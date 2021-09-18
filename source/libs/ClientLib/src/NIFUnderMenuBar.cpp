@@ -42,7 +42,7 @@ void NIFUnderMenuBar::Update() {
     }
 
     // Calculate the number of bars that are full
-    int barnum = floor(exp_percentage / 10.0);
+    int barnum = static_cast<int>(floor(exp_percentage / 10.0));
 
 
     for (int i = 0; i < 10; i++) {
@@ -58,7 +58,7 @@ void NIFUnderMenuBar::Update() {
     }
 
     // Fill the bar that is neither full or empty with the remaining percentage
-    double exp_remain = (exp_percentage - (barnum * 10.0)) / 10.0;
+    float exp_remain = static_cast<float>((exp_percentage - (barnum * 10.0)) / 10.0);
 
     gauges[barnum]->background_value = exp_remain;
     gauges[barnum]->foreground_value = exp_remain;
@@ -69,8 +69,8 @@ void NIFUnderMenuBar::Update() {
 
     // Skillpoints
     this->lbl_spcount->SetText(L"%d", g_pCICPlayer->m_skillpoint);
-    this->gauge_skillexp->background_value = g_pCICPlayer->m_skillpoint_progress / 400.0;
-    this->gauge_skillexp->foreground_value = g_pCICPlayer->m_skillpoint_progress / 400.0;
+    this->gauge_skillexp->background_value = g_pCICPlayer->m_skillpoint_progress / 400.0f;
+    this->gauge_skillexp->foreground_value = g_pCICPlayer->m_skillpoint_progress / 400.0f;
 
     // You can also draw text directly at the gauge. It will be centered automatically
     // this->gauge_skillexp->SetText(L"%d", g_CICPlayer->skill_exp);

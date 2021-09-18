@@ -266,31 +266,31 @@ int CIFWnd::On4006(int a2, int a3)
 // CIFWnd::sub_652B00(void) .text 00652B00 00000045   R . . . . . .
 void CIFWnd::sub_652B00()
 {
-	this->N0000066B = 1.0;
-	this->N0000066C = 0.1;
-	this->N00000672 = 0.1;
-	this->N00000678 = 0.1;
-	this->N0000067E = 0.1;
-	this->N00000684 = 0.1;
-	this->N00000671 = 1.0;
-	this->N00000677 = 1.0;
-	this->N0000067D = 1.0;
-	this->N00000683 = 1.0;
+	this->N0000066B = 1.0f;
+	this->N0000066C = 0.1f;
+	this->N00000672 = 0.1f;
+	this->N00000678 = 0.1f;
+	this->N0000067E = 0.1f;
+	this->N00000684 = 0.1f;
+	this->N00000671 = 1.0f;
+	this->N00000677 = 1.0f;
+	this->N0000067D = 1.0f;
+	this->N00000683 = 1.0f;
 }
 
 // CIFWnd::sub_653060(void) .text 00653060 000000DD 00000004 00000000 R . . . . . .
 void CIFWnd::sub_653060()
 {
-	this->N0000062F = 1.0;
-	this->N00009C60 = 0.1;
-	this->N00000637 = 0.1;
-	this->N00009C70 = 0.1;
-	this->N0000065D = 0.1;
-	this->N00009C80 = 0.1;
-	this->N00000635 = 1.0;
-	this->N0000063A = 1.0;
-	this->N00009C5A = 1.0;
-	this->N00000662 = 1.0;
+	this->N0000062F = 1.0f;
+	this->N00009C60 = 0.1f;
+	this->N00000637 = 0.1f;
+	this->N00009C70 = 0.1f;
+	this->N0000065D = 0.1f;
+	this->N00009C80 = 0.1f;
+	this->N00000635 = 1.0f;
+	this->N0000063A = 1.0f;
+	this->N00009C5A = 1.0f;
+	this->N00000662 = 1.0f;
 	this->N00009C61 = this->N0000061D;
 	this->N00000632 = this->N0000061E;
 	this->N00009C69 = this->N00000627;
