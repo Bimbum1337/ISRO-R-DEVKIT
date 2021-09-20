@@ -6,3 +6,6 @@ GFX_IMPLEMENT_DYNAMIC_EXISTING(CICUser, 0x00ef1bc0)
 const std::wstring &CICUser::GetGuildName() const {
     return reinterpret_cast<const std::wstring &(__thiscall*)(const CICUser*)>(0x009DB100)(this);
 }
+UserGuildInfo *CICUser::GetGuildInfo() const {
+    return m_pGuildInfo;
+}
