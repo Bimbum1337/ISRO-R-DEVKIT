@@ -3,6 +3,7 @@
 #include <ghidra/undefined.h>
 #include <Test/Test.h>
 #include "PartyData.h"
+#include "PartyMemberData.h"
 
 #define g_CCharacterDependentData (*reinterpret_cast<CCharacterDependentData*>(0x00eeebd8))
 
@@ -25,6 +26,8 @@ public:
     /// \address 00986f50
     const SPartyData &GetPartyData() const;
 
+    /// \address 00992400
+    const SPartyMemberData &GetPartyMemberData(int memberId) const;
 
 private:
 

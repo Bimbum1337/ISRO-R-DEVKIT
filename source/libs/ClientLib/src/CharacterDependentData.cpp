@@ -19,3 +19,7 @@ bool CCharacterDependentData::IsInTrainingCamp() const {
 const SPartyData &CCharacterDependentData::GetPartyData() const {
     return m_partyData;
 }
+
+const SPartyMemberData &CCharacterDependentData::GetPartyMemberData(int memberId) const {
+    return reinterpret_cast<const SPartyMemberData &(__thiscall *) (const CCharacterDependentData *, int)>(0x00992400)(this, memberId);
+}
