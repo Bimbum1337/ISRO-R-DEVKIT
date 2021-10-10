@@ -170,7 +170,9 @@ set(SOURCE_FILES src/BufRender.h
     src/World.h src/World.cpp
     src/CompSimple.cpp src/CompSimple.h
     src/Keyframe.h src/Keyframe.cpp
-    src/UserGuildInfo.cpp src/UserGuildInfo.h)
+    src/UserGuildInfo.cpp src/UserGuildInfo.h
+    src/PartyData.h
+    src/PartyMemberData.h)
 
 
 add_library(ClientLib STATIC ${SOURCE_FILES})

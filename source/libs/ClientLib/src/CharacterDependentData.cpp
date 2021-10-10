@@ -16,10 +16,10 @@ bool CCharacterDependentData::IsInTrainingCamp() const {
     return reinterpret_cast<bool (__thiscall *)(const CCharacterDependentData *)>(0x00987140)(this);
 }
 
-CCharacterDependentData::SubData *CCharacterDependentData::FUN_00986f50() {
-    return &data;
+const SPartyData &CCharacterDependentData::GetPartyData() const {
+    return m_partyData;
 }
 
-undefined1 CCharacterDependentData::SubData::FUN_00986f40() const {
-    return field_c;
+const SPartyMemberData &CCharacterDependentData::GetPartyMemberData(int memberId) const {
+    return reinterpret_cast<const SPartyMemberData &(__thiscall *) (const CCharacterDependentData *, int)>(0x00992400)(this, memberId);
 }

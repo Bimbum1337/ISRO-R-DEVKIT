@@ -16,6 +16,7 @@ set(SOURCE_FILES
         src/imgui_windows/ErrorMessageTool.h src/imgui_windows/ErrorMessageTool.cpp
         src/imgui_windows/InterfaceTree.cpp src/imgui_windows/InterfaceTree.h
         src/imgui_windows/ProcessViewer.cpp src/imgui_windows/ProcessViewer.h
+        src/imgui_windows/PartyInfo.cpp src/imgui_windows/PartyInfo.h
         src/Util.cpp src/Util.h
         src/QuickStart.cpp src/QuickStart.h
         src/MathUtil.cpp src/MathUtil.h)

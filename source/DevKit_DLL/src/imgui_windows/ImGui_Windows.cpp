@@ -10,21 +10,22 @@
 #include <GInterface.h>
 #include "unsorted.h"
 
-#include "../hooks/Hooks.h"
 #include "../MathUtil.h"
+#include "../hooks/Hooks.h"
+#include "About.h"
+#include "EntityExplorer.h"
+#include "ErrorMessageTool.h"
 #include "IFSystemMessage.h"
 #include "InterfaceDebugger.h"
-#include "NavMeshTool.h"
-#include "EntityExplorer.h"
-#include "SoundTool.h"
-#include "NotificationTool.h"
-#include "About.h"
-#include "SystemMessage.h"
-#include "ErrorMessageTool.h"
 #include "InterfaceTree.h"
+#include "NavMeshTool.h"
+#include "NotificationTool.h"
+#include "PartyInfo.h"
 #include "ProcessViewer.h"
-#include <BSLib/multibyte.h>
+#include "SoundTool.h"
+#include "SystemMessage.h"
 #include <BSLib/Debug.h>
+#include <BSLib/multibyte.h>
 
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -39,6 +40,7 @@ SystemMessage systemMessage;
 ErrorMessageTool errorMessageTool;
 InterfaceTree interfaceTree;
 ProcessViewer processViewer;
+PartyInfo partyInfo;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
@@ -122,6 +124,11 @@ void ImGui_OnEndScene() {
             ImGui::EndMenu();
         }
 
+        if (ImGui::BeginMenu("Data")) {
+            partyInfo.MenuItem();
+            ImGui::EndMenu();
+        }
+
         if (ImGui::BeginMenu("Windows")) {
             ImGui::EndMenu();
         }
@@ -150,6 +157,7 @@ void ImGui_OnEndScene() {
     errorMessageTool.Render();
     interfaceTree.Render();
     processViewer.Render();
+    partyInfo.Render();
 
     ImGui::EndFrame();
 
