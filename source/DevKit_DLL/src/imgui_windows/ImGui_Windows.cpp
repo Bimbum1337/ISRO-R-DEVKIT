@@ -24,6 +24,7 @@
 #include "ProcessViewer.h"
 #include "SoundTool.h"
 #include "SystemMessage.h"
+#include "CharacterData.h"
 #include <BSLib/Debug.h>
 #include <BSLib/multibyte.h>
 
@@ -41,6 +42,7 @@ ErrorMessageTool errorMessageTool;
 InterfaceTree interfaceTree;
 ProcessViewer processViewer;
 PartyInfo partyInfo;
+CharacterData characterData;
 
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
@@ -126,6 +128,7 @@ void ImGui_OnEndScene() {
 
         if (ImGui::BeginMenu("Data")) {
             partyInfo.MenuItem();
+            characterData.MenuItem();
             ImGui::EndMenu();
         }
 
@@ -158,6 +161,7 @@ void ImGui_OnEndScene() {
     interfaceTree.Render();
     processViewer.Render();
     partyInfo.Render();
+    characterData.Render();
 
     ImGui::EndFrame();
 
