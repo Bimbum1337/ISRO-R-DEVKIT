@@ -1,33 +1,35 @@
 #pragma once
 
-#include <map>
-#include <ghidra/undefined.h>
-#include "Data/ItemData.h"
-#include "Data/CharacterData.h"
-#include "Data/GameGuideData.h"
 #include "Data/ActionWndData.h"
-#include "Data/RefScrapOfPackageItemData.h"
-#include "Data/RefPackageItemData.h"
-#include "Data/RefPricePolicyOfItem.h"
-#include "Data/RefShopdata.h"
-#include "Data/RefShopTabGroupData.h"
-#include "Data/RefShopTabData.h"
-#include "Data/ShopItemStockQuantity.h"
-#include "Data/LevelData.h"
-#include "Data/TeleportData.h"
-#include "Data/TeleportLink.h"
-#include "Data/TeleportBuilding.h"
-#include "Data/NPCChatData.h"
-#include "Data/MessageTipData.h"
-#include "Data/MagicOptionData.h"
-#include "Data/QuestData.h"
+#include "Data/CharacterData.h"
 #include "Data/DropGoldData.h"
-#include "Data/NPCPosData.h"
-#include "Data/MallItemMenuListData.h"
-#include "Data/ShopItemStockPeriod.h"
 #include "Data/GachaItemSetData.h"
 #include "Data/GachaNpcData.h"
+#include "Data/GameGuideData.h"
+#include "Data/ItemData.h"
+#include "Data/LevelData.h"
 #include "Data/LevelGoldData.h"
+#include "Data/MagicOptionData.h"
+#include "Data/MallItemMenuListData.h"
+#include "Data/MessageTipData.h"
+#include "Data/NPCChatData.h"
+#include "Data/NPCPosData.h"
+#include "Data/QuestData.h"
+#include "Data/RefPackageItemData.h"
+#include "Data/RefPricePolicyOfItem.h"
+#include "Data/RefScrapOfPackageItemData.h"
+#include "Data/RefShopTabData.h"
+#include "Data/RefShopTabGroupData.h"
+#include "Data/RefShopdata.h"
+#include "Data/ShopItemStockPeriod.h"
+#include "Data/ShopItemStockQuantity.h"
+#include "Data/TeleportBuilding.h"
+#include "Data/TeleportData.h"
+#include "Data/TeleportLink.h"
+#include <BSLib/_internal/custom_stl.h>
+#include <Test/Test.h>
+#include <ghidra/undefined.h>
+#include <map>
 
 
 #define g_CGlobalDataManager ((CGlobalDataManager*)0x00EEDF08)
@@ -38,11 +40,13 @@ public:
 
     undefined4 FUN_008cbac0(int a1);
 
+    /// \address 0093f370
+    const CCharacterData *GetCharacterData(int id) const;
 
     char gap0[0x254];
 
     std::map<unsigned __int32, CItemData *> m_itemDataMap; //0x258
-    std::map<unsigned __int32, CCharacterData *> m_characterDataMap; //0x264
+    std::n_map<unsigned __int32, CCharacterData *> m_characterDataMap; //0x264
     std::map<unsigned __int32, CGameGuideData *> m_gameGuideDataMap; //0x270
     char unknown_gap[4 * 20]; // 0x27C
     std::map<unsigned __int32, CActionWndData *> m_actionWndDataMap; //0x2CC
@@ -78,4 +82,12 @@ public:
     char gap3[4 * 4];    //0x514
     std::map<unsigned __int8, CLevelGoldData *> m_levelGoldDataMap; //0x524
     char gap4[3 * 4];
+
+
+private:
+    BEGIN_FIXTURE()
+        ENSURE_OFFSET(m_characterDataMap, 0x0264)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CGlobalDataManager)
 };
