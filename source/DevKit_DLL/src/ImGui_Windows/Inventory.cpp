@@ -39,43 +39,51 @@ void Inventory::Render() {
         if (item->bluemap.size() == 0)
             continue;
 
-        for (std::n_map<short, int>::iterator it = item->bluemap.begin(); it != item->bluemap.end(); ++it) {
+        for (std::n_map<Blue, int>::iterator it = item->bluemap.begin(); it != item->bluemap.end(); ++it) {
+            const ImColor colorBlue(0, 255, 255);
+            const ImColor colorRed(255, 0, 0);
+            const ImColor colorNotFound(255, 0, 255);
+
             switch (it->first) {
-
-                case 0x0005:
-                    ImGui::Text("Int %d Increase", it->second);
+                case BLUE_INT:
+                    ImGui::TextColored(colorBlue, "Int %d Increase", it->second);
                     break;
 
-                case 0x000b:
-                    ImGui::Text("Str %d Increase", it->second);
+                case BLUE_STR:
+                    ImGui::TextColored(colorBlue, "Str %d Increase", it->second);
                     break;
 
-                case 0x0050:
-                    ImGui::Text("Durability %d%% Increase", it->second);
+                case BLUE_DURABILITY:
+                    ImGui::TextColored(colorBlue, "Durability %d%% Increase", it->second);
                     break;
 
-                case 0x003d:
-                    ImGui::Text("Lucky (%d %s)", it->second, (it->second == 1) ? "Time": "Times");
+                case BLUE_LUCKY:
+                case BLUE_LUCKY2:
+                    ImGui::TextColored(colorBlue, "Lucky (%d %s)", it->second, (it->second == 1) ? "Time": "Times");
                     break;
 
-                case 0x0098:
-                    ImGui::Text("MP %d Increase", it->second);
+                case BLUE_MP:
+                    ImGui::TextColored(colorBlue, "MP %d Increase", it->second);
                     break;
 
-                case 0x008C:
-                    ImGui::Text("HP %d Increase", it->second);
+                case BLUE_HP:
+                    ImGui::TextColored(colorBlue, "HP %d Increase", it->second);
                     break;
 
-                case 0x0080:
-                    ImGui::Text("Parry rate %d%% Increase", it->second);
+                case BLUE_PARRY:
+                    ImGui::TextColored(colorBlue, "Parry rate %d%% Increase", it->second);
                     break;
 
-                case 0x0041:
-                    ImGui::Text("Repair invalid (%d)", it->second);
+                case BLUE_REPAIR_INVALID:
+                    ImGui::TextColored(colorRed, "Repair invalid (%d)", it->second);
+                    break;
+
+                case BLUE_STEADY:
+                    ImGui::TextColored(colorBlue,"Steady (%d %s)", it->second, (it->second == 1) ? "Time" : "Times");
                     break;
 
                 default:
-                    ImGui::Text("%d (%x): %d", it->first, it->first, it->second);
+                    ImGui::TextColored(colorNotFound, "%d (%x): %d", it->first, it->first, it->second);
                     break;
             }
         }
