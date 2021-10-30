@@ -54,6 +54,26 @@ void Inventory::Render() {
                     ImGui::Text("Durability %d%% Increase", it->second);
                     break;
 
+                case 0x003d:
+                    ImGui::Text("Lucky (%d %s)", it->second, (it->second == 1) ? "Time": "Times");
+                    break;
+
+                case 0x0098:
+                    ImGui::Text("MP %d Increase", it->second);
+                    break;
+
+                case 0x008C:
+                    ImGui::Text("HP %d Increase", it->second);
+                    break;
+
+                case 0x0080:
+                    ImGui::Text("Parry rate %d%% Increase", it->second);
+                    break;
+
+                case 0x0041:
+                    ImGui::Text("Repair invalid (%d)", it->second);
+                    break;
+
                 default:
                     ImGui::Text("%d (%x): %d", it->first, it->first, it->second);
                     break;
