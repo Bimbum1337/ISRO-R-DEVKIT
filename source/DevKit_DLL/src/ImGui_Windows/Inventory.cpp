@@ -42,15 +42,15 @@ void Inventory::Render() {
         for (std::n_map<short, int>::iterator it = item->bluemap.begin(); it != item->bluemap.end(); ++it) {
             switch (it->first) {
 
-                case 0x16080005:
+                case 0x0005:
                     ImGui::Text("Int %d Increase", it->second);
                     break;
 
-                case 0x1608000b:
+                case 0x000b:
                     ImGui::Text("Str %d Increase", it->second);
                     break;
 
-                case 0x16080050:
+                case 0x0050:
                     ImGui::Text("Durability %d%% Increase", it->second);
                     break;
 
