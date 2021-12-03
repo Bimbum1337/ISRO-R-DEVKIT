@@ -43,6 +43,13 @@ public:
     /// \address 0093f370
     const CCharacterData *GetCharacterData(int id) const;
 
+    /// \address 0093f5f0
+    const CItemData::SData &GetItemData(int refObjItemId) const;
+
+private:
+    /// \address 0093f2f0
+    const CItemData *FUN_0093f2f0(int refObjItemId) const;
+
     char gap0[0x254];
 
     std::map<unsigned __int32, CItemData *> m_itemDataMap; //0x258
@@ -62,7 +69,9 @@ public:
     char empty_maps_times_8_2[3 * 4 * 8]; //0x398
     char refshoptabdata_related_map[3 * 4]; //0x3F8
     std::map<unsigned __int32, CShopItemStockQuantity *> m_shopItemStockQuantityMap; //0x404
+public: // TODO: Make a getter for level data and make the member private
     std::map<unsigned __int32, CLevelData *> m_levelDataMap; //0x410
+private:
     std::map<unsigned __int32, CTeleportData *> m_teleportDataMap; //0x41C
     std::map<unsigned __int32, CTeleportLink *> m_teleportLinkMap; //0x428
     std::map<unsigned __int32, CTeleportBuilding *> m_teleportBuildingMap; //0x434
