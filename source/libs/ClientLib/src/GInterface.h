@@ -116,6 +116,11 @@ public:
     /// \address 007781B0
     void WriteSystemMessage(eLogType level, const wchar_t *str);
 
+    /// \brief Send given message as global by using item at given slot
+    /// \address 007901c0
+    /// \todo Make message parameter a const reference once caller is under our control
+    void WriteGlobalMessage(unsigned char nSlot, std::n_wstring message);
+
     void CreateFlorian0Event();
 
     CAlramGuideMgrWnd *GetAlarmManager();
