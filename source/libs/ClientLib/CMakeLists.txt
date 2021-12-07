@@ -176,5 +176,5 @@ set(SOURCE_FILES src/BufRender.h
 
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet abi-testing imgui remodel ghidra)
+target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet TypeId abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)

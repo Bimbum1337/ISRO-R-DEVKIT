@@ -3,11 +3,17 @@
 #include <string>
 #include <Test/Test.h>
 
+#include <TypeId.h>
+
 #pragma pack(push, 4)
 class CItemData {
 public:
     struct SData {
-        unsigned __int16 m_unknown0;
+
+        bool IsGlobalMessageScroll() const;
+
+
+        TypeId m_typeId;
         unsigned __int32 m_id;
         std::wstring m_codeName128;
         std::wstring m_objName128;
