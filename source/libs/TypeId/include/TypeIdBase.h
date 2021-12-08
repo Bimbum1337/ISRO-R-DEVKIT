@@ -38,12 +38,14 @@ class TypeId {
     };
 
 public:
+    explicit TypeId(unsigned short tid) : m_type_id_value(tid) {}
+
     template<unsigned short TID1, unsigned short TID2, unsigned short TID3, unsigned short TID4>
     bool Is(TID<TID1, TID2, TID3, TID4> tid) const {
-        return ((m_type_id_value & TID1_MASK) == TID1) &&
-               ((m_type_id_value & TID2_MASK) == TID2) &&
-               ((m_type_id_value & TID3_MASK) == TID3) &&
-               ((m_type_id_value & TID4_MASK) == TID4);
+        return ((m_type_id_value & TID1_MASK) == TID_ARG(TID1, TID1_OFFSET)) &&
+               ((m_type_id_value & TID2_MASK) == TID_ARG(TID2, TID2_OFFSET)) &&
+               ((m_type_id_value & TID3_MASK) == TID_ARG(TID3, TID3_OFFSET)) &&
+               ((m_type_id_value & TID4_MASK) == TID_ARG(TID4, TID4_OFFSET));
     }
 
 private:
