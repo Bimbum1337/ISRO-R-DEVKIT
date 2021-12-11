@@ -88,10 +88,8 @@ private:
 private:
 	int N000005A9; //0x0184
 	int N000005BB; //0x0188
-	int N000005CD; //0x018C
-	int N000005FB; //0x0190
-	int N000005FD; //0x0194
-	int N00009BFC; //0x0198
+
+	RECT m_someRECT; //0x018C
 	std::n_wstring m_innerText; //0x019C
 	char N00009BFD; //0x01B8
 	char N00009C1B; //0x01B9
@@ -178,6 +176,7 @@ private:
 
     BEGIN_FIXTURE()
         ENSURE_SIZE(876)
+        ENSURE_OFFSET(m_someRECT, 0x18C)
     END_FIXTURE()
     RUN_FIXTURE(CIFWnd)
 };

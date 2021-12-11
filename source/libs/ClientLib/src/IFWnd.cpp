@@ -44,17 +44,13 @@ CIFWnd::CIFWnd(void)
 	this->N000005A9 = 0;
 	this->N00000618 = 0;
 	this->N0000061D = 0.0;
-	this->N00009BFC = 0;
 	this->N0000061E = 0.0;
-	this->N000005CD = 0;
 	this->N00000628 = 0.0;
-	this->N000005FD = 0;
 	this->N0000062B = 0.0;
 	this->N00000627 = 1.0;
 	this->N00000629 = 1.0;
 	this->N0000062A = 1.0;
 	this->N0000062C = 1.0;
-	this->N000005FB = 0;
 	this->sub_652B00();
 	this->sub_653060();
 	this->Set_N00000687(0);
@@ -309,7 +305,7 @@ void CIFWnd::Set_N00000687(char a2)
 }
 
 void CIFWnd::SetSomeRect(const RECT &rect) {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, const RECT *)>(0x006527D0)(this, &rect);
+    m_someRECT = rect;
 }
 
 void CIFWnd::SetTooltipText(const std::n_wstring *str) {
