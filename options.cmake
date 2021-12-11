@@ -42,3 +42,8 @@ option(CONFIG_OLD_MAINPOPUP "Classic MainPopup with icons on the side" OFF)
 if (CONFIG_OLD_MAINPOPUP)
     add_definitions(-DCONFIG_OLD_MAINPOPUP)
 endif ()
+
+option(CONFIG_WHOLE_CHAT "Replace global chat dialog with custom one" OFF)
+if (CONFIG_WHOLE_CHAT)
+    add_definitions(-DCONFIG_WHOLE_CHAT)
+endif ()
