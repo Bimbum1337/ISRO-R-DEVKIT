@@ -19,7 +19,7 @@ public:
 
 	void Func_42() override;
 
-	virtual bool Func_49(int a1, const wchar_t *format, ...);
+	virtual bool Func_49(CIFStatic* a1, const wchar_t *format, ...);
 	virtual bool Func_50(int a1, const wchar_t *format, ...);
 	virtual bool Func_51(const wchar_t *src);
 

@@ -57,7 +57,7 @@ void CIFStatic::Func_42()
 }
 
 // CIFStatic::Func_49(void) .text 0064D780 0000008E 00002008 00000009 R . . . . T .
-bool CIFStatic::Func_49(int a1, const wchar_t* format, ...)
+bool CIFStatic::Func_49(CIFStatic* a1, const wchar_t* format, ...)
 {
 	assert(FALSE);
 	return false;
