@@ -11,3 +11,7 @@ const CItemData::SData *CSOItem::GetItemData() const {
 
     return data;
 }
+
+int CSOItem::GetQuantity() const {
+    return m_quantity;
+}
