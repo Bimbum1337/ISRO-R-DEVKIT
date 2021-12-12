@@ -105,8 +105,9 @@ void CIFWholeChat::RenderMyself() {
     reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x00815490)(this);
 }
 
-void CIFWholeChat::OnCloseWnd() {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef3c0)(this);
+undefined1 CIFWholeChat::OnCloseWnd() {
+    g_pCGInterface->FUN_0079b8a0(0, 0xffffffff);
+    return 1;
 }
 
 void CIFWholeChat::SetGWndSize(int width, int height) {

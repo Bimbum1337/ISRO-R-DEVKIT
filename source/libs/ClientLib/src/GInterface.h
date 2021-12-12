@@ -211,6 +211,8 @@ public:
     /// \address 00787C10
     void sub_787C10(SChatMetaData &meta);
 
+    /// \address 0079b8a0
+    void FUN_0079b8a0(undefined1 a1, undefined4 a2);
 
 private:
     /// \address 0079a7e0

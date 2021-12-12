@@ -20,7 +20,7 @@ public:
     void RenderMyself() override;
 
     /// \address 007ef3c0
-    void OnCloseWnd() override;
+    undefined1 OnCloseWnd() override;
 
     /// \address 007ef3a0
     void SetGWndSize(int width, int height) override;

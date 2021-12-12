@@ -53,7 +53,7 @@ public:
 	virtual void Func_42();
 
 	/// \address 00652c00
-	virtual void OnCloseWnd();
+	virtual undefined1 OnCloseWnd();
 
 	virtual bool IsInside(int x, int y);
 	virtual bool SetText(const wchar_t* src);

@@ -295,3 +295,6 @@ void CGInterface::FUN_0079a7e0(CGWndBase *pGWnd) const {
     reinterpret_cast<void (__thiscall *)(const CGInterface *, CGWndBase *)>(0x0079a7e0)(this, pGWnd);
 }
 
+void CGInterface::FUN_0079b8a0(undefined1 a1, undefined4 a2) {
+    reinterpret_cast<void(__thiscall *)(CGInterface *, undefined1, undefined4)>(0x0079b8a0)(this, a1, a2);
+}

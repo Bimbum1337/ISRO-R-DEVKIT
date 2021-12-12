@@ -230,9 +230,9 @@ void CIFWnd::Func_42()
 }
 
 // CIFWnd::OnCloseWnd(void) .text 00652C00 000000CF 00000004 00000000 R . . . . . .
-void CIFWnd::OnCloseWnd()
+undefined1 CIFWnd::OnCloseWnd()
 {
-	reinterpret_cast<void(__thiscall*)(CIFWnd*)>(0x00652c00)(this);
+    return reinterpret_cast<undefined1(__thiscall *)(CIFWnd *)>(0x00652c00)(this);
 }
 
 // CIFWnd::Func_47(int) .text 004F4D50 00000003 00000000 00000000 R . . . . . .
