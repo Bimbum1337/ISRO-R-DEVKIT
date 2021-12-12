@@ -33,7 +33,7 @@ private:
     void SendGlobalMessage();
 
     /// \address 007ef490
-    void FUN_007ef490();
+    void CloseDialog();
 
     /// \address 007ef320
     void FUN_007ef320();

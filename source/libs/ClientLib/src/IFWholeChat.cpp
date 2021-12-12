@@ -26,7 +26,7 @@ enum {
 GFX_BEGIN_MESSAGE_MAP(CIFWholeChat, CIFWnd)
     ONG_KEYUP()
     ONG_COMMAND(GDR_WHOLE_CHAT_BTN_OK, &CIFWholeChat::SendGlobalMessage)
-    ONG_COMMAND(GDR_WHOLE_CHAT_BTN_CANCEL, &CIFWholeChat::FUN_007ef490)
+    ONG_COMMAND(GDR_WHOLE_CHAT_BTN_CANCEL, &CIFWholeChat::CloseDialog)
 GFX_END_MESSAGE_MAP()
 
 
@@ -89,15 +89,26 @@ void CIFWholeChat::FUN_007ef400(int numberOfItemsLeft) {
     sta->Func_49(sta, L"%d", numberOfItemsLeft);
 }
 
-int CIFWholeChat::OnKeyUp(UINT a1, UINT a2, UINT a3) {
-    return reinterpret_cast<int(__thiscall *)(CIFWholeChat *, UINT, UINT, UINT)>(0x007ef900)(this, a1, a2, a3);
+int CIFWholeChat::OnKeyUp(UINT nKey, UINT a2, UINT a3) {
+
+    if (nKey == VK_RETURN) {
+        SendGlobalMessage();
+        return 1;
+    }
+
+    if (nKey == VK_ESCAPE) {
+        CloseDialog();
+        return 1;
+    }
+
+    return 0;
 }
 
 void CIFWholeChat::SendGlobalMessage() {
     reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef550)(this);
 }
 
-void CIFWholeChat::FUN_007ef490() {
+void CIFWholeChat::CloseDialog() {
     reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef490)(this);
 }
 
