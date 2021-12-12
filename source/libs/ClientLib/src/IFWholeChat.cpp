@@ -105,7 +105,28 @@ int CIFWholeChat::OnKeyUp(UINT nKey, UINT a2, UINT a3) {
 }
 
 void CIFWholeChat::SendGlobalMessage() {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef550)(this);
+    std::n_wstring text = m_pEdit->GetCurrentText();
+
+    if (this->m_NumberOfItemsLeft < 1) {
+        m_pEdit->SetText(L"");
+        return;
+    }
+
+    if (text.length() == 0) {
+        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR("UIIT_STT_WHOLECHAT_INPUTMSG"));
+        m_pEdit->SetText(L"");
+        return;
+    }
+
+    if (CGame::GetBadwordFilter()->sub_8C4020(text)) {
+        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR("UIIT_MSG_WHOLECHATERR_NOTINUSEMSG"));
+        m_pEdit->SetText(L"");
+        return;
+    }
+
+    g_pCGInterface->WriteGlobalMessage(GetSlotOfChattingItem(), text);
+
+    m_pEdit->SetText(L"");
 }
 
 void CIFWholeChat::CloseDialog() {
@@ -130,4 +151,12 @@ void CIFWholeChat::UpdateLayout() {
 
     m_pDragableArea->MoveGWnd(rect.pos.x + 10, rect.pos.y + 12);
     m_pDragableArea->SetGWndSize(rect.size.width - 21, 34);
+}
+
+int CIFWholeChat::GetSlotOfChattingItem() const {
+    return m_SlotOfChattingItem;
+}
+
+void CIFWholeChat::SetSlotOfChattingItem(int slot) {
+    m_SlotOfChattingItem = slot;
 }

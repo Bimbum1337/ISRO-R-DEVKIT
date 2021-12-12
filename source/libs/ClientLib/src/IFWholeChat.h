@@ -38,6 +38,12 @@ private:
     /// \address 007ef320
     void UpdateLayout();
 
+    /// \address 007ef3f0
+    int GetSlotOfChattingItem() const;
+
+    /// \address 007ef3e0
+    void SetSlotOfChattingItem(int slot);
+
 private:
     // Inventory slot of item this window was opened from
     int m_SlotOfChattingItem;

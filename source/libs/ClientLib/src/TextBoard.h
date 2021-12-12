@@ -47,8 +47,9 @@ private:
 	int N000096C2; //0x0008
 public: /* see usage of 8B4400, public seems correct */
 	CGFontTexture m_FontTexture; //0x000C
-private:
+protected:
 	std::n_wstring m_texturestr_font; //0x0074
+private:
 	int N00009C2D; //0x0090
 	int N00009C2E; //0x0094
 protected:

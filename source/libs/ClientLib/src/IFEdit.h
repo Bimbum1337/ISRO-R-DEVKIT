@@ -27,6 +27,8 @@ public:
     /// \address 006351b0
     void SetTextmode(undefined4 mode);
 
+    const std::n_wstring &GetCurrentText() const;
+
 private:
     char pad_0x0380[0xB100]; //0x0380 ????
 };

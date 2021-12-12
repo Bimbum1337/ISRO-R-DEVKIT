@@ -29,3 +29,6 @@ void CIFEdit::FUN_00634f80(unsigned int a1) {
 void CIFEdit::SetTextmode(undefined4 mode) {
     reinterpret_cast<void(__thiscall *)(CIFEdit *, undefined4)>(0x006351b0)(this, mode);
 }
+const std::n_wstring &CIFEdit::GetCurrentText() const {
+    return m_texturestr_font;
+}
