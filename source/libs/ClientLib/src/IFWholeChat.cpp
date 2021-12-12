@@ -109,7 +109,7 @@ void CIFWholeChat::SendGlobalMessage() {
 }
 
 void CIFWholeChat::CloseDialog() {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef490)(this);
+    OnCloseWnd();
 }
 
 undefined1 CIFWholeChat::OnCloseWnd() {
