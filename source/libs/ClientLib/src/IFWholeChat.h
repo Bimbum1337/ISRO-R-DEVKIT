@@ -38,6 +38,9 @@ private:
     /// \address 007ef490
     void FUN_007ef490();
 
+    /// \address 007ef320
+    void FUN_007ef320();
+
 private:
     // Inventory slot of item this window was opened from
     int m_SlotOfChattingItem;

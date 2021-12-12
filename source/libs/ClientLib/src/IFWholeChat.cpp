@@ -111,5 +111,10 @@ undefined1 CIFWholeChat::OnCloseWnd() {
 }
 
 void CIFWholeChat::SetGWndSize(int width, int height) {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *, int, int)>(0x007ef3a0)(this, width, height);
+    CIFTileWnd::SetGWndSize(width, height);
+    FUN_007ef320();
+}
+
+void CIFWholeChat::FUN_007ef320() {
+    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef320)(this);
 }
