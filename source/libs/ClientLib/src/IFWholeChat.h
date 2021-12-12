@@ -36,7 +36,7 @@ private:
     void CloseDialog();
 
     /// \address 007ef320
-    void FUN_007ef320();
+    void UpdateLayout();
 
 private:
     // Inventory slot of item this window was opened from

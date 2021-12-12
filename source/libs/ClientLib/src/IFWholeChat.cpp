@@ -119,9 +119,15 @@ undefined1 CIFWholeChat::OnCloseWnd() {
 
 void CIFWholeChat::SetGWndSize(int width, int height) {
     CIFTileWnd::SetGWndSize(width, height);
-    FUN_007ef320();
+    UpdateLayout();
 }
 
-void CIFWholeChat::FUN_007ef320() {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef320)(this);
+void CIFWholeChat::UpdateLayout() {
+    wnd_rect rect = GetBounds();
+
+    m_pCreatedStatic->MoveGWnd(rect.pos.x + 10, rect.pos.y + 12);
+    m_pCreatedStatic->SetGWndSize(rect.size.width - 21, 12);
+
+    m_pDragableArea->MoveGWnd(rect.pos.x + 10, rect.pos.y + 12);
+    m_pDragableArea->SetGWndSize(rect.size.width - 21, 34);
 }
