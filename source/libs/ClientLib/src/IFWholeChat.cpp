@@ -101,10 +101,6 @@ void CIFWholeChat::FUN_007ef490() {
     reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x007ef490)(this);
 }
 
-void CIFWholeChat::RenderMyself() {
-    reinterpret_cast<void(__thiscall *)(CIFWholeChat *)>(0x00815490)(this);
-}
-
 undefined1 CIFWholeChat::OnCloseWnd() {
     g_pCGInterface->FUN_0079b8a0(0, 0xffffffff);
     return 1;

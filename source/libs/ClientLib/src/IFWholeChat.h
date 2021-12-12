@@ -16,9 +16,6 @@ public:
     /// \address 007ef6f0
     bool OnCreate(long ln) override;
 
-    /// \address 00815490
-    void RenderMyself() override;
-
     /// \address 007ef3c0
     undefined1 OnCloseWnd() override;
 
