@@ -300,5 +300,13 @@ void CGInterface::FUN_0079b8a0(undefined1 a1, undefined4 a2) {
 }
 
 void CGInterface::RequestStatIncrement(undefined4 a1, undefined4 a2, undefined4 a3, undefined4 a4) {
-    reinterpret_cast<void(__thiscall *)(CGInterface *, undefined4, undefined4, undefined4, undefined4)>(0x0078f4e0)(this, a1, a2, a3, a4);
+    if (a1 == 0x4b) {
+        if (a2 == 1) {
+            NEWMSG(0x7050)
+            SENDMSG()
+        } else if (a2 == 2) {
+            NEWMSG(0x7051)
+            SENDMSG()
+        }
+    }
 }
