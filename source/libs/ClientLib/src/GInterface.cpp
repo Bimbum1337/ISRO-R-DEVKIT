@@ -298,3 +298,7 @@ void CGInterface::FUN_0079a7e0(CGWndBase *pGWnd) const {
 void CGInterface::FUN_0079b8a0(undefined1 a1, undefined4 a2) {
     reinterpret_cast<void(__thiscall *)(CGInterface *, undefined1, undefined4)>(0x0079b8a0)(this, a1, a2);
 }
+
+void CGInterface::RequestStatIncrement(undefined4 a1, undefined4 a2, undefined4 a3, undefined4 a4) {
+    reinterpret_cast<void(__thiscall *)(CGInterface *, undefined4, undefined4, undefined4, undefined4)>(0x0078f4e0)(this, a1, a2, a3, a4);
+}
