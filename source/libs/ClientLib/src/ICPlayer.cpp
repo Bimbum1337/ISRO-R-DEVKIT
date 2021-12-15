@@ -17,3 +17,31 @@ std::n_wstring *CICPlayer::sub_9D6580(std::n_wstring *str) {
 std::n_wstring CICPlayer::GetCharName() const {
     return m_charname;
 }
+
+unsigned char CICPlayer::GetCurrentLevel() const {
+    return m_level;
+}
+
+long long int CICPlayer::GetCurrentExp() const {
+    return m_exp_current;
+}
+
+short CICPlayer::GetStatPointAvailable() const {
+    return m_statpoint_available;
+}
+
+short CICPlayer::GetStrength() const {
+    return m_str_stat;
+}
+
+short CICPlayer::GetIntelligence() const {
+    return m_int_stat;
+}
+
+const std::n_wstring &CICPlayer::GetJobAlias() const {
+    return m_jobAlias;
+}
+
+int CICPlayer::GetCurrentJobExperiencePoints() const {
+    return reinterpret_cast<int (__thiscall *)(const CICPlayer *)>(0x009d4d20)(this);
+}

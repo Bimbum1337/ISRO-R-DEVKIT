@@ -34,7 +34,7 @@ void NIFUnderMenuBar::Update() {
     }
 
     // Calculate EXP as percentage value
-    double exp_percentage = g_pCICPlayer->m_exp_current * 100.0 / data->m_expC;
+    double exp_percentage = g_pCICPlayer->m_exp_current * 100.0 / data->data.m_expC;
 
     // Limit maximum percentage to 99.99%
     if (exp_percentage > 99.99) {

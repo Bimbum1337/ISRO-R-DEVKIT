@@ -11,6 +11,9 @@ public:
     /// \address 00655ec0
     void SetEnabledState(bool state);
 
+    /// \address 00656640
+    void FUN_00656640(std::n_string textureFileName);
+
 private:
     char pad_0x0380[0x1C]; //0x0380
     char *m_disabledPath; //0x039C

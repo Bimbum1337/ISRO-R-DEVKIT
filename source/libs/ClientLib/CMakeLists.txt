@@ -71,7 +71,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFNPCWindow.h
     src/IFParty.h
     src/IFPartySlot.h
-    src/IFPlayerInfo.h
+    src/IFPlayerInfo.h src/IFPlayerInfo.cpp
     src/IFPlayerMiniInfo.cpp
     src/IFPlayerMiniInfo.h
     src/IFPractice.h
