@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Data/ItemData.h"
+#include <BSLib/BSLib.h>
+#include <ghidra/undefined.h>
+
 enum Blue : short {
     BLUE_INT = 0x0005,
     BLUE_STR = 0x000b,
@@ -15,14 +19,28 @@ enum Blue : short {
 
 class CSOItem {
 public:
-    char pad_0000[0xc4]; //0x0000
+    /// \address 008ba440
+    const CItemData::SData *GetItemData() const;
 
-    std::n_map<Blue, int> bluemap;
+    /// \address 008ba460
+    int GetQuantity() const;
 
+public:
+    char pad_0000[0x28];//0x0000
+    undefined1 field_28;//0x0028
+    char pad_0029[0x34 - 0x29];//0x0025
+    int m_refObjItemId;//0x0034
+    char pad_0038[0x9c - 0x38];//0x0038
+    int m_quantity; // 0x009c
+    char pad_00a0[0xc4 - 0xa0];//0x00a0
+    std::n_map<Blue, int> bluemap;//0x00c4
     char pad_00cc[464 - (0xc4 + 0xc)];
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(464) // approved by CIFExchange::ctor
+        ENSURE_SIZE(464)// approved by CIFExchange::ctor
+        ENSURE_OFFSET(field_28, 0x28)
+        ENSURE_OFFSET(m_refObjItemId, 0x34)
+        ENSURE_OFFSET(m_quantity, 0x9c)
         ENSURE_OFFSET(bluemap, 0xc4)
     END_FIXTURE()
 

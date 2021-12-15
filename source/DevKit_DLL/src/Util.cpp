@@ -70,6 +70,8 @@ void Setup() {
 
     placeHook(0x007a9bd0, addr_from_this(&CIFChatViewer::ShowHideControls));
 #endif // CONFIG_CHATVIEWER
+
+    quickstart.Setup();
 }
 
 bool DoesFileExists(const std::string &name) {

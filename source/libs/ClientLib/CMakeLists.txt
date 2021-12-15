@@ -10,7 +10,7 @@ set(SOURCE_FILES src/BufRender.h
     src/Data/GachaItemSetData.h
     src/Data/GachaNpcData.h
     src/Data/GameGuideData.h
-    src/Data/ItemData.h
+    src/Data/ItemData.h src/Data/ItemData.cpp
     src/Data/LevelData.h
     src/Data/LevelGoldData.h
     src/Data/MagicOptionData.h
@@ -145,7 +145,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFSelectableArea.cpp src/IFSelectableArea.h
     src/IFChatModeViewer.cpp src/IFChatModeViewer.h
     src/ICPlayer.h src/ICPlayer.cpp
-    src/SOItem.h
+    src/SOItem.h src/SOItem.cpp
     src/ICUser.cpp src/ICUser.h
     src/IFEdit.cpp src/IFEdit.h
     src/SRO_MSG_DEF.h
@@ -172,9 +172,10 @@ set(SOURCE_FILES src/BufRender.h
     src/Keyframe.h src/Keyframe.cpp
     src/UserGuildInfo.cpp src/UserGuildInfo.h
     src/PartyData.h
-    src/PartyMemberData.h)
-
+    src/PartyMemberData.h
+    src/IFWholeChat.cpp src/IFWholeChat.h
+    )
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet abi-testing imgui remodel ghidra)
+target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet TypeId abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)

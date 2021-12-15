@@ -30,6 +30,13 @@ foreach(CompilerFlag ${CompilerFlags})
     string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
 endforeach()
 
+find_package(CxxTest)
+if(CXXTEST_FOUND)
+    message(STATUS "CxxTest found. Testing enabled!")
+    include_directories(${CXXTEST_INCLUDE_DIR})
+    enable_testing()
+endif()
+
 message(${CMAKE_CXX_FLAGS})
 message(${CMAKE_CXX_FLAGS_DEBUG})
 message(${CMAKE_CXX_FLAGS_RELEASE})

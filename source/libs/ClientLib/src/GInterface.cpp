@@ -232,6 +232,28 @@ void CGInterface::WriteSystemMessage(eLogType level, const wchar_t *str) {
     reinterpret_cast<void (__thiscall *)(CGInterface *, eLogType, const wchar_t *)>(0x007781B0)(this, level, str);
 }
 
+HOOK_ORIGINAL_MEMBER(0x007901c0, &CGInterface::WriteGlobalMessage)
+void CGInterface::WriteGlobalMessage(unsigned char nSlot, std::n_wstring message) {
+    CIFMainPopup *popup = GetMainPopup();
+    CIFInventory *inventory = popup->GetInventory();
+
+    CSOItem *item = inventory->GetItemBySlot(nSlot);
+
+    if (item->field_28 == 0) {
+        return;
+    }
+
+    const CItemData::SData *pItemData = item->GetItemData();
+
+    if (pItemData->IsGlobalMessageScroll()) {
+        NEWMSG(0x704c)
+
+        pReq << static_cast<unsigned char>(nSlot + 13u) << pItemData->m_typeId << acp_encode(message);
+
+        SENDMSG()
+    }
+}
+
 void CGInterface::sub_787C10(SChatMetaData &meta) {
     reinterpret_cast<void (__thiscall *)(CGInterface *, SChatMetaData *)>(0x787C10)(this, &meta);
 }
@@ -273,3 +295,6 @@ void CGInterface::FUN_0079a7e0(CGWndBase *pGWnd) const {
     reinterpret_cast<void (__thiscall *)(const CGInterface *, CGWndBase *)>(0x0079a7e0)(this, pGWnd);
 }
 
+void CGInterface::FUN_0079b8a0(undefined1 a1, undefined4 a2) {
+    reinterpret_cast<void(__thiscall *)(CGInterface *, undefined1, undefined4)>(0x0079b8a0)(this, a1, a2);
+}

@@ -18,6 +18,11 @@ enum BSSig {
 
 #define GFX_WM_COMMAND 0x0001
 
+enum {
+    GFX_WM_KEYUP = 0x101,
+    GFX_WM_CHAR = 0x102,
+};
+
 #define ONG_COMMAND(Id, Func) \
     { GFX_WM_COMMAND , 0, Id, Id, BSSig_u12, 0, \
         (GFX_PMSG) \
@@ -30,8 +35,14 @@ enum BSSig {
 		(static_cast< void (GFX_MSG_CALL CGWndBase::*)(int, int) > ( Func )), \
 		0, 0, 0 },
 
+#define ONG_KEYUP() \
+    { GFX_WM_KEYUP, 0, 0, 0, BSSig_u16, 0, \
+        (GFX_PMSG) \
+        (static_cast< int (GFX_MSG_CALL CGWndBase::*)(UINT, UINT, UINT) > ( &ThisClass :: OnKeyUp)), \
+        0, 0, 0},
+
 #define ONG_CHAR() \
-    { 258, 0, 0, 0, BSSig_u16, 0, \
+    { GFX_WM_CHAR, 0, 0, 0, BSSig_u16, 0, \
         (GFX_PMSG) \
         (static_cast< int (GFX_MSG_CALL CGWndBase::*)(UINT, UINT, UINT) > ( &ThisClass :: OnChar)), \
         0, 0, 0},

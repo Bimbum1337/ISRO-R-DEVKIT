@@ -4,6 +4,7 @@
 #include "hooks/Hooks.h"
 #include "Util.h"
 #include "imgui_windows/ImGui_Windows.h"
+#include <IFWholeChat.h>
 
 #include "IFflorian0.h"
 #include "IFflorian0Guide.h"
@@ -27,6 +28,10 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
 #ifdef CONFIG_CHATVIEWER
         OverrideObject<CIFChatViewer, 0x00EEC168>();
 #endif // CONFIG_CHATVIEWER
+
+#ifdef CONFIG_WHOLE_CHAT
+        OverrideObject<CIFWholeChat, 0x00eec7a8>();
+#endif // CONFIG_WHOLE_CHAT
 
 #ifdef CONFIG_IMGUI
         OnCreate(ImGui_OnCreate);
