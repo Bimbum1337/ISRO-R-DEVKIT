@@ -52,7 +52,7 @@ bool CIFWholeChat::OnCreate(long ln) {
     m_pCreatedStatic->SetFont(theApp.GetFont(0));
     m_pCreatedStatic->TB_Func_5(1);
     m_pCreatedStatic->TB_Func_6(0);
-    m_pCreatedStatic->SetText(TSM_GETTEXTPTR("UIIT_STT_WHOLECHAT"));
+    m_pCreatedStatic->SetText(TSM_GETTEXTPTR(L"UIIT_STT_WHOLECHAT"));
 
     wnd_rect rect3 = rect2;
 
@@ -86,7 +86,7 @@ void CIFWholeChat::FUN_007ef400(int numberOfItemsLeft) {
     m_IRM.GetResObj<CIFButton>(0x1f, 1)->SetEnabledState(numberOfItemsLeft != 0);
 
     CIFStatic *sta = m_IRM.GetResObj<CIFStatic>(0x23, 1);
-    sta->Func_49(sta, L"%d", numberOfItemsLeft);
+    sta->SetTextFormatted(L"%d", numberOfItemsLeft);
 }
 
 int CIFWholeChat::OnKeyUp(UINT nKey, UINT a2, UINT a3) {
@@ -113,13 +113,13 @@ void CIFWholeChat::SendGlobalMessage() {
     }
 
     if (text.length() == 0) {
-        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR("UIIT_STT_WHOLECHAT_INPUTMSG"));
+        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR(L"UIIT_STT_WHOLECHAT_INPUTMSG"));
         m_pEdit->SetText(L"");
         return;
     }
 
     if (CGame::GetBadwordFilter()->sub_8C4020(text)) {
-        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR("UIIT_MSG_WHOLECHATERR_NOTINUSEMSG"));
+        g_pCGInterface->WriteSystemMessage(SYSLOG_NONE, TSM_GETTEXTPTR(L"UIIT_MSG_WHOLECHATERR_NOTINUSEMSG"));
         m_pEdit->SetText(L"");
         return;
     }

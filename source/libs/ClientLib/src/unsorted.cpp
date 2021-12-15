@@ -187,9 +187,9 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
         case CHAT_PM: {
             const wchar_t *translatedIdent;
             if (direction == 0) {
-                translatedIdent = TSM_GETTEXTPTR("UIIT_CHATERR_WHISPER_FROM_MESSAGE");
+                translatedIdent = TSM_GETTEXTPTR(L"UIIT_CHATERR_WHISPER_FROM_MESSAGE");
             } else {
-                translatedIdent = TSM_GETTEXTPTR("UIIT_CHATERR_WHISPER_TO_MESSAGE");
+                translatedIdent = TSM_GETTEXTPTR(L"UIIT_CHATERR_WHISPER_TO_MESSAGE");
             }
 
             // Remark: This is highly inefficient. TSM returns a n_wstring already!
@@ -219,13 +219,13 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
 
         case CHAT_Party:
             local_64 = L"(";
-            local_64 += TSM_GETTEXTPTR("UIIT_CTL_PARTY");
+            local_64 += TSM_GETTEXTPTR(L"UIIT_CTL_PARTY");
             local_64 += L"):";
             break;
 
         case CHAT_Guild:
             local_64 = L"(";
-            local_64 += TSM_GETTEXTPTR("UIIT_CTL_GUILD");
+            local_64 += TSM_GETTEXTPTR(L"UIIT_CTL_GUILD");
             local_64 += L"):";
             break;
 
@@ -233,7 +233,7 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
             g_pCGInterface->ShowMessage_Notice(strMessageCopy);
 
             local_64 = L"(";
-            local_64 += TSM_GETTEXTPTR("UIIT_MSG_NOTIFY");
+            local_64 += TSM_GETTEXTPTR(L"UIIT_MSG_NOTIFY");
             local_64 += L"):";
 
             std::n_wstring tmp = local_64 + strMessageCopy;
@@ -248,7 +248,7 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
 
         case CHAT_Union:
             local_64 = L"(";
-            local_64 += TSM_GETTEXTPTR("UIIT_STT_GUILD_RESPECT_ALLY");
+            local_64 += TSM_GETTEXTPTR(L"UIIT_STT_GUILD_RESPECT_ALLY");
             local_64 += L"):";
             break;
 
@@ -258,7 +258,7 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
 
         case CHAT_Academy:
             local_64 = L"(";
-            local_64 += TSM_GETTEXTPTR("UIIT_CTL_TC_TRAININGCAMP" );
+            local_64 += TSM_GETTEXTPTR(L"UIIT_CTL_TC_TRAININGCAMP" );
             local_64 += L"):";
             break;
 
