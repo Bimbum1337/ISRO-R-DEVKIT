@@ -20,7 +20,7 @@ public:
 	virtual void TB_Func_10();
 	virtual void TB_Func_11();
 	virtual void TB_Func_12(const char * str, int a3, int a4);
-	virtual void TB_Func_13(std::string str, int a3, int a4);
+	virtual void TB_Func_13(std::n_string str, int a3, int a4);
 	virtual void TB_Func_14(std::string str, int a3, int a4);
 	virtual void TB_Func_15(int a2);
 	virtual void TB_Func_16();

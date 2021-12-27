@@ -154,9 +154,9 @@ void CTextBoard::TB_Func_12(const char* str, int a3, int a4)
 }
 
 // CTextBoard::Func_13(std::string const *,int,int) .text 00655680 000000E6 00000014 00000024 R . . . . T .
-void CTextBoard::TB_Func_13(const std::string str, int a3, int a4)
+void CTextBoard::TB_Func_13(const std::n_string str, int a3, int a4)
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::string, int, int)>(0x00655680)(this, str, a3, a4);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::n_string, int, int)>(0x00655680)(this, str, a3, a4);
 }
 
 // CTextBoard::Func_14(void) .text 00655820 000000E0 00000014 00000024 R . . . . T .

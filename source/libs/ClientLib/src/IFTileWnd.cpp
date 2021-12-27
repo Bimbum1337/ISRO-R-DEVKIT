@@ -18,10 +18,10 @@ CIFTileWnd::~CIFTileWnd(void)
 }
 
 // CIFTileWnd::CTextBoard_Func_13 .text 0081AC50 0000008E 00000034 00000001 R . . . . . .
-void CIFTileWnd::TB_Func_13(std::string str, int a3, int a4)
+void CIFTileWnd::TB_Func_13(std::n_string str, int a3, int a4)
 {
 	BS_DEBUG_LOW(__FUNCTION__ " (\"%s\", %d, %d)", str.c_str(), a3, a4);
-	reinterpret_cast<void(__thiscall*)(CTextBoard*,std::string,int,int)>(0x0081AC50)(this, str, a3, a4);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*,std::n_string,int,int)>(0x0081AC50)(this, str, a3, a4);
 }
 
 // CIFTileWnd::OnCreate(void) .text 0081B530 0000000A 00000000 00000000 R . . . . . .
