@@ -92,6 +92,11 @@ CICharactor *GetCharacterObjectByID_MAYBE(int uniqueid) {
     return reinterpret_cast<CICharactor *(__cdecl *)(int)>(0x009c3220)(uniqueid);
 }
 
+// 0098caa0
+std::n_string GetKindredTextureFilePath(char param_1, int param_2) {
+    return reinterpret_cast<std::n_string (__cdecl *)(char, int)>(0x0098caa0)(param_1, param_2);
+}
+
 void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipient, int uniqueid,
                                  const std::n_wstring &strMessage,
                                  char direction) {
