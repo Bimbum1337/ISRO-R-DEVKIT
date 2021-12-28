@@ -32,6 +32,9 @@ public:
     /// \address 0069a300
     undefined1 OnCloseWnd() override;
 
+    /// \address 00698be0
+    void OnClick_11();
+
 private:
     char pad_0x036C[0x8];
     CIFTargetWindowCommonEnemy* m_pGDR_TW_COMMONENEMY; //0x374
