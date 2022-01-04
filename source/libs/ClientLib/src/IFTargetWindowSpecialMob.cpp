@@ -31,6 +31,7 @@ bool CIFTargetWindowSpecialMob::OnCreate(long ln) {
     m_pGDR_TWSM_TEXT_ID = m_IRM.GetResObj<CIFStatic>(GDR_TWSM_TEXT_LEV, 1); // 0x378
 
     m_pGDR_TWSM_GAUGE_HPGAUGE->field_0x38c = 0.1;
+    m_pGDR_TWSM_GAUGE_HPGAUGE->SetGWndSize(208, 4);
     return true;
 }
 
