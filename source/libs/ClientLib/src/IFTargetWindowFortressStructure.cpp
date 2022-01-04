@@ -31,6 +31,8 @@ bool CIFTargetWindowFortressStructure::OnCreate(long ln) {
 
     m_pGDR_TWFS_GAUGE_HPGAUGE->field_0x38c = 0.1;
     m_pGDR_TWFS_D_BUTTON->TB_Func_13("interface\\ifcommon\\com_d_windowclose.ddj", 0, 0);
+    m_pGDR_TWFS_D_BUTTON->TB_Func_13("interface\\ifcommon\\com_d_windowclose.ddj", 0, 0);
+    m_pGDR_TWFS_D_BUTTON->FUN_00656590("interface\\ifcommon\\com_d_windowclose_press.ddj");
 
     return true;
 }
