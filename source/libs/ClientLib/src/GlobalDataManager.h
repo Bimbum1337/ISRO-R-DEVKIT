@@ -41,10 +41,13 @@ public:
     undefined4 FUN_008cbac0(int a1);
 
     /// \address 0093f370
-    const CCharacterData *GetCharacterData(int id) const;
+    const CCharacterData::SData *GetCharacterData(int id) const;
 
     /// \address 0093f5f0
     const CItemData::SData &GetItemData(int refObjItemId) const;
+
+    /// \address 00937f20
+    const CLevelData::SData &GetLevelData(int level) const;
 
 private:
     /// \address 0093f2f0

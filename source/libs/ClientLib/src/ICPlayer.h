@@ -14,6 +14,22 @@ public:
     /// \address 009d6580
     std::n_wstring GetCharName() const;
 
+    unsigned char GetCurrentLevel() const;
+
+    long long int GetCurrentExp() const;
+
+    short GetStatPointAvailable() const;
+
+    short GetStrength() const;
+
+    short GetIntelligence() const;
+
+    /// \address 009d65c0
+    /// \remark Optimized to return const reference instead of object
+    const std::n_wstring &GetJobAlias() const;
+
+    /// \address 009d4d20
+    int GetCurrentJobExperiencePoints() const;
 
 private:
     char pad_082C[32]; //0x082C
@@ -48,7 +64,9 @@ private:
     CSOItem N00009486; //0x1E60
     char pad_2030[96]; //0x2030
     char N000094A7; //0x2090 bit 0 = isGameMaster
-    char pad_2091[135]; //0x2091
+    char pad_2091[7]; //0x2091
+    std::n_wstring m_jobAlias; // 0x2098
+    char pad_20b4[100]; //0x20b4
 
 
     BEGIN_FIXTURE()
@@ -62,8 +80,9 @@ private:
         ENSURE_OFFSET(m_int_stat, 0x087E)
         ENSURE_OFFSET(m_skillpoint, 0x0880)
         ENSURE_OFFSET(m_statpoint_available, 0x0884)
+        ENSURE_OFFSET(m_jobAlias, 0x2098)
 
-    END_FIXTURE()
+        END_FIXTURE()
 
     RUN_FIXTURE(CICPlayer)
 };

@@ -78,25 +78,25 @@ bool CIFMainPopup::OnCreate(long ln) {
     m_skillWindow->FUN_006a6e60(1);
 
 
-    m_btnInventory->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_INVENTORY"));
+    m_btnInventory->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_INVENTORY"));
     m_btnInventory->FUN_00652d20(0x80);
 
-    m_btnCharacter->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_CHARACTER"));
+    m_btnCharacter->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_CHARACTER"));
     m_btnCharacter->FUN_00652d20(0x80);
 
-    m_btnSkill->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_SKILL"));
+    m_btnSkill->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_SKILL"));
     m_btnSkill->FUN_00652d20(0x80);
 
-    m_btnAction->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_ACTION"));
+    m_btnAction->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_ACTION"));
     m_btnAction->FUN_00652d20(0x80);
 
-    m_btnParty->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_PARTY"));
+    m_btnParty->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_PARTY"));
     m_btnParty->FUN_00652d20(0x80);
 
-    m_btnQuest->SetTooltipText(TSM_GETTEXT("UIIT_STT_TOGGLE_QUEST"));
+    m_btnQuest->SetTooltipText(TSM_GETTEXT(L"UIIT_STT_TOGGLE_QUEST"));
     m_btnQuest->FUN_00652d20(0x80);
 
-    m_btnApprentice->SetTooltipText(TSM_GETTEXT("UIIT_CTL_TC_SHORTKEY_L"));
+    m_btnApprentice->SetTooltipText(TSM_GETTEXT(L"UIIT_CTL_TC_SHORTKEY_L"));
     m_btnApprentice->FUN_00652d20(0x80);
 
 
@@ -142,7 +142,7 @@ void CIFMainPopup::ShowSubPage(int page) {
     switch (page) {
         case GDR_INVENTORY: {
             field_0x7fc = 1;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_INVENTORY"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_INVENTORY"));
 
             m_inventoryWindow->ShowGWnd(true);
             m_equipmentWindow->ShowGWnd(true);
@@ -158,7 +158,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_PARTY: {
             field_0x7fc = 4;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_PARTY"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_PARTY"));
 
             m_partyWindow->ShowGWnd(true);
             m_background->ShowGWnd(false);
@@ -170,7 +170,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_SKILL: {
             field_0x7fc = 2;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_SKILL"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_SKILL"));
 
             m_skillWindow->ShowGWnd(true);
             m_background->ShowGWnd(false);
@@ -182,7 +182,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_ACTION: {
             field_0x7fc = 3;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_ACTION"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_ACTION"));
 
             m_actionWindow->ShowGWnd(true);
             m_background->MoveGWnd(rect.pos.x + 40, rect.pos.y + 154);
@@ -195,7 +195,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_PLAYERINFO: {
             field_0x7fc = 0;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_ACTION"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_ACTION"));
 
             m_playerInfoWindow->ShowGWnd(true);
             m_background->ShowGWnd(false);
@@ -207,7 +207,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_QUEST: {
             field_0x7fc = 5;
-            SetText(TSM_GETTEXTPTR("UIIT_STT_QUEST"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_STT_QUEST"));
 
             m_questWindow->ShowGWnd(true);
             m_background->ShowGWnd(false);
@@ -219,7 +219,7 @@ void CIFMainPopup::ShowSubPage(int page) {
 
         case GDR_APPRENTICESHIP: {
             field_0x7fc = 5;
-            SetText(TSM_GETTEXTPTR("UIIT_CTL_TC_TRAININGCAMP"));
+            SetText(TSM_GETTEXTPTR(L"UIIT_CTL_TC_TRAININGCAMP"));
 
             m_apprenticeShipWindow->ShowGWnd(true);
             m_background->ShowGWnd(true);

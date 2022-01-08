@@ -18,7 +18,7 @@ void CharacterData::Render() {
     }
 
     static int id = 0;
-    static const CCharacterData *data = NULL;
+    static const CCharacterData::SData *data = NULL;
 
     if (ImGui::InputInt("ID", &id)) {
         // Update
@@ -26,8 +26,8 @@ void CharacterData::Render() {
     }
 
     if (data != NULL) {
-        ImGui::LabelText("CodeName", "%ls", data->Codename().c_str());
-        ImGui::LabelText("Health", "%d", data->Health());
+        ImGui::LabelText("CodeName", "%ls", data->m_codename.c_str());
+        ImGui::LabelText("Health", "%d", data->m_health);
     }
 
     ImGui::End();

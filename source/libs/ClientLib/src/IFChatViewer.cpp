@@ -80,7 +80,7 @@ int CIFChatViewer::Func_4(int a2) {
 void CIFChatViewer::OnTimer(int timerId) {
     if (timerId == TIMER_CHATBLOCK) {
         wchar_t buffer[255];
-        swprintf_s(buffer, TSM_GETTEXTPTR("UIIT_STT_CANT_CHATTING"), m_ChatBlock_SecondsLeft);
+        swprintf_s(buffer, TSM_GETTEXTPTR(L"UIIT_STT_CANT_CHATTING"), m_ChatBlock_SecondsLeft);
 
         m_ChatBlockLabel->m_FontTexture.sub_8B4400(5, 1);
         m_ChatBlockLabel->SetText(buffer);
@@ -140,24 +140,24 @@ bool CIFChatViewer::OnCreate(long ln) {
         if (i) {
             switch (i) {
                 case 1:
-                    m_pTabs[1]->SetText(TSM_GETTEXTPTR("UIIT_CTL_CHATMENU_PARTY"));
+                    m_pTabs[1]->SetText(TSM_GETTEXTPTR(L"UIIT_CTL_CHATMENU_PARTY"));
                     break;
 
                 case 2:
-                    m_pTabs[2]->SetText(TSM_GETTEXTPTR("UIIT_CTL_CHATMENU_GUILD"));
+                    m_pTabs[2]->SetText(TSM_GETTEXTPTR(L"UIIT_CTL_CHATMENU_GUILD"));
                     break;
 
                 case 3:
-                    m_pTabs[3]->SetText(TSM_GETTEXTPTR("UIIT_CTL_CHATMENU_ALLY"));
+                    m_pTabs[3]->SetText(TSM_GETTEXTPTR(L"UIIT_CTL_CHATMENU_ALLY"));
                     break;
 
                 case 4:
-                    m_pTabs[4]->SetText(TSM_GETTEXTPTR("UIIT_CTL_CHATMENU_TRAININGCAMP"));
+                    m_pTabs[4]->SetText(TSM_GETTEXTPTR(L"UIIT_CTL_CHATMENU_TRAININGCAMP"));
                     break;
             }
             m_pTabs[i]->sub_64CC30(0);
         } else {
-            m_pTabs[0]->SetText(TSM_GETTEXTPTR("UIIT_CTL_CHAT_ALL"));
+            m_pTabs[0]->SetText(TSM_GETTEXTPTR(L"UIIT_CTL_CHAT_ALL"));
             m_pTabs[i]->sub_64CC30(1);
         }
     }
@@ -172,13 +172,13 @@ bool CIFChatViewer::OnCreate(long ln) {
 
     m_ChatModeView_Wnd->BringToFront();
 
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_FRIEND_INVITE"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_GUILD_INVITE"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_BLOCK"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_ADMISSION"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_WHISPER_BLOCK"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_WHISPER_ADMISSION"));
-    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR("UIIT_STT_CHAT_COMMAND_WHISPER1"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_FRIEND_INVITE"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_GUILD_INVITE"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_BLOCK"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_ADMISSION"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_WHISPER_BLOCK"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_WHISPER_ADMISSION"));
+    m_ChatModeView_Wnd->sub_7AA0B0(TSM_GETTEXTPTR(L"UIIT_STT_CHAT_COMMAND_WHISPER1"));
 
     m_ChatLists[0] = m_IRM.GetResObj<CIFTextBox>(GDR_LIST_CHATTING, 1);
     m_ChatLists[1] = m_IRM.GetResObj<CIFTextBox>(GDR_LIST_CHATPARTY, 1);
@@ -257,15 +257,15 @@ bool CIFChatViewer::OnCreate(long ln) {
     m_ChatLists[2]->Func_01(0);
     m_ChatLists[3]->Func_01(0);
 
-    std::n_wstring str = TSM_GETTEXTPTR("UIIT_STT_CHATING_VIEW_AUTO_OFF");
+    std::n_wstring str = TSM_GETTEXTPTR(L"UIIT_STT_CHATING_VIEW_AUTO_OFF");
     m_Button_ChatTabHide->SetTooltipText(&str);
     m_Button_ChatTabHide->FUN_00652d20(128);
 
-    str = TSM_GETTEXTPTR("UIIT_CTL_WHISPER_LIST");
+    str = TSM_GETTEXTPTR(L"UIIT_CTL_WHISPER_LIST");
     m_Button_WhisperList->SetTooltipText(&str);
     m_Button_WhisperList->FUN_00652d20(128);
 
-    str = TSM_GETTEXTPTR("UIIT_STT_TOGGLE_CHATING_WINDOW_SETING");
+    str = TSM_GETTEXTPTR(L"UIIT_STT_TOGGLE_CHATING_WINDOW_SETING");
     m_Button_ChatSize->SetTooltipText(&str);
     m_Button_ChatSize->FUN_00652d20(128);
 
@@ -332,7 +332,7 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
     if (!m_bChattingAllowed) {
         m_InputBox->SetText(L"");
         wchar_t buffer[64];
-        swprintf_s(buffer, TSM_GETTEXTPTR("UIIT_MSG_CANT_CHATTING"));
+        swprintf_s(buffer, TSM_GETTEXTPTR(L"UIIT_MSG_CANT_CHATTING"));
         g_pCGInterface->WriteSystemMessage(SYSLOG_ERR, buffer);
         return 0;
     }
@@ -461,7 +461,7 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                             if (N00009C5E == CHAT_Party && !g_CCharacterDependentData.IsInParty()) {
                                 g_pCGInterface->WriteSystemMessage(
                                         SYSLOG_ERR,
-                                        TSM_GETTEXTPTR("UIIT_MSG_PARTYERR_CANT_FIND_PARTY")
+                                        TSM_GETTEXTPTR(L"UIIT_MSG_PARTYERR_CANT_FIND_PARTY")
                                 );
 
                                 m_InputBox->SetText(L"");
@@ -471,7 +471,7 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                             if (N00009C5E == CHAT_Guild && !g_CCharacterDependentData.IsInGuild()) {
                                 g_pCGInterface->WriteSystemMessage(
                                         SYSLOG_ERR,
-                                        TSM_GETTEXTPTR("UIIT_MSG_GUILD_NON_EXISTING")
+                                        TSM_GETTEXTPTR(L"UIIT_MSG_GUILD_NON_EXISTING")
                                 );
 
                                 m_InputBox->SetText(L"");
@@ -481,7 +481,7 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                             if (N00009C5E == CHAT_Academy && !g_CCharacterDependentData.IsInTrainingCamp()) {
                                 g_pCGInterface->WriteSystemMessage(
                                         SYSLOG_ERR,
-                                        TSM_GETTEXTPTR("UIIT_MSG_TC_ERROR_NOT_POSITION")
+                                        TSM_GETTEXTPTR(L"UIIT_MSG_TC_ERROR_NOT_POSITION")
                                 );
 
                                 m_InputBox->SetText(L"");
@@ -497,7 +497,7 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
 
 #ifdef CONFIG_CHATVIEWER_BADWORDFILTER
                 if (CGame::GetBadwordFilter()->sub_8C4020(input_text.c_str())) {
-                    WriteToChatW(TSM_GETTEXTPTR("UIIT_MSG_CHATWND_MESSAGE_FILTER"), D3DCOLOR_RGBA(255, 0, 0, 0), 1);
+                    WriteToChatW(TSM_GETTEXTPTR(L"UIIT_MSG_CHATWND_MESSAGE_FILTER"), D3DCOLOR_RGBA(255, 0, 0, 0), 1);
                     return 1;
                 }
 #endif // CONFIG_CHATVIEWER_BADWORDFILTER
@@ -702,27 +702,27 @@ void CIFChatViewer::OnListChatThing(int a1, int a2) {
         }
 
         std::n_wstring tc = L"(";
-        tc += TSM_GETTEXTPTR("UIIT_CTL_TC_TRAININGCAMP");
+        tc += TSM_GETTEXTPTR(L"UIIT_CTL_TC_TRAININGCAMP");
         tc += L")";
 
         std::n_wstring whisper_from = L"(";
-        whisper_from += TSM_GETTEXTPTR("UIIT_CHATERR_WHISPER_FROM_MESSAGE");
+        whisper_from += TSM_GETTEXTPTR(L"UIIT_CHATERR_WHISPER_FROM_MESSAGE");
         whisper_from += L")";
 
         std::n_wstring whisper_to = L"(";
-        whisper_to += TSM_GETTEXTPTR("UIIT_CHATERR_WHISPER_TO_MESSAGE");
+        whisper_to += TSM_GETTEXTPTR(L"UIIT_CHATERR_WHISPER_TO_MESSAGE");
         whisper_to += L")";
 
         std::n_wstring guild = L"(";
-        guild += TSM_GETTEXTPTR("UIIT_CTL_GUILD");
+        guild += TSM_GETTEXTPTR(L"UIIT_CTL_GUILD");
         guild += L")";
 
         std::n_wstring party = L"(";
-        party += TSM_GETTEXTPTR("UIIT_CTL_PARTY");
+        party += TSM_GETTEXTPTR(L"UIIT_CTL_PARTY");
         party += L")";
 
         std::n_wstring ally = L"(";
-        ally += TSM_GETTEXTPTR("UIIT_STT_GUILD_RESPECT_ALLY");
+        ally += TSM_GETTEXTPTR(L"UIIT_STT_GUILD_RESPECT_ALLY");
         ally += L")";
 
 

@@ -214,6 +214,9 @@ public:
     /// \address 0079b8a0
     void FUN_0079b8a0(undefined1 a1, undefined4 a2);
 
+    /// \address 0078f4e0
+    void RequestStatIncrement(undefined4 a1, undefined4 a2, undefined4 a3, undefined4 a4);
+
 private:
     /// \address 0079a7e0
     void FUN_0079a7e0(CGWndBase *pGWnd) const;

@@ -12,6 +12,13 @@ public:
     void Render(void);
 
     UserGuildInfo *GetGuildInfo() const;
+
+    /// \address 009db0e0
+    unsigned char GetJobLevel() const;
+
+    /// \address 009db0d0
+    undefined1 FUN_009db0d0() const;
+
 private:
     char pad_078C[56]; //0x078C
     UserGuildInfo *m_pGuildInfo; //0x07C4

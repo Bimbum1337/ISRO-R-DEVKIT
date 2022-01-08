@@ -1,9 +1,10 @@
 #pragma once
 
-#include <ghidra/undefined.h>
-#include <Test/Test.h>
+#include "CharacterStatistics.h"
 #include "PartyData.h"
 #include "PartyMemberData.h"
+#include <Test/Test.h>
+#include <ghidra/undefined.h>
 
 #define g_CCharacterDependentData (*reinterpret_cast<CCharacterDependentData*>(0x00eeebd8))
 
@@ -28,6 +29,12 @@ public:
 
     /// \address 00992400
     const SPartyMemberData &GetPartyMemberData(int memberId) const;
+
+    /// \address 00987090
+    const SCharacterStatistics &FUN_00987090() const;
+
+    /// \address 00993120
+    int FUN_00993120(const std::n_wstring &characterName) const;
 
 private:
 
