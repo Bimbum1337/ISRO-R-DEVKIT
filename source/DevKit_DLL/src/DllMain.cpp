@@ -33,7 +33,9 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         OverrideObject<CIFWholeChat, 0x00eec7a8>();
 #endif // CONFIG_WHOLE_CHAT
 
+#ifdef CONFIG_MAINPOP_PLAYERINFO
         OverrideObject<CIFPlayerInfo, 0x00eea7e8>();
+#endif // CONFIG_MAINPOP_PLAYERINFO
 
 #ifdef CONFIG_IMGUI
         OnCreate(ImGui_OnCreate);

@@ -47,3 +47,8 @@ option(CONFIG_WHOLE_CHAT "Replace global chat dialog with custom one" OFF)
 if (CONFIG_WHOLE_CHAT)
     add_definitions(-DCONFIG_WHOLE_CHAT)
 endif ()
+
+option(CONFIG_MAINPOP_PLAYERINFO "Use Playerinfor implementation in SRO_DevKit" OFF)
+if (CONFIG_MAINPOP_PLAYERINFO)
+    add_definitions(-DCONFIG_MAINPOP_PLAYERINFO)
+endif()
