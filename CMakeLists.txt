@@ -44,7 +44,7 @@ message(${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
 message(${CMAKE_CXX_FLAGS_MINSIZEREL})
 
 # We are no idiots, ignore these stupid deprecations!
-add_compile_definitions(_CRT_SECURE_NO_DEPRECATE)
+add_compile_definitions(_CRT_SECURE_NO_DEPRECATE _CRT_NON_CONFORMING_SWPRINTFS)
 
 # Set target platform ... to ... Windows XP ... oops
 add_definitions(-DWINVER=0x0500)
