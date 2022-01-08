@@ -2,7 +2,6 @@
 set(SOURCE_FILES src/BufRender.h
     src/CameraWorking.cpp
     src/CameraWorking.h
-    src/Client.cpp
     src/Client.h
     src/Data/ActionWndData.h
     src/Data/CharacterData.h src/Data/CharacterData.cpp
@@ -112,11 +111,9 @@ set(SOURCE_FILES src/BufRender.h
     src/PSilkroad.h
     src/PSOuterInterface.cpp
     src/PSOuterInterface.h
-    src/PSVersionCheck.cpp
     src/PSVersionCheck.h
     src/RTLoading.cpp
     src/RTLoading.h
-    src/StdAfx.cpp
     src/StdAfx.h
     src/StringUtils.h
     src/TextBoard.cpp
@@ -127,7 +124,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFConfirmReputationGuide.cpp src/IFConfirmReputationGuide.h
     src/IFEventGuide.cpp src/IFEventGuide.h
     src/IFQuestInfoGuide.cpp src/IFQuestInfoGuide.h
-    src/IFLetterAlarmGuide.cpp src/IFLetterAlarmGuide.h
+    src/IFLetterAlarmGuide.h
     src/IFServerEventGuide.cpp src/IFServerEventGuide.h
     src/IFOpenMarketAlramGuide.cpp src/IFOpenMarketAlramGuide.h
     src/IFEventGuideSecond.cpp src/IFEventGuideSecond.h
@@ -140,7 +137,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFListCtrl.cpp src/IFListCtrl.h
     src/LinkedScroll.cpp src/LinkedScroll.h
     src/IFVerticalScroll.cpp src/IFVerticalScroll.h
-    src/IFScrollBar.cpp src/IFScrollBar.h
+    src/IFScrollBar.h
     src/IFTextBox.cpp src/IFTextBox.h
     src/IFSelectableArea.cpp src/IFSelectableArea.h
     src/IFChatModeViewer.cpp src/IFChatModeViewer.h
@@ -159,7 +156,7 @@ set(SOURCE_FILES src/BufRender.h
     src/NetProcessIn.cpp src/NetProcessIn.h
     src/NetProcessSecond.cpp src/NetProcessSecond.h
     src/NetProcessThird.cpp src/NetProcessThird.h
-    src/PSMission.cpp src/PSMission.h
+    src/PSMission.h
     src/GameCfg.cpp src/GameCfg.h
     src/LocalTime.cpp src/LocalTime.h
     src/IFCheckBox.cpp src/IFCheckBox.h
