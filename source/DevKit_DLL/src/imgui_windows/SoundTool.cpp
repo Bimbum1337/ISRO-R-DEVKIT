@@ -66,12 +66,16 @@ int SoundTool::ImGui_Window_SoundTool_Filter(std::vector<std::n_string> *items, 
 bool sound_item_getter(void *data, int idx, const char **outdata) {
     std::vector<std::n_string> *items = (std::vector<std::n_string>*)data;
 
-    if (idx >= items->size())
+    // Having idx negative is invalid
+    if (idx < 0)
         return false;
 
-    std::n_string &str = items->at(idx);
+    std::vector<std::n_string>::size_type id = static_cast<std::vector<std::n_string>::size_type>(idx);
 
-    *outdata = str.c_str();
+    if (id >= items->size())
+        return false;
+
+    *outdata = items->at(id).c_str();
 
     return true;
 }
