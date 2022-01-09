@@ -11,3 +11,7 @@ void CIFButton::SetEnabledState(bool state) {
 void CIFButton::FUN_00656640(std::n_string textureFileName) {
     reinterpret_cast<void(__thiscall *)(CIFButton *, std::n_string)>(0x00656640)(this, textureFileName);
 }
+
+void CIFButton::FUN_00656590(std::n_string str) {
+    reinterpret_cast<void(__thiscall *)(CIFButton *, std::n_string)>(0x00656590)(this, str);
+}

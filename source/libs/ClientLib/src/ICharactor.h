@@ -9,8 +9,8 @@
 enum TRIJOB_TYPE : char { /* Job Type of the Player */
     TRIJOB_HUNTER = 3,
     TRIJOB_NOJOB = 4,
-    TRIJOB_THIEF = 1,
-    TRIJOB_TRADER = 0
+    TRIJOB_THIEF = 2,
+    TRIJOB_TRADER = 1
 };
 
 class CICharactor : public CIGIDObject {
@@ -21,7 +21,7 @@ public:
 
     virtual void Func_35();
 
-    virtual const CCharacterData::SData &Func_36();
+    virtual const CCharacterData::SData &Func_36(); // TODO:: could lead to crashes further on
 
     virtual void Func_37();
 

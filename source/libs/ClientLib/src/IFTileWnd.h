@@ -9,7 +9,7 @@ public:
 	
 	~CIFTileWnd(void);
 
-	void TB_Func_13(std::string str, int a3, int a4) override;
+	void TB_Func_13(std::n_string str, int a3, int a4) override;
 
 	bool OnCreate(long ln) override;
 	void RenderMyself() override;

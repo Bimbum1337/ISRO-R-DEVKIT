@@ -14,6 +14,9 @@ public:
     /// \address 00656640
     void FUN_00656640(std::n_string textureFileName);
 
+    /// \address 00656590
+    void FUN_00656590(std::n_string str);
+
 private:
     char pad_0x0380[0x1C]; //0x0380
     char *m_disabledPath; //0x039C

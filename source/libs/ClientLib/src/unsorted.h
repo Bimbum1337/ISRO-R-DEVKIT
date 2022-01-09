@@ -60,6 +60,9 @@ int sub_4F9C50();
 
 CICharactor *GetCharacterObjectByID_MAYBE(int uniqueid);
 
+/// \address 0098caa0
+std::n_string GetKindredTextureFilePath(char param_1, int param_2);
+
 /// Write a received message to the chat window
 /// \remark This belongs to somewhere near CNetProcessIn
 /// \address 0x00876810

@@ -171,6 +171,13 @@ set(SOURCE_FILES src/BufRender.h
     src/PartyData.h
     src/PartyMemberData.h
     src/IFWholeChat.cpp src/IFWholeChat.h
+    src/IFBuffViewer.cpp src/IFBuffViewer.h
+    src/IFTargetWindow.cpp src/IFTargetWindow.h
+    src/IFTargetWindowPlayer.cpp src/IFTargetWindowPlayer.h
+    src/IFTargetWindowJobPlayer.cpp src/IFTargetWindowJobPlayer.h
+    src/IFTargetWindowSpecialMob.cpp src/IFTargetWindowSpecialMob.h
+    src/IFTargetWindowCommonEnemy.cpp src/IFTargetWindowCommonEnemy.h
+    src/IFTargetWindowFortressStructure.cpp src/IFTargetWindowFortressStructure.h
     )
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
