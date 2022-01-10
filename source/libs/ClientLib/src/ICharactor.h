@@ -16,6 +16,9 @@ enum TRIJOB_TYPE : char { /* Job Type of the Player */
 class CICharactor : public CIGIDObject {
     friend CClassLink<CICharactor>;
 public:
+    /// \address 009cf1b0
+    void Func_15(int param_1, float *param_2) override;
+    void Func_15_impl(int param_1, float *param_2);
 
     virtual void Func_34();
 
@@ -88,19 +91,30 @@ private:
     unsigned int N00000A38; //0x0468
     char pad_046C[16]; //0x046C
     class CGFontTexture m_textureMessageAbove; //0x047C
-    char pad_04E4[41]; //0x04E4
+    char pad_04E4[12]; //0x04E4
+protected:
+    float m_renderY; //0x04F0
+    float m_renderX; //0x04F4
+    float m_renderDepth; //0x04F8
+private:
+    char pad_04FC[17]; //0x04FC
     TRIJOB_TYPE b_JobType; //0x050D
     char pad_050E[638]; //0x050E
 
     BEGIN_FIXTURE()
         ENSURE_SIZE(0x78c)
         ENSURE_OFFSET(classLink, 0x274)
-        ENSURE_OFFSET(decoList, 0x284)
+        ENSURE_OFFSET(decolist, 0x284)
         ENSURE_OFFSET(m_mpCurrent, 0x0454)
         ENSURE_OFFSET(m_hpMax, 0x0458)
         ENSURE_OFFSET(m_mpMax, 0x045C)
         ENSURE_OFFSET(m_hpCurrent, 0x0460)
-        ENSURE_OFFSET(m_textureMessageAbove, 0x474)
+        ENSURE_OFFSET(m_textureMessageAbove, 0x47C)
+        ENSURE_OFFSET(m_renderY, 0x4F0)
+        ENSURE_OFFSET(m_renderX, 0x4F4)
+        ENSURE_OFFSET(m_renderDepth, 0x4F8)
         ENSURE_OFFSET(b_JobType, 0x50d)
     END_FIXTURE()
+
+    RUN_FIXTURE(CICharactor)
 };

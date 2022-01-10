@@ -12,7 +12,8 @@ public:
 
     virtual void Func_14();
 
-    virtual void Func_15();
+    /// \address 004df110
+    virtual void Func_15(int param_1, float *param_2);
 
     virtual void Func_16();
 
