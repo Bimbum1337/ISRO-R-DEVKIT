@@ -36,6 +36,18 @@ public:
     /// \address 00993120
     int FUN_00993120(const std::n_wstring &characterName) const;
 
+    /// \address FUN_00998280
+    int FUN_00998280(int guildId);
+
+    /// \address 009870d0
+    int FUN_009870d0();
+
+    /// \address 00998230
+    int FUN_00998230(int* param_1);
+
+    /// \address 00992940
+    undefined4 FUN_00992940(std::n_wstring *param_1);
+
 private:
 
     char pad[0x20];

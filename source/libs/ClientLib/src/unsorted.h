@@ -11,6 +11,7 @@
 #define ARRAY_SIZE(ar) ((int)(sizeof(ar)/sizeof(*ar)))
 
 #define g_currentTime (*reinterpret_cast<int*>(0x0110F800))
+#define DAT_00eef5e8 (*reinterpret_cast<undefined4*>(0x00eef5e8))
 
 // This is used for some debugging stuff ... no idea what this exactly is
 #define dword_EECC18 (*reinterpret_cast<int*>(0xEECC18))

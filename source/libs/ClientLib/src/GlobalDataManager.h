@@ -49,6 +49,12 @@ public:
     /// \address 00937f20
     const CLevelData::SData &GetLevelData(int level) const;
 
+    /// \address 00939a60
+    undefined FUN_00939a60(undefined4 param_1);
+
+    /// \address 0093a610
+    undefined4 FUN_0093a610(std::n_wstring param_1);
+
 private:
     /// \address 0093f2f0
     const CItemData *FUN_0093f2f0(int refObjItemId) const;
@@ -97,7 +103,7 @@ private:
 
 
 private:
-    BEGIN_FIXTURE()
+BEGIN_FIXTURE()
         ENSURE_OFFSET(m_characterDataMap, 0x0264)
     END_FIXTURE()
 
