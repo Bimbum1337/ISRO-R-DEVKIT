@@ -178,8 +178,10 @@ set(SOURCE_FILES src/BufRender.h
     src/IFTargetWindowSpecialMob.cpp src/IFTargetWindowSpecialMob.h
     src/IFTargetWindowCommonEnemy.cpp src/IFTargetWindowCommonEnemy.h
     src/IFTargetWindowFortressStructure.cpp src/IFTargetWindowFortressStructure.h
+    src/ICNonuser.cpp src/ICNonuser.h
+    src/ICMonster.cpp src/ICMonster.h
     )
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
-target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet TypeId abi-testing imgui remodel ghidra)
+target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet SimpleViewer TypeId abi-testing imgui remodel ghidra)
 target_include_directories(ClientLib PUBLIC src/)

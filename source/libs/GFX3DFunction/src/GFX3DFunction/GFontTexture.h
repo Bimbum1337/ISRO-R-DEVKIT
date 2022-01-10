@@ -3,9 +3,16 @@
 #include <d3d9.h>
 #include <string>
 #include <BSLib/BSLib.h>
+#include "ghidra/undefined.h"
 
 class CGFontTexture
 {
+public:
+    struct TextureDimensions {
+        short width;
+        short height;
+    };
+
 public:
 	CGFontTexture();
 	CGFontTexture(int a2);
@@ -33,6 +40,18 @@ public:
 	/// \address 008B3C10
     std::n_wstring *GetText(std::n_wstring *) const;
 
+    /// \address 008b2d30
+    void FUN_008b2d30(float* param_1, D3DVECTOR * dataOut);
+
+    /// \address 008b2f20
+    TextureDimensions GetDimensions() const;
+
+    /// \address 008b3bd0
+    void FUN_008b3bd0(std::n_wstring* param_1);
+
+    /// \address 008b4d90
+    void FUN_008b4d90(float* param_1, undefined4 param_2);
+
 private:
 	char pad_0004[12-4]; //0x0004
 	D3DCOLOR m_color_bg; //0x000C
@@ -44,6 +63,7 @@ private:
 	float m_scaling; //0x003C
 	char pad_0040[8]; //0x0040
 	int N000007BC; //0x0048
-	char pad_004C[28]; //0x004C
+    TextureDimensions m_dimensions; //0x004C
+    char pad_0050[24]; //0x0050
 };
 
