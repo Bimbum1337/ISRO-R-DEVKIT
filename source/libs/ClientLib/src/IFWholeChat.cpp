@@ -65,7 +65,7 @@ bool CIFWholeChat::OnCreate(long ln) {
 
     m_pEdit = m_IRM.GetResObj<CIFEdit>(GDR_WHOLE_CHAT_EDITBOX_INPUT, 1);
     m_pEdit->AddValue_404(2);
-    m_pEdit->FUN_00634f80(100);
+    m_pEdit->SetMaxLength(100);
 
     wnd_rect bounds = m_pEdit->GetBounds();
 

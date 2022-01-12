@@ -54,8 +54,6 @@ void Setup() {
 
     placeHook(0x0049d620, Put);
 
-    quickstart.Setup();
-
 #ifdef CONFIG_DEBUG_REDIRECT_PUTDUMP
     replaceAddr(0x00832927 + 1, (int) &DebugPrintCallback);
 #endif // CONFIG_DEBUG_REDIRECT_PUTDUMP
