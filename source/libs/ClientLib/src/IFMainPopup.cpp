@@ -309,63 +309,54 @@ void CIFMainPopup::ShowGWnd(bool bVisible) {
 
 
 HOOK_ORIGINAL_MEMBER(0x006a1d20, &CIFMainPopup::GetInventory);
-
 CIFInventory *CIFMainPopup::GetInventory() const {
     BS_ASSERT_MSG(m_inventoryWindow, "Mainpop에 세팅된 Inventory가 이상하다");
     return m_inventoryWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1d80, &CIFMainPopup::GetSkill);
-
 CIFSkill *CIFMainPopup::GetSkill() const {
     BS_ASSERT_MSG(m_skillWindow, "Mainpop에 세팅된 Skill이 이상하다");
     return m_skillWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1db0, &CIFMainPopup::GetAction);
-
 CIFAction *CIFMainPopup::GetAction() const {
     BS_ASSERT_MSG(m_actionWindow, "Mainpop에 세팅된 Action이 이상하다");
     return m_actionWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1de0, &CIFMainPopup::GetParty);
-
 CIFParty *CIFMainPopup::GetParty() const {
     BS_ASSERT_MSG(m_partyWindow, "Mainpop에 세팅된 Party가 이상하다");
     return m_partyWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x06a1e10, &CIFMainPopup::GetPlayerInfo);
-
 CIFPlayerInfo *CIFMainPopup::GetPlayerInfo() const {
     BS_ASSERT_MSG(m_playerInfoWindow, "Mainpop에 세팅된 PlayerInfo가 이상하다");
     return m_playerInfoWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1e40, &CIFMainPopup::GetQuest);
-
 CIFQuest *CIFMainPopup::GetQuest() const {
     BS_ASSERT_MSG(m_questWindow, "Mainpop에 세팅된 Quest가 이상하다");
     return m_questWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1e70, &CIFMainPopup::GetApprenticeShip);
-
 CIFApprenticeShip *CIFMainPopup::GetApprenticeShip() const {
     BS_ASSERT_MSG(m_apprenticeShipWindow, "Mainpop에 세팅된 ApprenticeShip이 이상하다");
     return m_apprenticeShipWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1d50, &CIFMainPopup::GetEquipment);
-
 CIFEquipment *CIFMainPopup::GetEquipment() const {
     BS_ASSERT_MSG(m_equipmentWindow, "Mainpop에 세팅된 Equipment가 이상하다");
     return m_equipmentWindow;
 }
 
 HOOK_ORIGINAL_MEMBER(0x006a1cf0, &CIFMainPopup::IsSubPageActive);
-
 bool CIFMainPopup::IsSubPageActive(int page) {
     return m_IRM.GetResObj<CIFWnd>(page, 1)->IsVisible();
 }
