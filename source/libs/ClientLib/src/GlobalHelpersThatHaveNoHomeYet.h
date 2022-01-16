@@ -9,7 +9,6 @@ union uregion {
 };
 
 #define g_CurrentIfUnderCursor (*(CGWndBase**)0x0110F608)
-#define g_Controler (*(CControler**)0x0110F7D4)
 
 #define g_Region (*(uregion*)0xEEF68C)
 

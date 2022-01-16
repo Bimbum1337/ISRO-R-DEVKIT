@@ -3,6 +3,8 @@
 #include "BSLib/BSLib.h"
 #include <d3dx9.h>
 
+#define g_Controler (*(CControler**)0x0110F7D4)
+
 class CControler : CObjChild {
     struct WindowsKeys {
         char pad_0000[8];
