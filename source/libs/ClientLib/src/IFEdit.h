@@ -22,7 +22,7 @@ public:
     bool IsSetValue_404(undefined4 value) const;
 
     /// \address 00634f80
-    void SetMaxLength(int length);
+    void SetMaxLength(int length); 
 
     /// \address 006351b0
     void SetTextmode(undefined4 mode);
