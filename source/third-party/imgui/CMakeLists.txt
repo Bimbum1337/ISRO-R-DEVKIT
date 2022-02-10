@@ -8,13 +8,17 @@ set(SOURCE_FILES
 add_library(imgui STATIC ${SOURCE_FILES})
 target_include_directories(imgui
         PUBLIC ./
+        ${DirectX_INCLUDE_DIRS}
         PRIVATE imgui/)
+
+target_link_libraries(imgui ${DirectX_LIBRARIES})
+target_link_directories(imgui PUBLIC ${DirectX_LIBRARY_PATHS})
 
 add_executable(imgui-demo-win32-dx9
         imgui/examples/example_win32_directx9/main.cpp
         imgui/imgui_demo.cpp)
 
-target_link_libraries(imgui-demo-win32-dx9 imgui d3d9)
+target_link_libraries(imgui-demo-win32-dx9 imgui)
 
 target_include_directories(imgui-demo-win32-dx9
         PRIVATE
