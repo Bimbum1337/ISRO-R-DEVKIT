@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFChatViewer.h"
 #include <BSLib/Debug.h>
 
@@ -8,6 +7,7 @@
 #include "ICPlayer.h"
 #include "SRO_MSG_DEF.h"
 #include "CharacterDependentData.h"
+#include <BSLib/multibyte.h>
 
 // CIFChatViewer_Delete                   .text 007A97D0 00000012 00000000 00000004 R . . . . . .
 // CIFChatViewer_Create                   .text 007AF5C0 00000067 00000014 00000000 R . . . . . .

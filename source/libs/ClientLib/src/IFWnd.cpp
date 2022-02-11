@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFWnd.h"
 #include "Game.h"
 #include <BSLib/Debug.h>

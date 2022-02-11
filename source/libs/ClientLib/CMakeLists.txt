@@ -114,7 +114,6 @@ set(SOURCE_FILES src/BufRender.h
     src/PSVersionCheck.h
     src/RTLoading.cpp
     src/RTLoading.h
-    src/StdAfx.h
     src/StringUtils.h
     src/TextBoard.cpp
     src/TextBoard.h

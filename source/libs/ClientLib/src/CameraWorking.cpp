@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "CameraWorking.h"
 
 void CCameraWorking::AddKeyframe(float a1, const D3DVECTOR& translation, const D3DXVECTOR4& rotation)

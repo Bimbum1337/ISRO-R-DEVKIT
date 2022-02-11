@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "unsorted.h"
 
 #include "GlobalHelpersThatHaveNoHomeYet.h"
@@ -14,6 +13,8 @@
 #include "IFChatViewer.h"
 
 #include <Game.h>
+
+#include <remodel/GlobalPtr.h>
 
 GlobalPtr<CGWndBase, 0x0110F60C> g_CurrentIF_UnderCursor;
 

@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFTileWnd.h"
 #include <BSLib/Debug.h>
 

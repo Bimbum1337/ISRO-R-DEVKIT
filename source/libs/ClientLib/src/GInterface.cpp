@@ -1,10 +1,11 @@
-#include "StdAfx.h"
 #include "GInterface.h"
 #include "IFflorian0Guide.h"
 #include "IFNotify.h"
 #include "IFChatViewer.h"
 #include "IFNotify.h"
 #include "GlobalDataManager.h"
+
+#include <BSLib/multibyte.h>
 
 #include <remodel/MemberFunctionHook.h>
 
