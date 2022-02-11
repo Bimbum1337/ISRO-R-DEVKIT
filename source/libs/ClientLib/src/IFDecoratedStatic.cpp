@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFDecoratedStatic.h"
 #include <BSLib/Debug.h>
 

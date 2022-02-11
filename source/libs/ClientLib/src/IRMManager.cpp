@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IRMManager.h"
 
 CIRMManager::CIRMManager() {

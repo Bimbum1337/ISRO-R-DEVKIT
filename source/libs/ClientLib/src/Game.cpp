@@ -1,5 +1,3 @@
-#include "StdAfx.h"
-
 #include "Game.h"
 
 // CGame::GetFont(int) .text 00BA5460 00000022 00000000 00000004 R . . . . . .

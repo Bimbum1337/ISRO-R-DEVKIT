@@ -1,5 +1,7 @@
-#include "StdAfx.h"
+#include <Windows.h>
+
 #include "is_this_important.h"
+
 
 // is_this_important::SetSomething(int) .text 008B00A0 0000004A 00000004 00000004 R . . . . . .
 int is_this_important::SetSomething(int someval)
