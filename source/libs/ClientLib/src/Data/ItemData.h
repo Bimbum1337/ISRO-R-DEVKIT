@@ -13,63 +13,61 @@ public:
         bool IsGlobalMessageScroll() const;
 
 
-        TypeId m_typeId;
-        unsigned __int32 m_id;
-        std::wstring m_codeName128;
-        std::wstring m_objName128;
-        std::wstring m_orgObjCodeName128;
-        std::wstring m_nameStrId128;
-        std::wstring m_descStrId128;
-        unsigned __int32 m_decayTime;
-
-        char gap1[2 * 4];
-
-        unsigned __int8 m_canTrade;
-        unsigned __int8 m_canSell;
-        unsigned __int8 m_canBuy;
-        unsigned __int8 m_canBorrow;
-
-        unsigned __int8 m_canDrop;
-        unsigned __int8 m_canPick;
-        unsigned __int8 m_canRepair;
-        unsigned __int8 m_canRevive;
-
-        unsigned __int8 m_canUse;
-        unsigned __int8 m_canThrow;
-
-        unsigned __int64 m_price;
-        unsigned __int64 m_sellPrice;
-        unsigned __int32 m_costRepair;
-        unsigned __int32 m_costRevive;
-        unsigned __int32 m_costBorrow;
-        unsigned __int32 m_keepingFee;
-        signed __int32 m_reqLevelType1;
-        signed __int32 m_reqLevelType2;
-        signed __int32 m_reqLevelType3;
-        signed __int32 m_reqLevelType4;
-        unsigned __int32 m_reqLevel1;
-        unsigned __int32 m_reqLevel2;
-        unsigned __int32 m_reqLevel3;
-        unsigned __int32 m_reqLevel4;
-        unsigned __int32 m_maxContain;
-        unsigned __int32 m_regionId;
-        unsigned __int32 m_dir;
-        unsigned __int32 m_offsetX;
-        unsigned __int32 m_offsetY;
-        unsigned __int32 m_offsetZ;
-        unsigned __int32 m_speed1;
-        unsigned __int32 m_speed2;
-        unsigned __int32 m_scale;
-        unsigned __int32 m_bcHeight;
-        unsigned __int32 m_bcRadius;
-        unsigned __int32 m_eventId;
-        std::string m_assocFileObj128;
-        std::string m_assocFileDrop128;
-        std::string m_assocFileIcon128;
-        std::string m_assocFile1_128;
-        std::string m_assocFile2_128;
-        char gap2[3 * 4];
-        // note: all offsets below are incorrect due to moving everything into a separate struct
+        TypeId m_typeId; //0x0000
+        unsigned __int32 m_id; //0x0004
+        std::wstring m_codeName128; //0x0008
+        std::wstring m_objName128; //0x0024
+        std::wstring m_orgObjCodeName128; //0x0040
+        char pad_0064[4]; //0x005C
+        std::wstring m_nameStrId128; //0x0060
+        std::wstring m_descStrId128; //0x007C
+        unsigned __int32 m_decayTime; //0x0098
+        char pad_009C[4]; //0x009C
+        unsigned __int32 m_Rarity; //0x00A0
+        unsigned __int8 m_canTrade; //0x00A4
+        unsigned __int8 m_canSell; //0x00A5
+        unsigned __int8 m_canBuy; //0x00A6
+        unsigned __int8 m_canBorrow; //0x00A7
+        unsigned __int8 m_canDrop; //0x00A8
+        unsigned __int8 m_canPick; //0x00A9
+        unsigned __int8 m_canRepair; //0x00AA
+        unsigned __int8 m_canRevive; //0x00AB
+        unsigned __int8 m_canUse; //0x00AC
+        unsigned __int8 m_canThrow; //0x00AD
+        char pad_00AE[2]; //0x00AE
+        unsigned __int64 m_price; //0x00B0
+        unsigned __int64 m_sellPrice; //0x00B8
+        unsigned __int32 m_costRepair; //0x00C0
+        unsigned __int32 m_costRevive; //0x00C4
+        unsigned __int32 m_costBorrow; //0x00C8
+        unsigned __int32 m_keepingFee; //0x00CC
+        signed __int32 m_reqLevelType1; //0x00D0
+        signed __int32 m_reqLevelType2; //0x00D4
+        signed __int32 m_reqLevelType3; //0x00D8
+        signed __int32 m_reqLevelType4; //0x00DC
+        unsigned __int32 m_reqLevel1; //0x00E0
+        unsigned __int32 m_reqLevel2; //0x00E4
+        unsigned __int32 m_reqLevel3; //0x00E8
+        unsigned __int32 m_reqLevel4; //0x00EC
+        unsigned __int32 m_maxContain; //0x00F0
+        unsigned __int32 m_regionId; //0x00F4
+        unsigned __int32 m_dir; //0x098
+        unsigned __int32 m_offsetX; //0x09C
+        unsigned __int32 m_offsetY; //0x0100
+        unsigned __int32 m_offsetZ; //0x0104
+        unsigned __int32 m_speed1; //0x0108
+        unsigned __int32 m_speed2; //0x010C
+        unsigned __int32 m_scale; //0x0110
+        unsigned __int32 m_bcHeight; //0x0114
+        unsigned __int32 m_bcRadius; //0x0118
+        unsigned __int32 m_eventId; //0x011C
+        unsigned __int32 ObjItemLinkID; //0x0120
+        std::string m_assocFileObj128; //0x0124
+        std::string m_assocFileDrop128; //0x0140
+        std::string m_assocFileIcon128; //0x015C
+        std::string m_assocFile1_128; //0x0178
+        std::string m_assocFile2_128; //0x0194
+        char pad_01B0[32]; //0x01B0
         unsigned __int32 m_maxStock;          //0x01D0
         unsigned __int32 m_reqGender;         //0x01D4
         unsigned __int32 n_reqStr;            //0x01D8
@@ -176,6 +174,8 @@ public:
     private:
         BEGIN_FIXTURE()
             ENSURE_OFFSET(m_codeName128, 0x8)
+            ENSURE_OFFSET(m_Rarity, 0xA0)
+            ENSURE_OFFSET(m_maxStock, 0x1D0)
         END_FIXTURE()
 
         RUN_FIXTURE(SData)
@@ -192,7 +192,7 @@ private:
     CItemData();
 
 private:
-    char gap0[3 * 4];
+    char pad_0000[16-4]; //0x0000
 
     const SData mData;
 
