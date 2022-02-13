@@ -66,7 +66,9 @@ private:
     char N000094A7; //0x2090 bit 0 = isGameMaster
     char pad_2091[7]; //0x2091
     std::n_wstring m_jobAlias; // 0x2098
-    char pad_20b4[100]; //0x20b4
+    char pad_20B8[48]; //0x20B8
+    short m_WorldID; //0x20E4
+    char pad_20E6[50]; //0x20E6
 
 
     BEGIN_FIXTURE()
