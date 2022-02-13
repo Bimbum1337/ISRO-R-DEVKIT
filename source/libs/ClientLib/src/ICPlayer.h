@@ -83,6 +83,7 @@ private:
         ENSURE_OFFSET(m_skillpoint, 0x0880)
         ENSURE_OFFSET(m_statpoint_available, 0x0884)
         ENSURE_OFFSET(m_jobAlias, 0x2098)
+        ENSURE_OFFSET(m_WorldID, 0x20E4)
 
         END_FIXTURE()
 
