@@ -1,0 +1,3 @@
+#include "ICNonuser.h"
+
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CICNonuser, 0x00EF1AA4)
