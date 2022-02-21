@@ -7,7 +7,7 @@ class CICNonuser : public CICharactor {
 	GFX_DECLARE_DYNAMIC_EXISTING(CICNonuser, 0x00EF1AA4)
 public:
 private:
-	char pad_078C[16]; //0x078C
+	CClassLink<CICNonuser> m_classlink; //0x078C
 
 private:
 	BEGIN_FIXTURE()
