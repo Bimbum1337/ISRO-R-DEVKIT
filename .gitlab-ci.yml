@@ -49,7 +49,7 @@ build:
 mkdocs:
   stage: docs
   image: 
-    name: squidfunk/mkdocs-material:5.5.2
+    name: squidfunk/mkdocs-material:8.2.2
     entrypoint: [""]
   script:
     - mkdocs build -v
