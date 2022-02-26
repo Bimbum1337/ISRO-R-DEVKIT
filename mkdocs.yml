@@ -3,7 +3,7 @@ site_description: "Customize your client and create awesome game-features with C
 
 repo_url: https://gitlab.com/florian0/sro_devkit
 
-copyright: Copyright &copy; 2016-2020 florian0
+copyright: Copyright &copy; 2016-2022 florian0
 
 theme:
   name: material
