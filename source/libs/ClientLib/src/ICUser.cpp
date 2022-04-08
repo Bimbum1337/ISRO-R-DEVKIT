@@ -32,11 +32,9 @@ undefined1 CICUser::FUN_009db0d0() const {
 }
 
 void CICUser::Func_15(int param_1, float *param_2) {
-#if 0
-    reinterpret_cast<void (__thiscall *)(const CICUser *, int param_1, float *param_2)>(0x009dea30)(this, param_1, param_2);
-#else
-
     //printf("Func_15 %d %p\n", param_1, param_2);
+    //reinterpret_cast<void (__thiscall *)(const CICUser *, int param_1, float *param_2)>(0x009dea30)(this, param_1, param_2);
+
     TRIJOB_TYPE trijobType;
     std::n_wstring guildString;
 
@@ -77,8 +75,7 @@ void CICUser::Func_15(int param_1, float *param_2) {
 
     if (CGame::STA_FUN_004f9d00().field_c != '\0') {
         if (this->m_titleText.length() != 0) {
-            dataOut[0].x = dataOut[0].x -
-                           (static_cast<float>(static_cast<short>(this->fonttexture_title.GetDimensions().width)) * 0.5f + 2.0f);
+            dataOut[0].x = dataOut[0].x - (static_cast<float>(static_cast<short>(this->fonttexture_title.GetDimensions().width)) *0.5f + 2.0f);
         }
         dataOut[0].x = dataOut[0].x - 20.0f;
         dataOut[2].y = dataOut[0].y;
@@ -245,7 +242,8 @@ void CICUser::Func_15(int param_1, float *param_2) {
             dataOut_2[7].z = 1.0f;
             dataOut_2[3].z = 0.0f;
             dataOut_2[7].y = 0.0f;
-            dataOut_2[0].x = static_cast<float>(m_pGuildInfo->m_pFontTexture->GetDimensions().width) + 5.0f + dataOut_2[0].x;
+            dataOut_2[0].x =
+                    static_cast<float>(m_pGuildInfo->m_pFontTexture->GetDimensions().width) + 5.0f + dataOut_2[0].x;
             dataOut_2[2].y = dataOut_2[0].y;
             dataOut_2[4].y = dataOut_2[0].y + 16.0f;
             dataOut_2[2].x = dataOut_2[0].x + 16.0f;
@@ -254,7 +252,8 @@ void CICUser::Func_15(int param_1, float *param_2) {
             dataOut_2[6].y = dataOut_2[4].y;
 
 
-            const IDirect3DBaseTexture9* puVar8 = g_RuntimeTextureSomething.find(g_CGlobalDataManager->FUN_0093a610(m_guildName))->second;
+            const IDirect3DBaseTexture9 *puVar8 = g_RuntimeTextureSomething.find(
+                    g_CGlobalDataManager->FUN_0093a610(m_guildName))->second;
             g_RStateMgr.SetTextureForStage(0, puVar8);
 
             int local_158 = 0;
@@ -269,12 +268,10 @@ void CICUser::Func_15(int param_1, float *param_2) {
     if (outVar != 0) {
         g_RStateMgr.FUN_00471360(0x1c, 1);
     }
-    g_RStateMgr.
-            SetStageOperator<0, D3DTSS_COLOROP>(D3DTOP_MODULATE);
+    g_RStateMgr.SetStageOperator<0, D3DTSS_COLOROP>(D3DTOP_MODULATE);
     g_RStateMgr.FUN_00471360(0xf, 0);
     CICharactor::Func_15(param_1, param_2
     );
-#endif
 }
 
 
