@@ -99,7 +99,7 @@ int testcase[expression ? 1 : -1];
 
 When the given expression is `true`, the array `testcase` will be created with 
 a size of `1`. If the expression is `false`, the array size will be `-1`. This
-is not a valid size. Therefore compiler will throw an error in this case.
+is not a valid size. Therefore, compiler will throw an error in this case.
 
 For size-testing, the expression is basically:
 
@@ -127,9 +127,9 @@ be the same as the offset because the value of the base pointer was zero.
 ### Behind the macro magic
 
 For calling offsetof, we need to be *inside* the class we are testing. 
-Otherwise we can not access `private` and `protected` easily.
+Otherwise, we can not access `private` and `protected` easily.
 
-Every fixture is it's own class named `TestFixture`, hidden inside the class 
+Every fixture is its own class named `TestFixture`, hidden inside the class 
 you are testing. It's a template class to avoid repeating the classname over 
 and over again.
 
@@ -137,7 +137,7 @@ The macros `ENSURE_SIZE` and `ENSURE_OFFSET` just create member variables
 inside the `TestFixture`-class. 
 
 The `RUN_FIXTURE`-macro creates a static instance of the class. We need to 
-instanciate the class because `TestFixture` is a template that otherwise would 
+instantiate the class because `TestFixture` is a template that otherwise would 
 not be evaluated.
 
 
@@ -174,5 +174,5 @@ not be evaluated.
     };
     ```
 
-As you can see, this results in quite a lot of unreadble code. That's why we 
+As you can see, this results in quite a lot of unreadable code. That's why we 
 choose to hide the implementation-details behind some macros.

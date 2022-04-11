@@ -7,8 +7,7 @@ any other project file for the IDE of your choice.
 
 Download the latest CMake installer from here: https://cmake.org/download/
 
-Choose either x86 or x64. Since it's already 2020, you probably wanna go with
-x64.
+Choose either x86 or x64. Since it's already ~~2020~~ ~~2021~~ 2022, you ~~probably wanna~~ should go with x64.
 
 ## Installation
 
