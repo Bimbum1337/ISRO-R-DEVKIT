@@ -6,7 +6,7 @@
 #include <MathHelpers/hsl.h>
 
 InterfaceTree::InterfaceTree()
-    : bShow(false), lastNumberOfDraws(0), currentNumberOfDraws(0) {
+        : bShow(false), lastNumberOfDraws(0), currentNumberOfDraws(0) {
 }
 
 void InterfaceTree::MenuItem() {

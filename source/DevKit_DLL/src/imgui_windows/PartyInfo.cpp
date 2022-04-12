@@ -7,7 +7,7 @@
 #include <imgui/imgui.h>
 
 PartyInfo::PartyInfo()
-    : bShow(false) {
+        : bShow(false) {
 }
 
 void PartyInfo::MenuItem() {
@@ -29,12 +29,12 @@ void PartyInfo::Render() {
 
     if (partyData.NumberOfMembers > 0) {
         ListColumnHeader headers[] = {
-                {"Id", 40},
-                {"Name", 120},
-                {"Guild", 120},
-                {"Level", 70},
-                {"HP", 70},
-                {"MP", 70},
+                {"Id",       40},
+                {"Name",     120},
+                {"Guild",    120},
+                {"Level",    70},
+                {"HP",       70},
+                {"MP",       70},
                 {"Position", 120},
         };
 
@@ -56,12 +56,18 @@ void PartyInfo::Render() {
 
             const SPartyMemberData &memberData = g_CCharacterDependentData.GetPartyMemberData(i);
 
-            ImGui::Text("%d", i); ImGui::NextColumn();
-            ImGui::Text("%ls", memberData.m_charactername.c_str()); ImGui::NextColumn();
-            ImGui::Text("%ls", memberData.m_guildname.c_str()); ImGui::NextColumn();
-            ImGui::Text("Lv. %d", memberData.currentLevel); ImGui::NextColumn();
-            ImGui::Text("%d / %d", memberData.currentHP, memberData.maxHP); ImGui::NextColumn();
-            ImGui::Text("%d / %d", memberData.currentMP, memberData.maxMP); ImGui::NextColumn();
+            ImGui::Text("%d", i);
+            ImGui::NextColumn();
+            ImGui::Text("%ls", memberData.m_charactername.c_str());
+            ImGui::NextColumn();
+            ImGui::Text("%ls", memberData.m_guildname.c_str());
+            ImGui::NextColumn();
+            ImGui::Text("Lv. %d", memberData.currentLevel);
+            ImGui::NextColumn();
+            ImGui::Text("%d / %d", memberData.currentHP, memberData.maxHP);
+            ImGui::NextColumn();
+            ImGui::Text("%d / %d", memberData.currentMP, memberData.maxMP);
+            ImGui::NextColumn();
 
             uregion region = memberData.region;
             D3DVECTOR location = memberData.position;

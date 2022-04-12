@@ -28,8 +28,7 @@ void Inventory::Render() {
     for (int i = 0; i < 20; i++) {
         CSOItem *item = inventory->GetItemBySlot(i);
 
-        if (item == NULL)
-        {
+        if (item == NULL) {
             ImGui::Text("Item %d: NONE", i);
             return;
         }
@@ -59,7 +58,7 @@ void Inventory::Render() {
 
                 case BLUE_LUCKY:
                 case BLUE_LUCKY2:
-                    ImGui::TextColored(colorBlue, "Lucky (%d %s)", it->second, (it->second == 1) ? "Time": "Times");
+                    ImGui::TextColored(colorBlue, "Lucky (%d %s)", it->second, (it->second == 1) ? "Time" : "Times");
                     break;
 
                 case BLUE_MP:
@@ -79,7 +78,7 @@ void Inventory::Render() {
                     break;
 
                 case BLUE_STEADY:
-                    ImGui::TextColored(colorBlue,"Steady (%d %s)", it->second, (it->second == 1) ? "Time" : "Times");
+                    ImGui::TextColored(colorBlue, "Steady (%d %s)", it->second, (it->second == 1) ? "Time" : "Times");
                     break;
 
                 default:

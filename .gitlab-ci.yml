@@ -1,11 +1,12 @@
 variables:
   registry: registry.gitlab.com/florian0/sro_devkit
-  
+  build_docker: "false"
 
 stages:
   - build
   - deploy
   - docs
+  - publish
 
 docker_doxygen:
   stage: build
@@ -17,8 +18,14 @@ docker_doxygen:
     - docker build -t "${registry}:${name}" docker/${name}/
     - echo $REGISTRY_PASSWORD | docker login -u "$REGISTRY_USER" --password-stdin
     - docker push -t "${registry}:${name}"
-  only:
-    - docker
+  rules:
+    - changes:
+        - docker/doxygen/Dockerfile
+      when: always
+    - if: $CI_COMMIT_BRANCH =~ /^docker\//
+      when: always
+    - if: $build_docker == "true"
+      when: always
 
 build:
   variables:
@@ -37,3 +44,45 @@ build:
     paths:
       - BinOut/
     expire_in: 1 day
+
+mkdocs:
+  stage: docs
+  image:
+    name: squidfunk/mkdocs-material:8.2.2
+    entrypoint: [ "" ]
+  script:
+    - mkdocs build -v
+  artifacts:
+    untracked: false
+    paths:
+      - site/
+    expire_in: 1 hour
+
+doxygen:
+  stage: docs
+  image: ${registry}:doxygen
+  script:
+    - doxygen
+  artifacts:
+    untracked: false
+    paths:
+      - doxygen/html
+    expire_in: 1 hour
+
+pages:
+  stage: publish
+  dependencies:
+    - mkdocs
+    - doxygen
+  script:
+    - mv site/ public/
+    - mkdir public/doxygen/
+    - mv doxygen/html/* public/doxygen
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 day
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - when: never
