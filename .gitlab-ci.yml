@@ -62,7 +62,7 @@ mkdocs:
   rules:
     # Always build when on main branch
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-        when: always
+      when: always
     - changes:
         - docs/
       when: always
