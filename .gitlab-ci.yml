@@ -35,6 +35,8 @@ build:
     - chmod +x make_project_nmake.cmd make_project_nmake_build.cmd
     - ./make_project_nmake.cmd
     - ./make_project_nmake_build.cmd
+  rules:
+    when: always
   artifacts:
     untracked: false
     paths:
