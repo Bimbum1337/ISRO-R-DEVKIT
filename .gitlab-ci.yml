@@ -19,10 +19,9 @@ docker_doxygen:
     - docker push -t "${registry}:${name}"
   rules:
     - changes:
-      - docker/doxygen/Dockerfile
+        - docker/doxygen/Dockerfile
       when: always
     - when: manual
-
 
 build:
   variables:
@@ -44,9 +43,9 @@ build:
 
 mkdocs:
   stage: docs
-  image: 
+  image:
     name: squidfunk/mkdocs-material:8.2.2
-    entrypoint: [""]
+    entrypoint: [ "" ]
   script:
     - mkdocs build -v
   artifacts:
