@@ -1,6 +1,5 @@
 variables:
   registry: registry.gitlab.com/florian0/sro_devkit
-  
 
 stages:
   - build
@@ -23,6 +22,7 @@ docker_doxygen:
       - docker/doxygen/Dockerfile
       when: always
 
+
 build:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
@@ -36,10 +36,16 @@ build:
     - ./make_project_nmake.cmd
     - ./make_project_nmake_build.cmd
   rules:
+    # Always build when on main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    # Always build when something changed
     - changes:
       - source/
       - CMakeLists.txt
       when: always
+    # Always allow manual building
+    - when: manual
   artifacts:
     untracked: false
     paths:
@@ -53,6 +59,15 @@ mkdocs:
     entrypoint: [""]
   script:
     - mkdocs build -v
+  rules:
+    # Always build when on main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        when: always
+    - changes:
+        - docs/
+      when: always
+      # Always allow manual building
+    - when: manual
   artifacts:
     untracked: false
     paths:
