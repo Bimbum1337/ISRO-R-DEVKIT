@@ -23,7 +23,7 @@ void ErrorMessageTool::Render() {
 
         CProcess *process = theApp.GetCurrentProcess();
         if (process->IsKindOf(GFX_RUNTIME_CLASS(CPSilkroad))) {
-            reinterpret_cast<CPSilkroad*>(process)->ShowMessage(str.c_str(), D3DCOLOR_RGBA(255, 0, 0, 0));
+            reinterpret_cast<CPSilkroad *>(process)->ShowMessage(str.c_str(), D3DCOLOR_RGBA(255, 0, 0, 0));
         }
     }
 
