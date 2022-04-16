@@ -16,7 +16,7 @@ set(SOURCE_FILES
         src/imgui_windows/ErrorMessageTool.h src/imgui_windows/ErrorMessageTool.cpp
         src/imgui_windows/InterfaceTree.cpp src/imgui_windows/InterfaceTree.h
         src/imgui_windows/ProcessViewer.cpp src/imgui_windows/ProcessViewer.h
-        src/ImGui_Windows/Inventory.h src/ImGui_Windows/Inventory.cpp
+        src/imgui_windows/Inventory.h src/imgui_windows/Inventory.cpp
         src/imgui_windows/PartyInfo.cpp src/imgui_windows/PartyInfo.h
         src/imgui_windows/CharacterData.cpp src/imgui_windows/CharacterData.h
         src/Util.cpp src/Util.h
