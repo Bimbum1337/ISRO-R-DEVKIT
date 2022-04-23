@@ -26,6 +26,7 @@ docker_doxygen:
       when: always
     - if: $build_docker == "true"
       when: always
+    - when: never
 
 build:
   variables:
