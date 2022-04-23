@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "TextBoard.h"
 #include "GFX3DFunction/GFXVideo3d.h"
 

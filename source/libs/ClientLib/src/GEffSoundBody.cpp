@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "GEffSoundBody.h"
 
 void CGEffSoundBody::PlaySoundA(const wchar_t* sndFile)

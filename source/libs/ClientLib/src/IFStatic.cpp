@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFStatic.h"
 
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFStatic, 0x00EE9720)

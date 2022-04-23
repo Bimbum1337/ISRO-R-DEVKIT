@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFChatViewer.h"
 #include <BSLib/Debug.h>
 
@@ -8,6 +7,7 @@
 #include "ICPlayer.h"
 #include "SRO_MSG_DEF.h"
 #include "CharacterDependentData.h"
+#include <BSLib/multibyte.h>
 
 // CIFChatViewer_Delete                   .text 007A97D0 00000012 00000000 00000004 R . . . . . .
 // CIFChatViewer_Create                   .text 007AF5C0 00000067 00000014 00000000 R . . . . . .
@@ -259,15 +259,15 @@ bool CIFChatViewer::OnCreate(long ln) {
 
     std::n_wstring str = TSM_GETTEXTPTR(L"UIIT_STT_CHATING_VIEW_AUTO_OFF");
     m_Button_ChatTabHide->SetTooltipText(&str);
-    m_Button_ChatTabHide->FUN_00652d20(128);
+    m_Button_ChatTabHide->SetStyleThingy(TOOLTIP);
 
     str = TSM_GETTEXTPTR(L"UIIT_CTL_WHISPER_LIST");
     m_Button_WhisperList->SetTooltipText(&str);
-    m_Button_WhisperList->FUN_00652d20(128);
+    m_Button_WhisperList->SetStyleThingy(TOOLTIP);
 
     str = TSM_GETTEXTPTR(L"UIIT_STT_TOGGLE_CHATING_WINDOW_SETING");
     m_Button_ChatSize->SetTooltipText(&str);
-    m_Button_ChatSize->FUN_00652d20(128);
+    m_Button_ChatSize->SetStyleThingy(TOOLTIP);
 
     ActivateTabPage(TAB_ALL);
 
@@ -559,49 +559,34 @@ int CIFChatViewer::OnChar(UINT nChar, UINT a2, UINT a3) {
                 }
 #endif
 
-                if (N00009C5E == CHAT_AllGM)
-                {
+                if (N00009C5E == CHAT_AllGM) {
                     if (input_text[0] == ';') {
                         m_InputBox->SetText(L";");
-                    }
-                    else {
+                    } else {
                         m_InputBox->SetText(L"");
                     }
-                }
-                else if (m_currentTabPage == TAB_ALL && (N00009C5E == CHAT_All || N00009C5E == CHAT_Global))
-                {
+                } else if (m_currentTabPage == TAB_ALL && (N00009C5E == CHAT_All || N00009C5E == CHAT_Global)) {
                     m_InputBox->SetText(L""); //Probably should leave this use case for the Else statement...
-                }
-                else if (m_currentTabPage == TAB_ALL && N00009C5E == CHAT_PM)
-                {
+                } else if (m_currentTabPage == TAB_ALL && N00009C5E == CHAT_PM) {
                     // Insert name of dude
                     std::n_wstring newTbText = L"$";
                     newTbText += chatMessage.strTargetName;
                     newTbText += L" ";
 
                     m_InputBox->SetText(newTbText.c_str());
-                }
-                else if (m_currentTabPage == TAB_PARTY || (N00009C5E == CHAT_Party && m_currentTabPage == TAB_ALL))
-                {
+                } else if (m_currentTabPage == TAB_PARTY || (N00009C5E == CHAT_Party && m_currentTabPage == TAB_ALL)) {
                     m_InputBox->SetText(L"#");
-                }
-                else if (m_currentTabPage == TAB_GUILD || (N00009C5E == CHAT_Guild && m_currentTabPage == TAB_ALL))
-                {
+                } else if (m_currentTabPage == TAB_GUILD || (N00009C5E == CHAT_Guild && m_currentTabPage == TAB_ALL)) {
                     m_InputBox->SetText(L"@");
-                }
-                else if (m_currentTabPage == TAB_ALLY || (N00009C5E == CHAT_Union && m_currentTabPage == TAB_ALL))
-                {
+                } else if (m_currentTabPage == TAB_ALLY || (N00009C5E == CHAT_Union && m_currentTabPage == TAB_ALL)) {
                     m_InputBox->SetText(L"%");
-                }
-                else if (m_currentTabPage == TAB_TRAININGCAMP || (N00009C5E == CHAT_Academy && m_currentTabPage == TAB_ALL))
-                {
+                } else if (m_currentTabPage == TAB_TRAININGCAMP ||
+                           (N00009C5E == CHAT_Academy && m_currentTabPage == TAB_ALL)) {
                     m_InputBox->SetText(L"&");
-                }
-                else
-                {
+                } else {
                     m_InputBox->SetText(L"");
                 }
-                
+
             }
         }
     }
@@ -650,7 +635,7 @@ void CIFChatViewer::OnChatMode() {
 }
 
 void CIFChatViewer::OnListChatThing(int a1, int a2) {
-    BS_DEBUG_LOW("%s(%d, %d)", __FUNCTION__, a1, a2 );
+    BS_DEBUG_LOW("%s(%d, %d)", __FUNCTION__, a1, a2);
 
     int id = GetIDOfInterfaceUnderCursor();
     CIFListCtrl *pList;
@@ -1057,8 +1042,7 @@ void CIFChatViewer::SeparateWhisperName(CIFChatViewer::SChatMessage &whisperThin
     // Space can not be second character in the string
     assert(pos == 1);
 
-    if(pos != -1)
-    { 
+    if (pos != -1) {
         // Split off the name
         // We start at 1 to skip the $
         whisperThing.strTargetName = copyOfMessage.substr(1, pos - 1);
@@ -1068,9 +1052,7 @@ void CIFChatViewer::SeparateWhisperName(CIFChatViewer::SChatMessage &whisperThin
         // We start with pos+1 to skip the space
         whisperThing.strMessage = copyOfMessage.substr(pos + 1);
         whisperThing.lengthOfMessage = whisperThing.strMessage.length();
-    }
-    else
-    {
+    } else {
         //There is no space, so there is no message to send
         whisperThing.strTargetName = copyOfMessage.substr(1, copyOfMessage.length());
         whisperThing.lengthOfTargetName = whisperThing.strTargetName.length();
@@ -1184,8 +1166,8 @@ void CIFChatViewer::FUN_007aca30(ChatType chatType, D3DCOLOR color, const wchar_
 
 void CIFChatViewer::ShowHideControls(bool bShow) {
 
-    m_IRM.GetResObj(GDR_BUTTON_CHATTABHIDE,1)->ShowGWnd(bShow);
-    m_IRM.GetResObj(GDR_BUTTON_WHISPERLIST,1)->ShowGWnd(bShow);
+    m_IRM.GetResObj(GDR_BUTTON_CHATTABHIDE, 1)->ShowGWnd(bShow);
+    m_IRM.GetResObj(GDR_BUTTON_WHISPERLIST, 1)->ShowGWnd(bShow);
 
     m_Button_ChatSize->ShowGWnd(bShow);
     m_InputBox->ShowGWnd(bShow);
@@ -1212,7 +1194,7 @@ void CIFChatViewer::ShowHideControls(bool bShow) {
 }
 
 void CIFChatViewer::WriteLineToChatList(CIFTextBox *textbox, const wchar_t *message,
-        int line, D3DCOLOR color1, D3DCOLOR color2, undefined4 param_6) {
+                                        int line, D3DCOLOR color1, D3DCOLOR color2, undefined4 param_6) {
 
     if (textbox == 0)
         return;
@@ -1224,7 +1206,7 @@ void CIFChatViewer::WriteLineToChatList(CIFTextBox *textbox, const wchar_t *mess
 void inline CIFChatViewer::BlockChatIf(int msgLimit, int timeLimitMs, int timeoutSec) {
     assert(msgLimit > 0);
     if (m_ChatHistoryCount >= msgLimit) {
-        if (g_currentTime - m_chatHistoryTimes[msgLimit-1] < timeLimitMs) {
+        if (g_currentTime - m_chatHistoryTimes[msgLimit - 1] < timeLimitMs) {
             SetChatBlocked(timeoutSec);
         }
     }

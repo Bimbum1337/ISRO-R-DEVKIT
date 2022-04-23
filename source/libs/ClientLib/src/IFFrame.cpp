@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "IFFrame.h"
 #include <BSLib/Debug.h>
 
