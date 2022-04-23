@@ -28,6 +28,14 @@ struct ClientRes
 struct WhatIsThis {
     undefined4 field_0;
     char field_4;
+    undefined4 field_8;
+    undefined1 field_c;
+    undefined1 field_10;
+    undefined1 field_11;
+    char pad_0012[3];
+    undefined1 field_15;
+    char pad_0016[1];
+    undefined1 field_17;
 };
 
 class CGame : public CGFXMainFrame {

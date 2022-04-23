@@ -17,8 +17,11 @@
 #include <NetProcessThird.h>
 #include <BSLib/Debug.h>
 #include "QuickStart.h"
+#include "ICPlayer.h"
+#include "ICMonster.h"
 #include <PSCharacterSelect.h>
-
+#include <ICUser.h>
+#include <GFX3DFunction/RStateMgr.h>
 
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;
@@ -40,6 +43,11 @@ void Setup() {
     vftableHook(0x00db95a4, 10, addr_from_this(&CGInterface::OnCreateIMPL));
     vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 
+    vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));
+    vftableHook(0x00de256c, 15, addr_from_this(&CICharactor::Func_15_impl));
+    vftableHook(0x00de2c24, 15, addr_from_this(&CICPlayer::Func_15_impl));
+    vftableHook(0x00de26c4, 15, addr_from_this(&CICMonster::Func_15_impl));
+
     replaceAddr(0x00831337 + 4, (int) &WndProcHook);
 
     placeHook(0x0065c6f0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
@@ -51,6 +59,8 @@ void Setup() {
     replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
     replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
     replaceOffset(0x008a4876, addr_from_this(&CNetProcessThird::RegisterPacketHandlers));
+
+    replaceOffset(0x009ded0d, addr_from_this(&CRStateMgr::FUN_00470060));
 
     placeHook(0x0049d620, Put);
 

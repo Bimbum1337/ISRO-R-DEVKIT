@@ -21,3 +21,12 @@ unsigned int CICharactor::GetCurrentMp() const {
 unsigned int CICharactor::GetMaxMp() const {
     return m_mpMax;
 }
+
+void CICharactor::Func_15(int param_1, float *param_2) {
+    //printf("%s\n", __FUNCTION__);
+    reinterpret_cast<void (__thiscall *)(const CICharactor *, int param_1, float *param_2)>(0x009cf1b0)(this, param_1, param_2);
+}
+
+void CICharactor::Func_15_impl(int param_1, float *param_2) {
+    CICharactor::Func_15(param_1, param_2);
+}

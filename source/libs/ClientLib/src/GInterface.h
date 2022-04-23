@@ -173,6 +173,9 @@ public:
     /// \address 00777A50
     CIFQuickStateHalfWnd *Get_QuickStateHalfWnd();
 
+    /// \address 00777a70
+    void FUN_00777a70(undefined4 param_1,undefined4 param_2);
+
     /// \address 00798D40
     CIF_NPCWindow *Get_GDR_NPCWINDOW();
 

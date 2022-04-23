@@ -7,6 +7,10 @@ class CICPlayer : public CICUser {
     GFX_DECLARE_DYNAMIC_EXISTING(CICPlayer, 0x00ef1b44)
 public:
 
+    /// \address 009d49c0
+    void Func_15(int param_1, float *param_2) override;
+    void Func_15_impl(int param_1, float *param_2);
+
     bool IsGameMaster();
 
     std::n_wstring *sub_9D6580(std::n_wstring *str);
@@ -30,6 +34,9 @@ public:
 
     /// \address 009d4d20
     int GetCurrentJobExperiencePoints() const;
+
+    /// \address 009d68f0
+    undefined4 FUN_009d68f0();
 
 private:
     char pad_082C[32]; //0x082C

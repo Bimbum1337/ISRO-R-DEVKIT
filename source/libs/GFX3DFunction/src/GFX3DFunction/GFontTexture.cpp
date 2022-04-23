@@ -74,3 +74,19 @@ std::n_wstring *CGFontTexture::GetText(std::n_wstring *str) const {
     return reinterpret_cast<std::n_wstring *(__thiscall *)(const CGFontTexture *, std::n_wstring *str)>(0x008B3C10)(
             this, str);
 }
+
+void CGFontTexture::FUN_008b2d30(float*  param_1, D3DVECTOR * dataOut) {
+    reinterpret_cast<void (__thiscall *)(CGFontTexture *, float*, D3DVECTOR *)>(0x008b2d30)(this, param_1, dataOut);
+}
+
+CGFontTexture::TextureDimensions CGFontTexture::GetDimensions() const{
+    return m_dimensions;
+}
+
+void CGFontTexture::FUN_008b3bd0(std::n_wstring *param_1) {
+    return reinterpret_cast<void (__thiscall *)(CGFontTexture *, std::n_wstring *)>(0x008b3bd0)(this, param_1);
+}
+
+void CGFontTexture::FUN_008b4d90(float* param_1, undefined4 param_2) {
+    return reinterpret_cast<void (__thiscall *)(CGFontTexture *, float*, undefined4)>(0x008b4d90)(this, param_1, param_2);
+}
