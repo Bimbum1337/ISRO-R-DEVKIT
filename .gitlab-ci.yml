@@ -1,5 +1,5 @@
 variables:
-  registry: registry.gitlab.com/florian0/sro_devkit
+  DOCKER_DRIVER: overlay2
   build_docker: "false"
 
 stages:
@@ -12,12 +12,14 @@ docker_doxygen:
   stage: build
   variables:
     name: doxygen
-  image: dind
+  image: docker
+  services:
+    - docker:dind
   script:
     - docker info
-    - docker build -t "${registry}:${name}" docker/${name}/
-    - echo $REGISTRY_PASSWORD | docker login -u "$REGISTRY_USER" --password-stdin
-    - docker push -t "${registry}:${name}"
+    - docker build -t "${CI_REGISTRY_IMAGE}:${name}" docker/${name}/
+    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_BUILD_TOKEN}
+    - docker push "${CI_REGISTRY_IMAGE}:${name}"
   rules:
     - changes:
         - docker/doxygen/Dockerfile
