@@ -47,6 +47,8 @@ build:
     paths:
       - BinOut/
     expire_in: 1 day
+  rules:
+    - when: always
 
 mkdocs:
   stage: docs
@@ -60,10 +62,12 @@ mkdocs:
     paths:
       - site/
     expire_in: 1 hour
+  rules:
+    - when: always
 
 doxygen:
   stage: docs
-  image: ${registry}:doxygen
+  image: ${CI_REGISTRY_IMAGE}:doxygen
   script:
     - doxygen
   artifacts:
@@ -71,6 +75,8 @@ doxygen:
     paths:
       - doxygen/html
     expire_in: 1 hour
+  rules:
+    - when: always
 
 pages:
   stage: publish
