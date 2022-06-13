@@ -128,7 +128,12 @@ class CControler : CObjChild {
         bool F23_Key;
         bool F24_Key;
     };
-
+public:
+    struct sMousePos
+    {
+        int x;
+        int y;
+    };
 public: // this is public as here 0053a65e
     bool m_bCursorVisible; //0x0020
 private:// cursour info
@@ -137,7 +142,7 @@ private:// cursour info
     HCURSOR m_currentCursor; //0x0028
     char pad_002c[36]; //0x002c
 public: // correct as here 00479132 , 004896d5
-    D3DXVECTOR2 m_fCursorPos; //0x0050
+    sMousePos m_CursorPos; //0x0050
 private: // true if button pressed or hold...
     WindowsKeys windowsKeys; //0x0058
     InputKeys inputKeys; //0x0088
@@ -170,7 +175,7 @@ BEGIN_FIXTURE()
         ENSURE_SIZE(0x25c)
         ENSURE_OFFSET(m_bCursorVisible, 0x20)
         ENSURE_OFFSET(m_currentCursor, 0x28)
-        ENSURE_OFFSET(m_fCursorPos, 0x50)
+        ENSURE_OFFSET(m_CursorPos, 0x50)
         ENSURE_OFFSET(windowsKeys, 0x58)
         ENSURE_OFFSET(inputKeys, 0x88)
         ENSURE_OFFSET(otherKeys, 0xb3)
