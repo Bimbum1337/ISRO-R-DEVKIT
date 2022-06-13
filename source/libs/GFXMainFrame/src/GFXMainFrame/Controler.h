@@ -128,12 +128,12 @@ class CControler : CObjChild {
         bool F23_Key;
         bool F24_Key;
     };
-struct sMousePos
-{
 public:
-    int x;
-    int y;
-};
+    struct sMousePos
+    {
+        int x;
+        int y;
+    };
 public: // this is public as here 0053a65e
     bool m_bCursorVisible; //0x0020
 private:// cursour info
