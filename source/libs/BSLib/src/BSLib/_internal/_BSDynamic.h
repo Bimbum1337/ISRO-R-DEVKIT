@@ -34,7 +34,7 @@ public: \
 
 #define GFX_IMPLEMENT_RUNTIMECLASS(class_name, base_class_name, wSchema, pfnNew, pfnDelete) \
     const CGfxRuntimeClass class_name::class##class_name = { \
-    #class_name, sizeof(class class_name), wSchema, \
+    #class_name, wSchema, sizeof(class class_name), \
     base_class_name::class##base_class_name, NULL, NULL, \
     pfnNew, pfnDelete}; \
     CGfxRuntimeClass const* class_name::GetRuntimeClass() const \

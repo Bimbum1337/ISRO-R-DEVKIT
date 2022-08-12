@@ -67,11 +67,11 @@ struct CGfxRuntimeClass {
     /// Name of the class
     const char *m_lpszClassName;
 
-    /// Size of the class in bytes
-    int m_nObjectSize;
-
     /// Absolutely no clue
     unsigned int m_wSchema; // schema number of the loaded class
+
+    /// Size of the class in bytes
+    int m_nObjectSize;
 
     /// Pointer to the meta-base class
     CGfxRuntimeClass const *m_pBaseClass;
