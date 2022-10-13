@@ -58,19 +58,19 @@ private:
 protected:
     std::n_wstring m_name; //0x0110
     CGFontTexture fonttexture_playername; //0x012C
-    std::n_wstring m_titleText; //0x0194
-    CGFontTexture fonttexture_title; //0x01B0
+    std::n_wstring m_titleText; //0x019C
+    CGFontTexture fonttexture_title; //0x01B8
 private:
-    char pad_0218[8]; //0x0218
-    CCharacterData::SData* m_characterData; //0x0220
-    char pad_0224[48]; //0x0224
+    char pad_0228[8]; //0x0228
+    CCharacterData::SData* m_characterData; //0x0230
+    char pad_0234[0x124]; //0x0234
 
 BEGIN_FIXTURE()
-        ENSURE_SIZE(0x254)
+        ENSURE_SIZE(0x358)
         ENSURE_OFFSET(m_uniqueId, 0x00F8)
         ENSURE_OFFSET(m_name, 0x110)
         ENSURE_OFFSET(fonttexture_playername, 0x12c)
-        ENSURE_OFFSET(fonttexture_title, 0x1b0)
+        ENSURE_OFFSET(fonttexture_title, 0x01B8)
 
     END_FIXTURE()
 

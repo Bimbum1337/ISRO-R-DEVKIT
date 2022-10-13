@@ -1,7 +1,7 @@
 #include "IFDecoratedStatic.h"
 #include <BSLib/Debug.h>
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFDecoratedStatic, 0x00EE94F8)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFDecoratedStatic, 0x1179748)
 
 // CIFDecoratedStatic::OnCreate(int) .text 00633C80 00000017 00000004 00000000 R . . . . . .
 bool CIFDecoratedStatic::OnCreate(long ln)
@@ -29,13 +29,13 @@ void CIFDecoratedStatic::OnTimer(int)
 // CIFDecoratedStatic::RenderMyself(void) .text 00634640 00000334 00000024 00000000 R . . . . . .
 void CIFDecoratedStatic::RenderMyself()
 {
-	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00634640)(this);
+	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x007093E0)(this);
 }
 
 // CIFDecoratedStatic::OnCIFReady(void) .text 00633BD0 0000009F 00000004 00000000 R . . . . . .
 void CIFDecoratedStatic::OnCIFReady()
 {
-	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00633BD0)(this);
+	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00708970)(this);
 }
 
 // CIFDecoratedStatic::Func_52(void) .text 00633BB0 00000003   R . . . . . .
@@ -93,11 +93,16 @@ void CIFDecoratedStatic::set_N00009BD3(int a1)
 // CIFDecoratedStatic::sub_634470(std::n_string) .text 00634470 000000D2 00000014 0000001C R . . . . T .
 void CIFDecoratedStatic::sub_634470(std::n_string a1)
 {
-	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*, std::n_string)>(0x634470)(this ,a1);
+	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*, std::n_string)>(0x00709210)(this ,a1);
 }
 
 // CIFDecoratedStatic::sub_633990(void) .text 00633990 0000010B   R . . . . . .
 void CIFDecoratedStatic::sub_633990()
 {
-	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00633990)(this);
+	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*)>(0x00708730)(this);
+}
+
+void CIFDecoratedStatic::sub_72F670(int a1)
+{
+	reinterpret_cast<void(__thiscall*)(CIFDecoratedStatic*,int)>(0x0072F670)(this,a1);
 }

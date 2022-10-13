@@ -32,10 +32,10 @@ public:
     bool IsHostile();
 
 private:
-    char pad_79C[0x1C];
+    char pad_8CC[0x20];
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x7b8)
+        ENSURE_SIZE(0x8EC)
     END_FIXTURE()
 
     RUN_FIXTURE(CICMonster)

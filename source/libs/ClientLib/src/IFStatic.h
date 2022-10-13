@@ -4,7 +4,7 @@
 
 class CIFStatic : public CIFWnd
 {
-	GFX_DECLARE_DYNAMIC_EXISTING(CIFStatic, 0x00EE9720)
+	GFX_DECLARE_DYNAMIC_EXISTING(CIFStatic, 0x1179970)
 
 public:
 	CIFStatic(void);
@@ -24,6 +24,6 @@ public:
 	virtual bool Func_51(const wchar_t *src);
 
 private:
-	int N000096E4; //0x036C
-	char pad_0370[16]; //0x0370
+	int N000096E4; //0x0374
+	char pad_0370[0x1C]; //0x0378
 };

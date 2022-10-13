@@ -1,6 +1,6 @@
 #include "PSilkroad.h"
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CPSilkroad, 0x00eed84c)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CPSilkroad, 0x117E794)
 
 void CPSilkroad::Func_40() {
     // empty
@@ -16,5 +16,5 @@ void CPSilkroad::ErrorMessagePar(const wchar_t *message, char codeletter, int co
 }
 
 void CPSilkroad::ShowMessage(const wchar_t *message, D3DCOLOR color) {
-    reinterpret_cast<void(__thiscall*)(CPSilkroad *, const wchar_t*, D3DCOLOR)>(0x008613b0)(this, message, color);
+    reinterpret_cast<void(__thiscall*)(CPSilkroad *, const wchar_t*, D3DCOLOR)>(0x00964670)(this, message, color);
 }

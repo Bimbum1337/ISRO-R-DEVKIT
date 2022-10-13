@@ -20,18 +20,18 @@ public:
     void OnUpdate() override;
 
 private:
-    char pad_0x036C[0x4];
-    CIFStatic* m_pGDR_TWFS_TEXT_ID; // 0x0370
-    CIFGauge* m_pGDR_TWFS_GAUGE_HPGAUGE; // 0x0374
-    CIFButton* m_pGDR_TWFS_D_BUTTON; // 0x0378
+    char pad_0x0374[0x4];
+    CIFStatic* m_pGDR_TWFS_TEXT_ID; // 0x0378
+    CIFGauge* m_pGDR_TWFS_GAUGE_HPGAUGE; // 0x037C
+    CIFButton* m_pGDR_TWFS_D_BUTTON; // 0x0380
     char pad_0x037C[0xC];
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x388)
-        ENSURE_OFFSET(m_pGDR_TWFS_TEXT_ID, 0x0370)
-        ENSURE_OFFSET(m_pGDR_TWFS_GAUGE_HPGAUGE, 0x0374)
-        ENSURE_OFFSET(m_pGDR_TWFS_D_BUTTON, 0x0378)
+        ENSURE_SIZE(0x390)
+        ENSURE_OFFSET(m_pGDR_TWFS_TEXT_ID, 0x0378)
+        ENSURE_OFFSET(m_pGDR_TWFS_GAUGE_HPGAUGE, 0x037C)
+        ENSURE_OFFSET(m_pGDR_TWFS_D_BUTTON, 0x0380)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFTargetWindowFortressStructure)

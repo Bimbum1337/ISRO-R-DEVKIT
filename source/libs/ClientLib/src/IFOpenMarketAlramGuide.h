@@ -4,6 +4,6 @@
 
 class CIFOpenMarketAlramGuide : public CIFDecoratedStatic {
 
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFOpenMarketAlramGuide, 0x00ee7960)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFOpenMarketAlramGuide, 0x1177140)
 
 };

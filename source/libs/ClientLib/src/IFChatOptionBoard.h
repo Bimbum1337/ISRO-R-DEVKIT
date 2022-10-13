@@ -61,20 +61,20 @@ private:
     void OnOptionChanged();
 
 private:
-    CIFCheckBox *m_pGDR_COB_CB_GAIN; // 0x036c
-    CIFCheckBox *m_pGDR_COB_CB_FIGHT; // 0x0370
-    CIFCheckBox *m_pGDR_COB_CB_STATUS; // 0x0374
-    CIFCheckBox *m_pGDR_COB_CB_PARTY; // 0x0378
-    CIFCheckBox *m_pGDR_COB_CB_GAME; // 0x037c
+    CIFCheckBox *m_pGDR_COB_CB_GAIN; // 0x0374
+    CIFCheckBox *m_pGDR_COB_CB_FIGHT; // 0x0378
+    CIFCheckBox *m_pGDR_COB_CB_STATUS; // 0x037C
+    CIFCheckBox *m_pGDR_COB_CB_PARTY; // 0x0380
+    CIFCheckBox *m_pGDR_COB_CB_GAME; // 0x0384
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x380)
-        ENSURE_OFFSET(m_pGDR_COB_CB_GAIN, 0x036c)
-        ENSURE_OFFSET(m_pGDR_COB_CB_FIGHT, 0x0370)
-        ENSURE_OFFSET(m_pGDR_COB_CB_STATUS, 0x0374)
-        ENSURE_OFFSET(m_pGDR_COB_CB_PARTY, 0x0378)
-        ENSURE_OFFSET(m_pGDR_COB_CB_GAME, 0x037c)
+        ENSURE_SIZE(0x388)
+        ENSURE_OFFSET(m_pGDR_COB_CB_GAIN, 0x0374)
+        ENSURE_OFFSET(m_pGDR_COB_CB_FIGHT, 0x0378)
+        ENSURE_OFFSET(m_pGDR_COB_CB_STATUS, 0x037C)
+        ENSURE_OFFSET(m_pGDR_COB_CB_PARTY, 0x0380)
+        ENSURE_OFFSET(m_pGDR_COB_CB_GAME, 0x0384)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFChatOptionBoard)

@@ -16,13 +16,14 @@ public:
 
 private:
 public:
+    char pad_000[0x28];
 	std::n_hash_map<std::n_wstring, int> m_sounds;
 private:
-	char pad_0048[296]; //0x0048
+	char pad_0048[0x108]; //0x0048
 
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(368);
+        ENSURE_SIZE(0x178);
     END_FIXTURE()
     RUN_FIXTURE(CGEffSoundBody)
 };

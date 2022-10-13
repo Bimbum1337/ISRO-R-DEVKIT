@@ -15,27 +15,8 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         Setup();
 
         // Inject all the new objects
-        RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
-        RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
-
-#ifdef CONFIG_OLD_MAINPOPUP
-        OverrideObject<CIFMainPopup, 0x00eea6dc>();
-#endif
-
-        OverrideObject<CIFChatOptionBoard, 0x00eec128>();
-
-        // Override existing objects
-#ifdef CONFIG_CHATVIEWER
-        OverrideObject<CIFChatViewer, 0x00EEC168>();
-#endif // CONFIG_CHATVIEWER
-
-#ifdef CONFIG_WHOLE_CHAT
-        OverrideObject<CIFWholeChat, 0x00eec7a8>();
-#endif // CONFIG_WHOLE_CHAT
-
-#ifdef CONFIG_MAINPOP_PLAYERINFO
-        OverrideObject<CIFPlayerInfo, 0x00eea7e8>();
-#endif // CONFIG_MAINPOP_PLAYERINFO
+        //RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
+        //RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
 #ifdef CONFIG_IMGUI
         OnCreate(ImGui_OnCreate);
@@ -45,11 +26,6 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         OnPreSetSize(ImGui_OnPreSetSize);
         OnPostSetSize(ImGui_OnPostSetSize);
 #endif // CONFIG_IMGUI
-
-#ifdef CONFIG_OLD_UNDERBAR
-        // https://www.elitepvpers.com/forum/sro-pserver-guides-releases/4256375-source-fix-old-exp-bar-writing-code.html
-        replaceAddr(0x00D9841C, addr_from_this(&NIFUnderMenuBar::Update));
-#endif // CONFIG_OLD_UNDERBAR
 
         OnPreInitGameAssets(InstallRuntimeClasses);
     }

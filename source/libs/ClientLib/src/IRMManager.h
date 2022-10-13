@@ -34,7 +34,7 @@ public:
     /// \returns Pointer to the control, NULL if Id was not found.
     template<typename T>
     T *GetResObj(int id, int a2) {
-        return reinterpret_cast<T *(__thiscall *)(CIRMManager *, int, int)>(0x008B51F0)(this, id, a2);
+        return reinterpret_cast<T *(__thiscall *)(CIRMManager *, int, int)>(0x009CF670)(this, id, a2);
     }
 
 private:

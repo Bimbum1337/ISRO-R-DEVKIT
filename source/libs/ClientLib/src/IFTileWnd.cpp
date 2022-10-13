@@ -1,9 +1,9 @@
 #include "IFTileWnd.h"
 #include <BSLib/Debug.h>
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFTileWnd, 0x00EECBD4)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFTileWnd, 0x117DA04)
 
-// CIFTileWnd::CIFTileWnd(void) .text 0081AB10 0000009A 00000018 00000000 R . . . . . .
+// CIFTileWnd::CIFTileWnd(void) .text 009117F0 0000009A 00000018 00000000 R . . . . . .
 CIFTileWnd::CIFTileWnd(void)
 {
 	BS_DEBUG_LOW(">" __FUNCTION__);
@@ -13,14 +13,14 @@ CIFTileWnd::CIFTileWnd(void)
 // CIFTileWnd::~CIFTileWnd(void) .text 0081B490 00000099 00000018 00000000 R . . . . . .
 CIFTileWnd::~CIFTileWnd(void)
 {
-	sub_81AE00();
+    sub_911AE0();
 }
 
-// CIFTileWnd::CTextBoard_Func_13 .text 0081AC50 0000008E 00000034 00000001 R . . . . . .
+// CIFTileWnd::CTextBoard_Func_13 .text 00911930 0000008E 00000034 00000001 R . . . . . .
 void CIFTileWnd::TB_Func_13(std::n_string str, int a3, int a4)
 {
 	BS_DEBUG_LOW(__FUNCTION__ " (\"%s\", %d, %d)", str.c_str(), a3, a4);
-	reinterpret_cast<void(__thiscall*)(CTextBoard*,std::n_string,int,int)>(0x0081AC50)(this, str, a3, a4);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*,std::n_string,int,int)>(0x00911850)(this, str, a3, a4);
 }
 
 // CIFTileWnd::OnCreate(void) .text 0081B530 0000000A 00000000 00000000 R . . . . . .
@@ -48,26 +48,26 @@ void CIFTileWnd::Func_40()
 	OnCIFReady();
 }
 
-// CIFTileWnd::OnCIFReady(void) .text 0081A740 000001C8 00000024 00000000 R . . . . . .
+// CIFTileWnd::OnCIFReady(void) .text 00911420 000001C8 00000024 00000000 R . . . . . .
 void CIFTileWnd::OnCIFReady()
 {
-	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x0081A740)(this);
+	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x00911340)(this);
 }
 
-// CIFTileWnd::Func_49(void) .text 0081B540 000001A1 00000048 0000001C R . . . . T .
+// CIFTileWnd::Func_49(void) .text 00912220 000001A1 00000048 0000001C R . . . . T .
 void CIFTileWnd::Func_49(std::n_string str)
 {
 	assert(FALSE);
 }
 
-// CIFTileWnd::set_N00009B9D(int) .text 0081A910 0000000D 00000000 00000001 R . . . . . .
+// CIFTileWnd::set_N00009B9D(int) .text 009115F0 0000000D 00000000 00000001 R . . . . . .
 void CIFTileWnd::set_N00009B9D(bool a2)
 {
 	N00009B9D = a2;
 }
 
-// CIFTileWnd__sub_81AE00 .text 0081AE00 0000007D 00000010 00000000 R . . . . . .
-void CIFTileWnd::sub_81AE00()
+// CIFTileWnd__sub_911AE0 .text 0081AE00 0000007D 00000010 00000000 R . . . . . .
+void CIFTileWnd::sub_911AE0()
 {
-	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x0081AE00)(this);
+	reinterpret_cast<void(__thiscall*)(CIFTileWnd*)>(0x00911A00)(this);
 }

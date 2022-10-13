@@ -8,7 +8,7 @@ extern std::vector<setsize_handler_t> hooks_setsize_post;
 
 bool CGFXVideo3D_Hook::CreateThingsHook(HWND hWindow, void* msghandler, int a3)
 {
-	bool a = reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, HWND, void*, int)>(0x00BAE370)(
+	bool a = reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, HWND, void*, int)>(0x00D790D0)(
 		this, hWindow, msghandler, a3);
 
 	for (std::vector<create_handler_t>::iterator it = hooks_create.begin();

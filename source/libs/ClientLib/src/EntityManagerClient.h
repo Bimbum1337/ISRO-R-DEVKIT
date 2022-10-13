@@ -6,5 +6,5 @@ class CEntityManagerClient : public CEntityManager
 	
 };
 
-#define g_pGfxEttManager (*(CEntityManagerClient**)0x0110F7D8)
+#define g_pGfxEttManager (*(CEntityManagerClient**)0x013BAE08)
 

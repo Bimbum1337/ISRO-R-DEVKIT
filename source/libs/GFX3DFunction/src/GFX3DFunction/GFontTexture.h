@@ -27,9 +27,9 @@ public:
 	void sub_8B2BA0(int a1, D3DCOLOR color);
 
 	// Set some texture
-	void sub_8B3B60(std::n_wstring *str);
+	void sub_B1D410(std::n_wstring *str);
 	// Clear some texture
-	void sub_8B37A0();
+	void sub_B1BEE0();
 
 	/// \address 008B4400
 	void sub_8B4400(int a1, int a2);
@@ -65,5 +65,6 @@ private:
 	int N000007BC; //0x0048
     TextureDimensions m_dimensions; //0x004C
     char pad_0050[24]; //0x0050
+    char pad_todo[8];
 };
 

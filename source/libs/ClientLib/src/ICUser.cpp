@@ -12,7 +12,7 @@
 #define g_RuntimeTextureSomething (*reinterpret_cast<std::n_map<int, const IDirect3DBaseTexture9*> *>(0x0110af70))
 
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CICUser, 0x00ef1bc0)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CICUser, 0x119B6F0)
 
 // CICUser::GetGuildName() .text 009DB100 00000007   R . . . . . .
 const std::wstring &CICUser::GetGuildName() const {
@@ -297,27 +297,27 @@ void CICUser::RenderFortressIcons(D3DVECTOR *dataOut, float *param_2) {
         switch (iVar5 - 0xc9U) { // 201
             case 0: // 201
             case 2: // 203
-                if (field_81c == 1) {
+                if (field_94c == 1) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x6]; // icon\\etc\\mark_fortress2.ddj
-                } else if (field_81c == 2) {
+                } else if (field_94c == 2) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x7]; // icon\\etc\\mark_fortress3.ddj
                 } else {
                     return;
                 }
                 break;
             case 1: // 202
-                if (field_81c == 1) {
+                if (field_94c == 1) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0xa]; // icon\\etc\\mark_defensive2.ddj
-                } else if (field_81c == 2) {
+                } else if (field_94c == 2) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0xb]; // icon\\etc\\mark_defensive3.ddj
                 } else {
                     return;
                 }
                 break;
             case 3: // 204
-                if (field_81c == 1) {
+                if (field_94c == 1) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x8]; // icon\\etc\\mark_aggressive2.ddj
-                } else if (field_81c == 2) {
+                } else if (field_94c == 2) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x9]; // icon\\etc\\mark_aggressive3.ddj
                 } else {
                     return;
@@ -330,9 +330,9 @@ void CICUser::RenderFortressIcons(D3DVECTOR *dataOut, float *param_2) {
         switch (iVar5 - 0xc9U) {
             case 0:
             case 2:
-                if (field_81c == 1) {
+                if (field_94c == 1) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x6]; // icon\\etc\\mark_fortress2.ddj
-                } else if (field_81c == 2) {
+                } else if (field_94c == 2) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0x7]; // icon\\etc\\mark_fortress3.ddj
                 } else {
                     return;
@@ -340,9 +340,9 @@ void CICUser::RenderFortressIcons(D3DVECTOR *dataOut, float *param_2) {
                 break;
             case 1:
             case 3:
-                if (field_81c == 1) {
+                if (field_94c == 1) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0xa]; // icon\\etc\\mark_defensive2.ddj
-                } else if (field_81c == 2) {
+                } else if (field_94c == 2) {
                     iconFilePath = p_MiniIcon_TexturePtrs[0xb]; // icon\\etc\\mark_defensive3.ddj
                 } else {
                     return;

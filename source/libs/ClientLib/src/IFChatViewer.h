@@ -15,7 +15,7 @@
 #define GDR_CHATVIEWER 1
 
 class CIFChatViewer : public CIFWnd {
-GFX_DECLARE_DYNAMIC_EXISTING(CIFChatViewer, 0x00EEC168)
+GFX_DECLARE_DYNAMIC_EXISTING(CIFChatViewer, 0x117CF18)
     GFX_DECLARE_DYNCREATE_FN(CIFChatViewer)
 
 GFX_DECLARE_MESSAGE_MAP(CIFChatViewer)
@@ -195,7 +195,7 @@ private:
     void inline BlockChatIf(int msgLimit, int timeLimitMs, int timeoutSec);
 
 private:
-    std::list<void *> N00009C2C; //0x036C
+    std::list<void *> N00009C2C; //0x0374
     char pad_0378[8]; //0x0378
     std::string N00009C32[4]; //0x0380
     char m_ChatHistoryCount; //0x03F0
@@ -236,32 +236,33 @@ private:
     int N00009C80; //0x04A8
     char N00009C81; //0x04AC
 
-    std::wstring N00009C82; //0x04B0
+    std::wstring N00009C82; //0x04B8
+    char pad_todo[0x28];
 
 public:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(1228); // 0x4CC
-        ENSURE_OFFSET(m_ChatHistoryCount, 0x03F0);
-        ENSURE_OFFSET(m_ChatBlock_SecondsLeft, 0x03F4);
-        ENSURE_OFFSET(m_bChattingAllowed, 0x03F8);
-        ENSURE_OFFSET(m_chatHistoryTimes, 0x03FC);
-        ENSURE_OFFSET(m_Button_ChatTabHide, 0x0444);
-        ENSURE_OFFSET(m_Button_WhisperList, 0x0448);
-        ENSURE_OFFSET(m_CurrentActiveChatlist, 0x044C);
-        ENSURE_OFFSET(m_ChatLists, 0x0450);
-        ENSURE_OFFSET(m_Button_ChatSize, 0x0464);
-        ENSURE_OFFSET(m_ChatBlockLabel, 0x0468);
-        ENSURE_OFFSET(m_Lamp_All, 0x0478);
-        ENSURE_OFFSET(m_Lamp_Party, 0x047C);
-        ENSURE_OFFSET(m_Lamp_Guild, 0x0480);
-        ENSURE_OFFSET(m_Lamp_Ally, 0x0484);
-        ENSURE_OFFSET(m_Lamp_Apprentice, 0x0488);
-        ENSURE_OFFSET(m_Button_ChatMode, 0x0490);
-        ENSURE_OFFSET(m_ChatModeView_Wnd, 0x0494);
-        ENSURE_OFFSET(m_WhisperList, 0x0498);
-        ENSURE_OFFSET(m_Scroll, 0x049C);
-        ENSURE_OFFSET(m_InputBox, 0x04A0);
-        ENSURE_OFFSET(m_pTabs, 0x04A4);
+        ENSURE_SIZE(0x4FC); // 0x4CC
+        ENSURE_OFFSET(m_ChatHistoryCount, 0x03F8);
+        ENSURE_OFFSET(m_ChatBlock_SecondsLeft, 0x03FC);
+        ENSURE_OFFSET(m_bChattingAllowed, 0x0400);
+        ENSURE_OFFSET(m_chatHistoryTimes, 0x0404);
+        ENSURE_OFFSET(m_Button_ChatTabHide, 0x044C);
+        ENSURE_OFFSET(m_Button_WhisperList, 0x0450);
+        ENSURE_OFFSET(m_CurrentActiveChatlist, 0x0454);
+        ENSURE_OFFSET(m_ChatLists, 0x0458);
+        ENSURE_OFFSET(m_Button_ChatSize, 0x046C);
+        ENSURE_OFFSET(m_ChatBlockLabel, 0x0470);
+        ENSURE_OFFSET(m_Lamp_All, 0x0480);
+        ENSURE_OFFSET(m_Lamp_Party, 0x0484);
+        ENSURE_OFFSET(m_Lamp_Guild, 0x0488);
+        ENSURE_OFFSET(m_Lamp_Ally, 0x048C);
+        ENSURE_OFFSET(m_Lamp_Apprentice, 0x0490);
+        ENSURE_OFFSET(m_Button_ChatMode, 0x0498);
+        ENSURE_OFFSET(m_ChatModeView_Wnd, 0x049C);
+        ENSURE_OFFSET(m_WhisperList, 0x04A0);
+        ENSURE_OFFSET(m_Scroll, 0x04A4);
+        ENSURE_OFFSET(m_InputBox, 0x04A8);
+        ENSURE_OFFSET(m_pTabs, 0x04AC);
     END_FIXTURE()
 
     RUN_FIXTURE(CIFChatViewer)

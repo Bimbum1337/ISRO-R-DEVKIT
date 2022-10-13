@@ -179,7 +179,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFTargetWindowFortressStructure.cpp src/IFTargetWindowFortressStructure.h
     src/ICNonuser.cpp src/ICNonuser.h
     src/ICMonster.cpp src/ICMonster.h
-    src/ICCos.cpp src/ICCos.h)
+    src/ICCos.cpp src/ICCos.h src/Juicer/IFTestExample.h src/Juicer/IFTestExample.cpp src/IFNormalTile.h src/IFNormalTile.cpp src/IFWebItemAlram.cpp src/IFWebItemAlram.h src/IFSignLocationGuide.h src/IFSignLocationGuide.cpp src/IFMacroSystemGuide.cpp src/IFMacroSystemGuide.h src/IFMagicLampAlram.h src/IFMagicLampAlram.cpp src/IFAttendanceEventGuid.cpp src/IFAttendanceEventGuid.h src/IFSurvivalPVPEstimateTimeAlram.cpp src/IFSurvivalPVPEstimateTimeAlram.h src/IFFacebookLinkAlram.cpp src/IFFacebookLinkAlram.h src/IFDailyLoginAlram.cpp src/IFDailyLoginAlram.h)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet SimpleViewer TypeId abi-testing imgui remodel ghidra)

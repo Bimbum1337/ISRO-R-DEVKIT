@@ -26,7 +26,7 @@ public:
 
 	virtual bool CreateThings(HWND hWindow, void* msghandler, int a3)
 	{
-		return reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, HWND, void*, int)>(0x00BAE370)(
+		return reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, HWND, void*, int)>(0x00D79210)(
 			this, hWindow, msghandler, a3);
 	}
 
@@ -39,7 +39,7 @@ public:
 
 	virtual bool SetSize(int width, int height)
 	{
-		return reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, int a2, int a3)>(0x0BAD590)(this, width, height);
+		return reinterpret_cast<bool (__thiscall*)(CGFXVideo3d*, int a2, int a3)>(0xD782B0)(this, width, height);
 	}
 
 	virtual void GetSizeInVec2(D3DXVECTOR2& vec);
@@ -119,6 +119,6 @@ public: /* members */
 	char pad_0590[1536]; //0x0590
 };
 
-#define g_CD3DApplication (*((CGFXVideo3d**)0x0110F7EC))
+#define g_CD3DApplication (*((CGFXVideo3d**)0x013BAE1C))
 
-#define worldMatrix (*((D3DXMATRIX*)0x011113F8))
+#define worldMatrix (*((D3DXMATRIX*)0x013BCA98))

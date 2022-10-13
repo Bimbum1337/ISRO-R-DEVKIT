@@ -21,7 +21,7 @@ public: /* interface functions */
     void SetCornerTextures(const std::n_string &cornerTexturePath);
 
 private: /* members */
-    char pad_0x036C[0x34]; //0x036C
+    char pad_0x036C[0x34]; //0x0374
     char *N000062E6; //0x03A0
     char pad_0x03A4[0x18]; //0x03A4
     char *N000062F0; //0x03BC
@@ -41,7 +41,7 @@ private: /* members */
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x07C4)
+        ENSURE_SIZE(0x7CC)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFStretchWnd)

@@ -3,5 +3,5 @@
 #include "IFButton.h"
 
 class CIFCloseButton : public CIFButton {
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFCloseButton, 0x00ee9868)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFCloseButton, 0x1179AB8)
 };

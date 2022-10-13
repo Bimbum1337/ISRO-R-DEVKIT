@@ -36,23 +36,23 @@ public:
     void OnClick_11();
 
 private:
-    char pad_0x036C[0x8];
-    CIFTargetWindowCommonEnemy* m_pGDR_TW_COMMONENEMY; //0x374
-    CIFTargetWindowPlayer* m_pGDR_TW_PLAYERWND; //0x378
-    CIFTargetWindowJobPlayer* m_pGDR_TW_JOB_PLAYERWND; //0x37c
-    CIFTargetWindowSpecialMob* m_pGDR_TW_SPECIALMOBWND; //0x380
-    CIFTargetWindowFortressStructure* m_pGDR_TW_FORTRESSSTRUCTER; // 0x384
-    CIFBuffViewer* m_pCIFBuffViewer; //0x388
+    char pad_0x0374[0x8];
+    CIFTargetWindowCommonEnemy* m_pGDR_TW_COMMONENEMY; //0x37C
+    CIFTargetWindowPlayer* m_pGDR_TW_PLAYERWND; //0x380
+    CIFTargetWindowJobPlayer* m_pGDR_TW_JOB_PLAYERWND; //0x384
+    CIFTargetWindowSpecialMob* m_pGDR_TW_SPECIALMOBWND; //0x388
+    CIFTargetWindowFortressStructure* m_pGDR_TW_FORTRESSSTRUCTER; // 0x38C
+    CIFBuffViewer* m_pCIFBuffViewer; //0x390
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x38c)
-        ENSURE_OFFSET(m_pGDR_TW_COMMONENEMY, 0x374)
-        ENSURE_OFFSET(m_pGDR_TW_PLAYERWND, 0x378)
-        ENSURE_OFFSET(m_pGDR_TW_JOB_PLAYERWND, 0x37c)
-        ENSURE_OFFSET(m_pGDR_TW_SPECIALMOBWND, 0x380)
-        ENSURE_OFFSET(m_pGDR_TW_FORTRESSSTRUCTER, 0x384)
-        ENSURE_OFFSET(m_pCIFBuffViewer, 0x388)
+        ENSURE_SIZE(0x394)
+        ENSURE_OFFSET(m_pGDR_TW_COMMONENEMY, 0x37C)
+        ENSURE_OFFSET(m_pGDR_TW_PLAYERWND, 0x380)
+        ENSURE_OFFSET(m_pGDR_TW_JOB_PLAYERWND, 0x384)
+        ENSURE_OFFSET(m_pGDR_TW_SPECIALMOBWND, 0x388)
+        ENSURE_OFFSET(m_pGDR_TW_FORTRESSSTRUCTER, 0x38C)
+        ENSURE_OFFSET(m_pCIFBuffViewer, 0x390)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFTargetWindow)

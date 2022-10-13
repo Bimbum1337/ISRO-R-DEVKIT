@@ -1,6 +1,6 @@
 #include "IFStatic.h"
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFStatic, 0x00EE9720)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFStatic, 0x1179970)
 
 // CIFStatic::CIFStatic(void) .text 0064D5F0 00000081 0000001C 00000000 R . . . . T .
 CIFStatic::CIFStatic(void)
@@ -40,19 +40,19 @@ bool CIFStatic::SetText(const wchar_t* src)
 // CIFStatic::OnWndMessage .text 0064D850 00000037 00000004 00000004 R . . . . . .
 void CIFStatic::OnWndMessage(int a1)
 {
-	reinterpret_cast<void(__thiscall*)(CIFStatic*,int)>(0x0064D850)(this, a1);
+	reinterpret_cast<void(__thiscall*)(CIFStatic*,int)>(0x007297C0)(this, a1);
 }
 
 // CIFStatic::RenderMyself(void) .text 0064D940 00000065 00000004 00000000 R . . . . . .
 void CIFStatic::RenderMyself()
 {
-	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x0064D940)(this);
+	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x00729180)(this);
 }
 
 // CIFStatic::Func_42(void) .text 0064D9B0 0000019B 00000018 00000000 R . . . . . .
 void CIFStatic::Func_42()
 {
-	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x0064D9B0)(this);
+	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x0072F550)(this);
 }
 
 // CIFStatic::Func_49(void) .text 0064D780 0000008E 00002008 00000009 R . . . . T .

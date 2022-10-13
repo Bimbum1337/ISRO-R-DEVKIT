@@ -13,7 +13,7 @@
 	&CObj::DeleteObject
 };*/
 
-const GlobalVar<CGfxRuntimeClass, 0x0110F8FC> CObj::classCObj;
+const GlobalVar<CGfxRuntimeClass, 0x13BAF7C> CObj::classCObj;
 
 CGfxRuntimeClass const *CObj::GetRuntimeClass() const {
     return classCObj;
@@ -38,11 +38,11 @@ CObj::~CObj() {
 }
 
 bool CObj::IsSame(const CGfxRuntimeClass &rtclass) const {
-    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00b94b70)(this, rtclass);
+    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00D62510)(this, rtclass);
 }
 
 bool CObj::IsKindOf(const CGfxRuntimeClass &rtclass) const {
-    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00b94b90)(this, rtclass);
+    return reinterpret_cast<bool (__thiscall *)(const CObj *, const CGfxRuntimeClass &)>(0x00D62530)(this, rtclass);
 }
 
 const GFX_MSGMAP CObjChild::messageMapCObjChild = {
@@ -88,12 +88,12 @@ CObjChild::CObjChild() {
 }
 
 int CObjChild::StartTimer(int timerId, int timeoutMs) {
-    return reinterpret_cast<int (__thiscall*)(CObjChild*, int, int)>(0x00b93320)(this, timerId, timeoutMs);
+    return reinterpret_cast<int (__thiscall*)(CObjChild*, int, int)>(0x00D5AF90)(this, timerId, timeoutMs);
 }
 
 
 int CObjChild::KillTimer(int timerId) {
-    return reinterpret_cast<int (__thiscall *)(CObjChild *, int)>(0x00B93170)(this, timerId);
+    return reinterpret_cast<int (__thiscall *)(CObjChild *, int)>(0x00D5AE70)(this, timerId);
 }
 
 # if 0

@@ -52,14 +52,14 @@ namespace std {
         /// \param n Number of bytes to be allocated
         /// \returns pointer to allocated memory
         pointer allocate(size_type n) {
-            return reinterpret_cast<T *(__cdecl *)(size_type n)>(0x00401ED0)(n * sizeof(T));
+            return reinterpret_cast<T *(__cdecl *)(size_type n)>(0x00401c00)(n * sizeof(T));
         }
 
         /// Free given amount of bytes
         /// \param p pointer to the memory to free
         /// \param n size of the memory to free
         void deallocate(pointer p, size_type n) {
-            return reinterpret_cast<void (__cdecl *)(pointer, size_type) > (0x00402AE0)(p, n * sizeof(T));
+            return reinterpret_cast<void (__cdecl *)(pointer, size_type) > (0x004052d0)(p, n * sizeof(T));
         }
 
         /// construct object at _Ptr with value _Val

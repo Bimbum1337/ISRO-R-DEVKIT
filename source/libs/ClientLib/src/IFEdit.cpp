@@ -1,6 +1,6 @@
 #include "IFEdit.h"
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFEdit, 0x00ee9540)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFEdit, 0x1179790)
 
 bool CIFEdit::HasFocus() const {
     return reinterpret_cast<bool (__thiscall *)(const CIFEdit *)>(0x00634EA0)(this);

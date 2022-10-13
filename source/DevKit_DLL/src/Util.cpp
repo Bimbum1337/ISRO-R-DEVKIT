@@ -34,52 +34,43 @@ void Setup() {
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
     freopen("CONIN$", "r", stdin);
+
+    replaceAddr(0x92EB76 + 1 , (int) &DebugPrintCallback);
+
+    placeHook(0x00D88960, Put);
 #endif
 
-    vftableHook(0x00E0963C, 17, addr_from_this(&CGFXVideo3D_Hook::CreateThingsHook));
-    vftableHook(0x00E0963C, 26, addr_from_this(&CGFXVideo3D_Hook::EndSceneHook));
-    vftableHook(0x00E0963C, 20, addr_from_this(&CGFXVideo3D_Hook::SetSizeHook));
+    vftableHook(0x01068CC4, 17, addr_from_this(&CGFXVideo3D_Hook::CreateThingsHook));
+    vftableHook(0x01068CC4, 26, addr_from_this(&CGFXVideo3D_Hook::EndSceneHook));
+    vftableHook(0x01068CC4, 20, addr_from_this(&CGFXVideo3D_Hook::SetSizeHook));
 
-    vftableHook(0x00db95a4, 10, addr_from_this(&CGInterface::OnCreateIMPL));
-    vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
+    replaceOffset(0x009490F6, addr_from_this(&CGame_Hook::LoadGameOption));
+    replaceOffset(0x0092ECC5, addr_from_this(&CGame_Hook::InitGameAssets_Impl));
 
-    vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));
-    vftableHook(0x00de256c, 15, addr_from_this(&CICharactor::Func_15_impl));
-    vftableHook(0x00de2c24, 15, addr_from_this(&CICPlayer::Func_15_impl));
-    vftableHook(0x00de26c4, 15, addr_from_this(&CICMonster::Func_15_impl));
+    replaceAddr(0x0092D537 + 4, (int) &WndProcHook);
 
-    replaceAddr(0x00831337 + 4, (int) &WndProcHook);
+    vftableHook(0x0101011C, 10, addr_from_this(&CGInterface::OnCreateIMPL));
 
-    placeHook(0x0065c6f0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
+    placeHook(0x007390B0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
 
-    replaceOffset(0x008491d1, addr_from_this(&CGame_Hook::LoadGameOption));
+    //vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 
-    replaceOffset(0x00832a11, addr_from_this(&CGame_Hook::InitGameAssets_Impl));
+    //vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));
+    //vftableHook(0x00de256c, 15, addr_from_this(&CICharactor::Func_15_impl));
+    //vftableHook(0x00de2c24, 15, addr_from_this(&CICPlayer::Func_15_impl));
+    //vftableHook(0x00de26c4, 15, addr_from_this(&CICMonster::Func_15_impl));
 
-    replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
-    replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
-    replaceOffset(0x008a4876, addr_from_this(&CNetProcessThird::RegisterPacketHandlers));
 
-    replaceOffset(0x009ded0d, addr_from_this(&CRStateMgr::FUN_00470060));
 
-    placeHook(0x0049d620, Put);
+    //replaceOffset(0x0084c9bf, addr_from_this(&CNetProcessIn::RegisterPacketHandlers));
+    //replaceOffset(0x00898656, addr_from_this(&CNetProcessSecond::RegisterPacketHandlers));
+   // replaceOffset(0x008a4876, addr_from_this(&CNetProcessThird::RegisterPacketHandlers));
 
-#ifdef CONFIG_DEBUG_REDIRECT_PUTDUMP
-    replaceAddr(0x00832927 + 1, (int) &DebugPrintCallback);
-#endif // CONFIG_DEBUG_REDIRECT_PUTDUMP
+    //replaceOffset(0x009ded0d, addr_from_this(&CRStateMgr::FUN_00470060));
 
-#ifdef CONFIG_TRANSLATIONS_DEBUG
-    placeHook(0x008C9C30, addr_from_this(&CTextStringManager::GetString));
-#endif // CONFIG_TRANSLATIONS_DEBUG
 
-#ifdef CONFIG_CHATVIEWER
-    replaceOffset(0x008774f4, (int)&WriteToChatWindow);
-    replaceOffset(0x00877b5c, (int)&WriteToChatWindow);
 
-    placeHook(0x007a9bd0, addr_from_this(&CIFChatViewer::ShowHideControls));
-#endif // CONFIG_CHATVIEWER
-
-    quickstart.Setup();
+    //quickstart.Setup();
 }
 
 bool DoesFileExists(const std::string &name) {
@@ -102,7 +93,7 @@ void InstallRuntimeClasses(CGame *) {
 
     for (std::vector<const CGfxRuntimeClass *>::const_iterator it = register_objects.begin();
          it != register_objects.end(); ++it) {
-        reinterpret_cast<void (__thiscall *)(const CGfxRuntimeClass *, const char *, void *, void *,const CGfxRuntimeClass *, size_t, int)>(0x00B9C9C0)(*it,(*it)->m_lpszClassName, (*it)->m_pfnCreateObject, (*it)->m_pfnDeleteObject, (*it)->m_pBaseClass, (*it)->m_nObjectSize, 0);
+        reinterpret_cast<void (__thiscall *)(const CGfxRuntimeClass *, const char *, void *, void *,const CGfxRuntimeClass *, size_t, int)>(0x00D6A380)(*it,(*it)->m_lpszClassName, (*it)->m_pfnCreateObject, (*it)->m_pfnDeleteObject, (*it)->m_pBaseClass, (*it)->m_nObjectSize, 0);
     }
 
     for (std::vector<overrideFnPtr>::const_iterator it = override_objects.begin(); it != override_objects.end(); ++it) {

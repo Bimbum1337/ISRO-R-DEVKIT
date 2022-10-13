@@ -36,9 +36,8 @@ void SoundTool::Render() {
         CGEffSoundBody *snd = CGEffSoundBody::get();
 
         std::n_string itm = items[current_item];
-        std::n_wstring sndKey = TO_NWSTRING(itm);
-
-        snd->PlaySoundInner(&sndKey, 0, 0.0);
+        std::n_wstring sndkey = TO_NWSTRING(itm);
+        snd->PlaySoundInner(&sndkey, 0,0);
     }
 
 

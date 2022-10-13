@@ -79,41 +79,41 @@ public:
     unsigned int FUN_009c7880() const;
 
 private:
-    char pad_0254[32]; //0x0254
-    class CClassLink<CICharactor> classLink; //0x0274
-    class std::list<void*> decolist; //0x0284
-    char pad_0290[452]; //0x0290
-    unsigned int m_mpCurrent; //0x0454
-    unsigned int m_hpMax; //0x0458
-    unsigned int m_mpMax; //0x045C
-    unsigned int m_hpCurrent; //0x0460
-    char pad_0464[4]; //0x0464
-    unsigned int N00000A38; //0x0468
-    char pad_046C[16]; //0x046C
-    class CGFontTexture m_textureMessageAbove; //0x047C
-    char pad_04E4[12]; //0x04E4
+    char pad_0358[32]; //0x0358
+    class CClassLink<CICharactor> classLink; //0x0378
+    class std::list<void*> decolist; //0x0388
+    char pad_0394[452]; //0x0394
+    unsigned int m_mpCurrent; //0x0558
+    unsigned int m_hpMax; //0x055C
+    unsigned int m_mpMax; //0x0560
+    unsigned int m_hpCurrent; //0x0564
+    char pad_0568[4]; //0x0568
+    unsigned int N00000A38; //0x056C
+    char pad_0570[16]; //0x0570
+    class CGFontTexture m_textureMessageAbove; //0x0580
+    char pad_05F0[12]; //0x05F0
 protected:
-    float m_renderY; //0x04F0
-    float m_renderX; //0x04F4
-    float m_renderDepth; //0x04F8
+    float m_renderY; //0x05FC
+    float m_renderX; //0x0600
+    float m_renderDepth; //0x0604
 private:
-    char pad_04FC[17]; //0x04FC
-    TRIJOB_TYPE b_JobType; //0x050D
-    char pad_050E[638]; //0x050E
+    char pad_0608[17]; //0x0608
+    TRIJOB_TYPE b_JobType; //0x0619
+    char pad_061A[0x2A2]; //0x061A
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x78c)
-        ENSURE_OFFSET(classLink, 0x274)
-        ENSURE_OFFSET(decolist, 0x284)
-        ENSURE_OFFSET(m_mpCurrent, 0x0454)
-        ENSURE_OFFSET(m_hpMax, 0x0458)
-        ENSURE_OFFSET(m_mpMax, 0x045C)
-        ENSURE_OFFSET(m_hpCurrent, 0x0460)
-        ENSURE_OFFSET(m_textureMessageAbove, 0x47C)
-        ENSURE_OFFSET(m_renderY, 0x4F0)
-        ENSURE_OFFSET(m_renderX, 0x4F4)
-        ENSURE_OFFSET(m_renderDepth, 0x4F8)
-        ENSURE_OFFSET(b_JobType, 0x50d)
+        ENSURE_SIZE(0x8BC)
+        ENSURE_OFFSET(classLink, 0x378)
+        ENSURE_OFFSET(decolist, 0x388)
+        ENSURE_OFFSET(m_mpCurrent, 0x0558)
+        ENSURE_OFFSET(m_hpMax, 0x055C)
+        ENSURE_OFFSET(m_mpMax, 0x0560)
+        ENSURE_OFFSET(m_hpCurrent, 0x0564)
+        ENSURE_OFFSET(m_textureMessageAbove, 0x0580)
+        ENSURE_OFFSET(m_renderY, 0x05FC)
+        ENSURE_OFFSET(m_renderX, 0x0600)
+        ENSURE_OFFSET(m_renderDepth, 0x0604)
+        ENSURE_OFFSET(b_JobType, 0x619)
     END_FIXTURE()
 
     RUN_FIXTURE(CICharactor)

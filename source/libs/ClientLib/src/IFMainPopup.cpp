@@ -39,8 +39,7 @@ CIFMainPopup::CIFMainPopup() :
         m_partyWindow(NULL),
         m_apprenticeShipWindow(NULL),
         m_playerInfoWindow(NULL),
-        m_questWindow(NULL),
-        field_0x7fc(0) {
+        m_questWindow(NULL){
 }
 
 bool CIFMainPopup::OnCreate(long ln) {
@@ -141,7 +140,6 @@ void CIFMainPopup::ShowSubPage(int page) {
 
     switch (page) {
         case GDR_INVENTORY: {
-            field_0x7fc = 1;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_INVENTORY"));
 
             m_inventoryWindow->ShowGWnd(true);
@@ -157,7 +155,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_PARTY: {
-            field_0x7fc = 4;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_PARTY"));
 
             m_partyWindow->ShowGWnd(true);
@@ -169,7 +166,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_SKILL: {
-            field_0x7fc = 2;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_SKILL"));
 
             m_skillWindow->ShowGWnd(true);
@@ -181,7 +177,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_ACTION: {
-            field_0x7fc = 3;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_ACTION"));
 
             m_actionWindow->ShowGWnd(true);
@@ -194,7 +189,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_PLAYERINFO: {
-            field_0x7fc = 0;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_ACTION"));
 
             m_playerInfoWindow->ShowGWnd(true);
@@ -206,7 +200,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_QUEST: {
-            field_0x7fc = 5;
             SetText(TSM_GETTEXTPTR(L"UIIT_STT_QUEST"));
 
             m_questWindow->ShowGWnd(true);
@@ -218,7 +211,6 @@ void CIFMainPopup::ShowSubPage(int page) {
         }
 
         case GDR_APPRENTICESHIP: {
-            field_0x7fc = 5;
             SetText(TSM_GETTEXTPTR(L"UIIT_CTL_TC_TRAININGCAMP"));
 
             m_apprenticeShipWindow->ShowGWnd(true);
@@ -269,42 +261,43 @@ void CIFMainPopup::RenderMyself() {
 }
 
 void CIFMainPopup::ShowGWnd(bool bVisible) {
-    if (bVisible) {
-        switch (this->field_0x7fc) {
-            case 0:
-                ShowSubPage(GDR_PLAYERINFO);
-                break;
-            case 1:
-                ShowSubPage(GDR_INVENTORY);
-                break;
-            case 2:
-                ShowSubPage(GDR_SKILL);
-                break;
-            case 3:
-                ShowSubPage(GDR_ACTION);
-                break;
-            case 4:
-                ShowSubPage(GDR_PARTY);
-                break;
-            case 5:
-                ShowSubPage(GDR_QUEST);
-                break;
-            case 6:
-                ShowSubPage(GDR_APPRENTICESHIP);
-                break;
-        }
-    } else {
-        m_inventoryWindow->ShowGWnd(false);
-        m_equipmentWindow->ShowGWnd(false);
-        m_skillWindow->ShowGWnd(false);
-        m_actionWindow->ShowGWnd(false);
-        m_partyWindow->ShowGWnd(false);
-        m_playerInfoWindow->ShowGWnd(false);
-        m_questWindow->ShowGWnd(false);
-        m_apprenticeShipWindow->ShowGWnd(false);
-    }
-
-    CIFMainFrame::ShowGWnd(bVisible);
+//    if (bVisible) {
+//        switch (this->field_0x7fc) {
+//            case 0:
+//                ShowSubPage(GDR_PLAYERINFO);
+//                break;
+//            case 1:
+//                ShowSubPage(GDR_INVENTORY);
+//                break;
+//            case 2:
+//                ShowSubPage(GDR_SKILL);
+//                break;
+//            case 3:
+//                ShowSubPage(GDR_ACTION);
+//                break;
+//            case 4:
+//                ShowSubPage(GDR_PARTY);
+//                break;
+//            case 5:
+//                ShowSubPage(GDR_QUEST);
+//                break;
+//            case 6:
+//                ShowSubPage(GDR_APPRENTICESHIP);
+//                break;
+//        }
+//    } else {
+//        m_inventoryWindow->ShowGWnd(false);
+//        m_equipmentWindow->ShowGWnd(false);
+//        m_skillWindow->ShowGWnd(false);
+//        m_actionWindow->ShowGWnd(false);
+//        m_partyWindow->ShowGWnd(false);
+//        m_playerInfoWindow->ShowGWnd(false);
+//        m_questWindow->ShowGWnd(false);
+//        m_apprenticeShipWindow->ShowGWnd(false);
+//    }
+//
+//    CIFMainFrame::ShowGWnd(bVisible);
+    //todo
 }
 
 

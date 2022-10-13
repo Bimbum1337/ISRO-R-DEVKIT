@@ -4,7 +4,7 @@
 #include "UserGuildInfo.h"
 
 class CICUser : public CICharactor {
-    GFX_DECLARE_DYNAMIC_EXISTING(CICUser, 0x00ef1bc0)
+    GFX_DECLARE_DYNAMIC_EXISTING(CICUser, 0x119B6F0)
 public:
 
     /// \address 009dea30
@@ -30,20 +30,20 @@ private:
     void RenderFortressIcons(D3DVECTOR *dataOut, float *param_2);
 
 private:
-    char pad_078C[56]; //0x078C
-    UserGuildInfo *m_pGuildInfo; //0x07C4
-    std::n_wstring m_grantName; //0x07C8
-    std::n_wstring m_guildName; //0x07E4
-    std::n_wstring m_fortressWarTitle; //0x0800
-    undefined1 field_81c; //0x081C
-    char pad_081D[15]; //0x081D
+    char pad_08BC[56]; //0x08BC
+    UserGuildInfo *m_pGuildInfo; //0x08F4
+    std::n_wstring m_grantName; //0x08F8
+    std::n_wstring m_guildName; //0x0914
+    std::n_wstring m_fortressWarTitle; //0x0930
+    undefined1 field_94c; //0x094c
+    char pad_094D[0xA3]; //0x094D
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(2092)
-        ENSURE_OFFSET(m_pGuildInfo, 0x07C4)
-        ENSURE_OFFSET(m_grantName, 0x07C8)
-        ENSURE_OFFSET(m_guildName, 0x07E4)
-        ENSURE_OFFSET(m_fortressWarTitle, 0x0800)
+        ENSURE_SIZE(0x9F0)
+        ENSURE_OFFSET(m_pGuildInfo, 0x08F4)
+        ENSURE_OFFSET(m_grantName, 0x08F8)
+        ENSURE_OFFSET(m_guildName, 0x0914)
+        ENSURE_OFFSET(m_fortressWarTitle, 0x0930)
     END_FIXTURE()
 
     RUN_FIXTURE(CICUser)

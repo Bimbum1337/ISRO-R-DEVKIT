@@ -4,7 +4,7 @@
 
 class CIFDecoratedStatic : public CIFStatic
 {
-	GFX_DECLARE_DYNAMIC_EXISTING(CIFDecoratedStatic, 0x00EE94F8)
+	GFX_DECLARE_DYNAMIC_EXISTING(CIFDecoratedStatic, 0x1179748)
 
 public:
 	bool OnCreate(long ln) override;
@@ -29,27 +29,26 @@ protected:
 	void set_N00009BD3(int a1);
 	void sub_634470(std::n_string a1);
 	void sub_633990();
-
+    void sub_72F670(int a1);
 private:
-	char N00009BD2; //0x0380
-	char N00009C1D; //0x0381
-	char N00009C20; //0x0382
-	char pad_0383[1]; //0x0383
-	int N00009BD3; //0x0384
-	char N00009BD4; //0x0388
-	char pad_0389[3]; //0x0389
-	int N00009BD5; //0x038C
-	int N00009BD8; //0x0390
-	char pad_0394[4]; //0x0394
-	int N00009BDC; //0x0398
-	char N00009BDD; //0x039C
-	char N00009C18; //0x039D
-	char pad_039E[98]; //0x039E
-	int N00009BFC; //0x0400
-	std::n_string N00009BFD; //0x0404
-
+	char N00009BD2; //0x0394
+	char N00009C1D; //0x0395
+	char N00009C20; //0x0396
+	char pad_0383[1]; //0x0397
+	int N00009BD3; //0x0398
+	char N00009BD4; //0x039C
+	char pad_0389[3]; //0x039D
+	int N00009BD5; //0x03A0
+	int N00009BD8; //0x03A4
+	char pad_0394[4]; //0x03A8
+	int N00009BDC; //0x03AC
+	char N00009BDD; //0x03B0
+	char N00009C18; //0x03B1
+	char pad_039E[98]; //0x03B2
+	int N00009BFC; //0x0414
+    char pad_0000[0x1C];
     BEGIN_FIXTURE()
-        ENSURE_SIZE(1056)
+        ENSURE_SIZE(0x434)
     END_FIXTURE()
     RUN_FIXTURE(CIFDecoratedStatic)
 };

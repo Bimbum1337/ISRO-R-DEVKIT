@@ -19,7 +19,7 @@ enum StyleOptions : undefined4 {
 };
 
 class CIFWnd : public CGWnd, public CTextBoard {
-GFX_DECLARE_DYNAMIC_EXISTING(CIFWnd, 0x00EE9808)
+GFX_DECLARE_DYNAMIC_EXISTING(CIFWnd, 0x1179A58)
 
 GFX_DECLARE_MESSAGE_MAP(CIFWnd)
 public:
@@ -198,10 +198,9 @@ private:
     int N000006A1; //0x0360
     int N00009C01; //0x0364
     int N00009C02; //0x0368
-
 BEGIN_FIXTURE()
-        ENSURE_SIZE(876)
-        ENSURE_OFFSET(m_someRECT, 0x18C)
+        ENSURE_SIZE(0x374)
+        ENSURE_OFFSET(m_someRECT, 0x194)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFWnd)

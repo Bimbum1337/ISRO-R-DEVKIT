@@ -29,7 +29,7 @@ int size(T (&)[N]) { return N; }
 /// Common base class for runtime-identifiable objects
 class CObj {
 public:
-    static const GlobalVar<CGfxRuntimeClass, 0x0110F8FC> classCObj;
+    static const GlobalVar<CGfxRuntimeClass, 0x13BAF7C> classCObj;
 
     virtual CGfxRuntimeClass const *GetRuntimeClass() const;
 

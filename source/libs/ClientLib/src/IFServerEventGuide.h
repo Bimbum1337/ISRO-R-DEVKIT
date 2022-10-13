@@ -4,6 +4,6 @@
 
 class CIFServerEventGuide : public CIFDecoratedStatic {
 
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFServerEventGuide, 0x00eec8c8)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFServerEventGuide, 0x117D698)
 
 };

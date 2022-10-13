@@ -32,7 +32,7 @@ public:
 	char GetN00009BB9() const;
 
 protected:
-	void sub_655B00(const wchar_t *str);
+	void sub_732530(const wchar_t *str);
 
 	bool sub_655420(int a2);
 	void sub_655770(std::n_string);
@@ -69,6 +69,5 @@ private:
 	int N00009768; //0x00F8
 	char N00009769; //0x00FC
 	char pad_00FD[3]; //0x00FD
-
 };
 

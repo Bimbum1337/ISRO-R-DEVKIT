@@ -13,7 +13,7 @@ void CGame_Hook::LoadGameOption() {
         (*it)(this);
     }
 
-    reinterpret_cast<void (__thiscall *)(CGame_Hook *)>(0x008469c0)(this);
+    reinterpret_cast<void (__thiscall *)(CGame_Hook *)>(0x009463C0)(this);
 
     for (std::vector<void_cgame_handler_t>::iterator it = hooks_lgo_post.begin(); it != hooks_lgo_post.end(); ++it) {
         (*it)(this);

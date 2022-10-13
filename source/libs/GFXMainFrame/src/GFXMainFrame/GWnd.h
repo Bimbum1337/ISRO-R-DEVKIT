@@ -7,7 +7,7 @@ class CProcess; /* forward decl to avoid include recursion */
 /// Adds just a bunch of virtuals to \ref CGWndBase which are pretty much all unknown ...
 class CGWnd : public CGWndBase {
     // 132 - 132 = 0 <- no additional bytes :)
-GFX_DECLARE_DYNAMIC_EXISTING(CGWnd, 0x0110F94C)
+GFX_DECLARE_DYNAMIC_EXISTING(CGWnd, 0x13BAEE0)
 
 public:
     /// \address 00B9D810
@@ -89,7 +89,7 @@ public:
     /// \param a4 Presumably the Id
     /// \param a5 Unknown
     static CGWnd *CreateInstance(CGWnd *pParent, const CGfxRuntimeClass &pType, RECT &Rect, int a4, int a5) {
-        return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, RECT *, int, int)>(0x00BA20B0)(
+        return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, RECT *, int, int)>(0x00D622D0)(
                 pParent, &pType, &Rect, a4, a5);
     }
 
@@ -100,7 +100,7 @@ public:
     /// \param a4 Presumably the Id
     /// \param a5 Unknown
     static CGWnd *CreateInstance(CGWnd *pParent, const CGfxRuntimeClass &pType, wnd_rect &Rect, int a4, int a5) {
-        return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, wnd_rect *, int, int)>(0x00BA20B0)(
+        return reinterpret_cast<CGWnd *(__cdecl *)(CGWnd *, const CGfxRuntimeClass *, wnd_rect *, int, int)>(0x00D622D0)(
                 pParent, &pType, &Rect, a4, a5);
     }
 };

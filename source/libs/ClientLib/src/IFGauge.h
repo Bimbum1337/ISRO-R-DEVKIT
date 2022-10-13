@@ -4,20 +4,17 @@
 class CIFGauge : public CIFStatic
 {
 public:
-	float m_valueFg; //0x0380
-	float m_valueBg; //0x0384
-    char pad_0x0388[0x4]; //0x0388
-    float field_0x38c; // 0x038c
-	char pad_0x0390[0x34]; //0x0390
-
-
-
+	float m_valueFg; //0x0394
+	float m_valueBg; //0x0398
+    char pad_0x0388[0x4]; //0x039C
+    float field_0x38c; // 0x03A0
+	char pad_0x0390[0x28]; //0x03A4
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x03C4)
-        ENSURE_OFFSET(m_valueFg, 0x0380)
-        ENSURE_OFFSET(m_valueBg, 0x0384)
-        ENSURE_OFFSET(field_0x38c, 0x038c)
+        ENSURE_SIZE(0x3CC)
+        ENSURE_OFFSET(m_valueFg, 0x0394)
+        ENSURE_OFFSET(m_valueBg, 0x0398)
+        ENSURE_OFFSET(field_0x38c, 0x03A0)
         END_FIXTURE()
 
     RUN_FIXTURE(CIFGauge)

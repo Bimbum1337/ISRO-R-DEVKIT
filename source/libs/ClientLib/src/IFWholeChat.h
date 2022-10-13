@@ -6,7 +6,7 @@
 
 class CIFWholeChat : public CIFFrame {
 
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFWholeChat, 0x00eec7a8)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFWholeChat, 0x117D558)
 
     GFX_DECLARE_DYNCREATE_FN(CIFWholeChat)
 
@@ -54,14 +54,14 @@ private:
     CIFStatic *m_pCreatedStatic;
     CIFDragableArea *m_pDragableArea;
 
-
+    int pad_todo;
     BEGIN_FIXTURE()
-        ENSURE_SIZE(1988)
-        ENSURE_OFFSET(m_SlotOfChattingItem, 0x7b0)
-        ENSURE_OFFSET(m_NumberOfItemsLeft,  0x7b4)
-        ENSURE_OFFSET(m_pEdit, 0x7b8)
-        ENSURE_OFFSET(m_pCreatedStatic, 0x7bc)
-        ENSURE_OFFSET(m_pDragableArea, 0x7c0)
+        ENSURE_SIZE(0x7D0)
+        ENSURE_OFFSET(m_SlotOfChattingItem, 0x7b8)
+        ENSURE_OFFSET(m_NumberOfItemsLeft,  0x7bc)
+        ENSURE_OFFSET(m_pEdit, 0x7c0)
+        ENSURE_OFFSET(m_pCreatedStatic, 0x7c4)
+        ENSURE_OFFSET(m_pDragableArea, 0x7c8)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFWholeChat)

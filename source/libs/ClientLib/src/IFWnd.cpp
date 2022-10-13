@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <BSLib/Debug.h>
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFWnd, 0x00EE9808)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFWnd, 0x1179A58)
 
 GFX_BEGIN_MESSAGE_MAP(CIFWnd, CObjChild)
 
@@ -88,23 +88,23 @@ bool CIFWnd::Func_18(int a1) {
     return false;
 }
 
-// CIFWnd::On3DEventMAYBE(void) .text 00652540 000000FE 0000000C 00000004 R . . . . . .
+// CIFWnd::On3DEventMAYBE(void) .text 0072EE80 000000FE 0000000C 00000004 R . . . . . .
 bool CIFWnd::On3DEvent_MAYBE(Event3D *a2) {
     BS_DEBUG_LOW(__FUNCTION__ " (%p)", a2);
     BS_DEBUG_LOW("> %d %8x %8x", a2->Msg, a2->lParam, a2->wParam);
 
-    return reinterpret_cast<bool (__thiscall *)(CIFWnd *, Event3D *)>(0x00652540)(this, a2);
+    return reinterpret_cast<bool (__thiscall *)(CIFWnd *, Event3D *)>(0x0072EE80)(this, a2);
 }
 
-// CIFWnd::Func_20(void) .text 00652BC0 00000011   R . . . . . .
+// CIFWnd::Func_20(void) .text 0072F510 00000011   R . . . . . .
 void CIFWnd::BringToFront() {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x00652BC0)(this);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x0072F510)(this);
 }
 
 // CIFWnd::SetGWndSize(int,int) .text 00652970 00000024 00000004 00000008 R . . . . . .
 void CIFWnd::SetGWndSize(int width, int height) {
     BS_DEBUG_LOW(__FUNCTION__ " (%d, %d)", width, height);
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, int, int)>(0x00652970)(this, width, height);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, int, int)>(0x0072F2B0)(this, width, height);
 }
 
 // CIFWnd::Func_22(void) .text 00652950 00000014 00000000 00000008 R . . . . . .
@@ -123,40 +123,40 @@ void CIFWnd::TB_Func_7() {
     assert(FALSE);
 }
 
-// CIFWnd::CTextBoard_Func_8 .text 00652670 0000006A 00000008 00000000 R . . . . . .
+// CIFWnd::CTextBoard_Func_8 .text 0072EFB0 0000006A 00000008 00000000 R . . . . . .
 char CIFWnd::TB_Func_8() {
-    return reinterpret_cast<char (__thiscall *)(CTextBoard *)>(0x00652670)(this);
+    return reinterpret_cast<char (__thiscall *)(CTextBoard *)>(0x0072EFB0)(this);
 }
 
-// CIFWnd::CTextBoard_Func_11 .text 00654C30 000000D9 00000038 00000000 R . . . . . .
+// CIFWnd::CTextBoard_Func_11 .text 00731660 000000D9 00000038 00000000 R . . . . . .
 void CIFWnd::TB_Func_11() {
-    reinterpret_cast<void (__thiscall *)(CTextBoard *)>(0x00654C30)(this);
+    reinterpret_cast<void (__thiscall *)(CTextBoard *)>(0x00731660)(this);
 }
 
-// CIFWnd::Update(void) .text 006528A0 0000001C 00000004 00000000 R . . . . . .)
+// CIFWnd::Update(void) .text 0072F1E0 0000001C 00000004 00000000 R . . . . . .)
 void CIFWnd::OnUpdate() {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x006528A0)(this);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x0072F1E0)(this);
 }
 
-// CIFWnd::ShowGWnd(bool) .text 00652B70 00000048 00000004 00000004 R . . . . . .
+// CIFWnd::ShowGWnd(bool) .text 0072F4B0 00000048 00000004 00000004 R . . . . . .
 void CIFWnd::ShowGWnd(bool bVisible) {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, bool)>(0x00652B70)(this, bVisible);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, bool)>(0x0072F4B0)(this, bVisible);
 }
 
-// CIFWnd::OnWndMessage(void) .text 00652FB0 0000008D 00000000 00000004 R . . . . . .
+// CIFWnd::OnWndMessage(void) .text 0072F900 0000008D 00000000 00000004 R . . . . . .
 void CIFWnd::OnWndMessage(int a1) {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, int)>(0x00652FB0)(this, a1);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, int)>(0x0072F900)(this, a1);
 }
 
-// CIFWnd::RenderMyself(void) .text 006550C0 00000043 00000004 00000000 R . . . . . .
+// CIFWnd::RenderMyself(void) .text 00731AF0 00000043 00000004 00000000 R . . . . . .
 void CIFWnd::RenderMyself() {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x06550C0)(this);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x0731AF0)(this);
 }
 
-// CIFWnd::MoveGWnd(int,int) .text 006529A0 00000024 00000004 00000008 R . . . . T .
+// CIFWnd::MoveGWnd(int,int) .text 0072F2E0 00000024 00000004 00000008 R . . . . T .
 void CIFWnd::MoveGWnd(int x, int y) {
     BS_DEBUG_LOW(__FUNCTION__ " (%d, %d)", x, y);
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, int, int)>(0x006529A0)(this, x, y);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, int, int)>(0x0072F2E0)(this, x, y);
 #if 0
     CGWnd::SetPosition(x, y);
     this->OnCIFReady();
@@ -178,7 +178,7 @@ void CIFWnd::Func_40() {
 }
 
 void CIFWnd::OnCIFReady() {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x006529D0)(this);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *)>(0x0072F310)(this);
 }
 
 // CIFWnd::IsInside(int,int) .text 00652740 00000046 00000010 00000008 R . . . . T .
@@ -187,12 +187,12 @@ bool CIFWnd::IsInside(int x, int y) {
     return false;
 }
 
-// CIFWnd::SetText(void) .text 00653AC0 00000062 00000004 00000004 R . . . . T .
+// CIFWnd::SetText(void) .text 007304F0 00000062 00000004 00000004 R . . . . T .
 bool CIFWnd::SetText(const wchar_t *src) {
-    return reinterpret_cast<bool (__thiscall *)(CIFWnd *, const wchar_t *)>(0x00653AC0)(this, src);
+    return reinterpret_cast<bool (__thiscall *)(CIFWnd *, const wchar_t *)>(0x007304F0)(this, src);
 }
 
-// CIFWnd::GetText(void) .text 00653350 00000017   R . . . . . .
+// CIFWnd::GetText(void) .text 0072FCA0 00000017   R . . . . . .
 const wchar_t *CIFWnd::GetText() {
     return m_innerText.c_str();
 }
@@ -204,7 +204,7 @@ void CIFWnd::Func_42() {
 
 // CIFWnd::OnCloseWnd(void) .text 00652C00 000000CF 00000004 00000000 R . . . . . .
 undefined1 CIFWnd::OnCloseWnd() {
-    return reinterpret_cast<undefined1(__thiscall *)(CIFWnd *)>(0x00652c00)(this);
+    return reinterpret_cast<undefined1(__thiscall *)(CIFWnd *)>(0x0072F550)(this);
 }
 
 // CIFWnd::Func_47(int) .text 004F4D50 00000003 00000000 00000000 R . . . . . .
@@ -219,12 +219,12 @@ void CIFWnd::Func_48() {
 
 // CIFWnd::On4001(int,int) .text 00652390 00000012 00000000 00000000 R . . . . . .
 int CIFWnd::On4001(int a2, int a3) {
-    return reinterpret_cast<int (__thiscall *)(CIFWnd *, int, int)>(0x00652390)(this, a2, a3);
+    return reinterpret_cast<int (__thiscall *)(CIFWnd *, int, int)>(0x0072ECD0)(this, a2, a3);
 }
 
 // CIFWnd::On4006(int,int) .text 006523B0 00000012 00000000 00000000 R . . . . . .
 int CIFWnd::On4006(int a2, int a3) {
-    return reinterpret_cast<int (__thiscall *)(CIFWnd *, int, int)>(0x006523B0)(this, a2, a3);
+    return reinterpret_cast<int (__thiscall *)(CIFWnd *, int, int)>(0x0072ECF0)(this, a2, a3);
 }
 
 // CIFWnd::sub_652B00(void) .text 00652B00 00000045   R . . . . . .
@@ -274,9 +274,9 @@ void CIFWnd::SetSomeRect(const RECT &rect) {
 }
 
 void CIFWnd::SetTooltipText(const std::n_wstring *str) {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, const std::n_wstring *)>(0x653DC0)(this, str);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, const std::n_wstring *)>(0x7307F0)(this, str);
 }
 
 void CIFWnd::SetStyleThingy(StyleOptions option) {
-    reinterpret_cast<void (__thiscall *)(CIFWnd *, StyleOptions)>(0x00652d20)(this, option);
+    reinterpret_cast<void (__thiscall *)(CIFWnd *, StyleOptions)>(0x0072F670)(this, option);
 }

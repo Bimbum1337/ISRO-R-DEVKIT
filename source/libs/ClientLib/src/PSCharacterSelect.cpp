@@ -147,7 +147,7 @@ bool CPSCharacterSelect::OnCreateIMPL(long ln) {
 
     CIFFade *fade = m_IRM.GetResObj<CIFFade>(GDR_FADE, 1);
     fade->SetColor(D3DCOLOR_ARGB(255, 0, 0, 0));
-    fade->sub_6526E0(-128, 0, 1.5, 0.0, 1);
+    fade->sub_72F020(-128, 0, 1.5, 0.0, 1);
 
     m_IRM.GetResObj(GDR_LOADING_CHINA, 1)->ShowGWnd(false);
     m_IRM.GetResObj(GDR_LOADING_EUROPE, 1)->ShowGWnd(false);
@@ -265,5 +265,5 @@ void CPSCharacterSelect::FUN_008548d0(bool a1) {
     reinterpret_cast<void(__thiscall *)(CPSCharacterSelect *, bool)>(0x008548d0)(this, a1);
 }
 void CPSCharacterSelect::FUN_00854860(CIFStatic *obj, unsigned char opacity, float time, float a4, char a5) {
-    obj->sub_6526E0(obj->GetN00009BB9(), opacity, time, a4, a5);
+    obj->sub_72F020(obj->GetN00009BB9(), opacity, time, a4, a5);
 }

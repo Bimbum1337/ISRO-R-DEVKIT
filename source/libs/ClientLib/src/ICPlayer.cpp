@@ -1,12 +1,12 @@
 #include "ICPlayer.h"
 #include "GInterface.h"
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CICPlayer, 0x00ef1b44)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CICPlayer, 0x119B66C)
 
 
 // CICPlayer::IsGameMasterMAYBE(void) .text 009D4C40 00000009   R . . . . T .
 bool CICPlayer::IsGameMaster() {
-    return N000094A7 & 1;
+    return m_gamemaster_bit & 1;
 }
 
 // sub_9D6580 .text 009D6580 00000032 00000008 00000004 R . . . . T .

@@ -1,0 +1,3 @@
+#include "IFSurvivalPVPEstimateTimeAlram.h"
+
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFSurvivalPVPEstimateTimeAlram, 0x1177320)

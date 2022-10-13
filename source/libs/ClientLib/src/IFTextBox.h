@@ -28,16 +28,14 @@ public:
 
 
 private:
-    char N00009D87; //0x03CC
-    char pad_03CD[15]; //0x03CD
-
+    char N00009D87; //0x03D8
+    char pad_03CD[15]; //0x03D9
     /// Number of lines currently stored in the text box
-    int m_CurrentLines; //0x03DC
-
+    int m_CurrentLines; //0x03E8
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(992)
-        ENSURE_OFFSET(m_CurrentLines, 0x3DC)
+        ENSURE_SIZE(0x3EC)
+        ENSURE_OFFSET(m_CurrentLines, 0x03E8)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFTextBox)

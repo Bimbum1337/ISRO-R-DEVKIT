@@ -2,7 +2,7 @@
 
 #include <d3dx9.h>
 
-#define DXDrawLine ((void (__cdecl *)(int, int, int, int, int, float))0x00841F30)
+#define DXDrawLine ((void (__cdecl *)(int, int, int, int, int, float))0x009416D0)
 
 template<typename T>
 void PrettyLine3D(D3DVECTOR &p1, D3DVECTOR& p2, int step, int color, T* pNavmesh)

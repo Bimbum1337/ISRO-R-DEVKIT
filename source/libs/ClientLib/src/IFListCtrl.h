@@ -60,8 +60,8 @@ private:
     char pad_03AB[29-8]; //0x03AB
     /// Number of items in the list
     int m_numberOfItems; // 0x3C0
-    D3DCOLOR m_OtherColor; // 0x3C4
+    D3DCOLOR m_OtherColor; // 0x3C48
     D3DCOLOR m_BackgroundColor; //0x03C8
-
+    char pad_todo[0x4];
 };
 

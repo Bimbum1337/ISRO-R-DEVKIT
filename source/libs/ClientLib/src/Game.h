@@ -128,7 +128,7 @@ public:
 	void *GetFont(int a2);
 };
 
-#define g_CGame ((CGame*)0x00EECE80)
+#define g_CGame ((CGame*)0x00117DCC0)
 
 // I am so sorry :cry:
 #define theApp (*g_CGame)

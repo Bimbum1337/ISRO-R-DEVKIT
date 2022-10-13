@@ -3,7 +3,7 @@
 #include "IFTileWnd.h"
 
 class CIFFrame : public CIFTileWnd {
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFFrame, 0x00EECB14)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFFrame, 0x117D944)
 
 public:
     // Constructor is trivial
@@ -28,7 +28,7 @@ private:
 
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x7b0)
+        ENSURE_SIZE(0x7B8)
     END_FIXTURE()
     RUN_FIXTURE(CIFFrame)
 

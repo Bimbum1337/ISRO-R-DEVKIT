@@ -4,15 +4,15 @@
 
 
 class CICNonuser : public CICharactor {
-    GFX_DECLARE_DYNAMIC_EXISTING(CICNonuser, 0x00EF1AA4)
+    GFX_DECLARE_DYNAMIC_EXISTING(CICNonuser, 0x119B5CC)
 
 
 private:
-    CClassLink<CICNonuser> m_classlink; //0x078C
+    CClassLink<CICNonuser> m_classlink; //0x08BC
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x79C)
+        ENSURE_SIZE(0x8CC)
     END_FIXTURE()
     RUN_FIXTURE(CICNonuser)
 }; //Size: 0x079C

@@ -16,5 +16,5 @@ LRESULT CALLBACK WndProcHook(HWND hwnd, UINT msg, LPARAM lParam, WPARAM wParam)
 		}
 	}
 
-	return reinterpret_cast<WNDPROC>(0x008311C0)(hwnd, msg, lParam, wParam);
+	return reinterpret_cast<WNDPROC>(0x92D2E0)(hwnd, msg, lParam, wParam);
 }

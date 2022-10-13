@@ -5,7 +5,7 @@
 #include "IRMManager.h"
 
 class CPSilkroad : public CProcess {
-GFX_DECLARE_DYNAMIC_EXISTING(CPSilkroad, 0x00eed84c)
+GFX_DECLARE_DYNAMIC_EXISTING(CPSilkroad, 0x117E794)
 
 public:
 

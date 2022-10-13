@@ -6,7 +6,7 @@
 
 class CAlramGuideMgrWnd : public CIFWnd {
 
-GFX_DECLARE_DYNAMIC_EXISTING(CAlramGuideMgrWnd, 0x00ee99a8)
+GFX_DECLARE_DYNAMIC_EXISTING(CAlramGuideMgrWnd, 0x1179BF8)
 
 public:
     CAlramGuideMgrWnd();
@@ -16,6 +16,6 @@ public:
     void UpdatePositions();
 
 private:
-    unsigned char m_numberOfIcons;
-    std::list<CGWnd*> m_list;
+    unsigned char m_numberOfIcons; //0x00374
+    std::list<CGWnd*> m_list; //0x00375
 };

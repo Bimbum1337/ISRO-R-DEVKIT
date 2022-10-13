@@ -13,7 +13,7 @@
 // CIFChatViewer_Create                   .text 007AF5C0 00000067 00000014 00000000 R . . . . . .
 // CIFChatViewer::GetParentRuntimeClass() .text 007AA640 00000006                   R . . . . . .
 // CIFChatViewer::GetRuntimeClass()       .text 007AA620 00000006                   R . . . . . .
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFChatViewer, 0x00EEC168)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFChatViewer, 0x117CF18)
 
 GFX_IMPLEMENT_DYNCREATE_FN(CIFChatViewer, CIFWnd)
 

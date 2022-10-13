@@ -13,21 +13,20 @@
 #include "../MathUtil.h"
 #include "../hooks/Hooks.h"
 #include "About.h"
+#include "CharacterData.h"
 #include "EntityExplorer.h"
 #include "ErrorMessageTool.h"
 #include "IFSystemMessage.h"
 #include "InterfaceDebugger.h"
 #include "InterfaceTree.h"
+#include "Inventory.h"
 #include "NavMeshTool.h"
 #include "NotificationTool.h"
 #include "PartyInfo.h"
 #include "ProcessViewer.h"
 #include "SoundTool.h"
-#include "NotificationTool.h"
-#include "About.h"
 #include "SystemMessage.h"
-#include "CharacterData.h"
-#include "Inventory.h"
+#include "memory/hook.h"
 #include <BSLib/Debug.h>
 #include <BSLib/multibyte.h>
 
@@ -48,8 +47,34 @@ Inventory inventory;
 PartyInfo partyInfo;
 CharacterData characterData;
 
+HRESULT __stdcall nReset(LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS *pPresentationParameters);
+typedef HRESULT(APIENTRY *Reset_t)(LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS *pPresentationParameters);
+
+Reset_t g_oReset;
+
+HRESULT __stdcall nReset(LPDIRECT3DDEVICE9 pDevice, D3DPRESENT_PARAMETERS *pPresentationParameters) {
+    ImGui_ImplDX9_InvalidateDeviceObjects();
+
+    HRESULT ResetReturn = g_oReset(pDevice, pPresentationParameters);
+
+    ImGui_ImplDX9_CreateDeviceObjects();
+    printf("%s called\n", __FUNCTION__);
+    return ResetReturn;
+}
+
 void ImGui_OnCreate(HWND hWindow, void *msghandler, int a3) {
     BS_DEBUG("ImGui_OnCreate");
+
+//    PDWORD32 pdwDeviceTable = (PDWORD32) g_CD3DApplication->m_pd3dDevice;
+//    pdwDeviceTable = (PDWORD32) pdwDeviceTable[0];
+//    LPVOID lp_Reset = (LPVOID) pdwDeviceTable[16];//reset pointer
+//
+//    g_oReset = (Reset_t)lp_Reset;
+//
+//    placeHook((int) lp_Reset, int(nReset));
+//
+//    pdwDeviceTable[16] = reinterpret_cast<unsigned int>(&nReset);
+
     ImGui::CreateContext();
 
     ImGui_ImplWin32_Init(hWindow);
@@ -117,7 +142,7 @@ void ImGui_OnEndScene() {
         if (ImGui::BeginMenu("Tools")) {
             interfaceDebugger.MenuItem();
             interfaceTree.MenuItem();
-            navmeshExplorer.MenuItem();
+            //navmeshExplorer.MenuItem();
             entityExplorer.MenuItem();
             ImGui::MenuItem("Keyframe Editor", 0, false, false);
             ImGui::MenuItem("Script Editor", 0, false, false);
@@ -126,9 +151,6 @@ void ImGui_OnEndScene() {
             systemMessage.MenuItem();
             errorMessageTool.MenuItem();
             processViewer.MenuItem();
-
-            inventory.MenuItem();
-
             ImGui::EndMenu();
         }
 
@@ -160,15 +182,15 @@ void ImGui_OnEndScene() {
     entityExplorer.Render();
     soundTool.Render();
     notificationTool.Render();
-    navmeshExplorer.Render();
+//    navmeshExplorer.Render();
     aboutWnd.Render();
     systemMessage.Render();
     errorMessageTool.Render();
     interfaceTree.Render();
     processViewer.Render();
-    inventory.Render();
-    partyInfo.Render();
-    characterData.Render();
+//    inventory.Render();
+//    partyInfo.Render();
+//    characterData.Render();
 
     ImGui::EndFrame();
 

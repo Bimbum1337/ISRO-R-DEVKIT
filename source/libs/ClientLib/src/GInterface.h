@@ -29,7 +29,7 @@
 #define GDR_SYSTEM_MESSAGE_VIEW 68
 #define GDR_GUILDSTORAGEROOM 145
 
-#define g_pCGInterface (*(CGInterface**)0x0110F80C)
+#define g_pCGInterface (*(CGInterface**)0x13BAE3C)
 
 enum eLogType : int {
     SYSLOG_NONE = 0,
@@ -73,7 +73,7 @@ public:
     /// \details Show a message in the green area in the center of the client.
     /// The message fades out after a certain amount of time.
     ///
-    /// \address 0077b580
+    /// \address 008619E0
     ///
     /// \param msg The message to be displayed
     ///
@@ -277,14 +277,14 @@ private:
     char pad_07d0[0x24];
 
     class CPreUseItem *m_pCPreUseItem; //0x07F4
-    char pad_07F8[92]; //0x07F8
+    char pad_07F8[0x18C]; //0x0800
 
 
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x854)
-        ENSURE_OFFSET(m_pCSkillRunTimeManager, 0x780)
-        ENSURE_OFFSET(field_0x7cd, 0x7cd)
-        ENSURE_OFFSET(m_pCPreUseItem, 0x7f4)
+        ENSURE_SIZE(0x98C)
+        ENSURE_OFFSET(m_pCSkillRunTimeManager, 0x788)
+        ENSURE_OFFSET(field_0x7cd, 0x7D5)
+        ENSURE_OFFSET(m_pCPreUseItem, 0x7fc)
     END_FIXTURE()
 
     RUN_FIXTURE(CGInterface)

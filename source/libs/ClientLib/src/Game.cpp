@@ -4,12 +4,12 @@
 void* CGame::GetFont(int a2)
 {
 	// assert(FALSE);
-	return reinterpret_cast<void*(__thiscall*)(CGame*,int)>(0x00BA5460)(this, a2);
+	return reinterpret_cast<void*(__thiscall*)(CGame*,int)>(0x00D70160)(this, a2);
 }
 
 void CGame::InitGameAssets() {
 
-	reinterpret_cast<void(__thiscall*)(CGame * pthis)>(0x849110)(this);
+	reinterpret_cast<void(__thiscall*)(CGame * pthis)>(0x00949030)(this);
 }
 
 void CGame::LoadTextfiles()

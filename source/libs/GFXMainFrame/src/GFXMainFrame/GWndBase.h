@@ -22,7 +22,7 @@ struct Event3D {
  *
  */
 class CGWndBase : public CObjChild { // size 32 + 100 = 132
-    GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x0110F630)
+    GFX_DECLARE_DYNAMIC_EXISTING(CGWndBase, 0x13BAFD0)
 
 
 public:
@@ -126,10 +126,10 @@ public:
     void ApplyGlobalScale(int x);
 
     /// \address 006526E0
-    void sub_6526E0(char n00009771, unsigned char opacity, float time, float a4, char a5);
+    void sub_72F020(char n00009771, unsigned char opacity, float time, float a4, char a5);
 
     /// \address 00B9DA70
-    void sub_B9DA70(bool b);
+    void sub_D5DD80(bool b);
 
     /// Returns the numeric identifier of this control.
     /// \returns ID of this control
@@ -153,7 +153,7 @@ public:
 
 protected:
     /// \address 00B8F440
-    void sub_B8F440(const RECT &rect);
+    void sub_D6A8A0(const RECT &rect);
 
     CGWndBase *GetParentControl() const;
 

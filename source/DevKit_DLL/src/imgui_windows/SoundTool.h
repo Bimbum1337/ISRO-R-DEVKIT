@@ -14,7 +14,6 @@ private:
 
     bool ImGui_Window_SoundTool_FilterMatch(const std::n_wstring &input, const std::n_wstring &search);
 
-
 private:
     bool bShow;
     char buffer[100];

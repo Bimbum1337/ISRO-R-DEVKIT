@@ -1,15 +1,16 @@
 #include "GInterface.h"
-#include "IFflorian0Guide.h"
-#include "IFNotify.h"
+#include "BSLib/Debug.h"
+#include "GlobalDataManager.h"
 #include "IFChatViewer.h"
 #include "IFNotify.h"
-#include "GlobalDataManager.h"
+#include "IFflorian0Guide.h"
+#include "Juicer/IFTestExample.h"
 
 #include <BSLib/multibyte.h>
 
 #include <remodel/MemberFunctionHook.h>
 
-HOOK_ORIGINAL_MEMBER(0x0079D5B0, &CGInterface::ToggleActionWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079D5B0, &CGInterface::ToggleActionWnd);
 void CGInterface::ToggleActionWnd() {
     // If MainPopup is visible and page 'action' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_ACTION)) {
@@ -22,7 +23,7 @@ void CGInterface::ToggleActionWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079B0B0, &CGInterface::ToggleApprenticeshipWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079B0B0, &CGInterface::ToggleApprenticeshipWnd);
 void CGInterface::ToggleApprenticeshipWnd() {
     // If MainPopup is visible and page 'apprenticeship' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_APPRENTICESHIP)) {
@@ -39,7 +40,7 @@ void CGInterface::ToggleApprenticeshipWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079ACE0, &CGInterface::TogglePlayerInfoWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079ACE0, &CGInterface::TogglePlayerInfoWnd);
 void CGInterface::TogglePlayerInfoWnd() {
     // If MainPopup is visible and page 'playerinfo' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PLAYERINFO)) {
@@ -58,7 +59,7 @@ void CGInterface::RenderToggle_GDR_GAMEGUIDE() {
     return reinterpret_cast<void (__thiscall *)(void *)>(0x0079F690)(this);
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079B020, &CGInterface::ToggleInventoryWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079B020, &CGInterface::ToggleInventoryWnd);
 void CGInterface::ToggleInventoryWnd() {
     // If MainPopup is visible and page 'inventory' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
@@ -73,7 +74,7 @@ void CGInterface::ToggleInventoryWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079ad70, &CGInterface::ToggleEquipmentWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079ad70, &CGInterface::ToggleEquipmentWnd);
 void CGInterface::ToggleEquipmentWnd() {
     // If MainPopup is visible and page 'equipment' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_INVENTORY)) {
@@ -88,7 +89,7 @@ void CGInterface::ToggleEquipmentWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079AE90, &CGInterface::TogglePartyWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079AE90, &CGInterface::TogglePartyWnd);
 void CGInterface::TogglePartyWnd() {
     // If MainPopup is visible and page 'party' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_PARTY)) {
@@ -105,7 +106,7 @@ void CGInterface::TogglePartyWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079AE00, &CGInterface::ToggleSkillWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079AE00, &CGInterface::ToggleSkillWnd);
 void CGInterface::ToggleSkillWnd() {
     // If MainPopup is visible and page 'skill' is active
     if (m_mainPopup->IsVisible() && m_mainPopup->IsSubPageActive(GDR_SKILL)) {
@@ -120,7 +121,7 @@ void CGInterface::ToggleSkillWnd() {
     }
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079af20, &CGInterface::ShowInventoryWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079af20, &CGInterface::ShowInventoryWnd);
 void CGInterface::ShowInventoryWnd() {
     m_mainPopup->ShowGWnd(true);
     if (!m_mainPopup->GetInventory()->IsVisible()) {
@@ -129,7 +130,7 @@ void CGInterface::ShowInventoryWnd() {
     FUN_0079a7e0(m_mainPopup);
 }
 
-HOOK_ORIGINAL_MEMBER(0x0079af70, &CGInterface::ShowApprenticeshipWnd);
+//HOOK_ORIGINAL_MEMBER(0x0079af70, &CGInterface::ShowApprenticeshipWnd);
 void CGInterface::ShowApprenticeshipWnd() {
     m_mainPopup->ShowGWnd(true);
     if (!m_mainPopup->GetApprenticeShip()->IsVisible()) {
@@ -160,10 +161,11 @@ CAlramGuideMgrWnd *CGInterface::GetAlarmManager() {
 }
 
 bool CGInterface::OnCreateIMPL(long ln) {
+    BS_DEBUG_LOW("ImGui_WndProc");
 
     BeforeOnCreate();
 
-    bool b = reinterpret_cast<bool (__thiscall *)(CGInterface *, long)>(0x0078c910)(this, ln);
+    bool b = reinterpret_cast<bool (__thiscall *)(CGInterface *, long)>(0x00873E50)(this, ln);
 
     AfterOnCreate();
 
@@ -175,7 +177,10 @@ void CGInterface::BeforeOnCreate() {
 }
 
 void CGInterface::AfterOnCreate() {
-    CreateFlorian0Event();
+    //CreateFlorian0Event();
+
+    RECT testRect = {409,137,350,350};
+    (CIFTestExample*)CGWnd::CreateInstance(this, GFX_RUNTIME_CLASS(CIFTestExample), testRect, 134021, 0);
 }
 
 void CGInterface::ShowMessage_Quest(const std::n_wstring &msg) {
@@ -210,7 +215,7 @@ CIF_NPCWindow *CGInterface::Get_GDR_NPCWINDOW() {
     return (CIF_NPCWindow *) this->m_IRM.GetResObj(GDR_NPCWINDOW, 1);
 }
 
-HOOK_ORIGINAL_MEMBER(0x00798D00, &CGInterface::GetMainPopup);
+//HOOK_ORIGINAL_MEMBER(0x00798D00, &CGInterface::GetMainPopup);
 CIFMainPopup *CGInterface::GetMainPopup() {
     return (CIFMainPopup *) this->m_IRM.GetResObj(GDR_MAINPOPUP, 1);
 }
@@ -233,7 +238,7 @@ void CGInterface::WriteSystemMessage(eLogType level, const wchar_t *str) {
     reinterpret_cast<void (__thiscall *)(CGInterface *, eLogType, const wchar_t *)>(0x007781B0)(this, level, str);
 }
 
-HOOK_ORIGINAL_MEMBER(0x007901c0, &CGInterface::WriteGlobalMessage)
+//HOOK_ORIGINAL_MEMBER(0x007901c0, &CGInterface::WriteGlobalMessage)
 void CGInterface::WriteGlobalMessage(unsigned char nSlot, std::n_wstring message) {
     CIFMainPopup *popup = GetMainPopup();
     CIFInventory *inventory = popup->GetInventory();

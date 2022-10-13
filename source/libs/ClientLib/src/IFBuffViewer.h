@@ -35,7 +35,7 @@ private:
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x3a8)
+        ENSURE_SIZE(0x3B0)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFBuffViewer)

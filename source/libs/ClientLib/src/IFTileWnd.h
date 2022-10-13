@@ -2,7 +2,7 @@
 #include "ifwnd.h"
 class CIFTileWnd : public CIFWnd
 {
-	GFX_DECLARE_DYNAMIC_EXISTING(CIFTileWnd, 0x00EECBD4)
+	GFX_DECLARE_DYNAMIC_EXISTING(CIFTileWnd, 0x117DA04)
 
 public:
 	CIFTileWnd(void);
@@ -22,13 +22,19 @@ public:
 protected:
 	void set_N00009B9D(bool a2);
 
-	void sub_81AE00();
+	void sub_911AE0();
 
 private:
-	bool N00009B9D; //0x036C
-	char pad_036D[35]; //0x036D
-	std::n_string N00009BAF[4]; //0x0390
-	std::n_string N00009BB0[4]; //0x0400
-	char pad_0470[832]; //0x0470
+	bool N00009B9D; //0x0374
+	char pad_0375[35]; //0x0375
+	std::n_string N00009BAF[4]; //0x0398
+	std::n_string N00009BB0[4]; //0x0408
+	char pad_0478[832]; //0x0478
+
+    BEGIN_FIXTURE()
+        ENSURE_SIZE(0x7B8)
+    END_FIXTURE()
+
+    RUN_FIXTURE(CIFTileWnd)
 };
 

@@ -33,4 +33,4 @@ public:
 
 };
 
-#define g_CurrentNavMesh (*reinterpret_cast<CRTNavMeshTerrain**>(0x0115B1CC))
+#define g_CurrentNavMesh (*reinterpret_cast<CRTNavMeshTerrain**>(0x013B749C))

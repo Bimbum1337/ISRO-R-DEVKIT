@@ -15,10 +15,10 @@ void CGEffSoundBody::PlaySoundA(const wchar_t* sndFile)
 
 void CGEffSoundBody::PlaySoundInner(std::n_wstring* str, int a2, float a3)
 {
-	reinterpret_cast<void(__thiscall*)(CGEffSoundBody*, std::n_wstring*, int, float)>(0x00A6F7F0)(this, str, a2, a3);
+	reinterpret_cast<void(__thiscall*)(CGEffSoundBody*, std::n_wstring*, int,float)>(0x00BE1590)(this, str, a2, a3);
 }
 
 CGEffSoundBody* CGEffSoundBody::get()
 {
-	return *reinterpret_cast<CGEffSoundBody**>(0x0110AAD8);
+	return *reinterpret_cast<CGEffSoundBody**>(0x013B47C8);
 }

@@ -4,6 +4,6 @@
 
 class CIFConfirmReputationGuide : public CIFDecoratedStatic {
 
-    GFX_DECLARE_DYNAMIC_EXISTING(CIFConfirmReputationGuide, 0x00ee7838)
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFConfirmReputationGuide, 0x1176F40)
 
 };

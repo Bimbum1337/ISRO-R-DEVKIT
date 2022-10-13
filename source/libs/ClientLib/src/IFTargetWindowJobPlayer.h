@@ -22,8 +22,8 @@ private:
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x370)
-        ENSURE_OFFSET(m_objectId, 0x036C)
+        ENSURE_SIZE(0x378)
+        ENSURE_OFFSET(m_objectId, 0x0374)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFTargetWindowJobPlayer)

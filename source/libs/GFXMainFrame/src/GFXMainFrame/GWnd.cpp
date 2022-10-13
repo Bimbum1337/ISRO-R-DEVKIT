@@ -1,9 +1,9 @@
 #include "GWnd.h"
 
-GFX_IMPLEMENT_DYNAMIC_EXISTING(CGWnd, 0x0110F94C)
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CGWnd, 0x13BAEE0)
 
 void CGWnd::Func_24(int a1, int a2) {
-    reinterpret_cast<void (__thiscall *)(CGWnd *, int, int)>(0x00B9D810)(this, a1, a2);
+    reinterpret_cast<void (__thiscall *)(CGWnd *, int, int)>(0x00D5D9E0)(this, a1, a2);
 }
 
 bool CGWnd::Func_25(int a1) {
@@ -63,7 +63,7 @@ CGWnd::CGWnd() {
     N0000074F = true;
     N00000702 = false;
 
-    sub_B9DA70(false);
+    sub_D5DD80(false);
 }
 
 void CGWnd::OnUpdate() {
@@ -78,7 +78,7 @@ void CGWnd::RenderMyself() {
 }
 
 void CGWnd::RenderMyChildren() {
-    reinterpret_cast<void (__thiscall *)(CGWnd *)>(0x00BA0300)(this);
+    reinterpret_cast<void (__thiscall *)(CGWnd *)>(0x00D604C0)(this);
 }
 
 void CGWnd::Render() {

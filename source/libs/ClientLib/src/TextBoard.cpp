@@ -18,7 +18,7 @@ CTextBoard::CTextBoard(void)
   this->N00009C2D = -1;
   this->N00009C2E = 0;
 
-  this->sub_655B00(L"");
+  this->sub_732530(L"");
 
   this->N000096C1 = 1;
   TB_Func_3();
@@ -155,13 +155,13 @@ void CTextBoard::TB_Func_12(const char* str, int a3, int a4)
 // CTextBoard::Func_13(std::string const *,int,int) .text 00655680 000000E6 00000014 00000024 R . . . . T .
 void CTextBoard::TB_Func_13(const std::n_string str, int a3, int a4)
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::n_string, int, int)>(0x00655680)(this, str, a3, a4);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::n_string, int, int)>(0x007320B0)(this, str, a3, a4);
 }
 
 // CTextBoard::Func_14(void) .text 00655820 000000E0 00000014 00000024 R . . . . T .
 void CTextBoard::TB_Func_14(const std::string str, int a3, int a4)
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::string, int, int)>(0x00655820)(this, str, a3, a4);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*, const std::string, int, int)>(0x00732250)(this, str, a3, a4);
 }
 
 // CTextBoard::Func_15(void) .text 00655510 00000058 00000004 00000004 R . . . . . .
@@ -178,18 +178,17 @@ void CTextBoard::TB_Func_16()
 	N00009769 = 0;
 }
 
-// CTextBoard::sub_655B00(wchar_t const *) .text 00655B00 0000004E 00000004 00000004 R . . . . . .
-void CTextBoard::sub_655B00(const wchar_t* str)
+void CTextBoard::sub_732530(const wchar_t* str)
 {
 	if (str)
 	{
 		m_texturestr_font = str;
-		m_FontTexture.sub_8B3B60(&m_texturestr_font);
+		m_FontTexture.sub_B1D410(&m_texturestr_font);
 	}
 	else
 	{
 		m_texturestr_font.clear();
-		m_FontTexture.sub_8B37A0();
+		m_FontTexture.sub_B1BEE0();
 	}
 }
 
@@ -219,23 +218,23 @@ void CTextBoard::sub_655770(std::n_string a2)
 // CTextBoard__sub_655CA0 .text 00655CA0 000000A4 0000002C 00000004 R . . . . . .
 void CTextBoard::sub_655CA0(int a2)
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*,int)>(0x00655CA0)(this, a2);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*,int)>(0x007326E0)(this, a2);
 }
 
 // CTextBoard__sub_6553A0 .text 006553A0 0000001E 00000004 00000004 R . . . . T .
 void CTextBoard::sub_6553A0(float a2)
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006553A0)(this);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x00731DD0)(this);
 }
 
 // CTextBoard__sub_6554C0 .text 006554C0 0000004E 00000004 00000000 R . . . . . .
 void CTextBoard::sub_6554C0()
 {
-	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x006554C0)(this);
+	reinterpret_cast<void(__thiscall*)(CTextBoard*)>(0x00731EF0)(this);
 }
 
 void CTextBoard::SetFont(void *a2) {
-    reinterpret_cast<void (__thiscall *)(CTextBoard *, void *)>(0x00655270)(this, a2);
+    reinterpret_cast<void (__thiscall *)(CTextBoard *, void *)>(0x00731CA0)(this, a2);
 }
 
 char CTextBoard::GetN00009BB9() const {

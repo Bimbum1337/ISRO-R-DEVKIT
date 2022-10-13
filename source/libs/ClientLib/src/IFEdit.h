@@ -3,7 +3,7 @@
 #include "IFStatic.h"
 
 class CIFEdit : public CIFStatic {
-GFX_DECLARE_DYNAMIC_EXISTING(CIFEdit, 0x00ee9540)
+GFX_DECLARE_DYNAMIC_EXISTING(CIFEdit, 0x1179790)
 
 public:
     /// \address 00634EA0

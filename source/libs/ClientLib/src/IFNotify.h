@@ -19,19 +19,19 @@ public:
     void SetColor(unsigned char red, unsigned char green, unsigned char blue);
 
 private:
-    char pad7c8[16]; // 0x07c8
-    int m_yposition; // 0x07d4
-    unsigned char m_red; // 0x7d8
-    unsigned char m_green; // 0x7d9
-    unsigned char m_blue; // 0x7da
+    char pad7c8[16]; // 0x7CC
+    int m_yposition; // 0x07dc
+    unsigned char m_red; // 0x7e0
+    unsigned char m_green; // 0x7e1
+    unsigned char m_blue; // 0x7e2
 
 private:
     BEGIN_FIXTURE()
-        ENSURE_SIZE(0x7dc)
-        ENSURE_OFFSET(m_yposition, 0x7d4)
-        ENSURE_OFFSET(m_red, 0x7d8)
-        ENSURE_OFFSET(m_green, 0x7d9)
-        ENSURE_OFFSET(m_blue, 0x7da)
+        ENSURE_SIZE(0x7E4)
+        ENSURE_OFFSET(m_yposition, 0x7dc)
+        ENSURE_OFFSET(m_red, 0x7e0)
+        ENSURE_OFFSET(m_green, 0x7e1)
+        ENSURE_OFFSET(m_blue, 0x7e2)
     END_FIXTURE()
 
     RUN_FIXTURE(CIFNotify)

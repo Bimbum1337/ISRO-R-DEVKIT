@@ -3,7 +3,7 @@
 #include "d3d9.h"
 #include "ghidra/undefined.h"
 
-#define g_RStateMgr (*reinterpret_cast<CRStateMgr*>(0x01112428))
+#define g_RStateMgr (*reinterpret_cast<CRStateMgr*>(0x13FECA0))
 
 class CRStateMgr {
 
