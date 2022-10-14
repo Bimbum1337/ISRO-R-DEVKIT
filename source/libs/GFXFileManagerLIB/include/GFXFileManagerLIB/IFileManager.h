@@ -243,3 +243,4 @@ private:
 
 	
 };
+#define g_pCFileManager (*(IFileManager**)0x0117E18C)

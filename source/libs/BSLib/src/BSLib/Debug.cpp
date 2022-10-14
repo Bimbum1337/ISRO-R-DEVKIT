@@ -6,13 +6,13 @@
 #if 0
 static LogHandlerFn logCallbackFn;
 #else
-#define logCallbackFn (*(LogHandlerFn*)0x0111a048)
+#define logCallbackFn (*(LogHandlerFn*)0x013BDA74)
 #endif
 
 #if 0
 static AssertHandlerFn assertCallbackFn
 #else
-#define assertCallbackFn (*(AssertHandlerFn*)0x0111a080)
+#define assertCallbackFn (*(AssertHandlerFn*)0x013BDAAC)
 #endif
 
 

@@ -24,7 +24,7 @@ bool TryCreateCompatibleDC() {
 }
 
 bool StartNetEngine() {
-    return reinterpret_cast<bool (*)()>(0x008449F0)();
+    return reinterpret_cast<bool (*)()>(0x0942520)();
 }
 
 void DrawRect(int x, int y, int height, int width, int color) {
@@ -72,7 +72,7 @@ int GetIDOfInterfaceUnderCursor() {
 
 // Fun_CacheTexture_Create .text 005008F0 00000010 00000000 00000004 R . . . . . .
 void* Fun_CacheTexture_Create(const std::n_string &a2) {
-    return reinterpret_cast<void*(__cdecl*)(const std::n_string*)>(0x004E5550)(&a2);
+    return reinterpret_cast<void *(__cdecl *)(const std::n_string *)>(0x004e59c0)(&a2);
 }
 
 // Fun_CacheTexture_Release .text 00500460 00000010 00000000 00000004 R . . . . . .
@@ -308,9 +308,9 @@ void __stdcall WriteToChatWindow(ChatType type, const std::n_wstring &strRecipie
         }
     }
 }
-
+//004DE120
 GameCfg *Fun_GetCfgGame() {
-    return reinterpret_cast<GameCfg *>(0x00eed578);
+    return reinterpret_cast<GameCfg *>(0x117E3D8);
 }
 
 void __stdcall FUN_00bbda70(undefined4 a1) {

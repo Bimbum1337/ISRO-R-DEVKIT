@@ -46,7 +46,7 @@ private:
 	char N00009C18; //0x03B1
 	char pad_039E[98]; //0x03B2
 	int N00009BFC; //0x0414
-    char pad_0000[0x1C];
+    std::n_string N00009BFD; //0x0418
     BEGIN_FIXTURE()
         ENSURE_SIZE(0x434)
     END_FIXTURE()

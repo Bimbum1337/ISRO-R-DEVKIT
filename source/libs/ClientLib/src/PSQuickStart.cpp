@@ -18,7 +18,7 @@ char CPSQuickStart::OnCreate(int a1)
 
 	if (!StartNetEngine())
 	{
-		CGFXMainFrame::SetNextProcessSTAT(reinterpret_cast<CGfxRuntimeClass*>(0x0EED894));
+        CGFXMainFrame::SetNextProcessSTAT(reinterpret_cast<CGfxRuntimeClass*>(0x0117E7DC));
 		return false;
 	}
 

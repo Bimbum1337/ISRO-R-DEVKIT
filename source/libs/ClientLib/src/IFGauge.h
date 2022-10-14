@@ -3,6 +3,8 @@
 
 class CIFGauge : public CIFStatic
 {
+    GFX_DECLARE_DYNAMIC_EXISTING(CIFGauge, 0x11797B0)
+
 public:
 	float m_valueFg; //0x0394
 	float m_valueBg; //0x0398

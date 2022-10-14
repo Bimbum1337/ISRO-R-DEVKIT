@@ -10,18 +10,19 @@
 
 #include "hooks/WndProc_Hook.h"
 
+#include "CPSVersionCheck.h"
+#include "ICMonster.h"
+#include "ICPlayer.h"
+#include "QuickStart.h"
+#include <BSLib/Debug.h>
+#include <GFX3DFunction/RStateMgr.h>
 #include <GInterface.h>
+#include <ICUser.h>
 #include <IFChatViewer.h>
 #include <NetProcessIn.h>
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
-#include <BSLib/Debug.h>
-#include "QuickStart.h"
-#include "ICPlayer.h"
-#include "ICMonster.h"
 #include <PSCharacterSelect.h>
-#include <ICUser.h>
-#include <GFX3DFunction/RStateMgr.h>
 
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;
@@ -53,6 +54,7 @@ void Setup() {
 
     placeHook(0x007390B0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
 
+    vftableHook(0x1034984,10, addr_from_this(&CPSVersionCheck::OnCreate));
     //vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 
     //vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));
