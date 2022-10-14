@@ -70,7 +70,31 @@ void replaceAddr(int addr, int value)
         perror("Failed to restore protection on memory");
     }
 }
+void JMPFunction(int address, int jumpto)
+{
+    bool res = false;
+    char instruction[5];
+    RenderJMPInstruction(address, jumpto, instruction);
+    DWORD oldprot, dummy;
+    res = VirtualProtect((void*)address, 5, PAGE_EXECUTE_READWRITE, &oldprot);
+    if (res == false)
+    {
+        throw - 1;
+    }
+    memcpy((LPVOID)address, (LPVOID)instruction, 5);
 
+    res = VirtualProtect((void*)address, 5, oldprot, &dummy);
+    if (res == false)
+    {
+        throw - 2;
+    }
+}
+void RenderJMPInstruction(int address, int jumpto, char* buf) {
+
+    int offset = (int)jumpto - ((int)address + 5);
+    buf[0] = (char)0xE9;
+    *(DWORD*)(buf + 1) = offset;
+}
 void vftableHook(unsigned int vftable_addr, int offset, int target_func)
 {
 	replaceAddr(vftable_addr + offset*sizeof(void*), target_func);

@@ -55,6 +55,8 @@ void Setup() {
     placeHook(0x007390B0, addr_from_this(&CAlramGuideMgrWnd::GetGuide));
 
     vftableHook(0x1034984,10, addr_from_this(&CPSVersionCheck::OnCreate));
+
+    JMPFunction(0x00B2D276,0xB2D429);
     //vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 
     //vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));

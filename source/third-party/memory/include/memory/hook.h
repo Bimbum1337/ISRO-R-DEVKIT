@@ -25,3 +25,7 @@ void replaceOffset(int trampoline_location, int target_location);
 void replaceAddr(int addr, int value);
 
 void vftableHook(unsigned int vftable_addr, int offset, int target_func);
+
+void JMPFunction(int address, int jumpto);
+
+void RenderJMPInstruction(int address, int jumpto, char* buf);
