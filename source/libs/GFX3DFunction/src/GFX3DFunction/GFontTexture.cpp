@@ -7,7 +7,7 @@ CGFontTexture::CGFontTexture(void)
 {
 	//assert(FALSE);
 	BS_DEBUG_LOW("> " __FUNCTION__);
-	reinterpret_cast<void (__thiscall*)(CGFontTexture*)>(0x00B1E180)(this);
+	reinterpret_cast<void (__thiscall*)(CGFontTexture*)>(0x00B1E060)(this);
 }
 
 // CGFontTexture::CGFontTexture(int) .text 00B1E1E0 00000067 0000001C 00000004 R . . . . . .

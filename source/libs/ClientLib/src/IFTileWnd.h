@@ -6,7 +6,7 @@ class CIFTileWnd : public CIFWnd
 
 public:
 	CIFTileWnd(void);
-	
+
 	~CIFTileWnd(void);
 
 	void TB_Func_13(std::n_string str, int a3, int a4) override;

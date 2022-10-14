@@ -16,7 +16,7 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
 
         // Inject all the new objects
         //RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
-       // RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
+        RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
 
 #ifdef CONFIG_IMGUI
         OnCreate(ImGui_OnCreate);

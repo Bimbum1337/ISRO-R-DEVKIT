@@ -177,7 +177,7 @@ void CGInterface::BeforeOnCreate() {
 }
 
 void CGInterface::AfterOnCreate() {
-   // CreateFlorian0Event();
+    CreateFlorian0Event();
 
     RECT testRect = {409,137,350,350};
     (CIFTestExample*)CGWnd::CreateInstance(this, GFX_RUNTIME_CLASS(CIFTestExample), testRect, 134021, 0);

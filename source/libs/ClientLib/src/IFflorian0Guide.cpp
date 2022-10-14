@@ -8,13 +8,14 @@ GFX_IMPLEMENT_DYNCREATE(CIFflorian0Guide, CIFDecoratedStatic)
 bool CIFflorian0Guide::OnCreate(long ln)
 {
 	BS_DEBUG_LOW("> " __FUNCTION__ "(%d)", ln);
-	CIFDecoratedStatic::OnCreate(ln);
+    CIFDecoratedStatic::OnCreate(ln);
 
-	TB_Func_13("icon\\etc\\mecro_0.ddj", 0, 0);
-    sub_634470("icon\\etc\\mecro_0.ddj");
+    TB_Func_13("interface\\bimbum\\itemmall_1.ddj", 0, 0);
+    sub_634470("interface\\bimbum\\itemmall_2.ddj");
 
-    set_N00009BD4(0);
-    set_N00009BD3(500);
+    set_N00009BD4(20);
+    set_N00009BD3(100);
+
     return true;
 }
 

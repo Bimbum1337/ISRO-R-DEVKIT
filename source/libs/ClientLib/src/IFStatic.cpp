@@ -52,7 +52,7 @@ void CIFStatic::RenderMyself()
 // CIFStatic::Func_42(void) .text 0064D9B0 0000019B 00000018 00000000 R . . . . . .
 void CIFStatic::Func_42()
 {
-	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x0072F550)(this);
+	reinterpret_cast<void(__thiscall*)(CIFStatic*)>(0x00729600)(this);
 }
 
 // CIFStatic::Func_49(void) .text 0064D780 0000008E 00002008 00000009 R . . . . T .
