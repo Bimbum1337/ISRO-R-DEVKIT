@@ -1,10 +1,8 @@
 #include <IFChatViewer.h>
-#include <IFMainPopup.h>
 #include <IFChatOptionBoard.h>
 #include "hooks/Hooks.h"
 #include "Util.h"
 #include "imgui_windows/ImGui_Windows.h"
-#include <IFWholeChat.h>
 
 #include "IFflorian0.h"
 #include "IFflorian0Guide.h"
@@ -17,6 +15,7 @@ extern "C" _declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hModule, DWORD fdw
         // Inject all the new objects
         //RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0));
         RegisterObject(&GFX_RUNTIME_CLASS(CIFflorian0Guide));
+        //OverrideObject<CIFMainPopup, 0x117B39C>();
 
 #ifdef CONFIG_IMGUI
         OnCreate(ImGui_OnCreate);

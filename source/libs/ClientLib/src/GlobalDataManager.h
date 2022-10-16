@@ -32,7 +32,7 @@
 #include <map>
 
 
-#define g_CGlobalDataManager ((CGlobalDataManager*)0x00EEDF08)
+#define g_CGlobalDataManager ((CGlobalDataManager*)0x117EE20)
 
 class CGlobalDataManager {
 public:
@@ -43,7 +43,7 @@ public:
     /// \address 0093f370
     const CCharacterData::SData *GetCharacterData(int id) const;
 
-    /// \address 0093f5f0
+    /// \address 00A93D00
     const CItemData::SData &GetItemData(int refObjItemId) const;
 
     /// \address 00937f20
@@ -56,8 +56,8 @@ public:
     undefined4 FUN_0093a610(std::n_wstring param_1);
 
 private:
-    /// \address 0093f2f0
-    const CItemData *FUN_0093f2f0(int refObjItemId) const;
+    /// \address 00A93B50
+    const CItemData *FUN_00A93B50(int refObjItemId) const;
 
     char gap0[0x254];
 

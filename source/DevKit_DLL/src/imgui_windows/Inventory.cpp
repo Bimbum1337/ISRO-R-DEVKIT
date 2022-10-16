@@ -23,17 +23,7 @@ void Inventory::Render() {
         return;
     }
 
-    CIFInventory *inventory = g_pCGInterface->GetMainPopup()->GetInventory();
 
-    for (int i = 0; i < 20; i++) {
-        CSOItem *item = inventory->GetItemBySlot(i);
-
-        if (item == NULL) {
-            ImGui::Text("Item %d: NONE", i);
-            return;
-        }
-
-    }
 
     ImGui::End();
 }

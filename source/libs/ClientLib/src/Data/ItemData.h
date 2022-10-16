@@ -67,7 +67,9 @@ public:
         std::string m_assocFileIcon128; //0x015C
         std::string m_assocFile1_128; //0x0178
         std::string m_assocFile2_128; //0x0194
-        char pad_01B0[32]; //0x01B0
+        char pad_01B0[16]; //0x01B0
+        unsigned __int32 m_maxstack;          //0x01C0
+        char pad_01C4[0xC];                   //0x01C4
         unsigned __int32 m_maxStock;          //0x01D0
         unsigned __int32 m_reqGender;         //0x01D4
         unsigned __int32 n_reqStr;            //0x01D8

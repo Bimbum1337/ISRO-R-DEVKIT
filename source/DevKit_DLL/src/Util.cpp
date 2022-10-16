@@ -10,6 +10,7 @@
 
 #include "hooks/WndProc_Hook.h"
 
+#include "CPSMission.h"
 #include "CPSVersionCheck.h"
 #include "ICMonster.h"
 #include "ICPlayer.h"
@@ -23,7 +24,6 @@
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
 #include <PSCharacterSelect.h>
-
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;
 
@@ -56,7 +56,17 @@ void Setup() {
 
     vftableHook(0x1034984,10, addr_from_this(&CPSVersionCheck::OnCreate));
 
+    //fix fps drop
     JMPFunction(0x00B2D276,0xB2D429);
+
+    //disable list of channels
+    SetNop((void*)0x0096A558,62);
+
+    replaceAddr(0x102F384, addr_from_this(&CPSMission::OnServerPacketRecv));
+
+    vftableHook(0xFFCAC4,10,addr_from_this(&CIFEquipment::OnCreateIMPL));
+    vftableHook(0xFFCAC4,12,addr_from_this(&CIFEquipment::OnUpdateIMPL));
+
     //vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 
     //vftableHook(0x00de2e7c, 15, addr_from_this(&CICUser::Func_15_impl));

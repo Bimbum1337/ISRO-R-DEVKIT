@@ -35,7 +35,7 @@ public: /* todo: this public is only temporary. Remove it as soon as the allocat
         static void *operator new(std::size_t sz);
 
     private:
-        static GlobalVar<CMemPool<(_TAG('MSG', 1)), SMsgStreamNode, 20, 1>, 0x00EECD98> m_mempool;
+        static GlobalVar<CMemPool<(_TAG('MSG', 1)), SMsgStreamNode, 20, 1>, 0x00117DBC8> m_mempool;
         //static CMemPool<(_TAG('MSG' ,1)), SMsgStreamNode, 20, 1> m_mempool;
 
     private:

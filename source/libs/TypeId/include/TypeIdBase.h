@@ -48,6 +48,6 @@ public:
                ((m_type_id_value & TID4_MASK) == TID_ARG(TID4, TID4_OFFSET));
     }
 
-private:
+public:
     unsigned short m_type_id_value;
 };

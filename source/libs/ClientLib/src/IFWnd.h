@@ -119,7 +119,7 @@ private:
     char N00009BFD; //0x01B8
     char N00009C1B; //0x01B9
     char pad_01BA[2]; //0x01BA
-protected:
+public:
     CIRMManager m_IRM; //0x01BC m_IRM at 1BC
 public: /* public as of 007ABE89 */
     void *N00000608; //0x01EC

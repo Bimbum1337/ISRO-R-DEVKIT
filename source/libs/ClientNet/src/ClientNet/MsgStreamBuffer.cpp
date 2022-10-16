@@ -1,10 +1,10 @@
 #include "MsgStreamBuffer.h"
 
-GlobalVar<CMemPool<(_TAG('MSG', 1)), CMsgStreamBuffer::SMsgStreamNode, 20, 1>, 0x00EECD98> CMsgStreamBuffer::SMsgStreamNode::m_mempool;
+GlobalVar<CMemPool<(_TAG('MSG', 1)), CMsgStreamBuffer::SMsgStreamNode, 20, 1>, 0x00117DBC8> CMsgStreamBuffer::SMsgStreamNode::m_mempool;
 
 // IsOpcodeSupported_MAYBE .text 00841780 000000B4 00000008 00000008 R . . . . T .
 bool IsOpcodeSupported(WORD msgid, int a2) {
-    return reinterpret_cast<bool (__cdecl *)(WORD, int)>(0x00841780)(msgid, a2);
+    return reinterpret_cast<bool (__cdecl *)(WORD, int)>(0x0093EB30)(msgid, a2);
 }
 
 CMsgStreamBuffer::CMsgStreamBuffer(WORD msgid) {
@@ -30,7 +30,7 @@ CMsgStreamBuffer::SMsgStreamNode::SMsgStreamNode() {
 
 // CMsgStreamBuffer::Write(char *,int) .text 00508FE0 000000B1 00000008 00000008 R . . . . T .
 void CMsgStreamBuffer::Write(const void *data, size_t size) {
-    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, const void *, size_t)>(0x00508FE0)(this, data, size);
+    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, const void *, size_t)>(0x0049B010)(this, data, size);
 }
 
 CMsgStreamBuffer &CMsgStreamBuffer::operator<<(const std::n_string &str) {
@@ -65,7 +65,7 @@ void CMsgStreamBuffer::ToggleAfter() {
 
 CMsgStreamBuffer::~CMsgStreamBuffer() {
     // TODO: This is a really, really, REALLY BAD idea. Implement this function ASAP!
-    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *)>(0x005097A0)(this);
+    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *)>(0x0049B3B0)(this);
 }
 
 WORD CMsgStreamBuffer::msgid() const {
@@ -77,7 +77,7 @@ CMsgStreamBuffer &CMsgStreamBuffer::operator>>(std::n_string &str) {
 }
 
 void CMsgStreamBuffer::Read(void *value, size_t numBytes) {
-    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, void *, size_t)>(0x004F7220)(this, value, numBytes);
+    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, void *, size_t)>(0x004BE640)(this, value, numBytes);
 }
 
 void CMsgStreamBuffer::FlushRemaining() {

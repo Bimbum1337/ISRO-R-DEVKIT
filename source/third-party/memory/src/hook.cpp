@@ -99,3 +99,15 @@ void vftableHook(unsigned int vftable_addr, int offset, int target_func)
 {
 	replaceAddr(vftable_addr + offset*sizeof(void*), target_func);
 }
+bool SetNop(void* addr, int count)
+{
+    DWORD oldProtect;
+    if (!VirtualProtect(addr, count, PAGE_EXECUTE_READWRITE, &oldProtect))
+        return false;
+
+    memset(addr, 0x90, count);
+
+    VirtualProtect(addr, count, oldProtect, &oldProtect);
+
+    return true;
+}

@@ -13,5 +13,5 @@ union uregion {
 #define g_Region (*(uregion*)0xEEF68C)
 
 
-#define SendMsg(x) reinterpret_cast<void (__cdecl *)(CMsgStreamBuffer&)>(0x008418D0)(x)
+#define SendMsg(x) reinterpret_cast<void (__cdecl *)(CMsgStreamBuffer&)>(0x00941490)(x)
 

@@ -1,13 +1,13 @@
 #include "NetProcessIn.h"
-#include "unsorted.h"
-#include "ICPlayer.h"
-#include <BSLib/multibyte.h>
-#include <BSLib/Debug.h>
+#include "CPSMission.h"
 #include "CharacterDependentData.h"
-#include "TextStringManager.h"
-#include "Game.h"
-#include "PSMission.h"
 #include "GInterface.h"
+#include "Game.h"
+#include "ICPlayer.h"
+#include "TextStringManager.h"
+#include "unsorted.h"
+#include <BSLib/Debug.h>
+#include <BSLib/multibyte.h>
 
 
 #ifdef CONFIG_DEBUG_NET_RECEIVE

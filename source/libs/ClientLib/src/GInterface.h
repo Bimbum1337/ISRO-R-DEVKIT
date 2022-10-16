@@ -9,14 +9,14 @@
 #include "AlramGuideMgrWnd.h"
 
 #include "IFFade.h"
-#include "IFNPCWindow.h"
-#include "IFMainPopup.h"
-#include "IFSkillPracticeBox.h"
 #include "IFHelperBubbleWindow.h"
+#include "IFMainPopup.h"
+#include "IFNPCWindow.h"
+#include "IFSkillPracticeBox.h"
+#include "IFSystemMessage.h"
 #include "MessageBoxManager.h"
 #include "NIFCommunityWnd.h"
 #include "unsorted.h"
-#include "IFSystemMessage.h"
 
 #define GDR_CHAT_BOARD 1
 #define GDR_STORAGEROOM 19
@@ -116,47 +116,9 @@ public:
     /// \address 007781B0
     void WriteSystemMessage(eLogType level, const wchar_t *str);
 
-    /// \brief Send given message as global by using item at given slot
-    /// \address 007901c0
-    /// \todo Make message parameter a const reference once caller is under our control
-    void WriteGlobalMessage(unsigned char nSlot, std::n_wstring message);
-
     void CreateFlorian0Event();
 
     CAlramGuideMgrWnd *GetAlarmManager();
-
-    /// \address 0079D5B0
-    void ToggleActionWnd();
-
-    /// \address 0079B0B0
-    void ToggleApprenticeshipWnd();
-
-    /// \address 0079ACE0
-    void TogglePlayerInfoWnd();
-
-    /// \address 0079F690
-    void RenderToggle_GDR_GAMEGUIDE();
-
-    /// \address 0079B020
-    void ToggleInventoryWnd();
-
-    /// \address 0079ad70
-    void ToggleEquipmentWnd();
-
-    /// \address 0079AE90
-    void TogglePartyWnd();
-
-    /// \address 0079AE00
-    void ToggleSkillWnd();
-
-    /// \address 0079af20
-    void ShowInventoryWnd();
-
-    /// \address 0079af70
-    void ShowApprenticeshipWnd();
-
-    /// \address 0079afd0
-    void ToggleMainPopup();
 
     /// \address 0079ABE0
     void RenderToggle_WORLDMAP_GUIDE();

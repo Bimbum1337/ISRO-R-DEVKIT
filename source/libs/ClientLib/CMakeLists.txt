@@ -65,8 +65,7 @@ set(SOURCE_FILES src/BufRender.h
     src/IFInventory.cpp src/IFInventory.h
     src/IFMainFrame.cpp
     src/IFMainFrame.h
-    src/IFMainPopup.cpp src/IFMainPopup.h
-    src/IFNPCTalk.h
+        src/IFNPCTalk.h
     src/IFNPCWindow.h
     src/IFParty.h
     src/IFPartySlot.h
@@ -155,8 +154,7 @@ set(SOURCE_FILES src/BufRender.h
     src/NetProcessIn.cpp src/NetProcessIn.h
     src/NetProcessSecond.cpp src/NetProcessSecond.h
     src/NetProcessThird.cpp src/NetProcessThird.h
-    src/PSMission.h
-    src/GameCfg.cpp src/GameCfg.h
+        src/GameCfg.cpp src/GameCfg.h
     src/LocalTime.cpp src/LocalTime.h
     src/IFCheckBox.cpp src/IFCheckBox.h
     src/IFChatOptionBoard.cpp src/IFChatOptionBoard.h
@@ -169,8 +167,7 @@ set(SOURCE_FILES src/BufRender.h
     src/UserGuildInfo.cpp src/UserGuildInfo.h
     src/PartyData.h
     src/PartyMemberData.h
-    src/IFWholeChat.cpp src/IFWholeChat.h
-    src/IFBuffViewer.cpp src/IFBuffViewer.h
+        src/IFBuffViewer.cpp src/IFBuffViewer.h
     src/IFTargetWindow.cpp src/IFTargetWindow.h
     src/IFTargetWindowPlayer.cpp src/IFTargetWindowPlayer.h
     src/IFTargetWindowJobPlayer.cpp src/IFTargetWindowJobPlayer.h
@@ -179,7 +176,8 @@ set(SOURCE_FILES src/BufRender.h
     src/IFTargetWindowFortressStructure.cpp src/IFTargetWindowFortressStructure.h
     src/ICNonuser.cpp src/ICNonuser.h
     src/ICMonster.cpp src/ICMonster.h
-    src/ICCos.cpp src/ICCos.h src/Juicer/IFTestExample.h src/Juicer/IFTestExample.cpp src/IFNormalTile.h src/IFNormalTile.cpp src/IFWebItemAlram.cpp src/IFWebItemAlram.h src/IFSignLocationGuide.h src/IFSignLocationGuide.cpp src/IFMacroSystemGuide.cpp src/IFMacroSystemGuide.h src/IFMagicLampAlram.h src/IFMagicLampAlram.cpp src/IFAttendanceEventGuid.cpp src/IFAttendanceEventGuid.h src/IFSurvivalPVPEstimateTimeAlram.cpp src/IFSurvivalPVPEstimateTimeAlram.h src/IFFacebookLinkAlram.cpp src/IFFacebookLinkAlram.h src/IFDailyLoginAlram.cpp src/IFDailyLoginAlram.h src/CPSVersionCheck.cpp src/CPSVersionCheck.h)
+    src/CPSMission.cpp src/CPSMission.h
+    src/ICCos.cpp src/ICCos.h src/Juicer/IFTestExample.h src/Juicer/IFTestExample.cpp src/IFNormalTile.h src/IFNormalTile.cpp src/IFWebItemAlram.cpp src/IFWebItemAlram.h src/IFSignLocationGuide.h src/IFSignLocationGuide.cpp src/IFMacroSystemGuide.cpp src/IFMacroSystemGuide.h src/IFMagicLampAlram.h src/IFMagicLampAlram.cpp src/IFAttendanceEventGuid.cpp src/IFAttendanceEventGuid.h src/IFSurvivalPVPEstimateTimeAlram.cpp src/IFSurvivalPVPEstimateTimeAlram.h src/IFFacebookLinkAlram.cpp src/IFFacebookLinkAlram.h src/IFDailyLoginAlram.cpp src/IFDailyLoginAlram.h src/CPSVersionCheck.cpp src/CPSVersionCheck.h src/IFMainPopup.h src/IFEquipment.cpp)
 
 add_library(ClientLib STATIC ${SOURCE_FILES})
 target_link_libraries(ClientLib GFXMainFrame GFX3DFunction GFXFileManagerLIB NavMesh ClientNet SimpleViewer TypeId abi-testing imgui remodel ghidra)

@@ -13,15 +13,15 @@ const CCharacterData::SData *CGlobalDataManager::GetCharacterData(int id) const 
 
 const CItemData::SData &CGlobalDataManager::GetItemData(int refObjItemId) const {
 
-    const CItemData *pItem = FUN_0093f2f0(refObjItemId);
+    const CItemData *pItem = FUN_00A93B50(refObjItemId);
     if (pItem == NULL) {
         BS_ASSERT_MSG(pItem != NULL, "Item: %d", pItem);
     }
     return pItem->GetData();
 }
 
-const CItemData *CGlobalDataManager::FUN_0093f2f0(int refObjItemId) const {
-    return reinterpret_cast<const CItemData *(__thiscall *)(const CGlobalDataManager *, int)>(0x0093f2f0)(this,
+const CItemData *CGlobalDataManager::FUN_00A93B50(int refObjItemId) const {
+    return reinterpret_cast<const CItemData *(__thiscall *)(const CGlobalDataManager *, int)>(0x00A93B50)(this,
                                                                                                           refObjItemId);
 }
 

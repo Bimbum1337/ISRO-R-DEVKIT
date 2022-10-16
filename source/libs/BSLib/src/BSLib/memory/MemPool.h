@@ -25,6 +25,6 @@ template<unsigned long long Tag, typename Type, int U1, int U2>
 class CMemPool {
 public:
     Type *alloc() {
-        return reinterpret_cast<Type*(__thiscall*)(CMemPool*)>(0x00425400)(this);
+        return reinterpret_cast<Type*(__thiscall*)(CMemPool*)>(0x00448980)(this);
     }
 };

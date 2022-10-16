@@ -29,3 +29,5 @@ void vftableHook(unsigned int vftable_addr, int offset, int target_func);
 void JMPFunction(int address, int jumpto);
 
 void RenderJMPInstruction(int address, int jumpto, char* buf);
+
+bool SetNop(void* addr, int count);

@@ -1,5 +1,8 @@
 #include "IFTestExample.h"
+#include "GInterface.h"
 #include "Game.h"
+#include "ICPlayer.h"
+#include "IFInventory.h"
 
 GFX_IMPLEMENT_DYNCREATE(CIFTestExample, CIFMainFrame)
 GFX_BEGIN_MESSAGE_MAP(CIFTestExample, CIFMainFrame)
@@ -46,7 +49,24 @@ void CIFTestExample::OnUpdate()
 
 }
 void CIFTestExample::On_m_btn1(){
-    MessageBox(theApp.GetHWnd(), "a7akit tora7eb bek", "Btn Clicked", MB_OK | MB_ICONQUESTION);
+    CIFWnd* Mainpopup =  g_pCGInterface->m_IRM.GetResObj<CIFWnd>(25, 1);
+    if(Mainpopup)
+    {
+        int invCount = *(byte*) ((DWORD32)g_pCICPlayer + 0x2408);
 
+        CIFInventory* Inventory = Mainpopup->m_IRM.GetResObj<CIFInventory>(70,1);
+
+        int count = 0;
+
+        for (int i = 0; i < invCount; i++) {
+            CIFSlotWithHelp* pSlot = *reinterpret_cast<CIFSlotWithHelp**>(Inventory->pSlots + (i * 4));
+            if(pSlot->ItemInfo)
+            {
+                int typeId = pSlot->ItemInfo->GetItemData()->m_typeId.m_type_id_value;
+
+            }
+        }
+
+    }
 }
 
