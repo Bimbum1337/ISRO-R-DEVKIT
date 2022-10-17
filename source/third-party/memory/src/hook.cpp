@@ -111,3 +111,40 @@ bool SetNop(void* addr, int count)
 
     return true;
 }
+void CALLFunction(int address, int jumpto)
+{
+    try
+    {
+        int res = 0;
+        char instruction[5];
+        RenderCALLInstruction(address, jumpto, instruction);
+        DWORD oldprot, dummy;
+
+        res = VirtualProtect((void*)address, 5, PAGE_EXECUTE_READWRITE, &oldprot);
+
+        if (res == 0)
+        {
+            throw - 1;
+        }
+        memcpy((LPVOID)address, (LPVOID)instruction, 5);
+
+        res = VirtualProtect((void*)address, 5, oldprot, &dummy);
+        if (res == 0)
+        {
+            throw - 2;
+        }
+
+    }
+    catch (int ex) { printf("Detour::CALLFUNCTION failed with ex [%d]", ex); }
+}
+
+void RenderCALLInstruction(int address, int jumpto, char* buf)
+{
+    try
+    {
+        int offset = (int)jumpto - ((int)address + 5);
+        buf[0] = (char)0xE8;
+        *(DWORD*)(buf + 1) = offset;
+    }
+    catch (int ex) { printf("Detour::RenderCallInstruction failed with ex [%d]", ex); }
+}

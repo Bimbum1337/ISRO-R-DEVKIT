@@ -1,0 +1,3 @@
+#include "IFMessageBox.h"
+
+GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFMessageBox, 0x11797F0)

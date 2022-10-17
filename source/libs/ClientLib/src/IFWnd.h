@@ -99,6 +99,7 @@ public:
     /// \address 00652d20
     void SetStyleThingy(StyleOptions option);
 
+
 private:
     int On4001(int, int);
 

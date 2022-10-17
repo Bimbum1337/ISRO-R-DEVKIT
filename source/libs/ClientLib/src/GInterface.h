@@ -11,6 +11,7 @@
 #include "IFFade.h"
 #include "IFHelperBubbleWindow.h"
 #include "IFMainPopup.h"
+#include "IFMessageBox.h"
 #include "IFNPCWindow.h"
 #include "IFSkillPracticeBox.h"
 #include "IFSystemMessage.h"
@@ -181,6 +182,8 @@ public:
 
     /// \address 0078f4e0
     void RequestStatIncrement(undefined4 a1, undefined4 a2, undefined4 a3, undefined4 a4);
+
+    void sub_85D9C0(CIFMessageBox* wnd,int a2 , int a3);
 
 private:
     /// \address 0079a7e0

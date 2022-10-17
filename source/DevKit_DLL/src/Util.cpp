@@ -11,9 +11,12 @@
 #include "hooks/WndProc_Hook.h"
 
 #include "CPSMission.h"
+#include "CPSTile.h"
 #include "CPSVersionCheck.h"
 #include "ICMonster.h"
 #include "ICPlayer.h"
+#include "IFFacebookLinkAlram.h"
+#include "IFMessageBox.h"
 #include "QuickStart.h"
 #include <BSLib/Debug.h>
 #include <GFX3DFunction/RStateMgr.h>
@@ -24,6 +27,7 @@
 #include <NetProcessSecond.h>
 #include <NetProcessThird.h>
 #include <PSCharacterSelect.h>
+
 std::vector<const CGfxRuntimeClass *> register_objects;
 std::vector<overrideFnPtr> override_objects;
 
@@ -66,6 +70,10 @@ void Setup() {
 
     vftableHook(0xFFCAC4,10,addr_from_this(&CIFEquipment::OnCreateIMPL));
     vftableHook(0xFFCAC4,12,addr_from_this(&CIFEquipment::OnUpdateIMPL));
+
+    vftableHook(0x10344AC,10,addr_from_this(&CPSTile::OnCreateIMPL));
+
+    vftableHook(0xFCCE2C,10,addr_from_this(&CIFFacebookLinkAlram::OnCreateIMPL));
 
     //vftableHook(0x00dd811c, 10, addr_from_this(&CPSCharacterSelect::OnCreateIMPL));
 

@@ -31,3 +31,7 @@ void JMPFunction(int address, int jumpto);
 void RenderJMPInstruction(int address, int jumpto, char* buf);
 
 bool SetNop(void* addr, int count);
+
+void RenderCALLInstruction(int address, int jumpto, char* buf);
+
+void CALLFunction(int address, int jumpto);

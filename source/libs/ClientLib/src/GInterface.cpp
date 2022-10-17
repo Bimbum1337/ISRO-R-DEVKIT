@@ -35,6 +35,7 @@ bool CGInterface::OnCreateIMPL(long ln) {
 
     AfterOnCreate();
 
+    ShowMessage_Notice(L"Welcome to A7aKit");
     return b;
 }
 
@@ -163,4 +164,8 @@ void CGInterface::RequestStatIncrement(undefined4 a1, undefined4 a2, undefined4 
 
 void CGInterface::FUN_00777a70(undefined4 param_1, undefined4 param_2) {
     reinterpret_cast<void(__thiscall *)(CGInterface *, undefined4, undefined4)>(0x00777a70)(this, param_1, param_2);
+}
+void CGInterface::sub_85D9C0(CIFMessageBox* wnd,int a2 , int a3)
+{
+    reinterpret_cast<void (__thiscall *)(CGInterface *,CIFMessageBox*,int,int)>(0x0085D9C0)(this,wnd,a2,a3);
 }

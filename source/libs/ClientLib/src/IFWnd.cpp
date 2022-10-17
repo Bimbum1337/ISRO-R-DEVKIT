@@ -1,7 +1,7 @@
 #include "IFWnd.h"
 #include "Game.h"
 #include <BSLib/Debug.h>
-
+#include "IFMessageBox.h"
 GFX_IMPLEMENT_DYNAMIC_EXISTING(CIFWnd, 0x1179A58)
 
 GFX_BEGIN_MESSAGE_MAP(CIFWnd, CObjChild)
@@ -280,3 +280,4 @@ void CIFWnd::SetTooltipText(const std::n_wstring *str) {
 void CIFWnd::SetStyleThingy(StyleOptions option) {
     reinterpret_cast<void (__thiscall *)(CIFWnd *, StyleOptions)>(0x0072F670)(this, option);
 }
+
