@@ -73,11 +73,11 @@ WORD CMsgStreamBuffer::msgid() const {
 }
 
 CMsgStreamBuffer &CMsgStreamBuffer::operator>>(std::n_string &str) {
-    return reinterpret_cast<CMsgStreamBuffer &(__thiscall *)(CMsgStreamBuffer *, std::n_string &)>(0x004f7a70)(this, str);
+    return reinterpret_cast<CMsgStreamBuffer &(__thiscall *)(CMsgStreamBuffer *, std::n_string &)>(0x004BE640)(this, str);
 }
 
 void CMsgStreamBuffer::Read(void *value, size_t numBytes) {
-    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, void *, size_t)>(0x004BE640)(this, value, numBytes);
+    reinterpret_cast<void (__thiscall *)(CMsgStreamBuffer *, void *, size_t)>(0x00499710)(this, value, numBytes);
 }
 
 void CMsgStreamBuffer::FlushRemaining() {
